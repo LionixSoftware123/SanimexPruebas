@@ -1,0 +1,67 @@
+{
+  "extends": ["next", "next/core-web-vitals", "eslint:recommended","prettier"],
+  "plugins": ["prettier","@typescript-eslint"],
+  "parser": "@typescript-eslint/parser",
+  "globals": {
+    "React": "readonly"
+  },
+  "rules": {
+    "radix": "off",
+    "arrow-parens": "error",
+    "no-prototype-builtins": "off",
+    "import/prefer-default-export": "off",
+    "no-use-before-define": "off",
+    "@typescript-eslint/no-floating-promises": "off",
+    "react/button-has-type": [
+      0,
+      {
+        "button": true,
+        "submit": true,
+        "reset": false
+      }
+    ],
+    "semi": [
+      "error",
+      "always"
+    ],
+    "no-console": [
+      "error",
+      {
+        "allow": [
+          "warn",
+          "error",
+          "log"
+        ]
+      }
+    ],
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": "error",
+    "jsx-a11y/anchor-is-valid": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "react/prop-types": "off",
+    "react/destructuring-assignment": "off",
+    "react/no-unused-prop-types": "error",
+    "react/jsx-props-no-spreading": "off",
+    "react/require-default-props": [
+      "off",
+      {
+        "forbidDefaultForRequired": true
+      }
+    ],
+    "react/jsx-filename-extension": [
+      "warn",
+      {
+        "extensions": [
+          ".ts",
+          ".tsx"
+        ]
+      }
+    ]
+  },
+
+  "env": {
+    "browser": true,
+    "es6": true
+  }
+}
+
