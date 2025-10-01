@@ -1,0 +1,2 @@
+export const BASIC_WP_SEARCH_ENDPOINT =
+  process.env.NEXT_PUBLIC_BASIC_WP_SEARCH_ENDPOINT || '';

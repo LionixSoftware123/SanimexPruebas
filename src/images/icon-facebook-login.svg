@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="17.826" height="17.826" viewBox="0 0 17.826 17.826">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.006" y1="-0.031" x2="1.002" y2="1.04" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#0d61a9"/>
+      <stop offset="1" stop-color="#16528c"/>
+    </linearGradient>
+  </defs>
+  <g id="icono_facebook" data-name="icono facebook" transform="translate(0)">
+    <path id="Trazado_15" data-name="Trazado 15" d="M23.826,22.836a.99.99,0,0,1-.99.99H6.99a.99.99,0,0,1-.99-.99V6.99A.99.99,0,0,1,6.99,6H22.836a.99.99,0,0,1,.99.99Z" transform="translate(-6 -6)" fill="url(#linear-gradient)"/>
+    <path id="Trazado_16" data-name="Trazado 16" d="M22.981,24.392V18.945H21V15.974h1.981V14.915c0-2.5,1.32-3.871,3.716-3.871a12.726,12.726,0,0,1,1.782.1l.425.055.019.426v2.365h-1.8c-.559,0-.676.682-.676,1.255v.725h2.339l-.46,2.971H26.447v5.447Z" transform="translate(-13.572 -8.794)" opacity="0.05"/>
+    <path id="Trazado_17" data-name="Trazado 17" d="M23.481,24.4V18.95H21.5V16.474h1.981V15.168c0-2.371,1.2-3.624,3.469-3.624a12.547,12.547,0,0,1,1.753.1l.216.028.01.219V14H27.376c-.8,0-.924.941-.924,1.5v.973h2.3l-.383,2.476H26.452V24.4Z" transform="translate(-13.824 -8.799)" opacity="0.07"/>
+    <path id="Trazado_18" data-name="Trazado 18" d="M27.628,14h1.3V12.144a12.235,12.235,0,0,0-1.731-.1c-2.031,0-3.221,1.03-3.221,3.377v1.554H22v1.981h1.981V24.4h2.476V18.954h1.95l.306-1.981H26.457V15.753C26.457,14.825,26.76,14,27.628,14Z" transform="translate(-14.077 -9.051)" fill="#fff"/>
+  </g>
+</svg>

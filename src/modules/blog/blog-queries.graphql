@@ -1,0 +1,38 @@
+query FetchPosts($where:RootQueryToPostConnectionWhereArgs){
+    posts(where:$where){
+        nodes{
+            id
+            slug
+            title
+            date
+            excerpt(format:RENDERED)
+            content(format:RENDERED)
+            featuredImage{
+                node{
+                    sourceUrl(size:MEDIUM_LARGE)
+                }
+            }
+        }
+        pageInfo{
+            offsetPagination{
+                total
+            }
+        }
+    }
+}
+
+query FetchPost($id:ID!, $idType:PostIdType) {
+    post(id:$id, idType:$idType) {
+        id
+        slug
+        title
+        date
+        excerpt(format: RENDERED)
+        content(format: RENDERED)
+        featuredImage{
+            node{
+                sourceUrl(size:MEDIUM_LARGE)
+            }
+        }
+    }
+}

@@ -1,0 +1,5 @@
+mutation SendContactForm($data:SendContactFormInput!){
+    sendContactForm(input:$data){
+        success
+    }
+}

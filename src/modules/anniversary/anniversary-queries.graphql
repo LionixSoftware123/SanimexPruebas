@@ -1,0 +1,7 @@
+mutation RegisterAnniversaryUser($upload: RegisterAnniversaryUserInput!) {
+    registerAnniversaryUser(input: $upload) {
+        success
+        videoUrl
+        ticketUrl
+    }
+}

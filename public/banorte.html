@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport'
+        content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'>
+  <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+  <title>Banorte</title>
+</head>
+<body>
+<!--<form id='banorte-form' action='https://via.banorte.com/secure3d/Solucion3DSecure.htm' class='hidden' method='post'>-->
+<!--  <input name='CARD_NUMBER' value='4111111111111111'>-->
+<!--  <input name='CARD_EXP' value='12/24'>-->
+<!--  <input name='AMOUNT' value='1235.98'>-->
+<!--  <input name='MERCHANT_ID' value='9159213'>-->
+<!--  <input name='MERCHANT_NAME' value='SANIMEX AYUNTAMIENTO'><input name='MERCHANT_CITY' value='ESTADO DE MEXICO'>-->
+<!--  <input name='FORWARD_PATH'-->
+<!--         value='https://admin.sanimex.com.mx/payment-stage.php?AMOUNT=1235.98&amp;SECURITY_CODE=124&amp;CARD_EXP=12%2F24&amp;CARD_NUMBER=4111+1111+1111+1111&amp;ORDER_ID=20030&amp;WOO_SESSION_TOKEN=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FkbWluLnNhbmltZXguY29tLm14IiwiaWF0IjoxNzEwMTE2MzcyLCJuYmYiOjE3MTAxMTYzNzIsImV4cCI6MTcxMTMyNTk3MiwiZGF0YSI6eyJjdXN0b21lcl9pZCI6InRfOTRmMmUyZTRiMTEwZTAyOGYyNTYxN2U0OTU4MjdkIn19.YZQhm77Op1In2Tqkxo7dawBDcektPIKT99xwdsniEXo&amp;INITIAL_DEFERMENT=00&amp;PAYMENTS_NUMBER=&amp;PLAN_TYPE=03'>-->
+<!--  <input name='3D_CERTIFICATION' value='03'>-->
+<!--  <input name='REFERENCE3D' value='3hz7FIyOeH'>-->
+<!--  <input name='COUNTRY' value='MX'>-->
+<!--  <input name='CITY' value='Distrito Capital'>-->
+<!--  <input name='EMAIL' value='luiseulacio@gmail.com'>-->
+<!--  <input name='NAME' value='Luis Miguel'>-->
+<!--  <input name='LAST_NAME' value='Eulacio Pacheco'>-->
+<!--  <input name='POSTAL_CODE' value='01000'>-->
+<!--  <input name='STREET' value='Caracas'>-->
+<!--  <input name='THREED_VERSION' value='2'><input-->
+<!--  name='MOBILE_PHONE' value='04242927574'><input name='CREDIT_TYPE' value='CR'><input name='SECURITY_CODE'-->
+<!--                                                                                      value='124'><input-->
+<!--  name='CARD_TYPE' value='VISA'></form>-->
+
+<button onclick='main()'>
+  click here
+</button>
+
+<script>
+  const main = async () => {
+
+    const body = {
+      'CARD_NUMBER': '4111111111111111',
+      'CARD_EXP': '12/24',
+      'AMOUNT': '1235.98',
+      'MERCHANT_ID': '9159213',
+      'MERCHANT_NAME': 'SANIMEX AYUNTAMIENTO',
+      'MERCHANT_CITY': 'ESTADO DE MEXICO',
+      'FORWARD_PATH': 'https://admin.sanimex.com.mx/payment-stage.php?AMOUNT=1235.98&SECURITY_CODE=124&CARD_EXP=12%2F24&CARD_NUMBER=4111+1111+1111+1111&ORDER_ID=20030&WOO_SESSION_TOKEN=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FkbWluLnNhbmltZXguY29tLm14IiwiaWF0IjoxNzEwMTE2MzcyLCJuYmYiOjE3MTAxMTYzNzIsImV4cCI6MTcxMTMyNTk3MiwiZGF0YSI6eyJjdXN0b21lcl9pZCI6InRfOTRmMmUyZTRiMTEwZTAyOGYyNTYxN2U0OTU4MjdkIn19.YZQhm77Op1In2Tqkxo7dawBDcektPIKT99xwdsniEXo&INITIAL_DEFERMENT=00&PAYMENTS_NUMBER=&PLAN_TYPE=03',
+      '3D_CERTIFICATION': '03',
+      'REFERENCE3D': '3hz7FIyOeH',
+      'COUNTRY': 'MX',
+      'CITY': 'Distrito Capital',
+      'EMAIL': 'luiseulacio@gmail.com',
+      'NAME': 'Luis Miguel',
+      'LAST_NAME': 'Eulacio Pacheco',
+      'POSTAL_CODE': '01000',
+      'STREET': 'Caracas',
+      'THREED_VERSION': '2',
+      'MOBILE_PHONE': '04242927574',
+      'CREDIT_TYPE': 'CR',
+      'SECURITY_CODE': '124',
+      'CARD_TYPE': 'VISA',
+    };
+
+    try {
+      const response = await fetch('https://via.banorte.com/secure3d/Solucion3DSecure.htm', {
+        method: 'POST',
+        body: JSON.stringify(body),
+      });
+    } catch (e) {
+      console.log(e);
+    }
+
+
+    console.log('headers', response.headers);
+    console.log('headers', response.headers);
+  };
+</script>
+</body>
+</html>

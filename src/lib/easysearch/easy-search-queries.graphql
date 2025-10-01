@@ -1,0 +1,90 @@
+fragment IProductFragment on IProduct{
+    id
+    name
+    slug
+    description
+    external_id
+    price
+    regular_price
+    image_url
+    thumbnail_url
+    sku
+    stock
+    status
+    total_sales
+    is_on_sale
+    brands
+    categories
+    parent_categories
+    colors
+    materials
+    typologies
+    units
+    uses
+    variations{
+        stock_status
+    }
+    preciomts2
+    created_at
+    updated_at
+}
+
+fragment IAttributeFragment on IAttribute{
+    name
+    count
+}
+
+query Attributes($where: IProductWhereInput, $attributes: [String]) {
+    attributes(where: $where, attributes: $attributes) {
+        brands {
+            ...IAttributeFragment
+        }
+        materials {
+            ...IAttributeFragment
+        }
+        colors {
+            ...IAttributeFragment
+        }
+        typologies {
+            ...IAttributeFragment
+        }
+        units {
+            ...IAttributeFragment
+        }
+    }
+}
+
+query ProductsWithAttributes($orderBy: IProductOrderInput!, $where: IProductWhereInput, $take: Int, $skip: Int, $attributesWhere: IProductWhereInput, $attributes: [String]) {
+    products(orderBy: $orderBy, where: $where, take: $take, skip: $skip) {
+        count
+        items {
+            ...IProductFragment
+        }
+    }
+    attributes(where: $attributesWhere, attributes: $attributes) {
+        brands {
+            ...IAttributeFragment
+        }
+        materials {
+            ...IAttributeFragment
+        }
+        colors {
+            ...IAttributeFragment
+        }
+        typologies {
+            ...IAttributeFragment
+        }
+        units {
+            ...IAttributeFragment
+        }
+    }
+}
+
+query Products($orderBy: IProductOrderInput!, $where: IProductWhereInput, $take: Int, $skip: Int) {
+    products(orderBy: $orderBy, where: $where, take: $take, skip: $skip) {
+        count
+        items {
+            ...IProductFragment
+        }
+    }
+}

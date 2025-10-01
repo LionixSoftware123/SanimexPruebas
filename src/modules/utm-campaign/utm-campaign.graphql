@@ -1,0 +1,5 @@
+mutation SaveSellerCampaignURLUTM($input: SaveSellerCampaignURLUTMInput!) {
+  saveSellerCampaignURLUTM(input: $input) {
+    message
+  }
+}

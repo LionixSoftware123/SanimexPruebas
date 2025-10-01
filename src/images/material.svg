@@ -1,0 +1,18 @@
+<svg id="icono_material_de_construcción" data-name="icono material de construcción" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="100%" viewBox="0 0 65.349 42.823">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectángulo_931" data-name="Rectángulo 931" width="65.349" height="42.823" fill="none"/>
+    </clipPath>
+  </defs>
+  <path id="Trazado_567" data-name="Trazado 567" d="M32.674.72H30.513L29.358,14.728H35.99L34.835.72Z" transform="translate(0 0)" fill="#5ecbf4"/>
+  <g id="Grupo_102" data-name="Grupo 102">
+    <g id="Grupo_101" data-name="Grupo 101" clip-path="url(#clip-path)">
+      <path id="Trazado_568" data-name="Trazado 568" d="M35.99,14.729,34.835.721H30.513L29.359,14.729Z" transform="translate(0 0)" fill="none" stroke="#0071ce" stroke-width="1.441"/>
+      <path id="Trazado_569" data-name="Trazado 569" d="M61.467,37.69A32.13,32.13,0,0,0,49.975,12.783,27.59,27.59,0,0,0,43.809,9l-.632-4.08a25.9,25.9,0,0,0-8.182-2.294l1,12.106H29.359l1-12.144a21.055,21.055,0,0,0-8.187,2.332L21.444,9A30.5,30.5,0,0,0,5.726,26.7,33.392,33.392,0,0,0,3.882,37.69H61.467" transform="translate(0 0)" fill="none" stroke="#0071ce" stroke-width="2"/>
+      <line id="Línea_5" data-name="Línea 5" x2="2.203" y2="14.219" transform="translate(43.177 4.916)" fill="none" stroke="#0071ce" stroke-width="1.441"/>
+      <line id="Línea_6" data-name="Línea 6" y1="14.219" x2="2.54" transform="translate(19.632 4.916)" fill="none" stroke="#0071ce" stroke-width="1.441"/>
+      <path id="Trazado_570" data-name="Trazado 570" d="M10.6,24.434s-2.916,5.121-2.691,9.031H25.917" transform="translate(0 0)" fill="none" stroke="#0071ce" stroke-width="2"/>
+      <path id="Trazado_571" data-name="Trazado 571" d="M61.79,37.69H3.6s-2.623.1-2.6,4.133H64.348C64.373,37.789,61.79,37.69,61.79,37.69Z" transform="translate(0 0)" fill="none" stroke="#0071ce" stroke-width="2"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,822 @@
+[
+  {
+    "ID": 1,
+    "TIENDA": "SANTA CLARA 2",
+    "CALLE": "Vía Morelos No. 33",
+    "COLONIA": "Col. San Cristóbal Centro",
+    "CP": 55040,
+    "CIUDAD": "Ecatepec ",
+    "ESTADO": "Estado de México",
+    "TELÉFONOS": [
+      {
+        "key": "5557703413",
+        "value": "5557703413"
+      },
+      {
+        "key": "5557703410",
+        "value": "5557703410"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.5965475,
+      "lng": -99.0372039
+    }
+  },
+  {
+    "ID": 2,
+    "TIENDA": "SANTA CLARA 3",
+    "CALLE": "Vía Morelos No. 45 Bis",
+    "COLONIA": "Col. Nuevo Laredo",
+    "CP": 55080,
+    "CIUDAD": "Ecatepec ",
+    "ESTADO": "Estado de México",
+    "TELÉFONOS": [
+      {
+        "key": "5557870087",
+        "value": "5557870087"
+      },
+      {
+        "key": "5557872299",
+        "value": "5557872299"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.5757029,
+      "lng": -99.0427336
+    }
+  },
+  {
+    "ID": 3,
+    "TIENDA": "INSURGENTES",
+    "CALLE": "Av. Insurgentes S/N",
+    "COLONIA": "Col. La Curiela",
+    "CP": 55060,
+    "CIUDAD": "Ecatepec ",
+    "ESTADO": "Estado de México",
+    "TELÉFONOS": [
+      {
+        "key": "55 57 87 83 57",
+        "value": "5557878357"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.6002201,
+      "lng": -99.0527193
+    }
+  },
+  {
+    "ID": 4,
+    "TIENDA": "SANTA CLARA 1",
+    "CALLE": "Av. Hidalgo No. 143 - A",
+    "COLONIA": "Col. Santa Clara",
+    "CP": 55540,
+    "CIUDAD": "Ecatepec ",
+    "ESTADO": "Estado de México",
+    "TELÉFONOS": [
+      {
+        "key": "5556990426",
+        "value": "5556990426"
+      },
+      {
+        "key": "5556990427",
+        "value": "5556990427"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.5382819,
+      "lng": -99.0598875
+    }
+  },
+  {
+    "ID": 5,
+    "TIENDA": "SANTA CLARA 4",
+    "CALLE": "Vía Morelos km 15.5",
+    "COLONIA": "Col. Santa Clara",
+    "CP": 55540,
+    "CIUDAD": "Ecatepec ",
+    "ESTADO": "Estado de México",
+    "TELÉFONOS": [
+      {
+        "key": "5556990457",
+        "value": "5556990457"
+      },
+      {
+        "key": "5557497084",
+        "value": "5557497084"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.5366259,
+      "lng": -99.0623316
+    }
+  },
+  {
+    "ID": 6,
+    "TIENDA": "R1",
+    "CALLE": "Vicente Lombardo Toledano No. 21 Local 4 y 5",
+    "COLONIA": "Col. Laguna Xalostoc",
+    "CP": 55338,
+    "CIUDAD": "Ecatepec ",
+    "ESTADO": "Estado de México",
+    "TELÉFONOS": [
+      {
+        "key": "55 56 99 76 47",
+        "value": "5556997647"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.5290298,
+      "lng": -99.0567546
+    }
+  },
+  {
+    "ID": 7,
+    "TIENDA": "SANTA CLARA 7",
+    "CALLE": "Vía Morelos No. 464 Local, A1 ",
+    "COLONIA": "Col. Cuauhtémoc Xalostoc ",
+    "CP": 55310,
+    "CIUDAD": "Ecatepec ",
+    "ESTADO": "Estado de México",
+    "TELÉFONOS": [
+      {
+        "key": "55 56 99 76 47",
+        "value": "5556997647"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.529414,
+      "lng": -99.0781396
+    }
+  },
+  {
+    "ID": 8,
+    "TIENDA": "SANTA CLARA 8 BODEGA",
+    "CALLE": "Vía Morelos No. 416",
+    "COLONIA": "Col. Cuauhtémoc Xalostoc",
+    "CP": 55310,
+    "CIUDAD": "Ecatepec ",
+    "ESTADO": "Estado de México",
+    "TELÉFONOS": [
+      {
+        "key": "55 55 69 56 31",
+        "value": "5555695631"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.5324563,
+      "lng": -99.0719896
+    }
+  },
+  {
+    "ID": 9,
+    "TIENDA": "EL GAVILLERO ",
+    "CALLE": "Km.20 Carretera Progreso Industrial",
+    "COLONIA": "Colonia El Gavillero",
+    "CP": 54459,
+    "CIUDAD": "Nicolás de Romero",
+    "ESTADO": "Estado de México",
+    "TELÉFONOS": [
+      {
+        "key": "55 16 60 15 08",
+        "value": "5516601508"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.6237378,
+      "lng": -99.333362
+    }
+  },
+  {
+    "ID": 10,
+    "TIENDA": "IZCALLI",
+    "CALLE": "Av. Chalma No. 5",
+    "COLONIA": "Col. La Hacienda",
+    "CP": 54730,
+    "CIUDAD": "Cuautitlán Izcalli ",
+    "ESTADO": "Estado de México",
+    "TELÉFONOS": [
+      {
+        "key": "55 11 13 14 11",
+        "value": "5511131411"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.6701011,
+      "lng": -99.2025081
+    }
+  },
+  {
+    "ID": 11,
+    "TIENDA": "LIBERTAD",
+    "CALLE": "Lerdo de Tejada N° 9",
+    "COLONIA": "Col. Libertad",
+    "CP": 54407,
+    "CIUDAD": "Villa Nicolás Romero",
+    "ESTADO": "Estado de México",
+    "TELÉFONOS": [
+      {
+        "key": "55 24 64 01 09",
+        "value": "5524640109"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.6417479,
+      "lng": -99.3016611
+    }
+  },
+  {
+    "ID": 12,
+    "TIENDA": "HUEHUETOCA",
+    "CALLE": "Carretera Jorobas Tula Km 0.5",
+    "COLONIA": "Col. Jorobas Huehuetoca",
+    "CP": 54680,
+    "CIUDAD": "Huehuetoca ",
+    "ESTADO": "Estado de México",
+    "TELÉFONOS": [
+      {
+        "key": "59 39 16 30 26",
+        "value": "5939163026"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.8421338,
+      "lng": -99.2392714
+    }
+  },
+  {
+    "ID": 13,
+    "TIENDA": "TEOLOYUCAN",
+    "CALLE": "Av. 5 de Mayo No. 5",
+    "COLONIA": "Col. Tepanquiahuac",
+    "CP": 54770,
+    "CIUDAD": "Teoloyucan",
+    "ESTADO": "Estado de México",
+    "TELÉFONOS": [
+      {
+        "key": "59 39 14 80 10",
+        "value": "5939148010"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.7416166,
+      "lng": -99.179398
+    }
+  },
+  {
+    "ID": 14,
+    "TIENDA": "ZUMPANGO 2",
+    "CALLE": "Av. Jorge Jiménez Cantú No. 19",
+    "COLONIA": "Col. Barrio de San Juan",
+    "CP": 55600,
+    "CIUDAD": "Zumpango",
+    "ESTADO": "Estado de México",
+    "TELÉFONOS": [
+      {
+        "key": "59 11 00 67 27",
+        "value": "5911006727"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.7989552,
+      "lng": -99.1035335
+    }
+  },
+  {
+    "ID": 15,
+    "TIENDA": "SANIMEX ESPACIOS",
+    "CALLE": "Blvd. Manuel Ávila Camacho No. 92 ",
+    "COLONIA": "Col. El Conde",
+    "CP": 53500,
+    "CIUDAD": "Naucalpan de Juárez",
+    "ESTADO": "Estado de México",
+    "TELÉFONOS": [
+      {
+        "key": "5553580423",
+        "value": "5553580423"
+      },
+      {
+        "key": "5553586626",
+        "value": "5553586626"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.4680573,
+      "lng": -99.2264644
+    }
+  },
+  {
+    "ID": 16,
+    "TIENDA": "TOREO 2 ARQUICERAMICA",
+    "CALLE": "Blvd. Manuel Ávila Camacho No.435",
+    "COLONIA": "Col. San Andrés Atoto",
+    "CP": 5400,
+    "CIUDAD": "Naucalpan de Juárez",
+    "ESTADO": "Estado de México",
+    "TELÉFONOS": [
+      {
+        "key": "55 55 76 07 08",
+        "value": "5555760708"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.4679859,
+      "lng": -99.225664
+    }
+  },
+  {
+    "ID": 17,
+    "TIENDA": "TECÁMAC ",
+    "CALLE": "Av.Mexiquense Lt-B1",
+    "COLONIA": "Los Héroes Tecámac",
+    "CP": 55765,
+    "CIUDAD": "Tecamac",
+    "ESTADO": "Estado de México",
+    "TELÉFONOS": [
+      {
+        "key": "55 49 78 71 53",
+        "value": "5549787153"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.6328539,
+      "lng": -99.0261811
+    }
+  },
+  {
+    "ID": 18,
+    "TIENDA": "CHICONAUTLA",
+    "CALLE": "Carretera México Pachuca km 30.5",
+    "COLONIA": "Col. Santo Tomas Chiconautla",
+    "CP": 55068,
+    "CIUDAD": "Ecatepec ",
+    "ESTADO": "Estado de México",
+    "TELÉFONOS": [
+      {
+        "key": "55 15 50 83 40",
+        "value": "5515508340"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.6461704,
+      "lng": -99.0048553
+    }
+  },
+  {
+    "ID": 19,
+    "TIENDA": "ZUMPANGO 1",
+    "CALLE": "Carretera  México Pachuca km 44 + 100",
+    "COLONIA": "Col. Santa María Ajoloapan",
+    "CP": 55750,
+    "CIUDAD": "Tecámac",
+    "ESTADO": "Estado de México",
+    "TELÉFONOS": [
+      {
+        "key": "59 69 24 09 94",
+        "value": "5969240994"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.7661143,
+      "lng": -98.9734418
+    }
+  },
+  {
+    "ID": 20,
+    "TIENDA": "NEZA",
+    "CALLE": "Av. Adolfo López Mateos No. 660",
+    "COLONIA": "Col. El Palmar",
+    "CP": 57310,
+    "CIUDAD": "Ciudad Nezahualcóyotl ",
+    "ESTADO": "Estado de México",
+    "TELÉFONOS": [
+      {
+        "key": "5557434283",
+        "value": "5557434283"
+      },
+      {
+        "key": "5557434612",
+        "value": "5557434612"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.4143805,
+      "lng": -99.0206244
+    }
+  },
+  {
+    "ID": 21,
+    "TIENDA": "LOS REYES TEXCOCO",
+    "CALLE": "Carretera Federal Los Reyes - Texcoco km 27.5",
+    "COLONIA": "Col. Revolución ",
+    "CP": 56390,
+    "CIUDAD": "San Vicente Chicoloapan",
+    "ESTADO": "Estado de México",
+    "TELÉFONOS": [
+      {
+        "key": "55 15 51 31 82",
+        "value": "5515513182"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.4027597,
+      "lng": -98.9283404
+    }
+  },
+  {
+    "ID": 22,
+    "TIENDA": "CHALCO",
+    "CALLE": "Av. Arturo Montiel Rojas Mz. 1 Lt. 11",
+    "COLONIA": "Col. El Portal",
+    "CP": 56600,
+    "CIUDAD": "Chalco",
+    "ESTADO": "Estado de México",
+    "TELÉFONOS": [
+      {
+        "key": "5559733960",
+        "value": "5559733960"
+      },
+      {
+        "key": "5559734549",
+        "value": "5559734549"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.2504536,
+      "lng": -98.901428
+    }
+  },
+  {
+    "ID": 23,
+    "TIENDA": "CHALCO 2 LAMOSA",
+    "CALLE": "Av. Arturo Montiel Rojas Mz. 1 Lt. 24",
+    "COLONIA": "Col. El Portal",
+    "CP": 56600,
+    "CIUDAD": "Chalco",
+    "ESTADO": "Estado de México",
+    "TELÉFONOS": [
+      {
+        "key": "55 5973 3129",
+        "value": "5559733129"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.2505753,
+      "lng": -98.9021556
+    }
+  },
+  {
+    "ID": 24,
+    "TIENDA": "ARAGÓN 1",
+    "CALLE": "Av. Central No. 53",
+    "COLONIA": "Col. Valle De Aragón 3ra Sección",
+    "CP": 55280,
+    "CIUDAD": "Ecatepec ",
+    "ESTADO": "Estado de México",
+    "TELÉFONOS": [
+      {
+        "key": "5557804934",
+        "value": "5557804934"
+      },
+      {
+        "key": "5557801542",
+        "value": "5557801542"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.5073799,
+      "lng": -99.0398805
+    }
+  },
+  {
+    "ID": 25,
+    "TIENDA": "ARAGÓN 2",
+    "CALLE": "Av. Central No. 759",
+    "COLONIA": "Col. Valle De Aragón 2da Sección",
+    "CP": 57100,
+    "CIUDAD": "Nezahualcóyotl ",
+    "ESTADO": "Estado de México",
+    "TELÉFONOS": [
+      {
+        "key": "55 57 80 16 50",
+        "value": "5557801650"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.4870429,
+      "lng": -99.048054
+    }
+  },
+  {
+    "ID": 26,
+    "TIENDA": "ARAGÓN 3",
+    "CALLE": "Av. Central No. 186",
+    "COLONIA": "Col. Valle De Aragón 3ra Sección",
+    "CP": 55280,
+    "CIUDAD": "Ecatepec ",
+    "ESTADO": "Estado de México",
+    "TELÉFONOS": [
+      {
+        "key": "5551214735",
+        "value": "5551214735"
+      },
+      {
+        "key": "5551214770",
+        "value": "5551214770"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.4982329,
+      "lng": -99.0431007
+    }
+  },
+  {
+    "ID": 27,
+    "TIENDA": "ARAGÓN 4",
+    "CALLE": "Av. Central Mz. 429 Lt. 44-46 Esq. Boulevard de los Aztecas",
+    "COLONIA": "Ciudad Azteca 1ra Sección",
+    "CP": 55120,
+    "CIUDAD": "Ecatepec ",
+    "ESTADO": "Estado de México",
+    "TELÉFONOS": [
+      {
+        "key": "55 26 46 53 44",
+        "value": "5526465344"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.5371371,
+      "lng": -99.0269586
+    }
+  },
+  {
+    "ID": 28,
+    "TIENDA": "30-30",
+    "CALLE": "Av. Revolución No. 203",
+    "COLONIA": "Col. Residencial San Cristóbal",
+    "CP": 55000,
+    "CIUDAD": "Ecatepec ",
+    "ESTADO": "Estado de México",
+    "TELÉFONOS": [
+      {
+        "key": "55 57 87 24 44",
+        "value": "5557872444"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.607519,
+      "lng": -99.0522217
+    }
+  },
+  {
+    "ID": 29,
+    "TIENDA": "COACALCO",
+    "CALLE": "Eje 3 #128",
+    "COLONIA": "Col. Granjas San Pablo ",
+    "CP": 54930,
+    "CIUDAD": "Tultitlan",
+    "ESTADO": "Estado de México",
+    "TELÉFONOS": [
+      {
+        "key": "55 58 79 11 05",
+        "value": "5558791105"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.6587072,
+      "lng": -99.08008
+    }
+  },
+  {
+    "ID": 30,
+    "TIENDA": "LÓPEZ 1",
+    "CALLE": "Vía López Portillo km 13.5 LOCAL 1 Y 2",
+    "COLONIA": "Col. Guadalupe Victoria",
+    "CP": 55010,
+    "CIUDAD": "Ecatepec ",
+    "ESTADO": "Estado de México",
+    "TELÉFONOS": [
+      {
+        "key": "55 58 82 04 30",
+        "value": "5558820430"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.6214156,
+      "lng": -99.0714053
+    }
+  },
+  {
+    "ID": 31,
+    "TIENDA": "LÓPEZ 2",
+    "CALLE": "Vía López Portillo km 13.5 LOCAL 15",
+    "COLONIA": "Col. Guadalupe Victoria",
+    "CP": 55011,
+    "CIUDAD": "Ecatepec ",
+    "ESTADO": "Estado de México",
+    "TELÉFONOS": [
+      {
+        "key": "55 58 82 04 60",
+        "value": "5558820460"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.6214156,
+      "lng": -99.0714053
+    }
+  },
+  {
+    "ID": 32,
+    "TIENDA": "Ayuntamiento 1",
+    "CALLE": "Ayuntamiento # 44 BIS",
+    "COLONIA": "Col. Centro",
+    "CP": 6010,
+    "CIUDAD": "Cuauhtémoc",
+    "ESTADO": "Ciudad de México",
+    "TELÉFONOS": [
+      {
+        "key": "55 5512 3934",
+        "value": "5555123934"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.4306493,
+      "lng": -99.1440669
+    }
+  },
+  {
+    "ID": 33,
+    "TIENDA": "Ayuntamiento 4",
+    "CALLE": "Ayuntamiento #42",
+    "COLONIA": "Col. Centro",
+    "CP": 6010,
+    "CIUDAD": "Cuauhtémoc",
+    "ESTADO": "Ciudad de México",
+    "TELÉFONOS": [
+      {
+        "key": "55 5518 5317",
+        "value": "5555185317"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.4307214,
+      "lng": -99.1445484
+    }
+  },
+  {
+    "ID": 34,
+    "TIENDA": "Ayuntamiento 5",
+    "CALLE": "Ayuntamiento # 35-B",
+    "COLONIA": "Col. Centro",
+    "CP": 6010,
+    "CIUDAD": "Cuauhtémoc",
+    "ESTADO": "Ciudad de México",
+    "TELÉFONOS": [
+      {
+        "key": "55 5521 5914",
+        "value": "5555215914"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.430634,
+      "lng": -99.1439564
+    }
+  },
+  {
+    "ID": 35,
+    "TIENDA": "Ayuntamiento 6",
+    "CALLE": "Ayuntamiento  # 45-B",
+    "COLONIA": "Col. Centro",
+    "CP": 6010,
+    "CIUDAD": "Cuauhtémoc",
+    "ESTADO": "Ciudad de México",
+    "TELÉFONOS": [
+      {
+        "key": "55 5512 7767",
+        "value": "5555127767"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.4306689,
+      "lng": -99.1441985
+    }
+  },
+  {
+    "ID": 36,
+    "TIENDA": "Ayuntamiento 7",
+    "CALLE": "Ayuntaniento #42",
+    "COLONIA": "Col. Centro",
+    "CP": 6010,
+    "CIUDAD": "Cuauhtémoc",
+    "ESTADO": "Ciudad de México",
+    "TELÉFONOS": [
+      {
+        "key": "5518-5317",
+        "value": "55185317"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.4306561,
+      "lng": -99.1440978
+    }
+  },
+  {
+    "ID": 37,
+    "TIENDA": "Ayuntamiento 8",
+    "CALLE": "Ayuntamiento # 59-F",
+    "COLONIA": "Col. Centro",
+    "CP": 6010,
+    "CIUDAD": "Cuauhtémoc",
+    "ESTADO": "Ciudad de México",
+    "TELÉFONOS": [
+      {
+        "key": "55 5510 9764",
+        "value": "5555109764"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.4309053,
+      "lng": -99.1454844
+    }
+  },
+  {
+    "ID": 38,
+    "TIENDA": "Ayuntamiento 11 ARQUICERAMICA",
+    "CALLE": "Ayuntamiento # 98",
+    "COLONIA": "Col. Centro",
+    "CP": 6070,
+    "CIUDAD": "Cuauhtémoc",
+    "ESTADO": "Ciudad de México",
+    "TELÉFONOS": [
+      {
+        "key": "5555184811",
+        "value": "5555184811"
+      },
+      {
+        "key": "5555184810",
+        "value": "5555184810"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.4311196,
+      "lng": -99.1472877
+    }
+  },
+  {
+    "ID": 39,
+    "TIENDA": "Ayuntamiento 14",
+    "CALLE": "Ayuntamiento #42",
+    "COLONIA": "Col. Centro",
+    "CP": 6010,
+    "CIUDAD": "Cuauhtémoc",
+    "ESTADO": "Ciudad de México",
+    "TELÉFONOS": [
+      {
+        "key": "55 5518 5317",
+        "value": "5555185317"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.4306414,
+      "lng": -99.1439909
+    }
+  },
+  {
+    "ID": 39,
+    "TIENDA": "Bernardo Reyes",
+    "CALLE": "Av. Bernardo Reyes, No. 3737",
+    "COLONIA": "Col. Niño Artillero",
+    "CP": 64280,
+    "CIUDAD": "Cuauhtémoc",
+    "ESTADO": "Nuevo León",
+    "TELÉFONOS": [
+      {
+        "key": "811 35 40 227",
+        "value": "8113540227"
+      }
+    ],
+    "LOCATION": {
+      "lat": 25.6974433,
+      "lng": -100.3356094
+    }
+  },
+  {
+    "ID": 40,
+    "TIENDA": "Interlomas",
+    "CALLE": "Blvrd. Interlomas No. 5",
+    "COLONIA": "Col. Niño Artillero",
+    "CP": 52786,
+    "CIUDAD": "Naucalpan de Juárez",
+    "ESTADO": "Estado de México",
+    "TELÉFONOS": [
+      {
+        "key": "55 5290 5900",
+        "value": "5552905900"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.3932187,
+      "lng": -99.2643755
+    }
+  }
+  
+]

@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .form {
+            display: flex;
+            flex-direction: column;
+            width: 350px;
+        }
+    </style>
+</head>
+<body>
+<!--<form action="https://via.pagosbanorte.com/payw2" method="post" class="form">-->
+<!--    <input type="text" name="MERCHANT_ID" value="9159213">-->
+<!--    <input type="text" name="USER" value="SA911753717">-->
+<!--    <input type="text" name="PASSWORD" value="1x2iD(R!52%">-->
+<!--    <input type="text" name="CMD_TRANS" value="VENTA">-->
+<!--    <input type="text" name="TERMINAL_ID" value="91592131">-->
+<!--    <input type="text" name="AMOUNT" placeholder="AMOUNT" value="3">-->
+<!--    <input type="text" name="MODE" value="AUT">-->
+
+<!--    <input type="text" name="CARD_NUMBER" placeholder="CARD_NUMBER" value="5285210000298265">-->
+<!--    <input type="text" name="CARD_EXP" placeholder="CARD_EXP" value="05/24">-->
+
+<!--    <input type="text" name="SECURITY_CODE" placeholder="SECURITY_CODE" value="087">-->
+<!--    <input type="text" name="ENTRY_MODE" value="MANUAL">-->
+
+<!--    <input type="text" name="STATUS_3D" value="200">-->
+<!--    <input type="text" name="ECI" value="01">-->
+<!--    <input type="text" name="CAVV" value="kENvPyb1ASzCu6jqSEF0HAgfKVke">-->
+<!--    <input type="text" name="VERSION_3D" value="2">-->
+
+<!--    <button type="submit">PAGAR</button>-->
+<!--</form>-->
+<!--</body>-->
+
+<script>
+    const request = new XMLHttpRequest();
+    const data = {
+        MERCHANT_ID:9159213,
+        USER:"SA911753717",
+        PASSWORD:"1x2iD(R!52%",
+        CMD_TRANS:"VENTA",
+        TERMINAL_ID:91592131,
+        AMOUNT:3,
+        MODE:"AUT",
+        CARD_NUMBER:5285210000298265,
+        CARD_EXP:"05/24",
+        SECURITY_CODE:087,
+        STATUS_3D:200,
+        CAVV:"kEMALP/7ASzCu6jqSEFfeUTf6L/M",
+        VERSION_3D:2
+    }
+    const params = Object.keys(data).map((key)=>`${key}=${data[key]}`).join('&');
+    request.open("POST", "https://via.pagosbanorte.com/payw2", true);
+    request.send(params);
+    request.onreadystatechange = () => {
+        if (request.readyState === this.HEADERS_RECEIVED) {
+            // Get the raw header string
+            const headers = request.getAllResponseHeaders();
+
+            // Convert the header string into an array
+            // of individual headers
+            const arr = headers.trim().split(/[\r\n]+/);
+
+            // Create a map of header names to values
+            const headerMap = {};
+            arr.forEach((line) => {
+                const parts = line.split(": ");
+                const header = parts.shift();
+                headerMap[header] = parts.join(": ");
+            });
+
+            console.log('headerMap',headerMap);
+        }
+    };
+
+
+
+</script>
+</body>
+</html>

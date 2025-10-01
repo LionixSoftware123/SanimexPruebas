@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 10 11">
+  <g id="icon-papelera" transform="translate(-1 -0.5)">
+    <path id="Trazado_577" data-name="Trazado 577" d="M1.5,3h9" fill="none" stroke="#666" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+    <path id="Trazado_578" data-name="Trazado 578" d="M9.5,3v7a1,1,0,0,1-1,1h-5a1,1,0,0,1-1-1V3M4,3V2A1,1,0,0,1,5,1H7A1,1,0,0,1,8,2V3" fill="none" stroke="#666" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+    <path id="Trazado_579" data-name="Trazado 579" d="M5,5.5v3" fill="none" stroke="#666" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+    <path id="Trazado_580" data-name="Trazado 580" d="M7,5.5v3" fill="none" stroke="#666" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+  </g>
+</svg>

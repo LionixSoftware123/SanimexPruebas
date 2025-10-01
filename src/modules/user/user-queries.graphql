@@ -1,0 +1,6 @@
+mutation SaveFavoriteProduct($input: SaveFavoriteProductInput!) {
+    saveFavoriteProduct(input: $input) {
+        message
+        type
+    }
+}

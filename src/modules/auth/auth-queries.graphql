@@ -1,0 +1,66 @@
+mutation Register($input: RegisterUserInput!) {
+    registerUser(input: $input) {
+        user {
+            wooSessionToken
+            jwtAuthToken
+            jwtRefreshToken
+            jwtAuthExpiration
+        }
+    }
+}
+
+mutation Login($input:LoginInput!) {
+    login(input: $input) {
+        user {
+            wooSessionToken
+            jwtAuthToken
+            jwtRefreshToken
+            jwtAuthExpiration
+
+        }
+    }
+}
+
+mutation SendPasswordResetEmail($input: SendPasswordResetEmailInput!) {
+  sendPasswordResetEmail(input: $input) {
+    clientMutationId
+  }
+}
+
+query FetchUser($id:ID!, $idType:UserNodeIdTypeEnum) {
+    user(id:$id, idType:$idType){
+        id
+        email
+        name
+         avatar {
+          url
+        }
+        favoriteProducts
+        databaseId
+        age
+        postalCode
+        phone
+        state
+        videoCaption
+        ticketNumber
+        videoUrl
+        ticketUrl
+        store
+    }
+    customer{
+        id
+        databaseId
+        email
+    }
+
+}
+
+mutation UpdateUser($input: UpdateUserInput!) {
+    updateUser(input: $input) {
+        user {
+            id
+            email
+            name
+        }
+    }
+}

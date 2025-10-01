@@ -1,0 +1,2449 @@
+query Products($where: RootQueryToProductConnectionWhereArgs, $first: Int) {
+    products(where: $where, first: $first) {
+        edges {
+            node {
+                date
+                type
+                productCategories {
+                    edges {
+                        node {
+                            id
+                            name
+                            slug
+                        }
+                    }
+                }
+                ... on SimpleProduct {
+                    price
+                    attributes {
+                        nodes {
+                            name
+                            label
+                            options
+                            variation
+                        }
+                    }
+                    regularPrice
+                    salePrice
+                    stockStatus
+                    dateOnSaleFrom
+                    dateOnSaleTo
+                    isExclude
+                    name
+                    databaseId
+                    sku
+                    price
+                    precioPor
+                    slug
+                    allPaMarcas {
+                        edges {
+                            node {
+                                databaseId
+                                name
+                            }
+                        }
+                    }
+                }
+                ... on VariableProduct {
+                    price
+                    attributes {
+                        nodes {
+                            name
+                            label
+                            options
+                            variation
+                        }
+                    }
+                    regularPrice
+                    salePrice
+                    stockStatus
+                    dateOnSaleFrom
+                    dateOnSaleTo
+                    isExclude
+                    name
+                    databaseId
+                    sku
+                    price
+                    slug
+                    allPaMarcas {
+                        edges {
+                            node {
+                                databaseId
+                                name
+                            }
+                        }
+                    }
+                    variations(first: 100) {
+                        edges {
+                            node {
+                                databaseId
+                                attributes {
+                                    nodes {
+                                        name
+                                        value
+                                    }
+                                }
+                                image {
+                                    sourceUrl(size: MEDIUM)
+                                }
+                            }
+                        }
+                    }
+                }
+                featuredImage {
+                    node {
+                        sourceUrl(size: MEDIUM)
+                    }
+                }
+                galleryImages(first: 100) {
+                    edges {
+                        node {
+                            sourceUrl(size: MEDIUM)
+                        }
+                    }
+                }
+                attributes {
+                    nodes {
+                        attributeId
+                        id
+                        label
+                        name
+                        options
+                        position
+                        scope
+                        variation
+                        visible
+                    }
+                }
+            }
+        }
+        pageInfo {
+            offsetPagination {
+                total
+            }
+        }
+    }
+}
+
+query SitemapsProducts($where: RootQueryToProductConnectionWhereArgs) {
+    products(where: $where) {
+        edges {
+            node {
+                date
+                ... on SimpleProduct {
+                    slug
+                }
+                ... on VariableProduct {
+                    slug
+                }
+            }
+        }
+    }
+}
+query ProductsCount($where: RootQueryToProductConnectionWhereArgs) {
+    products(where: $where) {
+        pageInfo {
+            offsetPagination {
+                total
+            }
+        }
+    }
+}
+
+query FetchCustomer {
+    customer{
+        sessionToken
+    }
+}
+
+query FetchAllEspacios($first: Int, $where: RootQueryToPaEspacioConnectionWhereArgs) {
+    allPaEspacio(where: $where, first: $first) {
+        edges {
+            node {
+                databaseId
+                slug
+                name
+            }
+        }
+    }
+}
+
+query FetchAllMarcas($first: Int, $where: RootQueryToPaMarcasConnectionWhereArgs) {
+    allPaMarcas(where: $where, first: $first) {
+        edges {
+            node {
+                databaseId
+                slug
+                name
+            }
+        }
+    }
+}
+
+query FetchAllMaterial($first: Int, $where: RootQueryToPaMaterialConnectionWhereArgs) {
+    allPaMaterial(where: $where, first: $first) {
+        edges {
+            node {
+                databaseId
+                slug
+                name
+            }
+        }
+    }
+}
+
+query FetchAllColor($first: Int, $where: RootQueryToPaColorConnectionWhereArgs) {
+    allPaColor(where: $where, first: $first) {
+        edges {
+            node {
+                databaseId
+                slug
+                name
+                hex
+            }
+        }
+    }
+}
+
+query FetchProduct($id: ID!, $idType: ProductIdTypeEnum) {
+    product(id: $id, idType: $idType) {
+        related(first: 20) {
+            nodes{
+                id
+                databaseId
+            }
+        }
+        type
+        ... on SimpleProduct {
+            price
+            regularPrice
+            salePrice
+            stockStatus
+            name
+            databaseId
+            sku
+            price
+            precioPor
+            maximumQuantity
+            tiempoDeEntregaPod
+            slug
+            dataSheet{
+                name
+                url
+            }
+            stockStatus
+            stockQuantity
+            crossSell(first: 20) {
+                nodes{
+                    id
+                    databaseId
+                }
+            }
+        }
+        ... on VariableProduct {
+            price
+            regularPrice
+            salePrice
+            stockStatus
+            name
+            databaseId
+            sku
+            price
+            precioPor
+            maximumQuantity
+            tiempoDeEntregaPod
+            slug
+            dataSheet{
+                name
+                url
+            }
+            stockStatus
+            stockQuantity
+            variations(first:100){
+                nodes {
+                    price
+                    regularPrice
+                    salePrice
+                    stockStatus
+                    name
+                    databaseId
+                    sku
+                    price
+                    slug
+                    stockStatus
+                    stockQuantity
+                    attributes {
+                        nodes {
+                            attributeId
+                            name
+                            label
+                            value
+
+                        }
+                    }
+                    featuredImage {
+                        node {
+                            sourceUrl(size:LARGE)
+                        }
+                    }
+                }
+            }
+            crossSell(first: 20) {
+                nodes{
+                    id
+                    databaseId
+                }
+            }
+        }
+        allPaColor(first:100) {
+            edges {
+                node {
+                    name
+                    hex
+                    slug
+                    databaseId
+                    taxonomyName
+                }
+            }
+        }
+        allPaCaja{
+            edges{
+                node{
+                    databaseId
+                    name
+                    slug
+                    taxonomyName
+                }
+            }
+        }
+        allPaMedidasCm{
+            edges {
+                node {
+                    databaseId
+                    name
+                    slug
+                    taxonomyName
+                }
+            }
+        }
+        allPaUso{
+            edges{
+                node{
+                    databaseId
+                    name
+                    slug
+                    taxonomyName
+                }
+            }
+        }
+        allPaAcabado{
+            edges{
+                node{
+                    databaseId
+                    name
+                    slug
+                    taxonomyName
+                }
+            }
+        }
+        attributes(first:100) {
+            nodes {
+                id
+                attributeId
+                ... on LocalProductAttribute {
+                    name
+                    options
+                    label
+                    variation
+
+                }
+                ... on GlobalProductAttribute {
+                    name
+                    options
+                    label
+                    variation
+                    slug
+                    terms (first:100){
+                        nodes {
+                            id
+                            name
+                        }
+                    }
+                }
+            }
+        }
+        allPaMarcas {
+            edges {
+                node {
+                    databaseId
+                    name
+                    slug
+                    taxonomyName
+                }
+            }
+        }
+
+        featuredImage {
+            node {
+                sourceUrl(size:LARGE)
+            }
+        }
+        galleryImages {
+            edges {
+                node {
+                    sourceUrl(size:LARGE)
+                }
+            }
+        }
+        productCategories{
+            nodes{
+                name
+                slug
+            }
+        }
+        upsell(first: 3) {
+            edges {
+                node {
+                    ... on SimpleProduct {
+                        price
+                        regularPrice
+                        salePrice
+                        dateOnSaleTo
+                        name
+                        databaseId
+                        sku
+                        price
+                        slug
+                        stockStatus
+                        stockQuantity
+                    }
+                    ... on VariableProduct {
+                        price
+                        regularPrice
+                        salePrice
+                        stockStatus
+                        name
+                        databaseId
+                        sku
+                        price
+                        slug
+                        stockStatus
+                        stockQuantity
+                    }
+                    featuredImage {
+                        node {
+                            sourceUrl(size:LARGE)
+                        }
+                    }
+                    allPaMarcas {
+                        edges {
+                            node {
+                                databaseId
+                                name
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        description(format: RENDERED)
+    }
+}
+
+
+query FetchRelatedProduct($id: ID!, $idType: ProductIdTypeEnum) {
+    product(id: $id, idType: $idType) {
+        related(first: 100) {
+            edges {
+                node {
+                    allPaColor(first:100)  {
+                        edges {
+                            node {
+                                name
+                                hex
+                                slug
+                            }
+                        }
+                    }
+                    ... on SimpleProduct {
+                        price
+                        regularPrice
+                        salePrice
+                        stockStatus
+                        dateOnSaleFrom
+                        dateOnSaleTo
+                        name
+                        databaseId
+                        sku
+                        price
+                        slug
+                        stockStatus
+                        stockQuantity
+                    }
+                    ... on VariableProduct {
+                        price
+                        regularPrice
+                        salePrice
+                        stockStatus
+                        dateOnSaleFrom
+                        dateOnSaleTo
+                        name
+                        databaseId
+                        sku
+                        price
+                        slug
+                        stockStatus
+                        stockQuantity
+                    }
+                    featuredImage {
+                        node {
+                            sourceUrl(size:LARGE)
+                        }
+                    }
+                    allPaMarcas {
+                        edges {
+                            node {
+                                databaseId
+                                name
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+query FetchComplementedProduct($id: ID!, $idType: ProductIdTypeEnum) {
+    product(id: $id, idType: $idType) {
+        type
+        ... on SimpleProduct {
+            crossSell(first: 100) {
+                edges {
+                    node {
+                        ... on SimpleProduct {
+                            price
+                            regularPrice
+                            salePrice
+                            stockStatus
+                            dateOnSaleFrom
+                            dateOnSaleTo
+                            name
+                            databaseId
+                            sku
+                            price
+                            slug
+                        }
+                        ... on VariableProduct {
+                            price
+                            regularPrice
+                            salePrice
+                            stockStatus
+                            dateOnSaleFrom
+                            dateOnSaleTo
+                            name
+                            databaseId
+                            sku
+                            price
+                            slug
+                        }
+                        featuredImage {
+                            node {
+                                sourceUrl(size:LARGE)
+                            }
+                        }
+                        allPaMarcas {
+                            edges {
+                                node {
+                                    databaseId
+                                    name
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        ... on VariableProduct {
+            crossSell(first: 100) {
+                edges {
+                    node {
+                        ... on SimpleProduct {
+                            price
+                            regularPrice
+                            salePrice
+                            stockStatus
+                            dateOnSaleFrom
+                            dateOnSaleTo
+                            name
+                            databaseId
+                            sku
+                            price
+                            slug
+                        }
+                        ... on VariableProduct {
+                            price
+                            regularPrice
+                            salePrice
+                            stockStatus
+                            dateOnSaleFrom
+                            dateOnSaleTo
+                            name
+                            databaseId
+                            sku
+                            price
+                            slug
+                        }
+                        featuredImage {
+                            node {
+                                sourceUrl(size:LARGE)
+                            }
+                        }
+                        allPaMarcas {
+                            edges {
+                                node {
+                                    databaseId
+                                    name
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+}
+
+
+query GetCart {
+    cart {
+        contents(first: 100) {
+            itemCount
+            nodes {
+                key
+                variation {
+                    node {
+                        name
+                        price
+                        regularPrice
+                        salePrice
+                        stockStatus
+                        dateOnSaleFrom
+                        dateOnSaleTo
+                        databaseId
+                        sku
+                        price
+                        slug
+                        stockStatus
+                        stockQuantity
+                        attributes {
+                            nodes {
+                                attributeId
+                                name
+                                label
+                                value
+                            }
+                        }
+                        featuredImage {
+                            node {
+                                sourceUrl(size:LARGE)
+                            }
+                        }
+                    }
+                }
+                product {
+                    node {
+                        id
+                        type
+                        attributes(first: 2) {
+                            nodes {
+                                id
+                                attributeId
+                                ... on LocalProductAttribute {
+                                    name
+                                    options
+                                    label
+                                    variation
+                                }
+                                ... on GlobalProductAttribute {
+                                    name
+                                    options
+                                    label
+                                    variation
+                                }
+                            }
+                        }
+                        ... on SimpleProduct {
+                            price
+                            regularPrice
+                            salePrice
+                            stockStatus
+                            dateOnSaleFrom
+                            dateOnSaleTo
+                            name
+                            databaseId
+                            sku
+                            price
+                            slug
+                            stockStatus
+                            stockQuantity
+                            allPaMarcas {
+                                edges {
+                                    node {
+                                        databaseId
+                                        name
+                                    }
+                                }
+                            }
+                            featuredImage {
+                                node {
+                                    sourceUrl(size:LARGE)
+                                }
+                            }
+                        }
+                        ... on VariableProduct {
+                            price
+                            regularPrice
+                            salePrice
+                            stockStatus
+                            dateOnSaleFrom
+                            dateOnSaleTo
+                            name
+                            databaseId
+                            sku
+                            price
+                            slug
+                            stockStatus
+                            stockQuantity
+                            allPaMarcas {
+                                edges {
+                                    node {
+                                        databaseId
+                                        name
+                                    }
+                                }
+                            }
+                            featuredImage {
+                                node {
+                                    sourceUrl(size:LARGE)
+                                }
+                            }
+                        }
+                        productCategories {
+                            nodes {
+                                name
+                                slug
+                            }
+                        }
+                        upsell {
+                            edges {
+                                node {
+                                    productCategories {
+                                        nodes {
+                                            name
+                                            slug
+                                        }
+                                    }
+                                    ... on SimpleProduct {
+                                        price
+                                        regularPrice
+                                        salePrice
+                                        stockStatus
+                                        dateOnSaleFrom
+                                        dateOnSaleTo
+                                        name
+                                        databaseId
+                                        sku
+                                        price
+                                        slug
+                                        stockStatus
+                                        stockQuantity
+                                    }
+                                    ... on VariableProduct {
+                                        price
+                                        regularPrice
+                                        salePrice
+                                        stockStatus
+                                        dateOnSaleFrom
+                                        dateOnSaleTo
+                                        name
+                                        databaseId
+                                        sku
+                                        price
+                                        slug
+                                        stockStatus
+                                        stockQuantity
+                                    }
+                                    featuredImage {
+                                        node {
+                                            sourceUrl(size:LARGE)
+                                        }
+                                    }
+                                    allPaMarcas {
+                                        edges {
+                                            node {
+                                                databaseId
+                                                name
+                                            }
+                                        }
+                                    }
+                                    attributes {
+                                        nodes {
+                                            id
+                                            attributeId
+                                            ... on LocalProductAttribute {
+                                                name
+                                                options
+                                                label
+                                                variation
+                                            }
+                                            ... on GlobalProductAttribute {
+                                                name
+                                                options
+                                                label
+                                                variation
+                                                slug
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                variation {
+                    node {
+                        id
+                    }
+                }
+                quantity
+                total
+                subtotal
+                subtotalTax
+                extraData {
+                    key
+                    value
+                }
+            }
+        }
+        appliedCoupons {
+            code
+            discountAmount
+            discountTax
+        }
+        needsShippingAddress
+        availableShippingMethods {
+            packageDetails
+            supportsShippingCalculator
+            rates {
+                id
+                instanceId
+                methodId
+                label
+                cost
+            }
+        }
+        subtotal
+        subtotalTax
+        shippingTax
+        shippingTotal
+        total
+        totalTax
+        feeTax
+        feeTotal
+        discountTax
+        discountTotal
+    }
+}
+mutation AddToCart($productId: Int!, $variationId: Int, $quantity: Int, $extraData: String) {
+    addToCart(
+        input: {productId: $productId, variationId: $variationId, quantity: $quantity, extraData: $extraData}
+    ) {
+        cart {
+            contents(first: 100) {
+                itemCount
+                nodes {
+                    key
+                    variation {
+                        node {
+                            name
+                            price
+                            regularPrice
+                            salePrice
+                            stockStatus
+                            dateOnSaleFrom
+                            dateOnSaleTo
+                            databaseId
+                            sku
+                            price
+                            slug
+                            stockStatus
+                            stockQuantity
+                            attributes {
+                                nodes {
+                                    attributeId
+                                    name
+                                    label
+                                    value
+                                }
+                            }
+                            featuredImage {
+                                node {
+                                    sourceUrl(size:LARGE)
+                                }
+                            }
+                        }
+                    }
+                    product {
+                        node {
+                            id
+                            type
+                            attributes(first: 2) {
+                                nodes {
+                                    id
+                                    attributeId
+                                    ... on LocalProductAttribute {
+                                        name
+                                        options
+                                        label
+                                        variation
+                                    }
+                                    ... on GlobalProductAttribute {
+                                        name
+                                        options
+                                        label
+                                        variation
+                                    }
+                                }
+                            }
+                            ... on SimpleProduct {
+                                price
+                                regularPrice
+                                salePrice
+                                stockStatus
+                                dateOnSaleFrom
+                                dateOnSaleTo
+                                name
+                                databaseId
+                                sku
+                                price
+                                slug
+                                stockStatus
+                                stockQuantity
+                                allPaMarcas {
+                                    edges {
+                                        node {
+                                            databaseId
+                                            name
+                                        }
+                                    }
+                                }
+                                featuredImage {
+                                    node {
+                                        sourceUrl(size:LARGE)
+                                    }
+                                }
+                            }
+                            ... on VariableProduct {
+                                price
+                                regularPrice
+                                salePrice
+                                stockStatus
+                                dateOnSaleFrom
+                                dateOnSaleTo
+                                name
+                                databaseId
+                                sku
+                                price
+                                slug
+                                stockStatus
+                                stockQuantity
+                                allPaMarcas {
+                                    edges {
+                                        node {
+                                            databaseId
+                                            name
+                                        }
+                                    }
+                                }
+                                featuredImage {
+                                    node {
+                                        sourceUrl(size:LARGE)
+                                    }
+                                }
+                            }
+                            productCategories {
+                                nodes {
+                                    name
+                                    slug
+                                }
+                            }
+                            upsell {
+                                edges {
+                                    node {
+                                        productCategories {
+                                            nodes {
+                                                name
+                                                slug
+                                            }
+                                        }
+                                        ... on SimpleProduct {
+                                            price
+                                            regularPrice
+                                            salePrice
+                                            stockStatus
+                                            dateOnSaleFrom
+                                            dateOnSaleTo
+                                            name
+                                            databaseId
+                                            sku
+                                            price
+                                            slug
+                                            stockStatus
+                                            stockQuantity
+                                        }
+                                        ... on VariableProduct {
+                                            price
+                                            regularPrice
+                                            salePrice
+                                            stockStatus
+                                            dateOnSaleFrom
+                                            dateOnSaleTo
+                                            name
+                                            databaseId
+                                            sku
+                                            price
+                                            slug
+                                            stockStatus
+                                            stockQuantity
+                                        }
+                                        featuredImage {
+                                            node {
+                                                sourceUrl(size:LARGE)
+                                            }
+                                        }
+                                        allPaMarcas {
+                                            edges {
+                                                node {
+                                                    databaseId
+                                                    name
+                                                }
+                                            }
+                                        }
+                                        attributes {
+                                            nodes {
+                                                id
+                                                attributeId
+                                                ... on LocalProductAttribute {
+                                                    name
+                                                    options
+                                                    label
+                                                    variation
+                                                }
+                                                ... on GlobalProductAttribute {
+                                                    name
+                                                    options
+                                                    label
+                                                    variation
+                                                    slug
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    variation {
+                        node {
+                            id
+                        }
+                    }
+                    quantity
+                    total
+                    subtotal
+                    subtotalTax
+                    extraData {
+                        key
+                        value
+                    }
+                }
+            }
+            appliedCoupons {
+                code
+                discountAmount
+                discountTax
+            }
+            needsShippingAddress
+            availableShippingMethods {
+                packageDetails
+                supportsShippingCalculator
+                rates {
+                    id
+                    instanceId
+                    methodId
+                    label
+                    cost
+                }
+            }
+            subtotal
+            subtotalTax
+            shippingTax
+            shippingTotal
+            total
+            totalTax
+            feeTax
+            feeTotal
+            discountTax
+            discountTotal
+        }
+    }
+}
+
+mutation RemoveToCart($keys:[ID], $all:Boolean) {
+    removeItemsFromCart(
+        input: {keys:$keys, all:$all}
+    ) {
+        cart {
+            contents(first: 100) {
+                itemCount
+                nodes {
+                    key
+                    variation {
+                        node {
+                            name
+                            price
+                            regularPrice
+                            salePrice
+                            stockStatus
+                            dateOnSaleFrom
+                            dateOnSaleTo
+                            databaseId
+                            sku
+                            price
+                            slug
+                            stockStatus
+                            stockQuantity
+                            attributes {
+                                nodes {
+                                    attributeId
+                                    name
+                                    label
+                                    value
+                                }
+                            }
+                            featuredImage {
+                                node {
+                                    sourceUrl(size:LARGE)
+                                }
+                            }
+                        }
+                    }
+                    product {
+                        node {
+                            id
+                            type
+                            attributes(first: 2) {
+                                nodes {
+                                    id
+                                    attributeId
+                                    ... on LocalProductAttribute {
+                                        name
+                                        options
+                                        label
+                                        variation
+                                    }
+                                    ... on GlobalProductAttribute {
+                                        name
+                                        options
+                                        label
+                                        variation
+                                    }
+                                }
+                            }
+                            ... on SimpleProduct {
+                                price
+                                regularPrice
+                                salePrice
+                                stockStatus
+                                dateOnSaleFrom
+                                dateOnSaleTo
+                                name
+                                databaseId
+                                sku
+                                price
+                                slug
+                                stockStatus
+                                stockQuantity
+                                allPaMarcas {
+                                    edges {
+                                        node {
+                                            databaseId
+                                            name
+                                        }
+                                    }
+                                }
+                                featuredImage {
+                                    node {
+                                        sourceUrl(size:LARGE)
+                                    }
+                                }
+                            }
+                            ... on VariableProduct {
+                                price
+                                regularPrice
+                                salePrice
+                                stockStatus
+                                dateOnSaleFrom
+                                dateOnSaleTo
+                                name
+                                databaseId
+                                sku
+                                price
+                                slug
+                                stockStatus
+                                stockQuantity
+                                allPaMarcas {
+                                    edges {
+                                        node {
+                                            databaseId
+                                            name
+                                        }
+                                    }
+                                }
+                                featuredImage {
+                                    node {
+                                        sourceUrl(size:LARGE)
+                                    }
+                                }
+                            }
+                            productCategories {
+                                nodes {
+                                    name
+                                    slug
+                                }
+                            }
+                            upsell {
+                                edges {
+                                    node {
+                                        productCategories {
+                                            nodes {
+                                                name
+                                                slug
+                                            }
+                                        }
+                                        ... on SimpleProduct {
+                                            price
+                                            regularPrice
+                                            salePrice
+                                            stockStatus
+                                            dateOnSaleFrom
+                                            dateOnSaleTo
+                                            name
+                                            databaseId
+                                            sku
+                                            price
+                                            slug
+                                            stockStatus
+                                            stockQuantity
+                                        }
+                                        ... on VariableProduct {
+                                            price
+                                            regularPrice
+                                            salePrice
+                                            stockStatus
+                                            dateOnSaleFrom
+                                            dateOnSaleTo
+                                            name
+                                            databaseId
+                                            sku
+                                            price
+                                            slug
+                                            stockStatus
+                                            stockQuantity
+                                        }
+                                        featuredImage {
+                                            node {
+                                                sourceUrl(size:LARGE)
+                                            }
+                                        }
+                                        allPaMarcas {
+                                            edges {
+                                                node {
+                                                    databaseId
+                                                    name
+                                                }
+                                            }
+                                        }
+                                        attributes {
+                                            nodes {
+                                                id
+                                                attributeId
+                                                ... on LocalProductAttribute {
+                                                    name
+                                                    options
+                                                    label
+                                                    variation
+                                                }
+                                                ... on GlobalProductAttribute {
+                                                    name
+                                                    options
+                                                    label
+                                                    variation
+                                                    slug
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    variation {
+                        node {
+                            id
+                        }
+                    }
+                    quantity
+                    total
+                    subtotal
+                    subtotalTax
+                    extraData {
+                        key
+                        value
+                    }
+                }
+            }
+            appliedCoupons {
+                code
+                discountAmount
+                discountTax
+            }
+            needsShippingAddress
+            availableShippingMethods {
+                packageDetails
+                supportsShippingCalculator
+                rates {
+                    id
+                    instanceId
+                    methodId
+                    label
+                    cost
+                }
+            }
+            subtotal
+            subtotalTax
+            shippingTax
+            shippingTotal
+            total
+            totalTax
+            feeTax
+            feeTotal
+            discountTax
+            discountTotal
+        }
+    }
+}
+
+query FetchProductCategories($where:RootQueryToProductCategoryConnectionWhereArgs ){
+    productCategories(where: $where) {
+        nodes {
+            name
+            slug
+            children{
+                nodes{
+                    name
+                    slug
+                    children{
+                        nodes{
+                            name
+                            slug
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+query FetchProductsInPromo($where: RootQueryToProductsInPromoConnectionWhereArgs) {
+    productsInPromo(where: $where) {
+        edges {
+            node {
+                ... on SimpleProduct {
+                    price
+                    regularPrice
+                    salePrice
+                    stockStatus
+                    dateOnSaleFrom
+                    dateOnSaleTo
+                    name
+                    databaseId
+                    sku
+                    price
+                    slug
+                    allPaMarcas {
+                        edges {
+                            node {
+                                databaseId
+                                name
+                            }
+                        }
+                    }
+                }
+                ... on VariableProduct {
+                    price
+                    regularPrice
+                    salePrice
+                    stockStatus
+                    dateOnSaleFrom
+                    dateOnSaleTo
+                    name
+                    databaseId
+                    sku
+                    price
+                    slug
+                    allPaMarcas {
+                        edges {
+                            node {
+                                databaseId
+                                name
+                            }
+                        }
+                    }
+                }
+                featuredImage {
+                    node {
+                        sourceUrl(size:LARGE)
+                    }
+                }
+            }
+        }
+        pageInfo {
+            offsetPagination {
+                total
+            }
+        }
+    }
+}
+
+query FetchBanners {
+    banners {
+        items {
+            id
+            url
+            redirect
+            type
+        }
+    }
+}
+
+query FetchBannersHome {
+    bannersHome {
+        items {
+            id
+            url
+            redirect
+            type
+        }
+    }
+}
+
+mutation CreateOrder($input:CreateOrderInput!){
+    createOrder(input:$input){
+        orderId
+    }
+}
+
+mutation UpdateOrder($input:UpdateOrderInput!){
+    updateOrder(input:$input){
+        order{
+            id
+        }
+    }
+}
+
+mutation CreateCustomer($input:RegisterCustomerInput!){
+    registerCustomer(input:$input){
+        authToken
+        customer{
+            id
+            databaseId
+            email
+        }
+    }
+}
+
+query FetchOrders($where: RootQueryToOrderConnectionWhereArgs) {
+    orders(where: $where) {
+        nodes {
+            id
+            databaseId
+            date
+            total
+            billing {
+                email
+            }
+            status
+            transactionId
+            paymentMethod
+            lineItems {
+                nodes {
+                    quantity
+                    variation {
+                        node {
+                            name
+                            price
+                            regularPrice
+                            salePrice
+                            stockStatus
+                            dateOnSaleFrom
+                            dateOnSaleTo
+                            databaseId
+                            sku
+                            price
+                            slug
+                            stockStatus
+                            stockQuantity
+                            attributes {
+                                nodes {
+                                    attributeId
+                                    name
+                                    label
+                                    value
+                                }
+                            }
+                            featuredImage {
+                                node {
+                                    sourceUrl(size:LARGE)
+                                }
+                            }
+                        }
+                    }
+                    product {
+                        node {
+                            id
+                            type
+                            ... on SimpleProduct {
+                                price
+                                regularPrice
+                                salePrice
+                                stockStatus
+                                dateOnSaleFrom
+                                dateOnSaleTo
+                                name
+                                databaseId
+                                sku
+                                price
+                                slug
+                                stockStatus
+                                stockQuantity
+                            }
+                            ... on VariableProduct {
+                                price
+                                regularPrice
+                                salePrice
+                                stockStatus
+                                dateOnSaleFrom
+                                dateOnSaleTo
+                                name
+                                databaseId
+                                sku
+                                price
+                                slug
+                                stockStatus
+                                stockQuantity
+                            }
+                            featuredImage {
+                                node {
+                                    sourceUrl(size:LARGE)
+                                }
+                            }
+                            allPaMarcas {
+                                edges {
+                                    node {
+                                        databaseId
+                                        name
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            customer {
+                id
+                databaseId
+                email
+            }
+        }
+    }
+}
+
+query FetchInternal {
+    internalBanner {
+        sourceUrl
+        redirectUrl
+    }
+}
+
+query FetchTopBanner {
+    topBanner {
+        text
+        url
+        color
+        active
+    }
+}
+
+
+mutation UpdateCartItems($input:UpdateItemQuantitiesInput!) {
+    updateItemQuantities(
+        input: $input
+    ) {
+        cart {
+            contents(first: 100) {
+                itemCount
+                nodes {
+                    key
+                    variation {
+                        node {
+                            name
+                            price
+                            regularPrice
+                            salePrice
+                            stockStatus
+                            dateOnSaleFrom
+                            dateOnSaleTo
+                            databaseId
+                            sku
+                            price
+                            slug
+                            stockStatus
+                            stockQuantity
+                            attributes {
+                                nodes {
+                                    attributeId
+                                    name
+                                    label
+                                    value
+                                }
+                            }
+                            featuredImage {
+                                node {
+                                    sourceUrl(size:LARGE)
+                                }
+                            }
+                        }
+                    }
+
+                    product {
+                        node {
+                            id
+                            attributes(first:2) {
+                                nodes {
+                                    id
+                                    attributeId
+                                    ... on LocalProductAttribute {
+                                        name
+                                        options
+                                        label
+                                        variation
+                                    }
+                                    ... on GlobalProductAttribute {
+                                        name
+                                        options
+                                        label
+                                        variation
+                                    }
+                                }
+                            }
+                            ... on SimpleProduct {
+                                price
+                                regularPrice
+                                salePrice
+                                stockStatus
+                                dateOnSaleFrom
+                                dateOnSaleTo
+                                name
+                                databaseId
+                                sku
+                                price
+                                slug
+                                stockStatus
+                                stockQuantity
+                                allPaMarcas {
+                                    edges {
+                                        node {
+                                            databaseId
+                                            name
+                                        }
+                                    }
+                                }
+                            }
+                            ... on VariableProduct {
+                                price
+                                regularPrice
+                                salePrice
+                                stockStatus
+                                dateOnSaleFrom
+                                dateOnSaleTo
+                                name
+                                databaseId
+                                sku
+                                price
+                                slug
+                                stockStatus
+                                stockQuantity
+                                allPaMarcas {
+                                    edges {
+                                        node {
+                                            databaseId
+                                            name
+                                        }
+                                    }
+                                }
+                            }
+                            featuredImage {
+                                node {
+                                    sourceUrl(size:LARGE)
+                                }
+                            }
+                            upsell {
+                                edges {
+                                    node {
+                                        productCategories{
+                                            nodes{
+                                                name
+                                                slug
+                                            }
+                                        }
+                                        ... on SimpleProduct {
+                                            price
+                                            regularPrice
+                                            salePrice
+                                            stockStatus
+                                            dateOnSaleFrom
+                                            dateOnSaleTo
+                                            name
+                                            databaseId
+                                            sku
+                                            price
+                                            slug
+                                            stockStatus
+                                            stockQuantity
+                                        }
+                                        ... on VariableProduct {
+                                            price
+                                            regularPrice
+                                            salePrice
+                                            stockStatus
+                                            dateOnSaleFrom
+                                            dateOnSaleTo
+                                            name
+                                            databaseId
+                                            sku
+                                            price
+                                            slug
+                                            stockStatus
+                                            stockQuantity
+                                        }
+                                        featuredImage {
+                                            node {
+                                                sourceUrl(size:LARGE)
+                                            }
+                                        }
+                                        allPaMarcas {
+                                            edges {
+                                                node {
+                                                    databaseId
+                                                    name
+                                                }
+                                            }
+                                        }
+                                        attributes {
+                                            nodes {
+                                                id
+                                                attributeId
+                                                ... on LocalProductAttribute {
+                                                    name
+                                                    options
+                                                    label
+                                                    variation
+                                                }
+                                                ... on GlobalProductAttribute {
+                                                    name
+                                                    options
+                                                    label
+                                                    variation
+                                                    slug
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    variation {
+                        node {
+                            id
+                        }
+                    }
+                    quantity
+                    total
+                    subtotal
+                    subtotalTax
+                    extraData {
+                        key
+                        value
+                    }
+                }
+            }
+            appliedCoupons {
+                code
+                discountAmount
+                discountTax
+            }
+            needsShippingAddress
+            availableShippingMethods {
+                packageDetails
+                supportsShippingCalculator
+                rates {
+                    id
+                    instanceId
+                    methodId
+                    label
+                    cost
+                }
+            }
+            subtotal
+            subtotalTax
+            shippingTax
+            shippingTotal
+            total
+            totalTax
+            feeTax
+            feeTotal
+            discountTax
+            discountTotal
+        }
+    }
+}
+
+query FetchOrder($id: ID!, $idType: OrderIdTypeEnum) {
+    order(id: $id, idType: $idType) {
+        id
+        databaseId
+        date
+        total
+        subtotal
+        shippingTotal
+        shipping {
+            address1
+            state
+            firstName
+            lastName
+            postcode
+            phone
+            country
+        }
+        billing {
+            email
+            address1
+            state
+            firstName
+            lastName
+            postcode
+            phone
+            country
+        }
+        status
+        transactionId
+        paymentMethod
+        lineItems {
+            nodes {
+                quantity
+                variation {
+                    node {
+                        name
+                        price
+                        regularPrice
+                        salePrice
+                        stockStatus
+                        dateOnSaleFrom
+                        dateOnSaleTo
+                        databaseId
+                        sku
+                        price
+                        slug
+                        stockStatus
+                        stockQuantity
+                        attributes {
+                            nodes {
+                                attributeId
+                                name
+                                label
+                                value
+                            }
+                        }
+                        featuredImage {
+                            node {
+                                sourceUrl(size:LARGE)
+                            }
+                        }
+                    }
+                }
+                product {
+                    node {
+                        type
+                        ... on SimpleProduct {
+                            price
+                            regularPrice
+                            salePrice
+                            stockStatus
+                            dateOnSaleFrom
+                            dateOnSaleTo
+                            name
+                            databaseId
+                            sku
+                            price
+                            slug
+                            stockStatus
+                            stockQuantity
+                        }
+                        ... on VariableProduct {
+                            price
+                            regularPrice
+                            salePrice
+                            stockStatus
+                            dateOnSaleFrom
+                            dateOnSaleTo
+                            name
+                            databaseId
+                            sku
+                            price
+                            slug
+                            stockStatus
+                            stockQuantity
+                        }
+                        featuredImage {
+                            node {
+                                sourceUrl(size:LARGE)
+                            }
+                        }
+                        allPaMarcas {
+                            edges {
+                                node {
+                                    databaseId
+                                    name
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        customer {
+            id
+            databaseId
+            email
+        }
+    }
+}
+
+query FetchTaxonomyFilter ($taxonomyField:String,$taxonomyProductCategory:[String]){
+    taxonomyFilter(taxonomyField:$taxonomyField,taxonomyProductCategory:$taxonomyProductCategory){
+        items{
+            name
+            slug
+            databaseId
+        }
+    }
+}
+
+mutation ApplyCoupon($input: ApplyCouponInput!) {
+    applyCoupon(input: $input) {
+        cart {
+            contents(first: 100) {
+                itemCount
+                nodes {
+                    key
+                    variation {
+                        node {
+                            name
+                            price
+                            regularPrice
+                            salePrice
+                            stockStatus
+                            dateOnSaleFrom
+                            dateOnSaleTo
+                            databaseId
+                            sku
+                            price
+                            slug
+                            stockStatus
+                            stockQuantity
+                            attributes {
+                                nodes {
+                                    attributeId
+                                    name
+                                    label
+                                    value
+                                }
+                            }
+                            featuredImage {
+                                node {
+                                    sourceUrl(size:LARGE)
+                                }
+                            }
+                        }
+                    }
+                    product {
+                        node {
+                            id
+                            type
+                            attributes(first: 2) {
+                                nodes {
+                                    id
+                                    attributeId
+                                    ... on LocalProductAttribute {
+                                        name
+                                        options
+                                        label
+                                        variation
+                                    }
+                                    ... on GlobalProductAttribute {
+                                        name
+                                        options
+                                        label
+                                        variation
+                                    }
+                                }
+                            }
+                            ... on SimpleProduct {
+                                price
+                                regularPrice
+                                salePrice
+                                stockStatus
+                                dateOnSaleFrom
+                                dateOnSaleTo
+                                name
+                                databaseId
+                                sku
+                                price
+                                slug
+                                stockStatus
+                                stockQuantity
+                                allPaMarcas {
+                                    edges {
+                                        node {
+                                            databaseId
+                                            name
+                                        }
+                                    }
+                                }
+                                featuredImage {
+                                    node {
+                                        sourceUrl(size:LARGE)
+                                    }
+                                }
+                            }
+                            ... on VariableProduct {
+                                price
+                                regularPrice
+                                salePrice
+                                stockStatus
+                                dateOnSaleFrom
+                                dateOnSaleTo
+                                name
+                                databaseId
+                                sku
+                                price
+                                slug
+                                stockStatus
+                                stockQuantity
+                                allPaMarcas {
+                                    edges {
+                                        node {
+                                            databaseId
+                                            name
+                                        }
+                                    }
+                                }
+                                featuredImage {
+                                    node {
+                                        sourceUrl(size:LARGE)
+                                    }
+                                }
+                            }
+                            productCategories {
+                                nodes {
+                                    name
+                                    slug
+                                }
+                            }
+                            upsell {
+                                edges {
+                                    node {
+                                        productCategories {
+                                            nodes {
+                                                name
+                                                slug
+                                            }
+                                        }
+                                        ... on SimpleProduct {
+                                            price
+                                            regularPrice
+                                            salePrice
+                                            stockStatus
+                                            dateOnSaleFrom
+                                            dateOnSaleTo
+                                            name
+                                            databaseId
+                                            sku
+                                            price
+                                            slug
+                                            stockStatus
+                                            stockQuantity
+                                        }
+                                        ... on VariableProduct {
+                                            price
+                                            regularPrice
+                                            salePrice
+                                            stockStatus
+                                            dateOnSaleFrom
+                                            dateOnSaleTo
+                                            name
+                                            databaseId
+                                            sku
+                                            price
+                                            slug
+                                            stockStatus
+                                            stockQuantity
+                                        }
+                                        featuredImage {
+                                            node {
+                                                sourceUrl(size:LARGE)
+                                            }
+                                        }
+                                        allPaMarcas {
+                                            edges {
+                                                node {
+                                                    databaseId
+                                                    name
+                                                }
+                                            }
+                                        }
+                                        attributes {
+                                            nodes {
+                                                id
+                                                attributeId
+                                                ... on LocalProductAttribute {
+                                                    name
+                                                    options
+                                                    label
+                                                    variation
+                                                }
+                                                ... on GlobalProductAttribute {
+                                                    name
+                                                    options
+                                                    label
+                                                    variation
+                                                    slug
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    variation {
+                        node {
+                            id
+                        }
+                    }
+                    quantity
+                    total
+                    subtotal
+                    subtotalTax
+                    extraData {
+                        key
+                        value
+                    }
+                }
+            }
+            appliedCoupons {
+                code
+                discountAmount
+                discountTax
+            }
+            needsShippingAddress
+            availableShippingMethods {
+                packageDetails
+                supportsShippingCalculator
+                rates {
+                    id
+                    instanceId
+                    methodId
+                    label
+                    cost
+                }
+            }
+            subtotal
+            subtotalTax
+            shippingTax
+            shippingTotal
+            total
+            totalTax
+            feeTax
+            feeTotal
+            discountTax
+            discountTotal
+        }
+    }
+}
+
+mutation RemoveCoupon($input: RemoveCouponsInput!) {
+    removeCoupons(input: $input) {
+        cart {
+            contents(first: 100) {
+                itemCount
+                nodes {
+                    key
+                    variation {
+                        node {
+                            name
+                            price
+                            regularPrice
+                            salePrice
+                            stockStatus
+                            dateOnSaleFrom
+                            dateOnSaleTo
+                            databaseId
+                            sku
+                            price
+                            slug
+                            stockStatus
+                            stockQuantity
+                            attributes {
+                                nodes {
+                                    attributeId
+                                    name
+                                    label
+                                    value
+                                }
+                            }
+                            featuredImage {
+                                node {
+                                    sourceUrl(size:LARGE)
+                                }
+                            }
+                        }
+                    }
+                    product {
+                        node {
+                            id
+                            type
+                            attributes(first: 2) {
+                                nodes {
+                                    id
+                                    attributeId
+                                    ... on LocalProductAttribute {
+                                        name
+                                        options
+                                        label
+                                        variation
+                                    }
+                                    ... on GlobalProductAttribute {
+                                        name
+                                        options
+                                        label
+                                        variation
+                                    }
+                                }
+                            }
+                            ... on SimpleProduct {
+                                price
+                                regularPrice
+                                salePrice
+                                stockStatus
+                                dateOnSaleFrom
+                                dateOnSaleTo
+                                name
+                                databaseId
+                                sku
+                                price
+                                slug
+                                stockStatus
+                                stockQuantity
+                                allPaMarcas {
+                                    edges {
+                                        node {
+                                            databaseId
+                                            name
+                                        }
+                                    }
+                                }
+                                featuredImage {
+                                    node {
+                                        sourceUrl(size:LARGE)
+                                    }
+                                }
+                            }
+                            ... on VariableProduct {
+                                price
+                                regularPrice
+                                salePrice
+                                stockStatus
+                                dateOnSaleFrom
+                                dateOnSaleTo
+                                name
+                                databaseId
+                                sku
+                                price
+                                slug
+                                stockStatus
+                                stockQuantity
+                                allPaMarcas {
+                                    edges {
+                                        node {
+                                            databaseId
+                                            name
+                                        }
+                                    }
+                                }
+                                featuredImage {
+                                    node {
+                                        sourceUrl(size:LARGE)
+                                    }
+                                }
+                            }
+                            productCategories {
+                                nodes {
+                                    name
+                                    slug
+                                }
+                            }
+                            upsell {
+                                edges {
+                                    node {
+                                        productCategories {
+                                            nodes {
+                                                name
+                                                slug
+                                            }
+                                        }
+                                        ... on SimpleProduct {
+                                            price
+                                            regularPrice
+                                            salePrice
+                                            stockStatus
+                                            dateOnSaleFrom
+                                            dateOnSaleTo
+                                            name
+                                            databaseId
+                                            sku
+                                            price
+                                            slug
+                                            stockStatus
+                                            stockQuantity
+                                        }
+                                        ... on VariableProduct {
+                                            price
+                                            regularPrice
+                                            salePrice
+                                            stockStatus
+                                            dateOnSaleFrom
+                                            dateOnSaleTo
+                                            name
+                                            databaseId
+                                            sku
+                                            price
+                                            slug
+                                            stockStatus
+                                            stockQuantity
+                                        }
+                                        featuredImage {
+                                            node {
+                                                sourceUrl(size:LARGE)
+                                            }
+                                        }
+                                        allPaMarcas {
+                                            edges {
+                                                node {
+                                                    databaseId
+                                                    name
+                                                }
+                                            }
+                                        }
+                                        attributes {
+                                            nodes {
+                                                id
+                                                attributeId
+                                                ... on LocalProductAttribute {
+                                                    name
+                                                    options
+                                                    label
+                                                    variation
+                                                }
+                                                ... on GlobalProductAttribute {
+                                                    name
+                                                    options
+                                                    label
+                                                    variation
+                                                    slug
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    variation {
+                        node {
+                            id
+                        }
+                    }
+                    quantity
+                    total
+                    subtotal
+                    subtotalTax
+                    extraData {
+                        key
+                        value
+                    }
+                }
+            }
+            appliedCoupons {
+                code
+                discountAmount
+                discountTax
+            }
+            needsShippingAddress
+            availableShippingMethods {
+                packageDetails
+                supportsShippingCalculator
+                rates {
+                    id
+                    instanceId
+                    methodId
+                    label
+                    cost
+                }
+            }
+            subtotal
+            subtotalTax
+            shippingTax
+            shippingTotal
+            total
+            totalTax
+            feeTax
+            feeTotal
+            discountTax
+            discountTotal
+        }
+    }
+}

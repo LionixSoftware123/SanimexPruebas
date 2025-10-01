@@ -1,0 +1,2 @@
+export const EASY_SEARCH_ENDPOINT =
+  process.env.NEXT_PUBLIC_EASY_SEARCH_ENDPOINT || '';
