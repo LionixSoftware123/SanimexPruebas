@@ -258,7 +258,7 @@ const ProductPage: React.FC<ProductPageProps> = ({
   );
 };
 
-export const getStaticPaths = async () => {
+/* export const getStaticPaths = async () => {
   const { products } = await fetchWpProducts({
     order: ProductOrderEnum.Desc,
     per_page: 40,
@@ -268,8 +268,8 @@ export const getStaticPaths = async () => {
     fallback: true,
   };
 };
-
-export const getStaticProps = async ({
+*/
+export const getServerSideProps = async ({
   params,
 }: GetStaticPropsContext<{ product: string }>) => {
   let complementProducts: ProductCustom[] = [];
@@ -284,7 +284,7 @@ export const getStaticProps = async ({
     console.log('no se encontro el producto, reintente en 60');
     return {
       notFound: true,
-      revalidate: 60,
+      //revalidate: 60,
     };
   }
 
@@ -307,7 +307,7 @@ export const getStaticProps = async ({
       complementProducts,
       similarProducts,
     },
-    revalidate: Number(process.env.NEXT_PUBLIC_REVALIDATE_TIME) || 60,
+    //revalidate: Number(process.env.NEXT_PUBLIC_REVALIDATE_TIME) || 60,
   };
 };
 export default ProductPage;
