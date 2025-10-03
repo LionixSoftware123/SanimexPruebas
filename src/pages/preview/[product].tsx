@@ -18,7 +18,7 @@ import {
   ProductOrderEnum,
 } from '@/modules/product/product-types'; */
 import { ProductCustom } from '@/modules/product/product-types';
-
+import { checkProductInfo} from '@/modules/product/product-actions';
 import currencyFormatter from 'currency-formatter';
 import moment from 'moment';
 import ProductPageLayout from '@/components/product/ProductPageLayout';
