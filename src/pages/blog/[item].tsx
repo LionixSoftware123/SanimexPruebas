@@ -118,7 +118,7 @@ const Blog: React.FC<OneBlogProps> = ({ post, bannersInHome }) => {
     </RootLayout>
   );
 };
-
+/*
 export const getStaticPaths = async () => {
   const posts = await fetchPosts({
     where: {},
@@ -130,11 +130,12 @@ export const getStaticPaths = async () => {
     })),
     fallback: 'blocking',
   };
-};
+};*/
+
 type ParamsType = {
   item?: string;
 };
-export const getStaticProps = async ({
+export const getServerSideProps  = async ({
   params,
 }: GetServerSidePropsContext<ParamsType>) => {
   const bannersInHome = await fetchBannersHome();
@@ -158,7 +159,7 @@ export const getStaticProps = async ({
       post,
       bannersInHome,
     },
-    revalidate: Number(process.env.NEXT_PUBLIC_REVALIDATE_TIME) || 60,
+    //revalidate: Number(process.env.NEXT_PUBLIC_REVALIDATE_TIME) || 60,
   };
 };
 
