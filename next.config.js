@@ -22,7 +22,7 @@ const nextConfig = {
   images: {
     domains: [
       'sanimex.com.mx',
-      'admin.sanimex.com.mx',
+      'staging.sanimex.com.mx',
       'secure.gravatar.com',
       'woocommerce-1377145-5371010.cloudwaysapps.com',
     ],
@@ -47,7 +47,7 @@ module.exports = withPlugins([
       images: {
         domains: [
           'sanimex.com.mx',
-          'admin.sanimex.com.mx',
+          'staging.sanimex.com.mx',
           'admin.grupoazulejero.com',
           'secure.gravatar.com',
           'woocommerce-1377145-5371010.cloudwaysapps.com',
