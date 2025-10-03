@@ -283,7 +283,7 @@ export const getStaticProps = async ({
     console.log('no se encontro el producto, reintente en 60');
     return {
       notFound: true,
-      revalidate: 60,
+      //revalidate: 60,
     };
   }
 
