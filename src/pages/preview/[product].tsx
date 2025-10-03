@@ -8,7 +8,7 @@ import {
   Product as ProductType,
   SimpleProduct,
 } from '@/utils/types/generated';
-import {
+/* import {
   checkProductInfo,
   fetchAxiosProduct,
   fetchWpProducts,
@@ -16,7 +16,7 @@ import {
 import {
   ProductCustom,
   ProductOrderEnum,
-} from '@/modules/product/product-types';
+} from '@/modules/product/product-types'; */
 import currencyFormatter from 'currency-formatter';
 import moment from 'moment';
 import ProductPageLayout from '@/components/product/ProductPageLayout';
