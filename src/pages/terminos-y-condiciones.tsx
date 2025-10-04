@@ -1,6 +1,6 @@
 import dynamic from 'next/dynamic';
 import promo_ms from '@/images/banner-promo-msi-mayo-2025.png';
-import promo_verano from '@/images/promocion-verano-vajillas-corona.jpg';
+import perdura_promocion from '@/images/perdura_promocion.jpg';
 import React from 'react';
 import { useRouter } from 'next/router';
 
@@ -369,63 +369,36 @@ const TerminosCondiciones: React.FC = () => {
           {/* Promocion Agosto 2025  */}
           <div className="col-span-12">
             <div className="mt-4 h-[60px] md:h-[30px] lg:h-[30px] text-[21px] bg-[#1e73be] text-white font-bold flex items-center px-4 mb-4">
-              Promoción Verano – Vajillas Corona
+              Promoción Porcelanite, Solutek y/o Perdura
             </div>
           </div>
           <div className=" col-span-12 lg:col-span-7">
             <p className="mb-4 text-black">
               <strong className="text-[22px]">
-                Vigencia: 1º al 31 de agosto de 2025 | Hasta agotar existencias.
+                ¡Compra $1,000 en productos Porcelanite, Solutek y/o Perdura, muestra tu ticket y llévate una lonchera!
                 <br />
-                <span className="text-[#1e73be]">
-                  Sucursales participantes: Santa Clara 1, Aragón 1, Coacalco, Chalco 1,
-                  Zumpango 1 y 2, Izcalli, Los Reyes, Santa Clara 3, Chiconautla, Juárez 
-                  y Bernardo Reyes.
-                </span>
+                <span className="text-[#1e73be]">Promoción válida para a SA, GSA y GAM.</span>
               </strong>
             </p>
             <p className="mb-4 text-black"><strong>Mecánica:</strong></p>
             <ul className="mb-4 list-disc list-inside flex flex-col space-y-4">
-              <li>
-                Por cada ticket que alcance los rangos establecidos, el cliente final recibirá una vajilla de regalo.
-              </li>
-              <li>
-                Los montos válidos para participar incluyen IVA (precio de venta al público).
-              </li>
-              <li>
-                Promoción válida únicamente para productos de la marca <strong>Corona</strong>. <i>Quedan excluidos los productos Ambiance</i>.
-              </li>
-              <li>
-                Se podrá otorgar <strong>un solo juego de vajilla por ticket</strong>.
-              </li>
-              <li>
-                Es indispensable que la vajilla se incluya en el ticket de compra del cliente con los códigos correspondientes, 
-                ya que esto servirá como validación para la entrega del premio.
-              </li>
-            </ul>
-            <p className="mb-4 text-black"><strong>Limitado a:</strong></p>
-            <ul className="mb-4 list-disc list-inside flex flex-col space-y-4">
-              <li>
-                Por cada ticket que alcance los rangos establecidos, el cliente final recibirá una vajilla de regalo.
-              </li>
-              <li>
-                200 piezas para modelos Ashley y Antonella.
-              </li>
-              <li>
-                50 piezas para modelo Constela.
-              </li>
+              <li>Válida del 1° al 30 de octubre 2025 o hasta agotar existencias.</li>
+              <li>1 lonchera por cliente.</li>
+              <li>Canjea tu premio mostrando tu ticket al asesor con una compra mínima de $1,000 MXN en productos Porcelanite, Solutek y/o Perdura (excepto Golliat).</li>
+              <li>No participan productos ajenos a los mencionados.</li>
+              <li>La imagen es de carácter ilustrativo.</li>
             </ul>
           </div>
           <div className="col-span-12 lg:col-span-5">
-            <div className="relative h-[400px] md:h-[900px] lg:h-[900px] pt-4">
+            <div className="relative h-[400px] md:h-[400px] lg:h-[400px] pt-4">
               <ImageWithFallback
                 fill
                 style={{
                   objectFit: 'contain',
                   objectPosition: 'left bottom',
                 }}
-                src={promo_verano}
-                alt={'promocion verano'}
+                src={perdura_promocion}
+                alt={'Perdura promoción'}
                 className="bg-white"
               />
             </div>
@@ -435,9 +408,7 @@ const TerminosCondiciones: React.FC = () => {
               Promociones MSI
             </div>
             <div className=" mb-2">
-              ¡Queremos que tu proyecto no se detenga por ninguna razón! Por
-              ello durante este mes tendremos Meses sin intereses, ¡Visítanos
-              cuanto antes y elige la mejor opción para ti!
+              ¡Queremos que tu proyecto no se detenga por ninguna razón! Por ello durante este mes tendremos Meses sin intereses, ¡Visítanos cuanto antes y elige la mejor opción para ti!
             </div>
           </div>
           <div className=" col-span-12 lg:col-span-7">
@@ -445,53 +416,36 @@ const TerminosCondiciones: React.FC = () => {
               <strong className="text-[22px]">
                 Meses sin intereses en punto de venta.
                 <br />
-                <span className="text-[#1e73be]">
-                  Descuento + 3 Meses sin intereses
-                </span>
+                <span className="text-[#1e73be]">Descuento + 3 Meses sin intereses</span>
               </strong>
             </p>
             <ul className="mb-4 list-disc list-inside flex flex-col space-y-4">
+              <li><strong>Mínimo de compra en tiendas: </strong> $3,500</li>
+              <li><strong> Tarjetas participantes:</strong> Banamex y Banorte</li>
               <li>
-                <strong>Mínimo de compra en tiendas:</strong> $3,500.
-              </li>
-              <li>
-                <strong> Tarjetas participantes:</strong> Banamex
-                y Banorte
-              </li>
-              <li>
-                Consorcio Banorte, que incluye: Afirme, Banco Azteca, BanBajío,
-                Banjercito, BanRegio, Banorte, Falabella Soriana, Inbursa, Invex, Konfío,
+                Consorcio Banorte, que incluye: Afirme, Banco Azteca, BanBajío, Banjercito,
+                BanRegio, Banorte, Falabella Soriana, Inbursa, Invex, Konfío,
                 Liverpool Visa, Mifel, Multiva, NanoPay, RappiCard, Santander y Scotiabank.
               </li>
-              <li>
-                <strong>Vigencia:</strong> 01 al 30 de septiembre de 2025.
-              </li>
+              <li><strong>Vigencia:</strong> 01 al 31 de octubre de 2025.</li>
             </ul>
             <p className="mb-4 text-black">
               <strong className="text-[22px]">
                 Meses sin intereses Tienda en línea.
                 <br />
-                <span className="text-[#1e73be]">
-                  Descuento + 3 Meses Sin Intereses
-                </span>
+                <span className="text-[#1e73be]">Descuento + 3 Meses Sin Intereses</span>
               </strong>
             </p>
             <ul className="mb-4 list-disc list-inside flex flex-col space-y-4">
-              <li>
-                <strong>Mínimo de compra en tienda en línea:</strong> $6,000
-              </li>
-              <li>
-                <strong> Tarjetas participantes:</strong> Banorte
-              </li>
+              <li><strong>Mínimo de compra en tienda en línea:</strong> $6,000</li>
+              <li><strong> Tarjetas participantes:</strong> Banorte</li>
               <li>
                 Consorcio Banorte (Afirme, Banco Azteca, BanBajío, Banjercito,
                 BanRegio, Banorte, Falabella Soriana, Inbursa, Invex, Konfío,
                 Liverpool Visa, Mifel, Multiva, NanoPay, RappiCard, Santander
                 y Scotiabank).
               </li>
-              <li>
-                <strong>Vigencia:</strong> 01 al 30 de septiembre.
-              </li>
+              <li><strong>Vigencia:</strong> 01 al 31 de octubre de 2025.</li>
             </ul>
           </div>
           <div className="col-span-12 lg:col-span-5">
