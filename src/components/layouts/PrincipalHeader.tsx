@@ -67,7 +67,7 @@ const PrincipalHeader = () => {
 
   return (
     <div>
-      <div className="min-h-[32px] h-auto bg-[#0071CE] flex justify-center items-center text-white font-Century-Gothic-Bold"><a href="https://publuu.com/flip-book/445362/2107543" target="_black">Visita nuestro Catálogo Digital</a></div>
+      <!--<div className="min-h-[32px] h-auto bg-[#0071CE] flex justify-center items-center text-white font-Century-Gothic-Bold"><a href="https://publuu.com/flip-book/445362/2107543" target="_black">Visita nuestro Catálogo Digital</a></div>-->
       <div className="max-h-[92px] h-auto bg-[#1C355E] flex justify-center">
         <div className="hidden lg:block xl:w-[1200px]">
           <div className="grid grid-cols-12 gap-4 w-full">
