@@ -35,6 +35,22 @@ export default async function handler(
       },
     );
 
+     // **Paso clave: Verificar si la respuesta fue exitosa (código 200-299)**
+    if (!response.ok) { 
+      // Si no fue exitosa, lee el cuerpo como texto (puede ser HTML, texto o JSON de error)
+      const errorBody = await response.text(); 
+      
+      // ¡ESTO ES LO IMPORTANTE! Imprimir en el log del servidor
+      console.error('ERROR WOOCOMMERCE:', response.status, errorBody);
+
+      // Devolver el error real al frontend para que lo veas en el navegador
+      return res.status(response.status).json({
+        message: `Fallo de WooCommerce. Código: ${response.status}.`,
+        // Puedes pasar un fragmento del cuerpo del error para debug:
+        errorDetails: errorBody.substring(0, 200) 
+      });
+    }
+
     const headers = response?.headers;
     const cart = await response?.json();
     const token = headers?.get('cart-token') || '';
