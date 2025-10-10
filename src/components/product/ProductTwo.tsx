@@ -9,7 +9,7 @@ const ProductTwo: React.FC = () => {
           <Image
             fill
             style={{ objectFit: 'contain' }}
-            src="https://sanimex.com.mx/wp-content/uploads/2019/08/G06-20-1-61_x2-200x200.jpg"
+            src="https://staging.sanimex.com.mx/wp-content/uploads/2019/08/G06-20-1-61_x2-200x200.jpg"
             alt={'product'}
           />
         </div>
