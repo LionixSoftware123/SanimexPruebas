@@ -66,7 +66,7 @@ const CartItemComponent: React.FC<CartItemProps> = ({ cartItem }) => {
   };
 
   const productSlug = `${cartItem?.permalink.replace(
-    'https://sanimex.com.mx',
+    'https://coral-app-dm8qn.ondigitalocean.app',
     '',
   )}`;
 
