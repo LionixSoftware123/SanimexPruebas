@@ -17,7 +17,7 @@ export default async function handler(
     isProductionReady,
   );
   const params = {
-    url: `https://sanimex.com.mx/api/charge-response`,
+    url: `https://coral-app-dm8qn.ondigitalocean.app/api/charge-response`,
     user: 'juanito',
     password: 'passjuanito',
     event_types: [
