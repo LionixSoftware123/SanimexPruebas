@@ -45,7 +45,7 @@ const PaymentForm: React.FC = () => {
       CARD_TYPE: 'MC',
       MERCHANT_ID: '9159213',
       MERCHANT_NAME: 'SA911753717',
-      FORWARD_PATH: 'https://sanimex.com.mx/api/banorte',
+      FORWARD_PATH: 'https://coral-app-dm8qn.ondigitalocean.app/api/banorte',
       '3D_CERTIFICATION': '03',
       REFERENCE3D: '14255',
       COUNTRY: 'MX',
