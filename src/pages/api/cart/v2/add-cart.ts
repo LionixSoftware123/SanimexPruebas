@@ -15,10 +15,15 @@ export default async function handler(
   const cookieToken = req.cookies['cart-token'];
 
   if (!cookieToken) {
+    console.error('DEBUG: La cookie "cart-token" no se encontró en la solicitud.');
+
     return res.status(500).json({
       message: 'Cart token is missing 1',
     });
   }
+  // ⬅️ CONFIRMACIÓN DE ÉXITO
+  console.log('DEBUG: Cookie "cart-token" encontrada:', cookieToken.substring(0, 10) + '...'); 
+
   try {
     const response = await fetch(
       `${WP_ENDPOINT}/wp-json/wc/store/cart/add-item`,
