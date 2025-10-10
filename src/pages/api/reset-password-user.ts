@@ -4,7 +4,7 @@ const resetPasswordUser = async (req: any, res: any) => {
   if (req.method === 'POST') {
     try {
       const response = await axios.post(
-        `https://admin.sanimex.com.mx/wp-json/bdpwr/v1/reset-password`,
+        `https://staging.sanimex.com.mx/wp-json/bdpwr/v1/reset-password`,
         req.body,
         {
           auth: {
