@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 
-const BACKEND_ENDPOINT = 'https://admin.sanimex.com.mx/admin-graphql-sanimex';
+const BACKEND_ENDPOINT = 'https://staging.sanimex.com.mx/admin-graphql-sanimex';
 
 const fetchTopBannerData = async () => {
   const query = `
