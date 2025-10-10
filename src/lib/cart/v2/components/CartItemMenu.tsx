@@ -32,7 +32,7 @@ export const CartItemMenu: React.FC<CartItemMenuProps> = ({ item }) => {
   });
 
   const productSlug = `${item?.permalink.replace(
-    'https://sanimex.com.mx',
+    'https://coral-app-dm8qn.ondigitalocean.app',
     '',
   )}`;
 
