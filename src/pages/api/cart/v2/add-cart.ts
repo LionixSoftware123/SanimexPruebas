@@ -16,7 +16,7 @@ export default async function handler(
 
   if (!cookieToken) {
     return res.status(500).json({
-      message: 'Cart token is missing',
+      message: 'Cart token is missing 1',
     });
   }
   try {
