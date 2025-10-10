@@ -8,7 +8,7 @@ const DownloadPdF: React.FC = () => {
           <Link
             target="_Blank"
             href={
-              'https://admin.sanimex.com.mx/wp-content/uploads/2023/10/50-GSA-2F.pdf'
+              'https://staging.sanimex.com.mx/wp-content/uploads/2023/10/50-GSA-2F.pdf'
             }
           >
             <div className="bg-[#1C355E] text-white rounded-[5px] flex items-center justify-center px-2 text-center max-w-[250px] h-[50px]">
@@ -39,7 +39,7 @@ const DownloadPdF: React.FC = () => {
                 target="blank"
                 className="underline"
                 href={
-                  'https://admin.sanimex.com.mx/wp-content/uploads/2023/10/50_GSA_CATALOGO.pdf'
+                  'https://staging.sanimex.com.mx/wp-content/uploads/2023/10/50_GSA_CATALOGO.pdf'
                 }
               >
                 Click aquí {'>>'}
