@@ -75,7 +75,7 @@ const ShopConditions: React.FC = () => {
                 className="underline"
                 href={'50-aniversario'}
               >
-                https://sanimex.com.mx/50-aniversario
+                https://coral-app-dm8qn.ondigitalocean.app/50-aniversario
               </Link>
               {`".`}
             </div>
@@ -86,7 +86,7 @@ const ShopConditions: React.FC = () => {
                 className="underline"
                 href={'terminos-y-condiciones'}
               >
-                https://sanimex.com.mx/terminos-y-condiciones
+                https://coral-app-dm8qn.ondigitalocean.app/terminos-y-condiciones
               </Link>
             </div>
           </div>
@@ -194,10 +194,10 @@ const ShopConditions: React.FC = () => {
            <div className="mb-4">
               Aplica para compras en línea en el sitio oficial{' '}
               <a
-                href="https://sanimex.com.mx/"
+                href="https://coral-app-dm8qn.ondigitalocean.app/"
                 className="text-[#0000ff] underline"
               >
-                https://sanimex.com.mx/
+                https://coral-app-dm8qn.ondigitalocean.app/
               </a>
             </div> 
           </div>
