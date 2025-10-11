@@ -27,7 +27,10 @@ export const addCartAction = createAction(
     let response;
 
     try {
-      response = await axios.post('/api/cart/v2/add-cart', data);
+      response = await axios.post('/api/cart/v2/add-cart', data, {
+            // AÑADE ESTA CONFIGURACIÓN
+            withCredentials: true, 
+        }); 
     } catch (error) {
       throw Error((error as AxiosError).response?.data as string);
     }
