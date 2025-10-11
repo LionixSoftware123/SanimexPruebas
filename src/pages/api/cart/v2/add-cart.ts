@@ -18,10 +18,7 @@ export default async function handler(
     console.log('DEBUG: La cookie "cart-token" no se encontró en la solicitud.');
 
     return res.status(500).json({
-      message: (error as any)?.message || 'Error al agregar al carrito (FALLO API)',
-      // Si el error tiene más detalles (ej: un objeto de error)
-      details: JSON.stringify(error, Object.getOwnPropertyNames(error))
-
+      console.log(req.cookies['cart-token']);
       message: 'Cart token is missing 1',
     });
   }
