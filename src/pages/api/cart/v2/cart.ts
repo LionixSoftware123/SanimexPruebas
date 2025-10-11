@@ -37,7 +37,7 @@ export default async function handler(
         const cookieString = serialize('cart-token', newToken, {
             httpOnly: true, // No accesible por JavaScript del frontend (recomendado)
             secure: true,   // Solo enviar sobre HTTPS (necesario en DigitalOcean App Platform)
-            sameSite: 'Lax',// Permite que se envíe en navegación externa
+            sameSite: 'lax',// Permite que se envíe en navegación externa
             path: '/',      // Disponible en toda la aplicación
             maxAge: 60 * 60 * 24 * 30, // 30 días de duración
         });
