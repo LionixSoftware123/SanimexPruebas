@@ -10,9 +10,9 @@ export default async function handler(
   if (req.method !== 'GET') {
     return res.status(405).json({ message: 'Método no permitido' });
   }
-  const headers = response.headers; 
+
   const cookieToken = req.cookies['cart-token'];
-  const newToken = headers.get('cart-token'); 
+  
 
   try {
     const response = await fetch(`${WP_ENDPOINT}/wp-json/wc/store/cart`, {
@@ -23,10 +23,12 @@ export default async function handler(
       },
     });
 
-        
+    const headers = response.headers;
+    
     const cart = await response.json();
 
     const token = headers.get('cart-token') || '';
+    const newToken = headers.get('cart-token'); 
     // ----------------------------------------------------------------
     // ⬇️ PASO CRÍTICO: ESTABLECER LA COOKIE ⬇️
     // ----------------------------------------------------------------
