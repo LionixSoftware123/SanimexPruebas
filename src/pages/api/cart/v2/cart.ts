@@ -10,7 +10,7 @@ export default async function handler(
   if (req.method !== 'GET') {
     return res.status(405).json({ message: 'Método no permitido' });
   }
-
+  const headers = response.headers; 
   const cookieToken = req.cookies['cart-token'];
   const newToken = headers.get('cart-token'); 
 
@@ -23,10 +23,10 @@ export default async function handler(
       },
     });
 
-    const headers = response.headers;
+        
     const cart = await response.json();
-    const token = headers.get('cart-token') || '';
 
+    const token = headers.get('cart-token') || '';
     // ----------------------------------------------------------------
     // ⬇️ PASO CRÍTICO: ESTABLECER LA COOKIE ⬇️
     // ----------------------------------------------------------------
@@ -44,7 +44,7 @@ export default async function handler(
         res.setHeader('Set-Cookie', cookieString);
     }
 
-    
+
 
     return res.status(200).json({
       token,
