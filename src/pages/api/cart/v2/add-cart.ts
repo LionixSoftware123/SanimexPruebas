@@ -16,9 +16,9 @@ export default async function handler(
 
   if (!cookieToken) {
     console.log('DEBUG: La cookie "cart-token" no se encontró en la solicitud.');
-
+    console.log(req.cookies['cart-token']);
     return res.status(500).json({
-      console.log(req.cookies['cart-token']);
+      
       message: 'Cart token is missing 1',
     });
   }
