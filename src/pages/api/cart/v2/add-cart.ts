@@ -15,8 +15,9 @@ export default async function handler(
   const cookieToken = req.cookies['cart-token'];
 
   if (!cookieToken) {
-    console.log('DEBUG: La cookie "cart-token" no se encontró en la solicitud.');
+    
     console.error('DEBUG: La cookie "cart-token" no se encontró en la solicitud.', req.cookies['cart-token']);
+    console.error('API ROUTE FAILED:', error);
     return res.status(500).json({
       
       message: 'Cart token is missing 1',
