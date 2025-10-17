@@ -271,6 +271,7 @@ export const createBanortePayment = async (
     FORWARD_PATH: BANORTE_PAYMENT_ENDPOINT,
     '3D_CERTIFICATION': '03',
     REFERENCE3D: randomString.generate(10),
+    MODE: 'AUT',
     COUNTRY: 'MX',
     CITY: userData.state as string,
     EMAIL: userData.email as string,
