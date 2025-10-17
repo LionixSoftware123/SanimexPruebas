@@ -48,6 +48,7 @@ export type FormType = {
   FORWARD_PATH: string;
   '3D_CERTIFICATION': string;
   REFERENCE3D: string;
+  MODE: string;
   COUNTRY: string;
   CITY: string;
   EMAIL: string;
