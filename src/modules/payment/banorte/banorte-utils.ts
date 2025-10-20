@@ -25,6 +25,7 @@ import {
 import postalCodeShipping from '@/utils/postal-code-shipping.json';
 import {
   BANORTE_MERCHANT_ID,
+  BANORTE_GAM_MERCHANT_ID,
   BANORTE_PAYMENT_ENDPOINT,
 } from '@/utils/constants';
 import randomString from 'randomstring';
