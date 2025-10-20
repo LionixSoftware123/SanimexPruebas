@@ -42,6 +42,8 @@ export const isProductionReady = true;
 
 export const BANORTE_MERCHANT_ID =
   process.env.NEXT_PUBLIC_BANORTE_MERCHANT_ID ?? '';
+export const BANORTE_GAM_MERCHANT_ID =
+  process.env.NEXT_PUBLIC_BANORTE_GAM_MERCHANT_ID ?? '';
 export const BANORTE_USER = process.env.NEXT_PUBLIC_BANORTE_USER ?? '';
 export const BANORTE_PASSWORD = process.env.NEXT_PUBLIC_BANORTE_PASSWORD ?? '';
 export const BANORTE_TERMINAL_ID =
