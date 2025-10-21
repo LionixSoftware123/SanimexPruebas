@@ -37,6 +37,7 @@ import {
 import { OnWooSessionTokenEvent } from '@/modules/auth/auth-events';
 import { fetchInternalBanner } from '@/modules/banner/banner-actions';
 import postalCodeShipping from '@/utils/postal-code-shipping.json';
+import postalCodeShippingProvincia from '@/utils/postal-code-shipping-provincia.json';
 import IconWhatsapp from '@/images/icon-whatsapp-modal.svg';
 import Bugsnag, { NotifiableError } from '@bugsnag/js';
 import BankList from '@/components/utils/BankList';
@@ -811,6 +812,7 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
 
   if (
     postalCodeShipping.includes(parseInt(postalCode as string)) &&
+    postalCodeShippingProvincia.includes(parseInt(postalCode as string)) &&
     postalCode &&
     postalCode?.length > 4
   )
