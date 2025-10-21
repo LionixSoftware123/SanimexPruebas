@@ -23,6 +23,7 @@ import {
   OnWooSessionTokenEvent,
 } from '@/modules/auth/auth-events';
 import postalCodeShipping from '@/utils/postal-code-shipping.json';
+import postalCodeShippingProvincia from '@/utils/postal-code-shipping-provincia.json';
 import {
   BANORTE_MERCHANT_ID,
   BANORTE_GAM_MERCHANT_ID,
@@ -138,7 +139,7 @@ export const createBanortePayment = async (
     parseInt(shipping.postalCode || (userData.postalCode as string)),
   )
     ? shippingAmount
-    : 0;
+    : shippingAmount;
 
   const variables: CreateOrderMutationVariables = {
     input: {
@@ -184,12 +185,20 @@ export const createBanortePayment = async (
               : 'local_pickup',
           methodTitle:
             shippingInfo.shippingOption === ShippingEnum.ByShipping
-              ? postalCodeShipping.includes(
-                  parseInt(
-                    shipping.postalCode
-                      ? shipping.postalCode
-                      : (userData.postalCode as string),
-                  ),
+              ? (
+                  postalCodeShipping.includes(
+                    parseInt(
+                      shipping.postalCode
+                        ? shipping.postalCode
+                        : (userData.postalCode as string),
+                    ),
+                  ) || postalCodeShippingProvincia.includes(
+                    parseInt(
+                      shipping.postalCode
+                        ? shipping.postalCode
+                        : (userData.postalCode as string),
+                    ),
+                  )
                 )
                 ? 'Envió a Domicilio'
                 : 'Su Código Postal está fuera de nuestra área servicio; sin embargo, al terminar su compra nuestro equipo de venta le llamará para definir su costo de envío según la distancia.'
@@ -267,7 +276,12 @@ export const createBanortePayment = async (
       shippingInfo.shippingOption === ShippingEnum.ByShipping
         ? (cartTotal + shippingTotal).toFixed(2)
         : cartTotal.toFixed(2),
-    MERCHANT_ID: BANORTE_MERCHANT_ID,
+    MERCHANT_ID: 
+      postalCodeShipping.includes(
+        parseInt(shipping.postalCode || (userData.postalCode as string)),
+      )
+        ? BANORTE_MERCHANT_ID
+        : BANORTE_GAM_MERCHANT_ID,
     MERCHANT_NAME: 'SANIMEX AYUNTAMIENTO',
     MERCHANT_CITY: 'ESTADO DE MEXICO',
     FORWARD_PATH: BANORTE_PAYMENT_ENDPOINT,
