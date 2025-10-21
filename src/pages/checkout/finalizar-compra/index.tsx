@@ -812,7 +812,7 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
 
   if (
     (postalCodeShipping.includes(parseInt(postalCode as string)) ||
-    postalCodeShippingProvincia.includes(parseInt(postalCode as string)) &&
+    postalCodeShippingProvincia.includes(parseInt(postalCode as string))) &&
     postalCode &&
     postalCode?.length > 4
   )
