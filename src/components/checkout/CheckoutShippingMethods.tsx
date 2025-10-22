@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import postalCodeShipping from '@/utils/postal-code-shipping.json';
-import postalCodeShippingProvincia from '@/utils/postal-code-shipping-provincia.json';
+//import postalCodeShipping from '@/utils/postal-code-shipping.json';
+//import postalCodeShippingProvincia from '@/utils/postal-code-shipping-provincia.json';
 import shops from '@/utils/sucursales.json';
 import dynamic from 'next/dynamic';
 import { selectedShopStoreAction } from '@/modules/shop/shop-actions';
@@ -108,24 +108,20 @@ const CheckoutShippingMethods: React.FC<CheckoutShippingMethodsProps> = ({
         <div className="flex justify-center lg:justify-start flex-col lg:flex-row lg:gap-4 items-center lg:items-start pt-4">
           <div className="flex  items-center mb-4">
             <button
-              onClick={(e) => {
-                setSelectedShippingOption(ShippingEnum.ByShipping);
-                onSelected(ShippingEnum.ByShipping, selectedShippingZone);
-                e.preventDefault();
-              }}
-              className={` ${
-                (!postalCodeShipping.includes(parseInt(postalCode as string)) || !postalCodeShippingProvincia.includes(parseInt(postalCode as string)))
-                  ? 'hidden'
-                  : ' flex'
-              } rounded-full  border border-[#919191] w-[14px] h-[14px] mx-2 flex ml-8 mb-6 self-center items-start justify-start absolute `}
+            onClick={(e) => {
+              setSelectedShippingOption(ShippingEnum.ByShipping);
+              onSelected(ShippingEnum.ByShipping);
+              e.preventDefault();
+            }}
+            className="rounded-full border border-[#919191] w-[14px] h-[14px] mx-2 flex ml-8 mb-6 self-center items-start justify-start absolute"
             >
-              <div
-                className={`${
-                  selectedShippingOption === ShippingEnum.ByShipping
-                    ? 'bg-[#0071CE]'
-                    : 'bg-white'
-                } rounded-full mx-auto    flex self-center  w-[8px] h-[8px]`}
-              ></div>
+            <div
+              className={`${
+                selectedShippingOption === ShippingEnum.ByShipping
+                  ? 'bg-[#0071CE]'
+                  : 'bg-white'
+              } rounded-full mx-auto    flex self-center  w-[8px] h-[8px]`}
+            ></div>
             </button>
             <div className="text-[14px] flex">
               {(postalCodeShipping.includes(parseInt(postalCode as string)) || postalCodeShippingProvincia.includes(parseInt(postalCode as string))) ? (
