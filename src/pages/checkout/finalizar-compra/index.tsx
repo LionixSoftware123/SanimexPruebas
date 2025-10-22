@@ -348,6 +348,7 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
         try {
           const {
             AMOUNT,
+            MERCHANT_ID,
             SECURITY_CODE,
             CARD_NUMBER,
             CARD_EXP,
@@ -356,6 +357,7 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
           } = data.form;
           const requiredFields: {
             AMOUNT: string;
+            MERCHANT_ID : string;
             SECURITY_CODE: string;
             CARD_EXP: string;
             CARD_NUMBER: string;
@@ -366,6 +368,7 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
             PLAN_TYPE?: string;
           } = {
             AMOUNT,
+            MERCHANT_ID,
             SECURITY_CODE,
             CARD_EXP,
             CARD_NUMBER,
