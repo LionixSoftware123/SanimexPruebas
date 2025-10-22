@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-//import postalCodeShipping from '@/utils/postal-code-shipping.json';
-//import postalCodeShippingProvincia from '@/utils/postal-code-shipping-provincia.json';
+import postalCodeShipping from '@/utils/postal-code-shipping.json';
+import postalCodeShippingProvincia from '@/utils/postal-code-shipping-provincia.json';
 import shops from '@/utils/sucursales.json';
 import dynamic from 'next/dynamic';
 import { selectedShopStoreAction } from '@/modules/shop/shop-actions';
