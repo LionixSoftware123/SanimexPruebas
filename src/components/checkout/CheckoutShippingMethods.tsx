@@ -113,11 +113,7 @@ const CheckoutShippingMethods: React.FC<CheckoutShippingMethodsProps> = ({
                 onSelected(ShippingEnum.ByShipping, selectedShippingZone);
                 e.preventDefault();
               }}
-              className={` ${
-                (!postalCodeShipping.includes(parseInt(postalCode as string)) || !postalCodeShippingProvincia.includes(parseInt(postalCode as string)))
-                  ? 'hidden'
-                  : ' flex'
-              } rounded-full  border border-[#919191] w-[14px] h-[14px] mx-2 flex ml-8 mb-6 self-center items-start justify-start absolute `}
+              className="rounded-full border border-[#919191] w-[14px] h-[14px] mx-2 flex ml-8 mb-6 self-center items-start justify-start absolute"
             >
               <div
                 className={`${
