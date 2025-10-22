@@ -817,6 +817,86 @@
       "lat": 19.3932187,
       "lng": -99.2643755
     }
-  }
+  },
+  {
+    "ID": 41,
+    "TIENDA": "Aguascalientes 3 CEDIS",
+    "CALLE": "Av. Convención Sur No. 1229",
+    "COLONIA": "Col. Ojo de Agua",
+    "CP": 20230,
+    "CIUDAD": "Aguascalientes",
+    "ESTADO": "Aguascalientes",
+    "TELÉFONOS": [
+      {
+        "key": "4499184795",
+        "value": "4499184795"
+      },
+      {
+        "key": "4499942648",
+        "value": "4499942648"
+      }
+    ],
+    "LOCATION": {
+      "lat": 21.8663363,
+      "lng": -102.2804985
+    }
+  },
+  {
+    "ID": 42,
+    "TIENDA": "Aguascalientes 5",
+    "CALLE": "Av. Siglo XXI No. 4928 Esq. Mesillas",
+    "COLONIA": "Col. Haciendas de Aguascalientes",
+    "CP": 20196,
+    "CIUDAD": "Aguascalientes",
+    "ESTADO": "Aguascalientes",
+    "TELÉFONOS": [
+      {
+        "key": "4499939105",
+        "value": "4499939105"
+      }
+    ],
+    "LOCATION": {
+      "lat": 21.8902165,
+      "lng": -102.2903297
+    }
+  },
+  {
+    "ID": 43,
+    "TIENDA": "Aguascalientes 6",
+    "CALLE": "Miguel de la Madrid No. 916",
+    "COLONIA": "Col. Corral de Barrancos",
+    "CP": 20900,
+    "CIUDAD": "Aguascalientes",
+    "ESTADO": "Aguascalientes",
+    "TELÉFONOS": [
+      {
+        "key": "4499736914",
+        "value": "4499736914"
+      }
+    ],
+    "LOCATION": {
+      "lat": 21.9469505,
+      "lng": -102.2903297
+    }
+  },
+  {
+    "ID": 44,
+    "TIENDA": "Aguascalientes Rincón de Romos",
+    "CALLE": "Plutarco Elías Calles No. 101",
+    "COLONIA": "Col. San Jose",
+    "CP": 20415,
+    "CIUDAD": "Aguascalientes",
+    "ESTADO": "Aguascalientes",
+    "TELÉFONOS": [
+      {
+        "key": "4658514176",
+        "value": "4658514176"
+      }
+    ],
+    "LOCATION": {
+      "lat": 22.2214877,
+      "lng": -102.3190598
+    }
+  }  
   
 ]
