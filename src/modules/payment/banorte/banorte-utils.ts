@@ -45,6 +45,7 @@ export type FormType = {
   AMOUNT: string;
   CARD_TYPE: 'VISA' | 'MC';
   MERCHANT_ID: string;
+  TERMINAL_ID: string;
   MERCHANT_NAME: string;
   MERCHANT_CITY: string;
   FORWARD_PATH: string;
@@ -281,6 +282,12 @@ export const createBanortePayment = async (
       )
         ? BANORTE_MERCHANT_ID
         : BANORTE_GAM_MERCHANT_ID,
+    TERMINAL_ID: 
+      postalCodeShipping.includes(
+        parseInt(shipping.postalCode || (userData.postalCode as string)),
+      )
+        ? '91592131'
+        : '91600801',
     MERCHANT_NAME: 'SANIMEX AYUNTAMIENTO',
     MERCHANT_CITY: 'ESTADO DE MEXICO',
     FORWARD_PATH: BANORTE_PAYMENT_ENDPOINT,
