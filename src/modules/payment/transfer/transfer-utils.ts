@@ -99,13 +99,12 @@ export const transferPayment = async (
       //const customerData = await fetchRegisterCustomer(userData);
       //jwtAuthToken = customerData.authToken;
       //customer = customerData?.customer as Customer;
-      const IdCustomer = 0;
+      customer = userData as Customer;
     //} catch (error) {
       //return onError && onError('Tenemos problemas para generar el customer');
     //}
   } else {
     customer = fetchUserEvent.get()?.user as Customer;
-    const IdCustomer = customer!.databaseId;
   }
 
   /**const client = createApolloClient(
@@ -139,7 +138,7 @@ export const transferPayment = async (
         phone: userData.phone,
         country: CountriesEnum.Mx,
       },
-      customerId: IdCustomer,
+      customerId: customer?.databaseId ?? '0';
       paymentMethod: 'bacs',
       shipping: {
         address1: shipping.address1 ? shipping.address1 : userData.address1,
