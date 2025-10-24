@@ -85,6 +85,7 @@ export const transferPayment = async (
   onError?: (message: string) => void,
   setStep?: (step: number) => void,
 ) => {
+  console.log( userData );
   let jwtAuthToken = OnTokenEvent.get()?.token;
   const wooSessionToken = OnWooSessionTokenEvent.get()?.token;
   let customer: Customer | undefined = undefined;
