@@ -88,7 +88,7 @@ export const transferPayment = async (
   let jwtAuthToken = OnTokenEvent.get()?.token;
   const wooSessionToken = OnWooSessionTokenEvent.get()?.token;
   let customer: Customer | undefined = undefined;
-  let customerId: string;
+  let customerId: number;
   const activeCampaignUserOrder =
     fetchActiveCampaignUserOrderEvent.get()?.order;
   const user = fetchUserEvent.get()?.user;
@@ -100,7 +100,7 @@ export const transferPayment = async (
       //const customerData = await fetchRegisterCustomer(userData);
       //jwtAuthToken = customerData.authToken;
       //customer = customerData?.customer as Customer;
-      customerId = '0';
+      customerId = 0;
     //} catch (error) {
       //return onError && onError('Tenemos problemas para generar el customer');
     //}
