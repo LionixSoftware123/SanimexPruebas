@@ -282,7 +282,7 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
   // }, [cart]);
 
   //console.log({ cart });
-  console.log({ shop });
+  console.log({ userData });
 
   const handleOrderCompletion = (orderId: number | undefined) => {
     setOrderId(orderId);
