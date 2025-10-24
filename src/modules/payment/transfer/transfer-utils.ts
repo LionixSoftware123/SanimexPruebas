@@ -15,7 +15,7 @@ import {
   User,
 } from '@/utils/types/generated';
 import { Cart } from '@/lib/cart/v2/cart-types';
-//import { createApolloClient } from '@/apollo/client';
+import { createApolloClient } from '@/apollo/client';
 //import generatePassword from 'generate-password';
 import {
   fetchUserEvent,
