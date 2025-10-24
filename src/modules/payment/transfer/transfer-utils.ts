@@ -107,10 +107,10 @@ export const transferPayment = async (
     customer = fetchUserEvent.get()?.user as Customer;
   }
 
-  /**const client = createApolloClient(
+  const client = createApolloClient(
     wooSessionToken as string,
     jwtAuthToken as string,
-  );**/
+  );
   setStep && setStep(2);
 
   const shippingTotal = postalCodeShipping.includes(
