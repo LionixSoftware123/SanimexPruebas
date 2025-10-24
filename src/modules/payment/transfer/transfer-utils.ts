@@ -138,7 +138,7 @@ export const transferPayment = async (
         phone: userData.phone,
         country: CountriesEnum.Mx,
       },
-      customerId: customer?.databaseId ?? '0';
+      customerId: customer?.databaseId ?? '0',
       paymentMethod: 'bacs',
       shipping: {
         address1: shipping.address1 ? shipping.address1 : userData.address1,
