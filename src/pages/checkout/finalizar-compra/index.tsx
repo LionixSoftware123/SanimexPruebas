@@ -5,12 +5,12 @@ import InputMask from 'react-input-mask';
 import { useToasts } from 'react-toast-notifications';
 import cardValidator from 'card-validator';
 import {
-  UserNodeIdTypeEnum,
+  //UserNodeIdTypeEnum,
   InternalBannerResponse,
 } from '@/utils/types/generated';
-import { fetchUser } from '@/modules/auth/auth-actions';
+//import { fetchUser } from '@/modules/auth/auth-actions';
 import Link from 'next/link';
-import { FRONTEND_ENDPOINT } from '@/utils/constants';
+//import { FRONTEND_ENDPOINT } from '@/utils/constants';
 import { useUserHook } from '@/modules/auth/user-hooks';
 import { ShippingEnum } from '@/components/checkout/CheckoutShippingMethods';
 import {
@@ -37,6 +37,7 @@ import {
 import { OnWooSessionTokenEvent } from '@/modules/auth/auth-events';
 import { fetchInternalBanner } from '@/modules/banner/banner-actions';
 import postalCodeShipping from '@/utils/postal-code-shipping.json';
+import postalCodeShippingProvincia from '@/utils/postal-code-shipping-provincia.json';
 import IconWhatsapp from '@/images/icon-whatsapp-modal.svg';
 import Bugsnag, { NotifiableError } from '@bugsnag/js';
 import BankList from '@/components/utils/BankList';
@@ -281,7 +282,7 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
   // }, [cart]);
 
   //console.log({ cart });
-  console.log({ shop });
+  //console.log({ userData });
 
   const handleOrderCompletion = (orderId: number | undefined) => {
     setOrderId(orderId);
@@ -307,7 +308,7 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
       email: user ? user.email : data.billingAddress?.email,
     };
 
-    const checkUser = await fetchUser({
+    /**const checkUser = await fetchUser({
       idType: UserNodeIdTypeEnum.Email,
       id: billingInfo.email as string,
     });
@@ -329,7 +330,7 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
           appearance: 'error',
         },
       );
-    }
+    }**/
 
     return await createBanortePayment(
       data.card,
@@ -347,6 +348,8 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
         try {
           const {
             AMOUNT,
+            MERCHANT_ID,
+            TERMINAL_ID,
             SECURITY_CODE,
             CARD_NUMBER,
             CARD_EXP,
@@ -355,6 +358,8 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
           } = data.form;
           const requiredFields: {
             AMOUNT: string;
+            MERCHANT_ID: string;
+            TERMINAL_ID: string;
             SECURITY_CODE: string;
             CARD_EXP: string;
             CARD_NUMBER: string;
@@ -365,6 +370,8 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
             PLAN_TYPE?: string;
           } = {
             AMOUNT,
+            MERCHANT_ID,
+            TERMINAL_ID,
             SECURITY_CODE,
             CARD_EXP,
             CARD_NUMBER,
@@ -434,7 +441,7 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
       email: user ? user.email : data.billingAddress?.email,
     };
 
-    const checkUser = await fetchUser({
+    /**const checkUser = await fetchUser({
       idType: UserNodeIdTypeEnum.Email,
       id: billingInfo.email as string,
     });
@@ -456,7 +463,7 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
           appearance: 'error',
         },
       );
-    }
+    }**/
 
     transferPayment(
       billingInfo as PaymentDataType,
@@ -810,7 +817,8 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
   };
 
   if (
-    postalCodeShipping.includes(parseInt(postalCode as string)) &&
+    (postalCodeShipping.includes(parseInt(postalCode as string)) ||
+    postalCodeShippingProvincia.includes(parseInt(postalCode as string))) &&
     postalCode &&
     postalCode?.length > 4
   )
