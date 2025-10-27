@@ -48,7 +48,6 @@ export type FormType = {
   TERMINAL_ID: string;
   MERCHANT_USER: string;
   MERCHANT_PASS: string;
-  TERMINAL_ID: string;
   MERCHANT_NAME: string;
   MERCHANT_CITY: string;
   FORWARD_PATH: string;
