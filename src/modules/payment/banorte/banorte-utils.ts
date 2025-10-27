@@ -46,11 +46,15 @@ export type FormType = {
   CARD_TYPE: 'VISA' | 'MC';
   MERCHANT_ID: string;
   TERMINAL_ID: string;
+  MERCHANT_USER: string;
+  MERCHANT_PASS: string;
+  TERMINAL_ID: string;
   MERCHANT_NAME: string;
   MERCHANT_CITY: string;
   FORWARD_PATH: string;
   '3D_CERTIFICATION': string;
   REFERENCE3D: string;
+  NUMERO_CONTROL: string;
   COUNTRY: string;
   CITY: string;
   EMAIL: string;
@@ -282,17 +286,35 @@ export const createBanortePayment = async (
       )
         ? BANORTE_MERCHANT_ID
         : BANORTE_GAM_MERCHANT_ID,
+    MERCHANT_USER:
+      postalCodeShipping.includes(
+        parseInt(shipping.postalCode || (userData.postalCode as string)),
+      )
+        ? 'usucert'
+        : 'pendiente',
+    MERCHANT_PASS:
+      postalCodeShipping.includes(
+        parseInt(shipping.postalCode || (userData.postalCode as string)),
+      )
+        ? 'Gam9705”$B'
+        : 'pendiente',
     TERMINAL_ID: 
       postalCodeShipping.includes(
         parseInt(shipping.postalCode || (userData.postalCode as string)),
       )
         ? '91592131'
         : '91600801',
-    MERCHANT_NAME: 'SANIMEX AYUNTAMIENTO',
+    MERCHANT_NAME: 
+      postalCodeShipping.includes(
+        parseInt(shipping.postalCode || (userData.postalCode as string)),
+      )
+        ? 'SANIMEX AYUNTAMIENTO'
+        : 'FERR GRUPO AZULEJERO M',      
     MERCHANT_CITY: 'ESTADO DE MEXICO',
     FORWARD_PATH: BANORTE_PAYMENT_ENDPOINT,
     '3D_CERTIFICATION': '03',
     REFERENCE3D: randomString.generate(10),
+    NUMERO_CONTROL: REFERENCE3D,
     COUNTRY: 'MX',
     CITY: userData.state as string,
     EMAIL: userData.email as string,
