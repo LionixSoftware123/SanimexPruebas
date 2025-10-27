@@ -350,8 +350,6 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
             AMOUNT,
             MERCHANT_ID,
             TERMINAL_ID,
-            MERCHANT_USER,
-            MERCHANT_PASS,
             MERCHANT_NAME,
             SECURITY_CODE,
             CARD_NUMBER,
@@ -363,8 +361,6 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
             AMOUNT: string;
             MERCHANT_ID: string;
             TERMINAL_ID: string;
-            MERCHANT_USER: string;
-            MERCHANT_PASS: string;
             MERCHANT_NAME: string;
             SECURITY_CODE: string;
             CARD_EXP: string;
@@ -378,8 +374,6 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
             AMOUNT,
             MERCHANT_ID,
             TERMINAL_ID,
-            MERCHANT_USER,
-            MERCHANT_PASS,
             MERCHANT_NAME,
             SECURITY_CODE,
             CARD_EXP,
