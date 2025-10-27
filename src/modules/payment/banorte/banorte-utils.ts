@@ -53,7 +53,6 @@ export type FormType = {
   FORWARD_PATH: string;
   '3D_CERTIFICATION': string;
   REFERENCE3D: string;
-  NUMERO_CONTROL: string;
   COUNTRY: string;
   CITY: string;
   EMAIL: string;
@@ -313,7 +312,6 @@ export const createBanortePayment = async (
     FORWARD_PATH: BANORTE_PAYMENT_ENDPOINT,
     '3D_CERTIFICATION': '03',
     REFERENCE3D: randomString.generate(10),
-    NUMERO_CONTROL: REFERENCE3D,
     COUNTRY: 'MX',
     CITY: userData.state as string,
     EMAIL: userData.email as string,
