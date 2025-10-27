@@ -46,8 +46,6 @@ export type FormType = {
   CARD_TYPE: 'VISA' | 'MC';
   MERCHANT_ID: string;
   TERMINAL_ID: string;
-  MERCHANT_USER: string;
-  MERCHANT_PASS: string;
   MERCHANT_NAME: string;
   MERCHANT_CITY: string;
   FORWARD_PATH: string;
@@ -284,18 +282,6 @@ export const createBanortePayment = async (
       )
         ? BANORTE_MERCHANT_ID
         : BANORTE_GAM_MERCHANT_ID,
-    MERCHANT_USER:
-      postalCodeShipping.includes(
-        parseInt(shipping.postalCode || (userData.postalCode as string)),
-      )
-        ? 'usucert'
-        : 'pendiente',
-    MERCHANT_PASS:
-      postalCodeShipping.includes(
-        parseInt(shipping.postalCode || (userData.postalCode as string)),
-      )
-        ? 'Gam9705”$B'
-        : 'pendiente',
     TERMINAL_ID: 
       postalCodeShipping.includes(
         parseInt(shipping.postalCode || (userData.postalCode as string)),
