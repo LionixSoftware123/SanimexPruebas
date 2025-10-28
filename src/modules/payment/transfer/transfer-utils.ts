@@ -97,9 +97,8 @@ export const transferPayment = async (
   if (!jwtAuthToken) {
     //try {
       //const customerData = await fetchRegisterCustomer(userData);
-      //jwtAuthToken = customerData.authToken;
-      //customer = customerData?.customer as Customer;
-      customer = userData as Customer;
+      jwtAuthToken = customerData.authToken;
+      customer = customerData?.customer as Customer;
     //} catch (error) {
       //return onError && onError('Tenemos problemas para generar el customer');
     //}
@@ -140,7 +139,7 @@ export const transferPayment = async (
       },
       customerId: customer?.databaseId
         ? Number(customer?.databaseId)
-        : Number('0'),
+        : Number('12'),
       paymentMethod: 'bacs',
       shipping: {
         address1: shipping.address1 ? shipping.address1 : userData.address1,
