@@ -29,7 +29,8 @@ const BasicSearchInput: React.FC = () => {
   };
 
   useEffect(() => {
-    if (search.length > 2) {
+    //if (search.length > 2) {
+    const delayDebounceFn = setTimeout(() => {
       const fetchData = async () => {
         try {
           const { items, count } = await fetchProductsSearch(search, 10);
@@ -44,7 +45,11 @@ const BasicSearchInput: React.FC = () => {
       };
 
       fetchData();
-    }
+    }, 500);
+
+    // Función de limpieza
+    return () => clearTimeout(delayDebounceFn);
+    //}
   }, [search, router.query]);
 
   useEffect(() => {
