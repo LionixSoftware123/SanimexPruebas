@@ -33,7 +33,7 @@ const BasicSearchInput: React.FC = () => {
     const delayDebounceFn = setTimeout(() => {
       const fetchData = async () => {
         try {
-          let newString = search.replace("baño", "Sanitario");
+          let search = search.replace("baño", "sanitario");
           
           const { items, count } = await fetchProductsSearch(search, 10);
           setProducts(items || []);
