@@ -6,21 +6,12 @@ import EasySearchProductTotal from '@/lib/easysearch/components/EasySearchProduc
 import EasySearchAttributeList from '@/lib/easysearch/components/EasySearchAttributeList';
 import SkeletonTime from '@/components/skeleton/SkeletonTime';
 import ProductPaginate from '@/lib/easysearch/components/EasySearchProductPaginate';
-import EasySearchProductSortBy from '@/lib/easysearch/components/EasySearchProductSortBy';
-import EasySearchProducts from '@/lib/easysearch/components/EasySearchProducts';
 import EasySearchProductSearchBox from '@/lib/easysearch/components/EasySearchProductSearchBox';
-
-import { easySearchApolloClient } from '@/lib/easysearch/apollo/client';
-import { buildQuery, productFilters } from '@/lib/easysearch/utils';
-import {
-  IAttribute,
-  IProduct,
-  useProductsWithAttributesLazyQuery,
-} from '@/lib/easysearch/types/generated';
+import EasySearchProductSortBy from '@/lib/easysearch/components/EasySearchProductSortBy';
 import ProductLayout from '@/components/layouts/ProductLayout';
+import BasicSearchProducts from '@/lib/basicsearch/BasicSearchProducts';
 
 const StaticMeta = dynamic(() => import('@/components/utils/StaticMeta'));
-
 const Container = dynamic(() => import('@/components/utils/Container'));
 
 const NUMBER_PRODUCTS_FOR_PAGE = 12;
@@ -29,30 +20,20 @@ const ProductsPage: React.FC = () => {
   const [mobileFilter, setMobileFilter] = useState<boolean>(false);
   const router = useRouter();
   const [sortBy, setSortBy] = useState<string>('');
-  const [materials, setMaterials] = useState<IAttribute[]>([]);
-  const [brands, setBrands] = useState<IAttribute[]>([]);
-  const [colors, setColors] = useState<IAttribute[]>([]);
+  const [materials, setMaterials] = useState([]);
+  const [brands, setBrands] = useState([]);
+  const [colors, setColors] = useState([]);
   const [loadingAttributes, setLoadingAttributes] = useState<boolean>(true);
   const [total, setTotal] = useState(0);
-  const [callAction, { loading, data }] = useProductsWithAttributesLazyQuery({
-    client: easySearchApolloClient,
-    onCompleted: (data) => {
-      setMaterials((data.attributes?.materials || []) as IAttribute[]);
-      setColors((data.attributes?.colors || []) as IAttribute[]);
-      setBrands((data.attributes?.brands || []) as IAttribute[]);
-      setLoadingAttributes(false);
-      setTotal(data.products?.count || 0);
-    },
-  });
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
   const handleSortChange = (newSortBy: string) => {
     setSortBy(newSortBy);
   };
 
-  const callbackFilters = useCallback(productFilters, []);
-
   const handleQuery = (object: { [key: string]: string | number }) => {
-    const query = buildQuery(object, router.query);
+    const query = { ...router.query, ...object };
     router.push(
       {
         pathname: router.pathname,
@@ -63,46 +44,99 @@ const ProductsPage: React.FC = () => {
     );
   };
 
-  useEffect(() => {
+  const fetchProducts = useCallback(async () => {
+    setLoading(true);
     const page = parseInt(router.query.page as string) || 1;
     const skip = (page - 1) * NUMBER_PRODUCTS_FOR_PAGE;
 
-    callAction({
-      variables: {
-        where: callbackFilters(
-          router.query.q as string,
-          router.query.color as string,
-          router.query.brand as string,
-          router.query.material as string,
-          '', // typologies
-          '', // units
-          [], // categories
-          { stock_status: true },
-        ),
-        attributesWhere: callbackFilters(
-          router.query.q as string,
-          router.query.color as string,
-          router.query.brand as string,
-          router.query.material as string,
-        ),
-        attributes: ['brands', 'colors', 'materials'],
-        skip,
-        take: NUMBER_PRODUCTS_FOR_PAGE,
-        orderBy: { total_sales: -1 },
-      },
+    const params = new URLSearchParams({
+      search: (router.query.q as string) || '',
+      color: (router.query.color as string) || '',
+      brand: (router.query.brand as string) || '',
+      material: (router.query.material as string) || '',
+      sort: (router.query.sort as string) || 'desc',
+      skip: skip.toString(),
+      take: NUMBER_PRODUCTS_FOR_PAGE.toString(),
     });
-  }, [
-    callAction,
-    callbackFilters,
-    router.query.brand,
-    router.query.color,
-    router.query.material,
-    router.query.q,
-    router.query.page,
-    router.query.sort,
-  ]);
 
-  const products = data?.products?.items || [];
+    try {
+      const response = await fetch(
+        `/api/basicsearch/search?${params.toString()}`,
+      );
+      console.log('params.toString()', params.toString());
+      const data = await response.json();
+      setProducts(data.items || []);
+      setTotal(data.count || 0);
+      setLoading(false);
+    } catch (error) {
+      console.error('Error fetching products:', error);
+      setLoading(false);
+    }
+  }, [router.query]);
+
+  const fetchColors = useCallback(async () => {
+    setLoadingAttributes(true);
+
+    try {
+      const response = await fetch(`/api/basicsearch/colors`);
+      const data = await response.json();
+      const dataItem = data.items;
+      const sorteddataItem = dataItem.sort((a: { name: string }, b: { name: string }) => { if (a.name < b.name) { return -1; } if (a.name > b.name) { return 1; } return 0; });
+      setColors(sorteddataItem || []);
+      setLoadingAttributes(false);
+    } catch (error) {
+      console.error('Error fetching colors:', error);
+      setLoadingAttributes(false);
+    }
+  }, []);
+
+  const fetchBrands = useCallback(async () => {
+    setLoadingAttributes(true);
+
+    try {
+      const response = await fetch(`/api/basicsearch/brands`);
+      const data = await response.json();
+      const dataItem = data.items;
+      const sorteddataItem = dataItem.sort((a: { name: string }, b: { name: string }) => { if (a.name < b.name) { return -1; } if (a.name > b.name) { return 1; } return 0; });
+      setBrands(sorteddataItem || []);
+      setLoadingAttributes(false);
+    } catch (error) {
+      console.error('Error fetching colors:', error);
+      setLoadingAttributes(false);
+    }
+  }, []);
+
+  const fetchMaterials = useCallback(async () => {
+    setLoadingAttributes(true);
+
+    try {
+      const response = await fetch(`/api/basicsearch/materials`);
+      const data = await response.json();
+      const dataItem = data.items;
+      const sorteddataItem = dataItem.sort((a: { name: string }, b: { name: string }) => { if (a.name < b.name) { return -1; } if (a.name > b.name) { return 1; } return 0; });
+      setMaterials(sorteddataItem || []);
+      setLoadingAttributes(false);
+    } catch (error) {
+      console.error('Error fetching colors:', error);
+      setLoadingAttributes(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchProducts();
+  }, [fetchProducts, router.query.sort]);
+
+  useEffect(() => {
+    fetchMaterials();
+  }, [fetchMaterials]);
+
+  useEffect(() => {
+    fetchColors();
+  }, [fetchColors]);
+
+  useEffect(() => {
+    fetchBrands();
+  }, [fetchBrands]);
 
   return (
     <ProductLayout>
@@ -114,7 +148,7 @@ const ProductsPage: React.FC = () => {
       />
 
       <Container>
-        <div className="mb-14 py-4 mt-12">
+        <div className="mb-14 py-4">
           <Container>
             <div className="grid lg:grid-cols-4 gap-4 ">
               <div className="mb-6 lg:col-span-2 lg:col-start-2">
@@ -148,7 +182,7 @@ const ProductsPage: React.FC = () => {
                 ) : null}
                 <EasySearchAttributeList
                   selected={router.query.color as string}
-                  items={colors as IAttribute[]}
+                  items={colors}
                   title="Color"
                   onSelected={(value) => handleQuery({ color: value, page: 1 })}
                   loading={loadingAttributes}
@@ -156,7 +190,7 @@ const ProductsPage: React.FC = () => {
 
                 <EasySearchAttributeList
                   selected={router.query.brand as string}
-                  items={brands as IAttribute[]}
+                  items={brands}
                   title="Marcas"
                   onSelected={(value) => handleQuery({ brand: value, page: 1 })}
                   loading={loadingAttributes}
@@ -164,7 +198,7 @@ const ProductsPage: React.FC = () => {
 
                 <EasySearchAttributeList
                   selected={router.query.material as string}
-                  items={materials as IAttribute[]}
+                  items={materials}
                   title="Materiales"
                   onSelected={(value) =>
                     handleQuery({ material: value, page: 1 })
@@ -245,13 +279,11 @@ const ProductsPage: React.FC = () => {
                   </div>
                 ) : (
                   <div className="grid sm:grid-cols-2 md:grid-cols-3 mb-[20px] gap-y-8 gap-x-4">
-                    {products?.map(
-                      (product, index: React.Key | null | undefined) => (
-                        <div className="col-span-1" key={index}>
-                          <EasySearchProducts product={product as IProduct} />
-                        </div>
-                      ),
-                    )}
+                    {products?.map((product, index) => (
+                      <div key={index}>
+                        <BasicSearchProducts product={product} />
+                      </div>
+                    ))}
                   </div>
                 )}
                 <ProductPaginate
