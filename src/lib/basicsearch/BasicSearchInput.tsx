@@ -30,28 +30,27 @@ const BasicSearchInput: React.FC = () => {
 
   useEffect(() => {
     //if (search.length > 2) {
-    const delayDebounceFn = setTimeout(() => {
-      const fetchData = async () => {
-        try {
-          //let newSearch = search.replace("baño", "sanitario");
-          
-          const { items, count } = await fetchProductsSearch(search, 10);
-          setProducts(items || []);
-          setTotal(count || 0);
-          setLoadingState(true);
-        } catch (error) {
-          console.error('Error fetching products:', error);
-        } finally {
-          setLoadingState(false);
-        }
-      };
-
-      fetchData();
-    }, 500);
-
-    // Función de limpieza
-    return () => clearTimeout(delayDebounceFn);
-    //}
+    if (search !== '' && search !== null && search !== undefined) {
+      const delayDebounceFn = setTimeout(() => {
+        const fetchData = async () => {
+          try {
+            const { items, count } = await fetchProductsSearch(search, 10);
+            setProducts(items || []);
+            setTotal(count || 0);
+            setLoadingState(true);
+          } catch (error) {
+            console.error('Error fetching products:', error);
+          } finally {
+            setLoadingState(false);
+          }
+        };
+  
+        fetchData();
+      }, 500);
+  
+      // Función de limpieza
+      return () => clearTimeout(delayDebounceFn);
+    }
   }, [search, router.query]);
 
   useEffect(() => {
