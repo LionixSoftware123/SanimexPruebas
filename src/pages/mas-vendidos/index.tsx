@@ -54,6 +54,7 @@ const ProductsPage: React.FC = () => {
       color: (router.query.color as string) || '',
       brand: (router.query.brand as string) || '',
       material: (router.query.material as string) || '',
+      on_sale: 'true',
       sort: (router.query.sort as string) || 'desc',
       skip: skip.toString(),
       take: NUMBER_PRODUCTS_FOR_PAGE.toString(),
@@ -77,8 +78,14 @@ const ProductsPage: React.FC = () => {
   const fetchColors = useCallback(async () => {
     setLoadingAttributes(true);
 
+    const params = new URLSearchParams({
+      on_sale: 'true',
+    });
+
     try {
-      const response = await fetch(`/api/basicsearch/colors`);
+      const response = await fetch(
+        `/api/basicsearch/colors?${params.toString()}`,
+      );
       const data = await response.json();
       const dataItem = data.items;
       const sorteddataItem = dataItem.sort((a: { name: string }, b: { name: string }) => { if (a.name < b.name) { return -1; } if (a.name > b.name) { return 1; } return 0; });
@@ -93,8 +100,14 @@ const ProductsPage: React.FC = () => {
   const fetchBrands = useCallback(async () => {
     setLoadingAttributes(true);
 
+    const params = new URLSearchParams({
+      on_sale: 'true',
+    });
+
     try {
-      const response = await fetch(`/api/basicsearch/brands`);
+      const response = await fetch(
+        `/api/basicsearch/brands?${params.toString()}`,
+      );
       const data = await response.json();
       const dataItem = data.items;
       const sorteddataItem = dataItem.sort((a: { name: string }, b: { name: string }) => { if (a.name < b.name) { return -1; } if (a.name > b.name) { return 1; } return 0; });
@@ -109,8 +122,14 @@ const ProductsPage: React.FC = () => {
   const fetchMaterials = useCallback(async () => {
     setLoadingAttributes(true);
 
+    const params = new URLSearchParams({
+      on_sale: 'true',
+    });
+
     try {
-      const response = await fetch(`/api/basicsearch/materials`);
+      const response = await fetch(
+        `/api/basicsearch/materials?${params.toString()}`,
+      );
       const data = await response.json();
       const dataItem = data.items;
       const sorteddataItem = dataItem.sort((a: { name: string }, b: { name: string }) => { if (a.name < b.name) { return -1; } if (a.name > b.name) { return 1; } return 0; });
