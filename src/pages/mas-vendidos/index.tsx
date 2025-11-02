@@ -54,7 +54,7 @@ const ProductsPage: React.FC = () => {
       color: (router.query.color as string) || '',
       brand: (router.query.brand as string) || '',
       material: (router.query.material as string) || '',
-      on_sale: 'true',
+      best_sellers: 'true',
       sort: (router.query.sort as string) || 'desc',
       skip: skip.toString(),
       take: NUMBER_PRODUCTS_FOR_PAGE.toString(),
