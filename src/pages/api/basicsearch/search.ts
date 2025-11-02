@@ -17,6 +17,8 @@ export default async function handler(
     take = '12',
     parent_category = '',
     on_sale = 'false',
+    orderby = '',
+    meta_key = '',
   } = req.query;
 
   const params = new URLSearchParams({
@@ -31,6 +33,8 @@ export default async function handler(
     take: take as string,
     parent_category: parent_category as string,
     on_sale: on_sale as string,
+    orderby: orderby as string,
+    meta_key: meta_key as string,
   });
 
   try {
