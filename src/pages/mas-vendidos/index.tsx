@@ -79,7 +79,7 @@ const ProductsPage: React.FC = () => {
     setLoadingAttributes(true);
 
     const params = new URLSearchParams({
-      on_sale: 'true',
+      best_sellers: 'true',
     });
 
     try {
@@ -101,7 +101,7 @@ const ProductsPage: React.FC = () => {
     setLoadingAttributes(true);
 
     const params = new URLSearchParams({
-      on_sale: 'true',
+      best_sellers: 'true',
     });
 
     try {
@@ -123,7 +123,7 @@ const ProductsPage: React.FC = () => {
     setLoadingAttributes(true);
 
     const params = new URLSearchParams({
-      on_sale: 'true',
+      best_sellers: 'true',
     });
 
     try {
