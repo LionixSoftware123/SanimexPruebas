@@ -55,15 +55,15 @@ const CartDetails: React.FC<CartDetailsProps> = ({ cart }) => {
         Resumen
       </div>
       <div className="p-4 text-[14px] ">
-        <div className=" text-[#666666] flex justify-between items-center font-Century-Gothic text-[14px]">
+        <div className="text-[#666666] flex justify-between items-center font-Century-Gothic text-[12px]">
           <div>Subtotal</div>
           <div>{formatCurrency(cart?.totals?.total_items ?? 0)} MXN</div>
         </div>
-        <div className=" text-[#666666] flex justify-between items-center font-Century-Gothic text-[14px]">
+        <div className="text-[#666666] flex justify-between items-center font-Century-Gothic text-[12px]">
           <div>IVA</div>
           <div>{formatCurrency(cart?.totals?.total_items_tax ?? 0)} MXN</div>
         </div>
-        <div className="flex justify-between items-center font-Century-Gothic mb-4">
+        <div className="ftext-[#666666] flex justify-between items-center font-Century-Gothic text-[12px] mb-4">
           <div className="text-[#666666]">Total de Compra</div>
           <div className="text-[#666666] font-Century-Gothic-Bold">
             {formatCurrency(cart?.totals?.total_price ?? 0)} MXN
