@@ -4,7 +4,7 @@ import { Dialog, Transition } from '@headlessui/react';
 import { AuthSteps } from '@/modules/auth/auth-constants';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-//import { Cart } from './cart-types';
+import { Cart } from './cart-types';
 import { formatCurrency } from './utils/formats';
 
 const AuthForm = dynamic(() => import('@/components/auth/AuthForm'));
@@ -13,11 +13,10 @@ const AuthRegisterForm = dynamic(
 );
 const AuthLoginForm = dynamic(() => import('@/components/auth/AuthLoginForm'));
 
-//type CartDetailsProps = {
-//  cart?: Cart;
-//};
-//const CartDetails: React.FC<CartDetailsProps> = ({ cart }) => {
-const CartDetails: React.FC<CartDetailsProps> = ({ }) => {
+type CartDetailsProps = {
+  cart?: Cart;
+};
+const CartDetails: React.FC<CartDetailsProps> = ({ cart }) => {
   const [open, setOpen] = useState(false);
   const cancelButtonRef = useRef(null);
   const [currentStep, setCurrentStep] = useState<AuthSteps>(AuthSteps.Auth);
@@ -52,11 +51,11 @@ const CartDetails: React.FC<CartDetailsProps> = ({ }) => {
 
   return (
     <div className="border border-[#707070] mb-6">
-      {/*<div className="p-2 text-[#666666] text-[14px] font-Century-Gothic border-b border-b-[#C1C1C1] text-center">
+      <div className="p-2 text-[#666666] text-[14px] font-Century-Gothic border-b border-b-[#C1C1C1] text-center">
         Resumen
-      </div>*/}
+      </div>
       <div className="p-4 text-[14px] ">
-        {/*<div className=" text-[#666666] flex justify-between items-center font-Century-Gothic text-[14px]">
+        <div className=" text-[#666666] flex justify-between items-center font-Century-Gothic text-[14px]">
           <div>Subtotal</div>
           <div>{formatCurrency(cart?.totals?.total_items ?? 0)} MXN</div>
         </div>
@@ -69,7 +68,7 @@ const CartDetails: React.FC<CartDetailsProps> = ({ }) => {
           <div className="text-[#666666] font-Century-Gothic-Bold">
             {formatCurrency(cart?.totals?.total_price ?? 0)} MXN
           </div>
-        </div>*/}
+        </div>
 
         <Link href="/checkout/finalizar-compra" prefetch>
           <button className="bg-[#1C355E] text-white rounded-[2px] uppercase h-[45px] w-full font-Century-Gothic-Bold flex items-center justify-center text-[15px]">
