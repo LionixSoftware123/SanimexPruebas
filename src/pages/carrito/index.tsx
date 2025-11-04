@@ -1,7 +1,7 @@
 import React from 'react';
 import dynamic from 'next/dynamic';
 import { useCartHook } from '@/lib/cart/v2/cart-hooks';
-//import { InternalBannerResponse } from '@/utils/types/generated';
+import { InternalBannerResponse } from '@/utils/types/generated';
 import IconEmpty from '@/images/icon-vaciar.svg';
 import Link from 'next/link';
 import { useToasts } from 'react-toast-notifications';
@@ -12,7 +12,7 @@ import { removeCartAction } from '@/lib/cart/v2/cart-actions';
 import { UpsaleItem } from '@/lib/cart/v2/cart-types';
 import ProductUpsale from '@/lib/cart/v2/components/ProductUpsale';
 
-//const ImageWithFallback = dynamic(() => import('@/utils/ImageWithFallback'));
+const ImageWithFallback = dynamic(() => import('@/utils/ImageWithFallback'));
 const StaticMeta = dynamic(() => import('@/components/utils/StaticMeta'));
 //const CartDetails = dynamic(() => import('@/lib/cart/v2/CartDetails'));
 
@@ -173,8 +173,8 @@ const CartPage: React.FC<CartPageProps> = ({ internalBanner }) => {
                       </div>
                     </div>
 
-                    {/*<div className="col-span-full md:col-span-3">
-                      <CartDetails cart={cart} />
+                    <div className="col-span-full md:col-span-3">
+                      {/*<CartDetails cart={cart} />*/}
                       <div className="mb-6">
                         {internalBanner?.redirectUrl &&
                           internalBanner?.sourceUrl && (
@@ -193,7 +193,7 @@ const CartPage: React.FC<CartPageProps> = ({ internalBanner }) => {
                             </Link>
                           )}
                       </div>
-                    </div>*/}
+                    </div>
 
                     {upsell && upsell.length ? (
                       <div className="col-span-full md:col-span-12">
