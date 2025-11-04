@@ -120,7 +120,7 @@ const CartItemComponent: React.FC<CartItemProps> = ({ cartItem }) => {
         </div>
       </div>
       
-      <div className="col-span-3 text-center text-[10px] text-[#666666] flex justify-center">
+      <div className="col-span-2 text-center text-[10px] text-[#666666] flex justify-center">
         <ProductInputQuantity
           quantity={quantity}
           product={cartItem}
@@ -128,11 +128,11 @@ const CartItemComponent: React.FC<CartItemProps> = ({ cartItem }) => {
         />
       </div>
       
-      <div className="col-span-3 text-center">
+      <div className="col-span-2 text-center">
         {formatCurrency(cartItem?.totals?.line_subtotal ?? 0)} MXN
       </div>
       
-      <div className="col-span-3 text-center">
+      <div className="col-span-2 text-center">
         {formatCurrency(cartItem?.totals?.line_subtotal ?? 0)} MXN
       </div>
 
@@ -187,7 +187,7 @@ const CartItemComponent: React.FC<CartItemProps> = ({ cartItem }) => {
           </div>
         </div>
       </div>
-      <div className="col-span-1 w-[85px]  h-[5px]"></div>
+      {/*<div className="col-span-1 w-[85px]  h-[5px]"></div>
       <div className="col-span-8 ml-4">
         <div>
           {cartItem &&
@@ -199,7 +199,7 @@ const CartItemComponent: React.FC<CartItemProps> = ({ cartItem }) => {
               </span>
             )}
         </div>
-      </div>
+      </div>*/}
     </div>
   );
 };
