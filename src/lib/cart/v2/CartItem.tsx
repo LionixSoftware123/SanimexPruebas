@@ -133,7 +133,7 @@ const CartItemComponent: React.FC<CartItemProps> = ({ cartItem }) => {
       </div>
       
       <div className="col-span-2 text-center">
-        {formatCurrency(cartItem?.totals?.line_subtotal ?? 0)} MXN
+        {formatCurrency(cartItem?.totals?.line_subtotal_tax ?? 0)} MXN
       </div>
 
       <div className="col-span-2 ">
