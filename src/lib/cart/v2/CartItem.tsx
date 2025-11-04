@@ -140,7 +140,8 @@ const CartItemComponent: React.FC<CartItemProps> = ({ cartItem }) => {
         <div className="text-end">
           <div className="flex justify-end items-center">
             <div className="text-[#666666] mr-3 font-Century-Gothic-Bold text-[14px]">
-              <>
+               {formatCurrency(cartItem?.totals?.line_total ?? 0)} MXN
+              {/*<>
                 {cartItem?.prices?.price !== cartItem?.prices?.regular_price ? (
                   <>
                     <div className="line-through text-[#666666] text-[14px]">
@@ -155,7 +156,7 @@ const CartItemComponent: React.FC<CartItemProps> = ({ cartItem }) => {
                     {formatCurrency(cartItem?.prices?.price)} MXN
                   </div>
                 )}
-              </>
+              </>*/}
             </div>
             {loading ? (
               <svg
