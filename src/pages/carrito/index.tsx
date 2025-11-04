@@ -193,7 +193,7 @@ const CartPage: React.FC<CartPageProps> = ({ internalBanner }) => {
                             </Link>
                           )}
                       </div>
-                    </div>*/
+                    </div>*/}
 
                     {upsell && upsell.length ? (
                       <div className="col-span-full md:col-span-12">
