@@ -89,7 +89,7 @@ const CartPage: React.FC<CartPageProps> = ({ internalBanner }) => {
                               Producto
                             </div>
                           </div>
-                          <div className="col-span-3 text-center">
+                          <div className="col-span-2 text-center">
                             <div className="text-[#1C355E] text-[16px] font-Century-Gothic-Bold">
                               Cant
                             </div>
@@ -99,12 +99,12 @@ const CartPage: React.FC<CartPageProps> = ({ internalBanner }) => {
                               Subtotal
                             </div>
                           </div>
-                          <div className="col-span-3">
+                          <div className="col-span-2">
                             <div className=" text-center text-[#1C355E] text-[16px] font-Century-Gothic-Bold">
                               IVA
                             </div>
                           </div>
-                          <div className="col-span-3">
+                          <div className="col-span-2">
                             <div className=" text-center text-[#1C355E] text-[16px] font-Century-Gothic-Bold">
                               Total
                             </div>
