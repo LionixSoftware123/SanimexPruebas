@@ -14,7 +14,7 @@ import ProductUpsale from '@/lib/cart/v2/components/ProductUpsale';
 
 const ImageWithFallback = dynamic(() => import('@/utils/ImageWithFallback'));
 const StaticMeta = dynamic(() => import('@/components/utils/StaticMeta'));
-//const CartDetails = dynamic(() => import('@/lib/cart/v2/CartDetails'));
+const CartDetails = dynamic(() => import('@/lib/cart/v2/CartDetails'));
 
 const CartItem = dynamic(() => import('@/lib/cart/v2/CartItem'));
 const CartLoading = dynamic(
@@ -174,7 +174,7 @@ const CartPage: React.FC<CartPageProps> = ({ internalBanner }) => {
                     </div>
 
                     <div className="col-span-full md:col-span-3">
-                      {/*<CartDetails cart={cart} />*/}
+                      <CartDetails cart={cart} />
                       <div className="mb-6">
                         {internalBanner?.redirectUrl &&
                           internalBanner?.sourceUrl && (
