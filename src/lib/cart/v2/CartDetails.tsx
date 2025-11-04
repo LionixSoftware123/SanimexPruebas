@@ -68,7 +68,7 @@ const CartDetails: React.FC<CartDetailsProps> = ({ cart }) => {
           <div className="text-[#666666] font-Century-Gothic-Bold">
             {formatCurrency(cart?.totals?.total_price ?? 0)} MXN
           </div>
-        </div>*/
+        </div>*/}
 
         <Link href="/checkout/finalizar-compra" prefetch>
           <button className="bg-[#1C355E] text-white rounded-[2px] uppercase h-[45px] w-full font-Century-Gothic-Bold flex items-center justify-center text-[15px]">
