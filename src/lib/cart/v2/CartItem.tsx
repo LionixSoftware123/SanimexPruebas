@@ -72,8 +72,9 @@ const CartItemComponent: React.FC<CartItemProps> = ({ cartItem }) => {
 
   return (
     <div className="grid grid-cols-12 py-8 border-[#C1C1C1] border-b items-center gap-4 mb-6">
-      <div className="col-span-4 ">
-        <div className="grid grid-cols-3 gap-4">
+      
+      <div className="col-span-4 ">        
+        <div className="grid grid-cols-3 gap-4">  
           <div>
             <div className="relative w-[85px] h-[85px] m-auto">
               <Link href={productSlug}>
@@ -86,6 +87,7 @@ const CartItemComponent: React.FC<CartItemProps> = ({ cartItem }) => {
               </Link>
             </div>
           </div>
+          
           <div className="col-span-2">
             <Link href={productSlug}>
               <div
@@ -93,14 +95,12 @@ const CartItemComponent: React.FC<CartItemProps> = ({ cartItem }) => {
                 dangerouslySetInnerHTML={{ __html: cartItem?.name }}
               ></div>
             </Link>
-
             <div className="flex gap-2 text-[#111111] font-Century-Gothic">
               <span className="font-Century-Gothic">Código:</span>
               <span className="text-[#B2B2B2] first-letter:uppercase">
                 {cartItem?.sku}
               </span>
-            </div>
-
+            </div>            
             {cartItem?.variation &&
               cartItem?.variation?.map(
                 (item: CartItemVariation, key: number) => {
@@ -119,36 +119,43 @@ const CartItemComponent: React.FC<CartItemProps> = ({ cartItem }) => {
           </div>
         </div>
       </div>
+      
       <div className="col-span-3 text-center text-[10px] text-[#666666] flex justify-center">
         <ProductInputQuantity
           quantity={quantity}
           product={cartItem}
           onChange={(value) => onHandleUpdate(value)}
         />
-      </div>      
-      <div className="col-span-3 text-center ">
-        <>
-          {cartItem?.prices?.price !== cartItem?.prices?.regular_price ? (
-            <>
-              <div className="line-through text-[#666666] text-[14px]">
-                antes {formatCurrency(cartItem?.prices?.regular_price)} MXN
-              </div>
-              <div className="text-[#666666] font-Century-Gothic-Bold text-[14px]">
-                con descuento {formatCurrency(cartItem?.prices?.price)} MXN
-              </div>
-            </>
-          ) : (
-            <div className="text-[#666666] font-Century-Gothic-Bold text-[14px]">
-              {formatCurrency(cartItem?.prices?.price)} MXN
-            </div>
-          )}
-        </>
       </div>
+      
+      <div className="col-span-3 text-center">
+        {formatCurrency(cartItem?.totals?.line_subtotal ?? 0)} MXN
+      </div>
+      
+      <div className="col-span-3 text-center">
+        {formatCurrency(cartItem?.totals?.line_subtotal ?? 0)} MXN
+      </div>
+
       <div className="col-span-2 ">
         <div className="text-end">
           <div className="flex justify-end items-center">
             <div className="text-[#666666] mr-3 font-Century-Gothic-Bold text-[14px]">
-              {formatCurrency(cartItem?.totals?.line_subtotal ?? 0)} MXN
+              <>
+                {cartItem?.prices?.price !== cartItem?.prices?.regular_price ? (
+                  <>
+                    <div className="line-through text-[#666666] text-[14px]">
+                      antes {formatCurrency(cartItem?.prices?.regular_price)} MXN
+                    </div>
+                    <div className="text-[#666666] font-Century-Gothic-Bold text-[14px]">
+                      con descuento {formatCurrency(cartItem?.prices?.price)} MXN
+                    </div>
+                  </>
+                ) : (
+                  <div className="text-[#666666] font-Century-Gothic-Bold text-[14px]">
+                    {formatCurrency(cartItem?.prices?.price)} MXN
+                  </div>
+                )}
+              </>
             </div>
             {loading ? (
               <svg
