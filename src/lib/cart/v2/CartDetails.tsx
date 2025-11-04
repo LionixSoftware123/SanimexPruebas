@@ -71,7 +71,7 @@ const CartDetails: React.FC<CartDetailsProps> = ({ cart }) => {
         </div>
 
         <Link href="/checkout/finalizar-compra" prefetch>
-          <button className="bg-[#1C355E] text-white rounded-[2px] uppercase h-[45px] w-full font-Century-Gothic-Bold flex items-center justify-center text-[15px]">
+          <button className="bg-[#1C355E] text-white rounded-[2px] uppercase h-[45px] w-full font-Century-Gothic-Bold flex items-center justify-center text-[12px]">
             CONTINUAR CON LA COMPRA
           </button>
         </Link>
