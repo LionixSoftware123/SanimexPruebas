@@ -4,7 +4,7 @@ import { Dialog, Transition } from '@headlessui/react';
 import { AuthSteps } from '@/modules/auth/auth-constants';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import { Cart } from './cart-types';
+//import { Cart } from './cart-types';
 import { formatCurrency } from './utils/formats';
 
 const AuthForm = dynamic(() => import('@/components/auth/AuthForm'));
@@ -13,10 +13,11 @@ const AuthRegisterForm = dynamic(
 );
 const AuthLoginForm = dynamic(() => import('@/components/auth/AuthLoginForm'));
 
-type CartDetailsProps = {
-  cart?: Cart;
-};
-const CartDetails: React.FC<CartDetailsProps> = ({ cart }) => {
+//type CartDetailsProps = {
+//  cart?: Cart;
+//};
+//const CartDetails: React.FC<CartDetailsProps> = ({ cart }) => {
+const CartDetails: React.FC<CartDetailsProps> = ({ }) => {
   const [open, setOpen] = useState(false);
   const cancelButtonRef = useRef(null);
   const [currentStep, setCurrentStep] = useState<AuthSteps>(AuthSteps.Auth);
