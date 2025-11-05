@@ -1,28 +1,30 @@
 import axios from 'axios';
 import {
   CountriesEnum,
-  //CreateCustomerDocument,
-  //CreateCustomerMutation,
-  //CreateCustomerMutationVariables,
+  CreateCustomerDocument,
+  CreateCustomerMutation,
+  CreateCustomerMutationVariables,
   CreateOrderDocument,
   CreateOrderMutation,
   CreateOrderMutationVariables,
   Customer,
-  //RegisterCustomerPayload,
+  RegisterCustomerPayload,
   OrderStatusEnum,
   UpdateOrderMutation,
   UpdateOrderMutationVariables,
   UpdateOrderDocument,
   User,
+  UserNodeIdTypeEnum,
 } from '@/utils/types/generated';
 import { Cart } from '@/lib/cart/v2/cart-types';
 import { createApolloClient } from '@/apollo/client';
-//import generatePassword from 'generate-password';
+import generatePassword from 'generate-password';
 import {
   fetchUserEvent,
   OnTokenEvent,
   OnWooSessionTokenEvent,
 } from '@/modules/auth/auth-events';
+import { fetchUser } from '@/modules/auth/auth-actions';
 import { ShippingEnum } from '@/components/checkout/CheckoutShippingMethods';
 import postalCodeShipping from '@/utils/postal-code-shipping.json';
 import postalCodeShippingProvincia from '@/utils/postal-code-shipping-provincia.json';
@@ -39,7 +41,7 @@ import { confirmGeolocationStore } from '@/modules/geolocation/geolocation-event
 import { calculateCost } from '@/modules/geolocation/geolocation-utils';
 import { ShopType } from '@/modules/shop/shop-types';
 
-/** const fetchRegisterCustomer = async (
+const fetchRegisterCustomer = async (
   data: PaymentDataType,
 ): Promise<RegisterCustomerPayload> => {
   const client = createApolloClient();
@@ -61,7 +63,7 @@ import { ShopType } from '@/modules/shop/shop-types';
   });
 
   return response.data?.registerCustomer as RegisterCustomerPayload;
-};**/
+};
 
 export const transferPayment = async (
   userData: PaymentDataType,
@@ -94,20 +96,23 @@ export const transferPayment = async (
   const user = fetchUserEvent.get()?.user;
   const { distance } = confirmGeolocationStore.get();
   const shippingAmount = calculateCost(distance);
-  const API_URL = 'https://staging.sanimex.com.mx/api';
   setStep && setStep(1);
   if (!jwtAuthToken) {
     try {
-      //const customerData = await fetchRegisterCustomer(userData);
-      //jwtAuthToken = customerData.authToken;
-      //customer = customerData?.customer as Customer;
-      const response = await axios.post(`${API_URL}/guest-token`);
-      const { token } = response.data;
-      localStorage.setItem('guestToken', token);
-      jwtAuthToken = token;
+      const checkUser = await fetchUser({
+        idType: UserNodeIdTypeEnum.Email,
+        id: userData.email as string,
+      });
+      if (checkUser.user) {
+        jwtAuthToken = checkUser.user.authToken;
+        customer = checkUser.user as Customer;  
+      } else {
+        const customerData = await fetchRegisterCustomer(userData);
+        jwtAuthToken = customerData.authToken;
+        customer = customerData?.customer as Customer;        
+      }
     } catch (error) {
-      //return onError && onError('Tenemos problemas para generar el customer');
-      return onError && onError('Error al obtener el token de invitado:');
+      return onError && onError('Tenemos problemas con el customer');
     }
   } else {
     customer = fetchUserEvent.get()?.user as Customer;
@@ -144,9 +149,7 @@ export const transferPayment = async (
         phone: userData.phone,
         country: CountriesEnum.Mx,
       },
-      customerId: customer?.databaseId
-        ? Number(customer?.databaseId)
-        : Number('12'),
+      customerId: customer?.databaseId,
       paymentMethod: 'bacs',
       shipping: {
         address1: shipping.address1 ? shipping.address1 : userData.address1,
