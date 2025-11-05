@@ -5,12 +5,12 @@ import InputMask from 'react-input-mask';
 import { useToasts } from 'react-toast-notifications';
 import cardValidator from 'card-validator';
 import {
-  UserNodeIdTypeEnum,
+  //UserNodeIdTypeEnum,
   InternalBannerResponse,
 } from '@/utils/types/generated';
-import { fetchUser } from '@/modules/auth/auth-actions';
+//import { fetchUser } from '@/modules/auth/auth-actions';
 import Link from 'next/link';
-import { FRONTEND_ENDPOINT } from '@/utils/constants';
+//import { FRONTEND_ENDPOINT } from '@/utils/constants';
 import { useUserHook } from '@/modules/auth/user-hooks';
 import { ShippingEnum } from '@/components/checkout/CheckoutShippingMethods';
 import {
@@ -282,7 +282,7 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
   // }, [cart]);
 
   //console.log({ cart });
-  //console.log({ userData });
+  console.log({ shop });
 
   const handleOrderCompletion = (orderId: number | undefined) => {
     setOrderId(orderId);
@@ -308,29 +308,13 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
       email: user ? user.email : data.billingAddress?.email,
     };
 
-    {/*const checkUser = await fetchUser({
+    /**const checkUser = await fetchUser({
       idType: UserNodeIdTypeEnum.Email,
       id: billingInfo.email as string,
     });
 
     if (checkUser.user && !user) {
-      setLoadingButton(true);
-
-      const params = new URLSearchParams({
-        databaseId: checkUser.user.databaseId.toString(),
-      });
-  
-      try {
-        const response = await fetch(
-          `/api/basicsearch/delete-user?${params.toString()}`,
-        );
-        const data = await response.json();
-        console.error( data );
-      } catch (error) {
-        console.error('Error delete user:', error);
-        setLoading(false);
-      } 
-      
+      setLoadingButton(false);
       return addToast(
         <div>
           El email ya se encuentra registrado, por favor{' '}
@@ -345,8 +329,8 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
         {
           appearance: 'error',
         },
-      );*/}
-    }
+      );
+    }**/
 
     return await createBanortePayment(
       data.card,
@@ -366,7 +350,6 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
             AMOUNT,
             MERCHANT_ID,
             TERMINAL_ID,
-            MERCHANT_NAME,
             SECURITY_CODE,
             CARD_NUMBER,
             CARD_EXP,
@@ -377,7 +360,6 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
             AMOUNT: string;
             MERCHANT_ID: string;
             TERMINAL_ID: string;
-            MERCHANT_NAME: string;
             SECURITY_CODE: string;
             CARD_EXP: string;
             CARD_NUMBER: string;
@@ -390,7 +372,6 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
             AMOUNT,
             MERCHANT_ID,
             TERMINAL_ID,
-            MERCHANT_NAME,
             SECURITY_CODE,
             CARD_EXP,
             CARD_NUMBER,
@@ -460,29 +441,13 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
       email: user ? user.email : data.billingAddress?.email,
     };
 
-    {/*const checkUser = await fetchUser({
+    /**const checkUser = await fetchUser({
       idType: UserNodeIdTypeEnum.Email,
       id: billingInfo.email as string,
     });
 
     if (checkUser.user && !user) {
-      setLoading(true);
-
-      const params = new URLSearchParams({
-        databaseId: checkUser.user.databaseId.toString(),
-      });
-  
-      try {
-        const response = await fetch(
-          `/api/basicsearch/delete-user?${params.toString()}`,
-        );
-        const data = await response.json();
-        console.error( data );
-      } catch (error) {
-        console.error('Error delete user:', error);
-        setLoading(false);
-      }
-      
+      setLoading(false);
       return addToast(
         <div>
           El email ya se encuentra registrado, por favor{' '}
@@ -497,8 +462,8 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
         {
           appearance: 'error',
         },
-      );*/}
-    }
+      );
+    }**/
 
     transferPayment(
       billingInfo as PaymentDataType,
