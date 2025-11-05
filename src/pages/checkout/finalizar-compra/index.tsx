@@ -331,8 +331,8 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
         {
           appearance: 'error',
         },
-      );
-    }**/
+      );**/
+    }
 
     return await createBanortePayment(
       data.card,
@@ -469,8 +469,8 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
         {
           appearance: 'error',
         },
-      );
-    }**/
+      );**/
+    }
 
     transferPayment(
       billingInfo as PaymentDataType,
