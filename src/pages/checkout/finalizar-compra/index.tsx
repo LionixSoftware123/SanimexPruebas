@@ -313,6 +313,8 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
       id: billingInfo.email as string,
     });
 
+    console.log( checkUser );
+
     if (checkUser.user && !user) {
       setLoadingButton(false);
       return addToast(
@@ -448,6 +450,8 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
       idType: UserNodeIdTypeEnum.Email,
       id: billingInfo.email as string,
     });
+
+    console.log( checkUser );
 
     if (checkUser.user && !user) {
       setLoading(false);
