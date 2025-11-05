@@ -115,7 +115,7 @@ const CartItemComponent: React.FC<CartItemProps> = ({ cartItem }) => {
                     </div>
                   );
                 },
-              )}
+              ): null}
               {cartItem?.prices?.price !== cartItem?.prices?.regular_price ? (
                 <>
                  <div className="flex gap-2 text-[#111111] font-Century-Gothic">
