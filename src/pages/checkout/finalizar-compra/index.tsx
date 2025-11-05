@@ -313,12 +313,10 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
       id: billingInfo.email as string,
     });
 
-    console.log( checkUser );
-
     if (checkUser.user && !user) {
       setLoadingButton(true);
 
-      console.log( user.databaseId );
+      console.log( checkUser.user.databaseId );
       
       {/**return addToast(
         <div>
@@ -457,7 +455,7 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
     if (checkUser.user && !user) {
       setLoading(true);
 
-      console.log( user.databaseId );
+      console.log( checkUser.user.databaseId );
       
       {/*return addToast(
         <div>
