@@ -108,7 +108,7 @@ const ProductsPage: React.FC = () => {
     });
 
     try {
-      const response = await fetch(`/api/basicsearch/brands`);
+      const response = await fetch(`/api/basicsearch/brands?${params.toString()}`,
       const data = await response.json();
       const dataItem = data.items;
       const sorteddataItem = dataItem.sort((a: { name: string }, b: { name: string }) => { if (a.name < b.name) { return -1; } if (a.name > b.name) { return 1; } return 0; });
