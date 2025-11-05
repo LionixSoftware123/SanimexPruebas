@@ -316,8 +316,11 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
     console.log( checkUser );
 
     if (checkUser.user && !user) {
-      setLoadingButton(false);
-      return addToast(
+      setLoadingButton(true);
+
+      console.log( user.databaseId );
+      
+      {/**return addToast(
         <div>
           El email ya se encuentra registrado, por favor{' '}
           <Link
@@ -331,7 +334,7 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
         {
           appearance: 'error',
         },
-      );
+      );*/}
     }
 
     return await createBanortePayment(
@@ -451,11 +454,12 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
       id: billingInfo.email as string,
     });
 
-    console.log( checkUser );
-
     if (checkUser.user && !user) {
-      setLoading(false);
-      return addToast(
+      setLoading(true);
+
+      console.log( user.databaseId );
+      
+      {/*return addToast(
         <div>
           El email ya se encuentra registrado, por favor{' '}
           <Link
@@ -469,7 +473,7 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
         {
           appearance: 'error',
         },
-      );
+      );*/}
     }
 
     transferPayment(
