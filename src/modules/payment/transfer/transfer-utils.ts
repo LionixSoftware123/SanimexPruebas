@@ -14,7 +14,6 @@ import {
   UpdateOrderMutationVariables,
   UpdateOrderDocument,
   User,
-  UserNodeIdTypeEnum,
 } from '@/utils/types/generated';
 import { Cart } from '@/lib/cart/v2/cart-types';
 import { createApolloClient } from '@/apollo/client';
@@ -24,8 +23,6 @@ import {
   OnTokenEvent,
   OnWooSessionTokenEvent,
 } from '@/modules/auth/auth-events';
-import { fetchUser } from '@/modules/auth/auth-actions';
-import { useUserHook } from '@/modules/auth/user-hooks';
 import { ShippingEnum } from '@/components/checkout/CheckoutShippingMethods';
 import postalCodeShipping from '@/utils/postal-code-shipping.json';
 import postalCodeShippingProvincia from '@/utils/postal-code-shipping-provincia.json';
@@ -104,14 +101,6 @@ export const transferPayment = async (
   setStep && setStep(1);
   if (!jwtAuthToken) {
     try {
-      const checkUser = await fetchUser({
-        idType: UserNodeIdTypeEnum.Email,
-        id: userData.email as string,
-      });
-      if (checkUser.user) {
-        jwtAuthToken = checkUser.user.authToken;
-        customer = checkUser.user as Customer;  
-      } else {
         const customerData = await fetchRegisterCustomer(userData);
         jwtAuthToken = customerData.authToken;
         customer = customerData?.customer as Customer;        
