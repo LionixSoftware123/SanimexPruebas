@@ -324,7 +324,7 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
         const response = await fetch(
           `/api/basicsearch/delete-user?${params.toString()}`,
         );
-        //const data = await response.json();
+        const data = await response.json();
         console.error('Delete user:', error);
       } catch (error) {
         console.error('Error delete user:', error);
@@ -476,7 +476,7 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
         const response = await fetch(
           `/api/basicsearch/delete-user?${params.toString()}`,
         );
-        //const data = await response.json();
+        const data = await response.json();
         console.error('Delete user:', error);
       } catch (error) {
         console.error('Error delete user:', error);
