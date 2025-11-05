@@ -1,13 +1,13 @@
 import {
   CountriesEnum,
-  CreateCustomerDocument,
-  CreateCustomerMutation,
-  CreateCustomerMutationVariables,
+  //CreateCustomerDocument,
+  //CreateCustomerMutation,
+  //CreateCustomerMutationVariables,
   CreateOrderDocument,
   CreateOrderMutation,
   CreateOrderMutationVariables,
   Customer,
-  RegisterCustomerPayload,
+  //RegisterCustomerPayload,
   OrderStatusEnum,
   UpdateOrderMutation,
   UpdateOrderMutationVariables,
@@ -16,7 +16,7 @@ import {
 } from '@/utils/types/generated';
 import { Cart } from '@/lib/cart/v2/cart-types';
 import { createApolloClient } from '@/apollo/client';
-import generatePassword from 'generate-password';
+//import generatePassword from 'generate-password';
 import {
   fetchUserEvent,
   OnTokenEvent,
@@ -24,6 +24,7 @@ import {
 } from '@/modules/auth/auth-events';
 import { ShippingEnum } from '@/components/checkout/CheckoutShippingMethods';
 import postalCodeShipping from '@/utils/postal-code-shipping.json';
+import postalCodeShippingProvincia from '@/utils/postal-code-shipping-provincia.json';
 import {
   PaymentDataType,
   ShippingAddressType,
@@ -37,7 +38,7 @@ import { confirmGeolocationStore } from '@/modules/geolocation/geolocation-event
 import { calculateCost } from '@/modules/geolocation/geolocation-utils';
 import { ShopType } from '@/modules/shop/shop-types';
 
-const fetchRegisterCustomer = async (
+/** const fetchRegisterCustomer = async (
   data: PaymentDataType,
 ): Promise<RegisterCustomerPayload> => {
   const client = createApolloClient();
@@ -59,7 +60,7 @@ const fetchRegisterCustomer = async (
   });
 
   return response.data?.registerCustomer as RegisterCustomerPayload;
-};
+};**/
 
 export const transferPayment = async (
   userData: PaymentDataType,
@@ -94,13 +95,13 @@ export const transferPayment = async (
   const shippingAmount = calculateCost(distance);
   setStep && setStep(1);
   if (!jwtAuthToken) {
-    try {
-      const customerData = await fetchRegisterCustomer(userData);
-      jwtAuthToken = customerData.authToken;
-      customer = customerData?.customer as Customer;
-    } catch (error) {
-      return onError && onError('Tenemos problemas para generar el customer');
-    }
+    //try {
+      //const customerData = await fetchRegisterCustomer(userData);
+      //jwtAuthToken = customerData.authToken;
+      //customer = customerData?.customer as Customer;
+    //} catch (error) {
+      //return onError && onError('Tenemos problemas para generar el customer');
+    //}
   } else {
     customer = fetchUserEvent.get()?.user as Customer;
   }
@@ -115,7 +116,7 @@ export const transferPayment = async (
     parseInt(shipping.postalCode || (userData.postalCode as string)),
   )
     ? shippingAmount
-    : 0;
+    : shippingAmount;
 
   const variablesCart = {
     input: {
@@ -136,7 +137,9 @@ export const transferPayment = async (
         phone: userData.phone,
         country: CountriesEnum.Mx,
       },
-      customerId: customer?.databaseId,
+      customerId: customer?.databaseId
+        ? Number(customer?.databaseId)
+        : Number('12'),
       paymentMethod: 'bacs',
       shipping: {
         address1: shipping.address1 ? shipping.address1 : userData.address1,
@@ -158,12 +161,20 @@ export const transferPayment = async (
               : 'local_pickup',
           methodTitle:
             shippingInfo.shippingOption === ShippingEnum.ByShipping
-              ? postalCodeShipping.includes(
-                  parseInt(
-                    shipping.postalCode
-                      ? shipping.postalCode
-                      : (userData.postalCode as string),
-                  ),
+              ? (
+                  postalCodeShipping.includes(
+                    parseInt(
+                      shipping.postalCode
+                        ? shipping.postalCode
+                        : (userData.postalCode as string),
+                    ),
+                  ) || postalCodeShippingProvincia.includes(
+                    parseInt(
+                      shipping.postalCode
+                        ? shipping.postalCode
+                        : (userData.postalCode as string),
+                    ),
+                  )
                 )
                 ? 'Envió a Domicilio'
                 : 'Su Código Postal está fuera de nuestra área servicio; sin embargo, al terminar su compra nuestro equipo de venta le llamará para definir su costo de envío según la distancia.'
@@ -228,13 +239,21 @@ export const transferPayment = async (
         shippingTotal,
         shippingMethod:
           shippingInfo.shippingOption === ShippingEnum.ByShipping
-            ? postalCodeShipping.includes(
-                parseInt(
-                  shipping.postalCode
-                    ? shipping.postalCode
-                    : (userData.postalCode as string),
-                ),
-              )
+            ? (
+                  postalCodeShipping.includes(
+                    parseInt(
+                      shipping.postalCode
+                        ? shipping.postalCode
+                        : (userData.postalCode as string),
+                    ),
+                  ) || postalCodeShippingProvincia.includes(
+                    parseInt(
+                      shipping.postalCode
+                        ? shipping.postalCode
+                        : (userData.postalCode as string),
+                    ),
+                  )
+                )
               ? 'Envió a Domicilio'
               : 'Su Código Postal está fuera de nuestra área servicio; sin embargo, al terminar su compra nuestro equipo de venta le llamará para definir su costo de envío según la distancia.'
             : (shippingInfo.shippingZone?.address as string),
@@ -251,13 +270,21 @@ export const transferPayment = async (
         shippingTotal,
         shippingMethod:
           shippingInfo.shippingOption === ShippingEnum.ByShipping
-            ? postalCodeShipping.includes(
-                parseInt(
-                  shipping.postalCode
-                    ? shipping.postalCode
-                    : (userData.postalCode as string),
-                ),
-              )
+            ? (
+                  postalCodeShipping.includes(
+                    parseInt(
+                      shipping.postalCode
+                        ? shipping.postalCode
+                        : (userData.postalCode as string),
+                    ),
+                  ) || postalCodeShippingProvincia.includes(
+                    parseInt(
+                      shipping.postalCode
+                        ? shipping.postalCode
+                        : (userData.postalCode as string),
+                    ),
+                  )
+                )
               ? 'Envió a Domicilio'
               : 'Su Código Postal está fuera de nuestra área servicio; sin embargo, al terminar su compra nuestro equipo de venta le llamará para definir su costo de envío según la distancia.'
             : (shippingInfo.shippingZone?.address as string),
