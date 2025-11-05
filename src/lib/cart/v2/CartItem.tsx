@@ -116,6 +116,16 @@ const CartItemComponent: React.FC<CartItemProps> = ({ cartItem }) => {
                   );
                 },
               )}
+              {cartItem?.prices?.price !== cartItem?.prices?.regular_price ? (
+                 <div className="flex gap-2 text-[#111111] font-Century-Gothic">
+                    <div className="line-through text-[#666666] text-[10px]">
+                      antes {formatCurrency(cartItem?.prices?.regular_price)} MXN
+                    </div>
+                    <div className="text-[#666666] font-Century-Gothic-Bold text-[10px]">
+                      con descuento {formatCurrency(cartItem?.prices?.price)} MXN
+                    </div>
+                 </div>
+              )}
           </div>
         </div>
       </div>
@@ -141,22 +151,6 @@ const CartItemComponent: React.FC<CartItemProps> = ({ cartItem }) => {
           <div className="flex justify-end items-center">
             <div className="text-[#666666] mr-3 font-Century-Gothic-Bold text-[14px]">
                {formatCurrency(cartItem?.prices?.price)} MXN
-              {/*<>
-                {cartItem?.prices?.price !== cartItem?.prices?.regular_price ? (
-                  <>
-                    <div className="line-through text-[#666666] text-[14px]">
-                      antes {formatCurrency(cartItem?.prices?.regular_price)} MXN
-                    </div>
-                    <div className="text-[#666666] font-Century-Gothic-Bold text-[14px]">
-                      con descuento {formatCurrency(cartItem?.prices?.price)} MXN
-                    </div>
-                  </>
-                ) : (
-                  <div className="text-[#666666] font-Century-Gothic-Bold text-[14px]">
-                    {formatCurrency(cartItem?.prices?.price)} MXN
-                  </div>
-                )}
-              </>*/}
             </div>
             {loading ? (
               <svg
