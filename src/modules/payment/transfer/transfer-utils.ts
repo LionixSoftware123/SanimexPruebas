@@ -1,3 +1,4 @@
+import axios from 'axios';
 import {
   CountriesEnum,
   //CreateCustomerDocument,
@@ -93,15 +94,21 @@ export const transferPayment = async (
   const user = fetchUserEvent.get()?.user;
   const { distance } = confirmGeolocationStore.get();
   const shippingAmount = calculateCost(distance);
+  const API_URL = 'https://staging.sanimex.com.mx/api';
   setStep && setStep(1);
   if (!jwtAuthToken) {
-    //try {
+    try {
       //const customerData = await fetchRegisterCustomer(userData);
       //jwtAuthToken = customerData.authToken;
       //customer = customerData?.customer as Customer;
-    //} catch (error) {
+      const response = await axios.post(`${API_URL}/guest-token`);
+      const { token } = response.data;
+      localStorage.setItem('guestToken', token);
+      jwtAuthToken = token;
+    } catch (error) {
       //return onError && onError('Tenemos problemas para generar el customer');
-    //}
+      return onError && onError('Error al obtener el token de invitado:'.token);
+    }
   } else {
     customer = fetchUserEvent.get()?.user as Customer;
   }
