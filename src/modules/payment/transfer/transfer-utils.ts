@@ -67,7 +67,7 @@ const fetchRegisterCustomer = async (
 };
 
 const {
-    state: { _user },
+    state: { user },
   } = useUserHook();
 
 export const transferPayment = async (
@@ -108,9 +108,9 @@ export const transferPayment = async (
         idType: UserNodeIdTypeEnum.Email,
         id: userData.email as string,
       });
-      if (checkUser._user) {
-        jwtAuthToken = checkUser._user.authToken;
-        customer = checkUser._user as Customer;  
+      if (checkUser.user) {
+        jwtAuthToken = checkUser.user.authToken;
+        customer = checkUser.user as Customer;  
       } else {
         const customerData = await fetchRegisterCustomer(userData);
         jwtAuthToken = customerData.authToken;
