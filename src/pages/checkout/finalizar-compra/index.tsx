@@ -10,7 +10,7 @@ import {
 } from '@/utils/types/generated';
 import { fetchUser } from '@/modules/auth/auth-actions';
 import Link from 'next/link';
-import { FRONTEND_ENDPOINT } from '@/utils/constants';
+//import { FRONTEND_ENDPOINT } from '@/utils/constants';
 import { useUserHook } from '@/modules/auth/user-hooks';
 import { ShippingEnum } from '@/components/checkout/CheckoutShippingMethods';
 import {
