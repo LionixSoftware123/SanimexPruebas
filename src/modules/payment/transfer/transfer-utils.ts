@@ -100,7 +100,6 @@ export const transferPayment = async (
         const customerData = await fetchRegisterCustomer(userData);
         jwtAuthToken = customerData.authToken;
         customer = customerData?.customer as Customer;        
-      }
     } catch (error) {
       return onError && onError('Tenemos problemas con el pedido');
     }
