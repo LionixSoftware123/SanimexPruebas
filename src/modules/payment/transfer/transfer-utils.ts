@@ -107,7 +107,7 @@ export const transferPayment = async (
       jwtAuthToken = token;
     } catch (error) {
       //return onError && onError('Tenemos problemas para generar el customer');
-      return onError && onError('Error al obtener el token de invitado:'.token);
+      return onError && onError('Error al obtener el token de invitado:');
     }
   } else {
     customer = fetchUserEvent.get()?.user as Customer;
