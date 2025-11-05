@@ -317,7 +317,7 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
       setLoadingButton(true);
 
       const params = new URLSearchParams({
-        databaseId: checkUser.user.databaseId;
+        databaseId: checkUser.user.databaseId.toString();
       });
   
       try {
@@ -469,7 +469,7 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
       setLoading(true);
 
       const params = new URLSearchParams({
-        databaseId: checkUser.user.databaseId;
+        databaseId: checkUser.user.databaseId.toString();
       });
   
       try {
