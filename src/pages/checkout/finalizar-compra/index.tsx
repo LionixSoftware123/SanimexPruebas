@@ -316,7 +316,20 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
     if (checkUser.user && !user) {
       setLoadingButton(true);
 
-      console.log( checkUser.user.databaseId );
+      const params = new URLSearchParams({
+        databaseId: checkUser.user.databaseId;
+      });
+  
+      try {
+        const response = await fetch(
+          `/api/basicsearch/delete-user?${params.toString()}`,
+        );
+        //const data = await response.json();
+        console.error('Delete user:', error);
+      } catch (error) {
+        console.error('Error delete user:', error);
+        setLoading(false);
+      } 
       
       {/**return addToast(
         <div>
@@ -455,7 +468,20 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
     if (checkUser.user && !user) {
       setLoading(true);
 
-      console.log( checkUser.user.databaseId );
+      const params = new URLSearchParams({
+        databaseId: checkUser.user.databaseId;
+      });
+  
+      try {
+        const response = await fetch(
+          `/api/basicsearch/delete-user?${params.toString()}`,
+        );
+        //const data = await response.json();
+        console.error('Delete user:', error);
+      } catch (error) {
+        console.error('Error delete user:', error);
+        setLoading(false);
+      }
       
       {/*return addToast(
         <div>
