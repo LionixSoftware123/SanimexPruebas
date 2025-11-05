@@ -62,7 +62,6 @@ const ProductsPage: React.FC = () => {
       skip: skip.toString(),
       take: NUMBER_PRODUCTS_FOR_PAGE.toString(),
       parent_category: 'pisos-y-azulejos',
-
     });
 
     try {
@@ -104,6 +103,10 @@ const ProductsPage: React.FC = () => {
   const fetchBrands = useCallback(async () => {
     setLoadingAttributes(true);
 
+    const params = new URLSearchParams({
+      parent_category: 'pisos-y-azulejos',
+    });
+
     try {
       const response = await fetch(`/api/basicsearch/brands`);
       const data = await response.json();
@@ -119,6 +122,7 @@ const ProductsPage: React.FC = () => {
 
   const fetchMaterials = useCallback(async () => {
     setLoadingAttributes(true);
+    
     const params = new URLSearchParams({
       parent_category: 'pisos-y-azulejos',
     });
@@ -138,6 +142,7 @@ const ProductsPage: React.FC = () => {
 
   const fetchDesigns = useCallback(async () => {
     setLoadingAttributes(true);
+    
     const params = new URLSearchParams({
       parent_category: 'pisos-y-azulejos',
     });
@@ -157,6 +162,7 @@ const ProductsPage: React.FC = () => {
 
   const fetchMeasures = useCallback(async () => {
     setLoadingAttributes(true);
+    
     const params = new URLSearchParams({
       parent_category: 'pisos-y-azulejos',
     });
