@@ -117,6 +117,7 @@ const CartItemComponent: React.FC<CartItemProps> = ({ cartItem }) => {
                 },
               )}
               {cartItem?.prices?.price !== cartItem?.prices?.regular_price ? (
+                <>
                  <div className="flex gap-2 text-[#111111] font-Century-Gothic">
                     <div className="line-through text-[#666666] text-[10px]">
                       antes {formatCurrency(cartItem?.prices?.regular_price)} MXN
@@ -125,6 +126,7 @@ const CartItemComponent: React.FC<CartItemProps> = ({ cartItem }) => {
                       con descuento {formatCurrency(cartItem?.prices?.price)} MXN
                     </div>
                  </div>
+                </>
               )}
           </div>
         </div>
