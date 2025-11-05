@@ -282,7 +282,7 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
   // }, [cart]);
 
   //console.log({ cart });
-  console.log({ shop });
+  //console.log({ userData });
 
   const handleOrderCompletion = (orderId: number | undefined) => {
     setOrderId(orderId);
@@ -350,6 +350,7 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
             AMOUNT,
             MERCHANT_ID,
             TERMINAL_ID,
+            MERCHANT_NAME,
             SECURITY_CODE,
             CARD_NUMBER,
             CARD_EXP,
@@ -360,6 +361,7 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
             AMOUNT: string;
             MERCHANT_ID: string;
             TERMINAL_ID: string;
+            MERCHANT_NAME: string;
             SECURITY_CODE: string;
             CARD_EXP: string;
             CARD_NUMBER: string;
@@ -372,6 +374,7 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
             AMOUNT,
             MERCHANT_ID,
             TERMINAL_ID,
+            MERCHANT_NAME,
             SECURITY_CODE,
             CARD_EXP,
             CARD_NUMBER,
