@@ -325,7 +325,7 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
           `/api/basicsearch/delete-user?${params.toString()}`,
         );
         const data = await response.json();
-        console.error('Delete user:', error);
+        console.error( data );
       } catch (error) {
         console.error('Error delete user:', error);
         setLoading(false);
@@ -477,7 +477,7 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
           `/api/basicsearch/delete-user?${params.toString()}`,
         );
         const data = await response.json();
-        console.error('Delete user:', error);
+        console.error( data );
       } catch (error) {
         console.error('Error delete user:', error);
         setLoading(false);
