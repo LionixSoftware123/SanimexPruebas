@@ -63,10 +63,6 @@ const fetchRegisterCustomer = async (
   return response.data?.registerCustomer as RegisterCustomerPayload;
 };
 
-const {
-    state: { user },
-  } = useUserHook();
-
 export const transferPayment = async (
   userData: PaymentDataType,
   shipping: ShippingAddressType,
@@ -106,7 +102,7 @@ export const transferPayment = async (
         customer = customerData?.customer as Customer;        
       }
     } catch (error) {
-      return onError && onError('Tenemos problemas con el customer');
+      return onError && onError('Tenemos problemas con el pedido');
     }
   } else {
     customer = fetchUserEvent.get()?.user as Customer;
