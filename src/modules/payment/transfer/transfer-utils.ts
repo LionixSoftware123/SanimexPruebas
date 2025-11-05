@@ -25,6 +25,7 @@ import {
   OnWooSessionTokenEvent,
 } from '@/modules/auth/auth-events';
 import { fetchUser } from '@/modules/auth/auth-actions';
+import { useUserHook } from '@/modules/auth/user-hooks';
 import { ShippingEnum } from '@/components/checkout/CheckoutShippingMethods';
 import postalCodeShipping from '@/utils/postal-code-shipping.json';
 import postalCodeShippingProvincia from '@/utils/postal-code-shipping-provincia.json';
@@ -65,6 +66,10 @@ const fetchRegisterCustomer = async (
   return response.data?.registerCustomer as RegisterCustomerPayload;
 };
 
+const {
+    state: { _user },
+  } = useUserHook();
+
 export const transferPayment = async (
   userData: PaymentDataType,
   shipping: ShippingAddressType,
@@ -103,9 +108,9 @@ export const transferPayment = async (
         idType: UserNodeIdTypeEnum.Email,
         id: userData.email as string,
       });
-      if (checkUser.user) {
-        jwtAuthToken = checkUser.user.authToken;
-        customer = checkUser.user as Customer;  
+      if (checkUser._user) {
+        jwtAuthToken = checkUser._user.authToken;
+        customer = checkUser._user as Customer;  
       } else {
         const customerData = await fetchRegisterCustomer(userData);
         jwtAuthToken = customerData.authToken;
