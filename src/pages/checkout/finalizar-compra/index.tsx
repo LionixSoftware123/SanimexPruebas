@@ -5,10 +5,10 @@ import InputMask from 'react-input-mask';
 import { useToasts } from 'react-toast-notifications';
 import cardValidator from 'card-validator';
 import {
-  UserNodeIdTypeEnum,
+  //UserNodeIdTypeEnum,
   InternalBannerResponse,
 } from '@/utils/types/generated';
-import { fetchUser } from '@/modules/auth/auth-actions';
+//import { fetchUser } from '@/modules/auth/auth-actions';
 import Link from 'next/link';
 //import { FRONTEND_ENDPOINT } from '@/utils/constants';
 import { useUserHook } from '@/modules/auth/user-hooks';
@@ -34,7 +34,7 @@ import {
   createBanortePayment,
   FormType,
 } from '@/modules/payment/banorte/banorte-utils';
-import { OnTokenEvent, OnWooSessionTokenEvent } from '@/modules/auth/auth-events';
+import { OnWooSessionTokenEvent } from '@/modules/auth/auth-events';
 import { fetchInternalBanner } from '@/modules/banner/banner-actions';
 import postalCodeShipping from '@/utils/postal-code-shipping.json';
 import postalCodeShippingProvincia from '@/utils/postal-code-shipping-provincia.json';
