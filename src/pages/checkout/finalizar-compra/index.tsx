@@ -48,7 +48,6 @@ import { useUTMCampaignHooks } from '@/modules/utm-campaign/utm-campaign-hooks';
 import { Cart, CartItem } from '@/lib/cart/v2/cart-types';
 import { applyCouponAction, fetchCart } from '@/lib/cart/v2/cart-actions';
 import { UniversalCookies } from '@/lib/cart/v2/utils/cookies';
-
 //import { updateActiveCampaignCompleteContact } from '@/modules/active-campaign/active-campaign-actions';
 const ImageWithFallback = dynamic(() => import('@/utils/ImageWithFallback'));
 const StaticMeta = dynamic(() => import('@/components/utils/StaticMeta'));
