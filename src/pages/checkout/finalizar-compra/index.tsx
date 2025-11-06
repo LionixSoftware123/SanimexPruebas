@@ -308,7 +308,7 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
       email: user ? user.email : data.billingAddress?.email,
     };
 
-    const checkUser = await fetchUser({
+    /**const checkUser = await fetchUser({
       idType: UserNodeIdTypeEnum.Email,
       id: billingInfo.email as string,
     });
@@ -316,7 +316,7 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
     if (checkUser.user && !user) {
       let jwtAuthToken = OnTokenEvent.get()?.token;
       jwtAuthToken = checkUser.user;
-      /**setLoadingButton(false);
+      setLoadingButton(false);
       return addToast(
         <div>
           El email ya se encuentra registrado, por favor{' '}
@@ -331,8 +331,8 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
         {
           appearance: 'error',
         },
-      );**/
-    }
+      );
+    }**/
 
     return await createBanortePayment(
       data.card,
@@ -446,7 +446,7 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
       email: user ? user.email : data.billingAddress?.email,
     };
 
-    const checkUser = await fetchUser({
+    /**const checkUser = await fetchUser({
       idType: UserNodeIdTypeEnum.Email,
       id: billingInfo.email as string,
     });
@@ -454,7 +454,7 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
     if (checkUser.user && !user) {
       let jwtAuthToken = OnTokenEvent.get()?.token;
       jwtAuthToken = checkUser.user;
-      /**setLoading(false);
+      setLoading(false);
       return addToast(
         <div>
           El email ya se encuentra registrado, por favor{' '}
@@ -469,8 +469,8 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
         {
           appearance: 'error',
         },
-      );**/
-    }
+      );
+    }**/
 
     transferPayment(
       billingInfo as PaymentDataType,
