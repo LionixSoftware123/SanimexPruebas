@@ -81,7 +81,7 @@ const CartPage: React.FC<CartPageProps> = ({ internalBanner }) => {
               <>
                 {cart && cart?.items && cart?.items?.length ? (
                   <div className="grid grid-cols-12 gap-4 mt-24">
-                    <div className="col-span-full md:col-span-10 overflow-x-auto">
+                    <div className="col-span-full md:col-span-12 overflow-x-auto">
                       <div className="overflow-x-auto">
                         <div className="grid grid-cols-12 w-[850px] lg:w-full gap-4 border-[#C1C1C1] border-b pb-4">
                           <div className="col-span-4">
@@ -173,7 +173,7 @@ const CartPage: React.FC<CartPageProps> = ({ internalBanner }) => {
                       </div>
                     </div>
 
-                    <div className="col-span-full md:col-span-2">
+                    <div className="col-span-full md:col-span-12">
                       <CartDetails cart={cart} />
                       <div className="mb-6">
                         {internalBanner?.redirectUrl &&
@@ -196,7 +196,7 @@ const CartPage: React.FC<CartPageProps> = ({ internalBanner }) => {
                     </div>
 
                     {upsell && upsell.length ? (
-                      <div className="col-span-full md:col-span-10">
+                      <div className="col-span-full md:col-span-12">
                         <div className="text-[20px] font-Century-Gothic mb-4">
                           Materiales de instalación necesarios
                         </div>
