@@ -17,7 +17,7 @@ import {
   PaymentDataType,
   PaymentMethodEnum,
   PaymentValues,
-  ShippingZone,
+  //ShippingZone,
 } from '@/modules/payment/payment-types';
 import { transferPayment } from '@/modules/payment/transfer/transfer-utils';
 import { useCallAction, useStore } from '@cobuildlab/react-simple-state';
@@ -98,9 +98,9 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
   // const { emitActiveCampaignCustomer } = useActiveCampaignSocketHook();
   const { distance } = useStore(confirmGeolocationStore);
   const [orderId, setOrderId] = useState<number | undefined>(undefined);
-  const [shippingZone, setShippingZone] = useState<ShippingZone | undefined>(
-    undefined,
-  );
+  //const [shippingZone, setShippingZone] = useState<ShippingZone | undefined>(
+  //  undefined,
+  //);
   const onSubmitError: SubmitErrorHandler<Control> = () => setError(true);
   const {
     state: { user },
