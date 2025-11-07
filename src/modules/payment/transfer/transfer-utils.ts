@@ -62,40 +62,6 @@ import { ShopType } from '@/modules/shop/shop-types';
   return response.data?.registerCustomer as RegisterCustomerPayload;
 };**/
 
-const onSuccessAdminAuth = (user: User) => {
-    try {
-      setCookie('jwtAuthToken', user?.jwtAuthToken, {
-        expires: new Date(parseInt(user?.jwtAuthExpiration as string) * 1000),
-        path: '/',
-        domain: DOMAIN_SITE,
-      });
-      setCookie('jwtRefreshToken', user?.jwtRefreshToken, {
-        path: '/',
-        domain: DOMAIN_SITE,
-      });
-
-      const decodeToken = jwtDecode<{
-        data: { user: { id: string } };
-        exp?: number;
-      }>(user?.wooSessionToken as string);
-
-      setCookie('wooSessionToken', user?.wooSessionToken, {
-        expires: new Date((decodeToken.exp as number) * 1000),
-        path: '/',
-        domain: DOMAIN_SITE,
-      });
-      setCookie('refreshWooSessionToken', user?.wooSessionToken, {
-        expires: moment().add(1, 'year').toDate(),
-        path: '/',
-        domain: DOMAIN_SITE,
-      });
-
-      onSuccess && onSuccess();
-    } catch (error) {
-      console.error('Error', error);
-    }
-  };
-
 export const transferPayment = async (
   userData: PaymentDataType,
   shipping: ShippingAddressType,
@@ -129,18 +95,16 @@ export const transferPayment = async (
   const shippingAmount = calculateCost(distance);
   setStep && setStep(1);
   if (!jwtAuthToken) {
-    try {
+    //try {
       //const customerData = await fetchRegisterCustomer(userData);
       //jwtAuthToken = customerData.authToken;
       //customer = customerData?.customer as Customer;
-      useradmin = 'usergeneric2025@sanimex.com.mx';
-      onSuccessAdminAuth(useradmin.user as User);
-    } catch (error) {
-      return onError && onError('Tenemos problemas para generar el pedido');
-    }
-  } else {
-    customer = fetchUserEvent.get()?.user as Customer;
-  }
+    //} catch (error) {
+      //return onError && onError('Tenemos problemas para generar el pedido');
+    //}
+  //} else {
+    //customer = fetchUserEvent.get()?.user as Customer;
+  //}
 
   const client = createApolloClient(
     wooSessionToken as string,
