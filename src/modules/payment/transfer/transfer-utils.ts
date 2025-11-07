@@ -115,7 +115,7 @@ export const transferPayment = async (
     parseInt(shipping.postalCode || (userData.postalCode as string)),
   )
     ? shippingAmount
-    : 0;
+    : shippingAmount;
 
   const variablesCart = {
     input: {
