@@ -9,9 +9,9 @@ import {
   Customer,
   RegisterCustomerPayload,
   OrderStatusEnum,
-  UpdateOrderMutation,
-  UpdateOrderMutationVariables,
-  UpdateOrderDocument,
+  //UpdateOrderMutation,
+  //UpdateOrderMutationVariables,
+  //UpdateOrderDocument,
   User,
 } from '@/utils/types/generated';
 import { Cart } from '@/lib/cart/v2/cart-types';
@@ -215,7 +215,7 @@ export const transferPayment = async (
     variables: variablesCart,
   });
 
-  try {
+  /**try {
     await client.mutate<UpdateOrderMutation, UpdateOrderMutationVariables>({
       mutation: UpdateOrderDocument,
       variables: {
@@ -227,7 +227,7 @@ export const transferPayment = async (
     });
   } catch (e) {
     return onError && onError((e as Error).message);
-  }
+  }**/
 
   if (!user) {
     try {
