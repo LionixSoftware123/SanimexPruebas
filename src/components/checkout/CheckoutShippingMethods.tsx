@@ -6,7 +6,7 @@ import shops from '@/utils/sucursales.json';
 import dynamic from 'next/dynamic';
 import { selectedShopStoreAction } from '@/modules/shop/shop-actions';
 import { ShopType } from '@/modules/shop/shop-types';
-import Select from 'react-select';
+//import Select from 'react-select';
 
 import { confirmGeolocationStoreAction } from '@/modules/geolocation/geolocation-actions';
 import IconShop from '@/images/icoshop.svg';
@@ -197,24 +197,7 @@ const CheckoutShippingMethods: React.FC<CheckoutShippingMethodsProps> = ({
                     </div>
                     <div className="text-[14px] text-start w-[230px]">
                       <select
-                        className="select-checkout-shipping bg-[#F9F9F9]"
-                        styles={{
-                          control: (provided: any) => ({
-                            ...provided,
-                            border: '2px solid #B2B2B2',
-                            borderRadius: '5px',
-                          }),
-                          option: (provided: any) => ({
-                            ...provided,
-                            backgroundColor: 'white',
-                            borderBottom: '1px solid #ccc',
-                            color: '#B2B2B2',
-                          }),
-                          singleValue: (provided: any) => ({
-                            ...provided,
-                            color: '#B2B2B2',
-                          }),
-                        }}
+                        className="w-full h-[45px] border rounded pl-2"
                         onChange={(e) => {
                           const value = e.target.value;
                           setSelectedShop(shops[parseInt(value)]);
@@ -228,7 +211,7 @@ const CheckoutShippingMethods: React.FC<CheckoutShippingMethodsProps> = ({
                             {shop.TIENDA} - {shop.ESTADO}
                           </option>
                         ))}
-                      </select>
+                     </select>
                     </div>
                   </div>
                 </div>
