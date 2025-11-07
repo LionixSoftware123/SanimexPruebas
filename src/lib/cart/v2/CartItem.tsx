@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { CartItem, CartItemVariation } from './cart-types';
 import { formatCurrency } from './utils/formats';
 import { addCartAction, removeCartAction } from '@/lib/cart/v2/cart-actions';
+import { renderTopBannerEvent } from '@/modules/banner/banner-events';
 
 import { useCartHook } from './cart-hooks';
 import { useToasts } from 'react-toast-notifications';
@@ -69,6 +70,8 @@ const CartItemComponent: React.FC<CartItemProps> = ({ cartItem }) => {
     'https://coral-app-dm8qn.ondigitalocean.app',
     '',
   )}`;
+
+  const { topBanner } = useEvent(renderTopBannerEvent);  
 
   return (
     <div className="grid grid-cols-12 py-8 border-[#C1C1C1] border-b items-center gap-4 mb-6">
