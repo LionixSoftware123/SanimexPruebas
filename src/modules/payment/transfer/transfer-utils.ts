@@ -8,7 +8,7 @@ import {
   CreateOrderMutationVariables,
   Customer,
   RegisterCustomerPayload,
-  OrderStatusEnum,
+  //OrderStatusEnum,
   //UpdateOrderMutation,
   //UpdateOrderMutationVariables,
   //UpdateOrderDocument,
