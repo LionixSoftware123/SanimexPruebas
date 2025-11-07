@@ -162,7 +162,7 @@ const CheckoutShippingMethods: React.FC<CheckoutShippingMethodsProps> = ({
                       setSelectedShippingOption(ShippingEnum.InShop);
                       onSelected(ShippingEnum.InShop, selectedShippingZone);
                       confirmGeolocationStoreAction(undefined, undefined);
-                      selectedShopStoreAction(shops[0]);
+                      selectedShopStoreAction(shops[2]);
                       e.preventDefault();
                     }}
                     className="rounded-full  border border-[#919191] w-[14px] h-[14px] mx-2 flex ml-8 mb-5 self-center absolute "
@@ -185,7 +185,7 @@ const CheckoutShippingMethods: React.FC<CheckoutShippingMethodsProps> = ({
                       setSelectedShippingOption(ShippingEnum.InShop);
                       onSelected(ShippingEnum.InShop, selectedShippingZone);
                       confirmGeolocationStoreAction(undefined, undefined);
-                      selectedShopStoreAction(shops[0]);
+                      selectedShopStoreAction(shops[2]);
                       e.preventDefault();
                     }}
                   >
