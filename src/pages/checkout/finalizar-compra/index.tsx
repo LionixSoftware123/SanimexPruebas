@@ -98,9 +98,9 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
   // const { emitActiveCampaignCustomer } = useActiveCampaignSocketHook();
   const { distance } = useStore(confirmGeolocationStore);
   const [orderId, setOrderId] = useState<number | undefined>(undefined);
-  //const [shippingZone, setShippingZone] = useState<ShippingZone | undefined>(
-  //  undefined,
-  //);
+  const [shippingZone, setShippingZone] = useState<ShippingZone | undefined>(
+    undefined,
+  );
   const onSubmitError: SubmitErrorHandler<Control> = () => setError(true);
   const {
     state: { user },
