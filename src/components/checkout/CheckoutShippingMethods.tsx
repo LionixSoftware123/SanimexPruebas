@@ -73,8 +73,6 @@ const CheckoutShippingMethods: React.FC<CheckoutShippingMethodsProps> = ({
   const handleShippingZone = async () => {
     const response = await axios.get('/api/woo-shipping-zones');
 
-    console.log( response.data );
-
     setShippingZone(response.data);
   };
 
