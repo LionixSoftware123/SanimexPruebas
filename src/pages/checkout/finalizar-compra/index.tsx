@@ -17,7 +17,7 @@ import {
   PaymentDataType,
   PaymentMethodEnum,
   PaymentValues,
-  //ShippingZone,
+  ShippingZone,
 } from '@/modules/payment/payment-types';
 import { transferPayment } from '@/modules/payment/transfer/transfer-utils';
 import { useCallAction, useStore } from '@cobuildlab/react-simple-state';
@@ -342,7 +342,7 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
       shop as ShopType,
       {
         shippingOption,
-        //shippingZone,
+        shippingZone,
       },
       cart as Cart,
       (data) => {
@@ -480,7 +480,7 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
 
       {
         shippingOption,
-        //shippingZone,
+        shippingZone,
       },
       cart as Cart,
       (data: OrderData) => {
