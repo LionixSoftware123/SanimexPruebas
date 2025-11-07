@@ -196,7 +196,7 @@ const CheckoutShippingMethods: React.FC<CheckoutShippingMethodsProps> = ({
                       </span>
                     </div>
                     <div className="text-[14px] text-start w-[230px]">
-                      <Select
+                      <select
                         className="select-checkout-shipping bg-[#F9F9F9]"
                         styles={{
                           control: (provided: any) => ({
