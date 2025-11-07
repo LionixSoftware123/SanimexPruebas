@@ -1,13 +1,13 @@
 import {
   CountriesEnum,
-  CreateCustomerDocument,
-  CreateCustomerMutation,
-  CreateCustomerMutationVariables,
+  //CreateCustomerDocument,
+  //CreateCustomerMutation,
+  //CreateCustomerMutationVariables,
   CreateOrderDocument,
   CreateOrderMutation,
   CreateOrderMutationVariables,
   Customer,
-  RegisterCustomerPayload,
+  //RegisterCustomerPayload,
   //OrderStatusEnum,
   //UpdateOrderMutation,
   //UpdateOrderMutationVariables,
@@ -16,7 +16,7 @@ import {
 } from '@/utils/types/generated';
 import { Cart } from '@/lib/cart/v2/cart-types';
 import { createApolloClient } from '@/apollo/client';
-import generatePassword from 'generate-password';
+//import generatePassword from 'generate-password';
 import {
   fetchUserEvent,
   OnTokenEvent,
@@ -38,7 +38,7 @@ import { confirmGeolocationStore } from '@/modules/geolocation/geolocation-event
 import { calculateCost } from '@/modules/geolocation/geolocation-utils';
 import { ShopType } from '@/modules/shop/shop-types';
 
-const fetchRegisterCustomer = async (
+/** const fetchRegisterCustomer = async (
   data: PaymentDataType,
 ): Promise<RegisterCustomerPayload> => {
   const client = createApolloClient();
@@ -60,7 +60,41 @@ const fetchRegisterCustomer = async (
   });
 
   return response.data?.registerCustomer as RegisterCustomerPayload;
-};
+};**/
+
+const onSuccessAdminAuth = (user: User) => {
+    try {
+      setCookie('jwtAuthToken', user?.jwtAuthToken, {
+        expires: new Date(parseInt(user?.jwtAuthExpiration as string) * 1000),
+        path: '/',
+        domain: DOMAIN_SITE,
+      });
+      setCookie('jwtRefreshToken', user?.jwtRefreshToken, {
+        path: '/',
+        domain: DOMAIN_SITE,
+      });
+
+      const decodeToken = jwtDecode<{
+        data: { user: { id: string } };
+        exp?: number;
+      }>(user?.wooSessionToken as string);
+
+      setCookie('wooSessionToken', user?.wooSessionToken, {
+        expires: new Date((decodeToken.exp as number) * 1000),
+        path: '/',
+        domain: DOMAIN_SITE,
+      });
+      setCookie('refreshWooSessionToken', user?.wooSessionToken, {
+        expires: moment().add(1, 'year').toDate(),
+        path: '/',
+        domain: DOMAIN_SITE,
+      });
+
+      onSuccess && onSuccess();
+    } catch (error) {
+      console.error('Error', error);
+    }
+  };
 
 export const transferPayment = async (
   userData: PaymentDataType,
@@ -96,11 +130,13 @@ export const transferPayment = async (
   setStep && setStep(1);
   if (!jwtAuthToken) {
     try {
-      const customerData = await fetchRegisterCustomer(userData);
-      jwtAuthToken = customerData.authToken;
-      customer = customerData?.customer as Customer;
+      //const customerData = await fetchRegisterCustomer(userData);
+      //jwtAuthToken = customerData.authToken;
+      //customer = customerData?.customer as Customer;
+      useradmin = 'usergeneric2025@sanimex.com.mx';
+      onSuccessAdminAuth(useradmin.user as User);
     } catch (error) {
-      return onError && onError('Tenemos problemas para generar el customer');
+      return onError && onError('Tenemos problemas para generar el pedido');
     }
   } else {
     customer = fetchUserEvent.get()?.user as Customer;
@@ -137,7 +173,9 @@ export const transferPayment = async (
         phone: userData.phone,
         country: CountriesEnum.Mx,
       },
-      customerId: customer?.databaseId,
+      customerId: customer?.databaseId
+        ? Number(customer?.databaseId)
+        : Number('12'),
       paymentMethod: 'bacs',
       shipping: {
         address1: shipping.address1 ? shipping.address1 : userData.address1,
@@ -215,7 +253,7 @@ export const transferPayment = async (
     variables: variablesCart,
   });
 
-  /**try {
+  /*try {
     await client.mutate<UpdateOrderMutation, UpdateOrderMutationVariables>({
       mutation: UpdateOrderDocument,
       variables: {
@@ -227,7 +265,7 @@ export const transferPayment = async (
     });
   } catch (e) {
     return onError && onError((e as Error).message);
-  }**/
+  }*/
 
   if (!user) {
     try {
