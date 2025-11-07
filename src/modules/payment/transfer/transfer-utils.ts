@@ -24,6 +24,7 @@ import {
 } from '@/modules/auth/auth-events';
 import { ShippingEnum } from '@/components/checkout/CheckoutShippingMethods';
 import postalCodeShipping from '@/utils/postal-code-shipping.json';
+import postalCodeShippingProvincia from '@/utils/postal-code-shipping-provincia.json';
 import {
   PaymentDataType,
   ShippingAddressType,
@@ -158,12 +159,20 @@ export const transferPayment = async (
               : 'local_pickup',
           methodTitle:
             shippingInfo.shippingOption === ShippingEnum.ByShipping
-              ? postalCodeShipping.includes(
-                  parseInt(
-                    shipping.postalCode
-                      ? shipping.postalCode
-                      : (userData.postalCode as string),
-                  ),
+              ? (
+                  postalCodeShipping.includes(
+                    parseInt(
+                      shipping.postalCode
+                        ? shipping.postalCode
+                        : (userData.postalCode as string),
+                    ),
+                  ) || postalCodeShippingProvincia.includes(
+                    parseInt(
+                      shipping.postalCode
+                        ? shipping.postalCode
+                        : (userData.postalCode as string),
+                    ),
+                  )
                 )
                 ? 'Envió a Domicilio'
                 : 'Su Código Postal está fuera de nuestra área servicio; sin embargo, al terminar su compra nuestro equipo de venta le llamará para definir su costo de envío según la distancia.'
@@ -228,13 +237,21 @@ export const transferPayment = async (
         shippingTotal,
         shippingMethod:
           shippingInfo.shippingOption === ShippingEnum.ByShipping
-            ? postalCodeShipping.includes(
-                parseInt(
-                  shipping.postalCode
-                    ? shipping.postalCode
-                    : (userData.postalCode as string),
-                ),
-              )
+            ? (
+                  postalCodeShipping.includes(
+                    parseInt(
+                      shipping.postalCode
+                        ? shipping.postalCode
+                        : (userData.postalCode as string),
+                    ),
+                  ) || postalCodeShippingProvincia.includes(
+                    parseInt(
+                      shipping.postalCode
+                        ? shipping.postalCode
+                        : (userData.postalCode as string),
+                    ),
+                  )
+                )
               ? 'Envió a Domicilio'
               : 'Su Código Postal está fuera de nuestra área servicio; sin embargo, al terminar su compra nuestro equipo de venta le llamará para definir su costo de envío según la distancia.'
             : (shippingInfo.shippingZone?.address as string),
@@ -251,13 +268,21 @@ export const transferPayment = async (
         shippingTotal,
         shippingMethod:
           shippingInfo.shippingOption === ShippingEnum.ByShipping
-            ? postalCodeShipping.includes(
-                parseInt(
-                  shipping.postalCode
-                    ? shipping.postalCode
-                    : (userData.postalCode as string),
-                ),
-              )
+            ? (
+                  postalCodeShipping.includes(
+                    parseInt(
+                      shipping.postalCode
+                        ? shipping.postalCode
+                        : (userData.postalCode as string),
+                    ),
+                  ) || postalCodeShippingProvincia.includes(
+                    parseInt(
+                      shipping.postalCode
+                        ? shipping.postalCode
+                        : (userData.postalCode as string),
+                    ),
+                  )
+                )
               ? 'Envió a Domicilio'
               : 'Su Código Postal está fuera de nuestra área servicio; sin embargo, al terminar su compra nuestro equipo de venta le llamará para definir su costo de envío según la distancia.'
             : (shippingInfo.shippingZone?.address as string),
