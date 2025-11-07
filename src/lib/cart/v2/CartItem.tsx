@@ -119,11 +119,11 @@ const CartItemComponent: React.FC<CartItemProps> = ({ cartItem }) => {
               {cartItem?.prices?.price !== cartItem?.prices?.regular_price ? (
                 <>
                  <div className="col-span-2 text-[#111111] font-Century-Gothic">
-                    <div className="col-span-2 bg-[#1C355E] line-through text-white rounded text-[12px] min-w-[50px] h-[20px] px-[5px] mb-1">
-                      antes {formatCurrency(cartItem?.prices?.regular_price)} MXN
+                    <div className="col-span-2 bg-[#E9E9E9] line-through text-black rounded text-[12px] min-w-[50px] h-[20px] px-[5px] mb-1">
+                      Antes {formatCurrency(cartItem?.prices?.regular_price)} MXN
                     </div>
-                    <div className="col-span-2 bg-[#1C355E] text-white rounded-[2px] text-[12px] rounded min-w-[50px] h-[20px] px-[5px]">
-                      con descuento {formatCurrency(cartItem?.prices?.price)} MXN
+                    <div className="col-span-2 bg-[#F17523] text-white rounded text-[12px] rounded min-w-[50px] h-[20px] px-[5px]">
+                      Con descuento {formatCurrency(cartItem?.prices?.price)} MXN
                     </div>
                  </div>
                 </>
