@@ -6,7 +6,7 @@ import shops from '@/utils/sucursales.json';
 import dynamic from 'next/dynamic';
 import { selectedShopStoreAction } from '@/modules/shop/shop-actions';
 import { ShopType } from '@/modules/shop/shop-types';
-//import Select from 'react-select';
+import Select from 'react-select';
 
 import { confirmGeolocationStoreAction } from '@/modules/geolocation/geolocation-actions';
 import IconShop from '@/images/icoshop.svg';
@@ -65,10 +65,10 @@ const CheckoutShippingMethods: React.FC<CheckoutShippingMethodsProps> = ({
     | undefined
   >(undefined);
 
-  /**const options = shops.map((shop, i) => ({
+  const options = shops.map((shop, i) => ({
     value: i,
     label: `${shop.TIENDA}, ${shop.COLONIA}, ${shop.ESTADO}`,
-  }));**/
+  }));
 
   const handleShippingZone = async () => {
     const response = await axios.get('/api/woo-shipping-zones');
@@ -97,10 +97,10 @@ const CheckoutShippingMethods: React.FC<CheckoutShippingMethodsProps> = ({
     shippingZone,
   ]);
 
-  /**const selectOptions = [
+  const selectOptions = [
     { value: '', label: 'Seleccionar una tienda' },
     ...options,
-  ];**/
+  ];
 
   return (
     <div>
@@ -162,7 +162,7 @@ const CheckoutShippingMethods: React.FC<CheckoutShippingMethodsProps> = ({
                       setSelectedShippingOption(ShippingEnum.InShop);
                       onSelected(ShippingEnum.InShop, selectedShippingZone);
                       confirmGeolocationStoreAction(undefined, undefined);
-                      selectedShopStoreAction(shops[0]);
+                      //selectedShopStoreAction(shops[0]);
                       e.preventDefault();
                     }}
                     className="rounded-full  border border-[#919191] w-[14px] h-[14px] mx-2 flex ml-8 mb-5 self-center absolute "
@@ -185,7 +185,7 @@ const CheckoutShippingMethods: React.FC<CheckoutShippingMethodsProps> = ({
                       setSelectedShippingOption(ShippingEnum.InShop);
                       onSelected(ShippingEnum.InShop, selectedShippingZone);
                       confirmGeolocationStoreAction(undefined, undefined);
-                      selectedShopStoreAction(shops[0]);
+                      //selectedShopStoreAction(shops[0]);
                       e.preventDefault();
                     }}
                   >
@@ -196,22 +196,38 @@ const CheckoutShippingMethods: React.FC<CheckoutShippingMethodsProps> = ({
                       </span>
                     </div>
                     <div className="text-[14px] text-start w-[230px]">
-                      <select
-                        className="w-full h-[45px] border rounded pl-2"
-                        onChange={(e) => {
-                          const value = e.target.value;
-                          setSelectedShop(shops[parseInt(value)]);
-                          selectedShopStoreAction(shops[parseInt(value)]);
+                      <Select
+                        className="select-checkout-shipping bg-[#F9F9F9]"
+                        styles={{
+                          control: (provided: any) => ({
+                            ...provided,
+                            border: '2px solid #B2B2B2',
+                            borderRadius: '5px',
+                          }),
+                          option: (provided: any) => ({
+                            ...provided,
+                            backgroundColor: 'white',
+                            borderBottom: '1px solid #ccc',
+                            color: '#B2B2B2',
+                          }),
+                          singleValue: (provided: any) => ({
+                            ...provided,
+                            color: '#B2B2B2',
+                          }),
                         }}
-                        disabled={selectedShippingOption !== ShippingEnum.InShop}
-                      >
-                        <option value="">Seleccionar una tienda</option>
-                        {shops.map((shop, i) => (
-                          <option value={i} key={i}>
-                            {shop.TIENDA} - {shop.ESTADO}
-                          </option>
-                        ))}
-                     </select>
+                        onChange={(selectedOption) => {
+                          const value = selectedOption?.value;
+                          if (value !== undefined) {
+                            setSelectedShop((shops as any)?.[value]);
+                            selectedShopStoreAction((shops as any)?.[value]);
+                          }
+                        }}
+                        options={selectOptions}
+                        defaultValue={selectOptions[0]}
+                        isDisabled={
+                          selectedShippingOption !== ShippingEnum.InShop
+                        }
+                      />
                     </div>
                   </div>
                 </div>
