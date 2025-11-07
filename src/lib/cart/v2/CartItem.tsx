@@ -7,7 +7,6 @@ import Link from 'next/link';
 import { CartItem, CartItemVariation } from './cart-types';
 import { formatCurrency } from './utils/formats';
 import { addCartAction, removeCartAction } from '@/lib/cart/v2/cart-actions';
-import { renderTopBannerEvent } from 'src/modules/banner/banner-events.ts';
 
 import { useCartHook } from './cart-hooks';
 import { useToasts } from 'react-toast-notifications';
@@ -71,8 +70,6 @@ const CartItemComponent: React.FC<CartItemProps> = ({ cartItem }) => {
     '',
   )}`;
 
-  const { topBanner } = useEvent(renderTopBannerEvent);  
-
   return (
     <div className="grid grid-cols-12 py-8 border-[#C1C1C1] border-b items-center gap-4 mb-6">
       
@@ -122,10 +119,10 @@ const CartItemComponent: React.FC<CartItemProps> = ({ cartItem }) => {
               {cartItem?.prices?.price !== cartItem?.prices?.regular_price ? (
                 <>
                  <div className="col-span-2 text-[#111111] font-Century-Gothic">
-                    <div className="col-span-2 text-white text-[12px] rounded min-w-[50px] h-[20px] px-[5px]" style={{ backgroundColor: topBanner.color as string }}>
+                    <div className="col-span-2 text-white text-[12px] rounded min-w-[50px] h-[20px] px-[5px]">
                       antes {formatCurrency(cartItem?.prices?.regular_price)} MXN
                     </div>
-                    <div className="col-span-2 text-white text-[12px] rounded min-w-[50px] h-[20px] px-[5px]" style={{ backgroundColor: topBanner.color as string }}>
+                    <div className="col-span-2 text-white text-[12px] rounded min-w-[50px] h-[20px] px-[5px]">
                       con descuento {formatCurrency(cartItem?.prices?.price)} MXN
                     </div>
                  </div>
