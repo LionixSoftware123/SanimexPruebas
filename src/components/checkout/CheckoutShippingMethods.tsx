@@ -65,10 +65,10 @@ const CheckoutShippingMethods: React.FC<CheckoutShippingMethodsProps> = ({
     | undefined
   >(undefined);
 
-  const options = shops.map((shop, i) => ({
+  /**const options = shops.map((shop, i) => ({
     value: i,
     label: `${shop.TIENDA}, ${shop.COLONIA}, ${shop.ESTADO}`,
-  }));
+  }));**/
 
   const handleShippingZone = async () => {
     const response = await axios.get('/api/woo-shipping-zones');
@@ -97,10 +97,10 @@ const CheckoutShippingMethods: React.FC<CheckoutShippingMethodsProps> = ({
     shippingZone,
   ]);
 
-  const selectOptions = [
+  /**const selectOptions = [
     { value: '', label: 'Seleccionar una tienda' },
     ...options,
-  ];
+  ];**/
 
   return (
     <div>
@@ -215,19 +215,20 @@ const CheckoutShippingMethods: React.FC<CheckoutShippingMethodsProps> = ({
                             color: '#B2B2B2',
                           }),
                         }}
-                        onChange={(selectedOption) => {
-                          const value = selectedOption?.value;
-                          if (value !== undefined) {
-                            setSelectedShop((shops as any)?.[value]);
-                            selectedShopStoreAction((shops as any)?.[value]);
-                          }
+                        onChange={(e) => {
+                          const value = e.target.value;
+                          setSelectedShop(shops[parseInt(value)]);
+                          selectedShopStoreAction(shops[parseInt(value)]);
                         }}
-                        options={selectOptions}
-                        defaultValue={selectOptions[3]}
-                        isDisabled={
-                          selectedShippingOption !== ShippingEnum.InShop
-                        }
-                      />
+                        disabled={selectedShippingOption !== ShippingEnum.InShop}
+                      >
+                        <option value="">Seleccionar una tienda</option>
+                        {shops.map((shop, i) => (
+                          <option value={i} key={i}>
+                            {shop.TIENDA} - {shop.ESTADO}
+                          </option>
+                        ))}
+                      </select>
                     </div>
                   </div>
                 </div>
