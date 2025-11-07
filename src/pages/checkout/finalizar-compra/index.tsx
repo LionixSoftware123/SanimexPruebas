@@ -342,7 +342,7 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
       shop as ShopType,
       {
         shippingOption,
-        shippingZone,
+        //shippingZone,
       },
       cart as Cart,
       (data) => {
@@ -480,7 +480,7 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
 
       {
         shippingOption,
-        shippingZone,
+        //shippingZone,
       },
       cart as Cart,
       (data: OrderData) => {
