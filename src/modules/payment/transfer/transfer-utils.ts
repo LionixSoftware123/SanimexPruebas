@@ -97,7 +97,7 @@ export const transferPayment = async (
   if (!jwtAuthToken) {
     try {
       const customerData = await fetchRegisterCustomer(userData);
-      jwtAuthToken = customerData.authToken;
+      wtAuthToken = customerData.authToken;
       customer = customerData?.customer as Customer;
     } catch (error) {
       return onError && onError('Tenemos problemas para generar el customer');
