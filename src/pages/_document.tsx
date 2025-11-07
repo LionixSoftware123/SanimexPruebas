@@ -6,7 +6,7 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        <Script
+        {/**Script
           id="securepubads"
           strategy="beforeInteractive"
           async
@@ -17,19 +17,19 @@ export default function Document() {
             'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
             })(window,document,'script','dataLayer','GTM-NTLX9QV');`,
           }}
-        ></Script>
+        ></Script>**/}
       </Head>
       <body>
-        <noscript
+        {/**<noscript
           dangerouslySetInnerHTML={{
             __html: `
       <iframe src='https://www.googletagmanager.com/ns.html?id=GTM-NTLX9QV'
       height='0' width='0' style='display:none;visibility:hidden'></iframe>`,
           }}
-        ></noscript>
+        ></noscript>**/}
         <Main />
         <NextScript />
-        <Script
+        {/**<Script
           async
           strategy="beforeInteractive"
           src="https://www.googletagmanager.com/gtag/js?id=G-BZSVMDZGGK"
@@ -41,8 +41,8 @@ export default function Document() {
           dangerouslySetInnerHTML={{
             __html: `window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date()); gtag('config', 'G-BZSVMDZGGK');`,
           }}
-        ></Script>
-        <Script
+        ></Script>**/}
+        {/**<Script
           id="googleGoogleTagId"
           async
           strategy="beforeInteractive"
@@ -53,7 +53,7 @@ export default function Document() {
 
     vgo('process');`,
           }}
-        ></Script>
+        ></Script>**/}
       </body>
     </Html>
   );
