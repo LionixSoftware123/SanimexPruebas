@@ -1,13 +1,13 @@
 import {
   CountriesEnum,
-  //CreateCustomerDocument,
-  //CreateCustomerMutation,
-  //CreateCustomerMutationVariables,
+  CreateCustomerDocument,
+  CreateCustomerMutation,
+  CreateCustomerMutationVariables,
   CreateOrderDocument,
   CreateOrderMutation,
   CreateOrderMutationVariables,
   Customer,
-  //RegisterCustomerPayload,
+  RegisterCustomerPayload,
   //OrderStatusEnum,
   //UpdateOrderMutation,
   //UpdateOrderMutationVariables,
@@ -16,7 +16,7 @@ import {
 } from '@/utils/types/generated';
 import { Cart } from '@/lib/cart/v2/cart-types';
 import { createApolloClient } from '@/apollo/client';
-//import generatePassword from 'generate-password';
+import generatePassword from 'generate-password';
 import {
   fetchUserEvent,
   OnTokenEvent,
@@ -38,7 +38,7 @@ import { confirmGeolocationStore } from '@/modules/geolocation/geolocation-event
 import { calculateCost } from '@/modules/geolocation/geolocation-utils';
 import { ShopType } from '@/modules/shop/shop-types';
 
-/** const fetchRegisterCustomer = async (
+const fetchRegisterCustomer = async (
   data: PaymentDataType,
 ): Promise<RegisterCustomerPayload> => {
   const client = createApolloClient();
@@ -60,7 +60,7 @@ import { ShopType } from '@/modules/shop/shop-types';
   });
 
   return response.data?.registerCustomer as RegisterCustomerPayload;
-};**/
+};
 
 export const transferPayment = async (
   userData: PaymentDataType,
@@ -95,16 +95,16 @@ export const transferPayment = async (
   const shippingAmount = calculateCost(distance);
   setStep && setStep(1);
   if (!jwtAuthToken) {
-    //try {
-      //const customerData = await fetchRegisterCustomer(userData);
-      //jwtAuthToken = customerData.authToken;
-      //customer = customerData?.customer as Customer;
-    //} catch (error) {
-      //return onError && onError('Tenemos problemas para generar el pedido');
-    //}
-  //} else {
-    //customer = fetchUserEvent.get()?.user as Customer;
-  //}
+    try {
+      const customerData = await fetchRegisterCustomer(userData);
+      jwtAuthToken = customerData.authToken;
+      customer = customerData?.customer as Customer;
+    } catch (error) {
+      return onError && onError('Tenemos problemas para generar el pedido');
+    }
+  } else {
+    customer = fetchUserEvent.get()?.user as Customer;
+  }
 
   const client = createApolloClient(
     wooSessionToken as string,
@@ -137,9 +137,7 @@ export const transferPayment = async (
         phone: userData.phone,
         country: CountriesEnum.Mx,
       },
-      customerId: customer?.databaseId
-        ? Number(customer?.databaseId)
-        : Number('12'),
+      customerId: customer?.databaseId,
       paymentMethod: 'bacs',
       shipping: {
         address1: shipping.address1 ? shipping.address1 : userData.address1,
