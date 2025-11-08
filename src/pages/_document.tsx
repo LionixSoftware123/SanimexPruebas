@@ -1,12 +1,13 @@
-import { Html, Head, Main, NextScript } from 'next/document';
-import Script from 'next/script';
+//import { Html, Head, Main, NextScript } from 'next/document';
+import { Html, Head, Main } from 'next/document';
+//import Script from 'next/script';
 import React from 'react';
 
 export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        <Script
+        {/**<Script
           id="securepubads"
           strategy="beforeInteractive"
           async
@@ -17,18 +18,18 @@ export default function Document() {
             'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
             })(window,document,'script','dataLayer','GTM-NTLX9QV');`,
           }}
-        ></Script>
+        ></Script>**/}
       </Head>
       <body>
-        <noscript
+        {/**<noscript
           dangerouslySetInnerHTML={{
             __html: `
       <iframe src='https://www.googletagmanager.com/ns.html?id=GTM-NTLX9QV'
       height='0' width='0' style='display:none;visibility:hidden'></iframe>`,
           }}
-        ></noscript>
+        ></noscript>**/}
         <Main />
-        <NextScript />
+        {/**<NextScript />
         <Script
           async
           strategy="beforeInteractive"
@@ -53,7 +54,7 @@ export default function Document() {
 
     vgo('process');`,
           }}
-        ></Script>
+        ></Script>**/}
       </body>
     </Html>
   );
