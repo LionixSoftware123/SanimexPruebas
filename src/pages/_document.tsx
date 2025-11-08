@@ -5,14 +5,14 @@ import { Html, Head, Main, NextScript } from 'next/document';
 export default function Document() {
   return (
     <Html lang="en">
-       <Head>
-          {/* Este es el tipo de script a reubicar/reemplazar */}
-          {/* <script src="https://example.com/external-script.js"></script> */}
-       </Head>
-       <body>
-         <Main />
-         <NextScript />
-       </body>
-    </Html
+      <Head>
+        {/* Este es el tipo de script a reubicar/reemplazar */}
+        {/* <script src="https://example.com/external-script.js"></script> */}
+      </Head>
+      <body>
+        <Main />
+        <NextScript />
+      </body>
+    </Html>
   );
 }
