@@ -24,7 +24,7 @@ export default async function handler(
     '!src/pages/500.tsx',
     '!src/pages/500.tsx',
     '!src/pages/_app.tsx',
-    //'!src/pages/_document.tsx',
+    '!src/pages/_document.tsx',
   ]);
 
   const pageObj = pages
