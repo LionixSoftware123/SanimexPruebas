@@ -6,7 +6,7 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        Script
+        <Script
           id="securepubads"
           strategy="beforeInteractive"
           async
