@@ -20,7 +20,7 @@ export default function Document() {
         ></Script>
       </Head>
       <body>
-        noscript
+        <noscript
           dangerouslySetInnerHTML={{
             __html: `
       <iframe src='https://www.googletagmanager.com/ns.html?id=GTM-NTLX9QV'
