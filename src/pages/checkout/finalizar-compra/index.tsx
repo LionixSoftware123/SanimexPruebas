@@ -5,10 +5,10 @@ import InputMask from 'react-input-mask';
 import { useToasts } from 'react-toast-notifications';
 import cardValidator from 'card-validator';
 import {
-  //UserNodeIdTypeEnum,
+  UserNodeIdTypeEnum,
   InternalBannerResponse,
 } from '@/utils/types/generated';
-//import { fetchUser } from '@/modules/auth/auth-actions';
+import { fetchUser } from '@/modules/auth/auth-actions';
 import Link from 'next/link';
 //import { FRONTEND_ENDPOINT } from '@/utils/constants';
 import { useUserHook } from '@/modules/auth/user-hooks';
@@ -281,7 +281,7 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
   // }, [cart]);
 
   //console.log({ cart });
-  console.log({ shop });
+  //console.log({ shop });
 
   const handleOrderCompletion = (orderId: number | undefined) => {
     setOrderId(orderId);
@@ -307,7 +307,7 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
       email: user ? user.email : data.billingAddress?.email,
     };
 
-    /**const checkUser = await fetchUser({
+    const checkUser = await fetchUser({
       idType: UserNodeIdTypeEnum.Email,
       id: billingInfo.email as string,
     });
@@ -315,7 +315,7 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
     if (checkUser.user && !user) {
       let jwtAuthToken = OnTokenEvent.get()?.token;
       jwtAuthToken = checkUser.user;
-      setLoadingButton(false);
+      /**setLoadingButton(false);
       return addToast(
         <div>
           El email ya se encuentra registrado, por favor{' '}
@@ -330,8 +330,8 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
         {
           appearance: 'error',
         },
-      );
-    }**/
+      );**/
+    }
 
     return await createBanortePayment(
       data.card,
@@ -445,7 +445,7 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
       email: user ? user.email : data.billingAddress?.email,
     };
 
-    /**const checkUser = await fetchUser({
+    const checkUser = await fetchUser({
       idType: UserNodeIdTypeEnum.Email,
       id: billingInfo.email as string,
     });
@@ -453,7 +453,7 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
     if (checkUser.user && !user) {
       let jwtAuthToken = OnTokenEvent.get()?.token;
       jwtAuthToken = checkUser.user;
-      setLoading(false);
+      /**setLoading(false);
       return addToast(
         <div>
           El email ya se encuentra registrado, por favor{' '}
@@ -468,8 +468,8 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
         {
           appearance: 'error',
         },
-      );
-    }**/
+      );**/
+    }
 
     transferPayment(
       billingInfo as PaymentDataType,
