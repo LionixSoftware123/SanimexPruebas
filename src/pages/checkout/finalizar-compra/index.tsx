@@ -34,7 +34,7 @@ import {
   createBanortePayment,
   FormType,
 } from '@/modules/payment/banorte/banorte-utils';
-import { OnWooSessionTokenEvent } from '@/modules/auth/auth-events';
+import { OnTokenEvent, OnWooSessionTokenEvent } from '@/modules/auth/auth-events';
 import { fetchInternalBanner } from '@/modules/banner/banner-actions';
 import postalCodeShipping from '@/utils/postal-code-shipping.json';
 import postalCodeShippingProvincia from '@/utils/postal-code-shipping-provincia.json';
