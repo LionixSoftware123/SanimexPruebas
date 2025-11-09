@@ -34,7 +34,7 @@ import {
   createBanortePayment,
   FormType,
 } from '@/modules/payment/banorte/banorte-utils';
-import { OnTokenEvent, OnWooSessionTokenEvent } from '@/modules/auth/auth-events';
+import { OnWooSessionTokenEvent } from '@/modules/auth/auth-events';
 import { fetchInternalBanner } from '@/modules/banner/banner-actions';
 import postalCodeShipping from '@/utils/postal-code-shipping.json';
 import postalCodeShippingProvincia from '@/utils/postal-code-shipping-provincia.json';
@@ -313,24 +313,7 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
     });
 
     if (checkUser.user && !user) {
-      let jwtAuthToken = OnTokenEvent.get()?.token;
-      jwtAuthToken = checkUser.user;
-      /**setLoadingButton(false);
-      return addToast(
-        <div>
-          El email ya se encuentra registrado, por favor{' '}
-          <Link
-            className="underline font-bold"
-            href={`/auth?redirect=${FRONTEND_ENDPOINT}/checkout/finalizar-compra`}
-          >
-            ingrese con su cuenta
-          </Link>{' '}
-          para mantener la información de sus compras
-        </div>,
-        {
-          appearance: 'error',
-        },
-      );**/
+      console.log( checkUser );
     }
 
     return await createBanortePayment(
@@ -451,25 +434,9 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
     });
 
     if (checkUser.user && !user) {
-      let jwtAuthToken = OnTokenEvent.get()?.token;
-      jwtAuthToken = checkUser.user;
-      /**setLoading(false);
-      return addToast(
-        <div>
-          El email ya se encuentra registrado, por favor{' '}
-          <Link
-            className="underline font-bold"
-            href={`/auth?redirect=${FRONTEND_ENDPOINT}/checkout/finalizar-compra`}
-          >
-            ingrese con su cuenta
-          </Link>{' '}
-          para mantener la información de sus compras
-        </div>,
-        {
-          appearance: 'error',
-        },
-      );**/
+      console.log( checkUser );
     }
+
 
     transferPayment(
       billingInfo as PaymentDataType,
