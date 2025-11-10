@@ -45,6 +45,12 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
 
   const { processUTMURLs } = useUTMCampaignHooks();
 
+  const postalCodeBilling = order?.billing?.postcode as string;
+
+  const postalCodeShipping = order?.shipping?.postcode as string;
+
+  const postalCode = postalCodeBilling !== postalCodeShipping ? postalCodeShipping : postalCodeBilling; 
+
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const shipping = currencyFormatter.unformat(
@@ -61,12 +67,6 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
       const total = currencyFormatter.unformat(order?.total as string, {
         code: 'USD',
       });
-
-      const postalCodeBilling = order?.billing?.postcode as string;
-
-      const postalCodeShipping = order?.shipping?.postcode as string;
-
-      const postalCode = postalCodeBilling !== postalCodeShipping ? postalCodeShipping : postalCodeBilling;
 
       window.gtag('event', 'purchase', {
         currency: 'MXN',
@@ -125,8 +125,6 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
       });
     }
   }, [order]);
-
-  console.log ( order );
 
   useEffect(() => {
     const products = order?.lineItems?.nodes.map(
