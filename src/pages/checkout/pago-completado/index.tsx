@@ -330,6 +330,7 @@ export const getServerSideProps = async ({
         totalTax
         billing {
             email
+            postcode
         }
         status
         transactionId
