@@ -227,11 +227,7 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
                         Número de cuenta:
                       </p>
                       <p className="font-Century-Gothic text-[12px] text-center">
-                      {postalCodeShipping.includes(postalCode) (
-                        '0633981015'
-                      ) : (
-                        '0196 9524 17'
-                      )}
+                        {postalCode}
                       </p>
                     </div>
                     <div className="p-2 m">
@@ -239,11 +235,7 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
                         A nombre de:
                       </p>
                       <p className="font-Century-Gothic text-[12px] text-center">
-                      {postalCodeShipping.includes(postalCode) (
-                        '0633981015'
-                      ) : (
-                        '0196 9524 17'
-                      )}
+                      {postalCode}
                       </p>
                     </div>
                   </div>
@@ -261,11 +253,7 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
                         Número de cuenta:
                       </p>
                       <p className="font-Century-Gothic text-[12px] text-center">
-                      {postalCodeShipping.includes(postalCode) (
-                        '0633981015'
-                      ) : (
-                        '0196 9524 17'
-                      )}
+                      {postalCode}
                       </p>
                     </div>
                     <div className="p-2 m">
@@ -273,11 +261,7 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
                         A nombre de:
                       </p>
                       <p className="font-Century-Gothic text-[12px] text-center">
-                      {postalCodeShipping.includes(postalCode) (
-                        '0633981015'
-                      ) : (
-                        '0196 9524 17'
-                      )}
+                      {postalCode}
                       </p>
                     </div>
                   </div>
