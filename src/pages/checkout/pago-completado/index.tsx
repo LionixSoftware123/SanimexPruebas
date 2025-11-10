@@ -63,9 +63,9 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
         code: 'USD',
       });
 
-      const postalCodeBilling = order?.billing.postcode as string;
+      const postalCodeBilling = order.billing?.postcode as string;
 
-      const postalCodeShipping = order?.shipping.postcode as string;
+      const postalCodeShipping = order.shipping?.postcode as string;
 
       const postalCode = postalCodeBilling !== postalCodeShipping ? postalCodeShipping : postalCodeBilling;
 
