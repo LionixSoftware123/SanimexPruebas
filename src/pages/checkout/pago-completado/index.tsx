@@ -328,6 +328,9 @@ export const getServerSideProps = async ({
         date
         total
         totalTax
+        shipping {
+          postcode
+        }
         billing {
             email
             postcode
