@@ -17,8 +17,7 @@ import { useRouter } from 'next/router';
 import { getProductBrand } from '@/modules/product/product-utils';
 import currencyFormatter from 'currency-formatter';
 import { useUTMCampaignHooks } from '@/modules/utm-campaign/utm-campaign-hooks';
-//import postalCodeShipping from '@/utils/postal-code-shipping.json';
-//import postalCodeShippingProvincia from '@/utils/postal-code-shipping-provincia.json';
+import postalCodeShipping from '@/utils/postal-code-shipping.json';
 {
   /**import bannerAnniversary from '@/images/banner-pago-finalizado.png';
 import Image from 'next/image';
@@ -230,7 +229,9 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
                         Número de cuenta:
                       </p>
                       <p className="font-Century-Gothic text-[12px] text-center">
-                        0633981015
+                      {postalCodeShipping.includes(parseInt(postalCode as string))
+                      ? '0633981015'
+                      : 'slkjslajlsaj'}
                       </p>
                     </div>
                     <div className="p-2 m">
@@ -238,7 +239,9 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
                         A nombre de:
                       </p>
                       <p className="font-Century-Gothic text-[12px] text-center">
-                        Grupo Sanimex Ayuntamiento
+                      {postalCodeShipping.includes(parseInt(postalCode as string))
+                      ? 'Grupo Sanimex Ayuntamiento'
+                      : 'slkjslajlsaj'}
                       </p>
                     </div>
                   </div>
@@ -248,7 +251,9 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
                         Banco:
                       </p>
                       <p className="font-Century-Gothic text-[12px] text-center">
-                        Bancomer
+                      {postalCodeShipping.includes(parseInt(postalCode as string))
+                      ? 'Bancomer'
+                      : 'slkjslajlsaj'}
                       </p>
                     </div>
                     <div className="border-r border-r-[#C1C1C1] p-2">
@@ -256,7 +261,9 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
                         Número de cuenta:
                       </p>
                       <p className="font-Century-Gothic text-[12px] text-center">
-                        0117847610
+                      {postalCodeShipping.includes(parseInt(postalCode as string))
+                      ? '0117847610'
+                      : 'slkjslajlsaj'}
                       </p>
                     </div>
                     <div className="p-2 m">
@@ -264,7 +271,9 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
                         A nombre de:
                       </p>
                       <p className="font-Century-Gothic text-[12px] text-center">
-                        Grupo Sanimex Ayuntamiento
+                      {postalCodeShipping.includes(parseInt(postalCode as string))
+                      ? 'Grupo Sanimex Ayuntamiento'
+                      : 'slkjslajlsaj'}
                       </p>
                     </div>
                   </div>
