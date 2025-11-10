@@ -230,7 +230,7 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
                       {postalCodeShipping.includes(parseInt(postalCode)
                       ? '0633981015'
                       : 'slkjslajlsaj'
-                      }
+                      },
                       </p>
                     </div>
                     <div className="p-2 m">
@@ -241,7 +241,7 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
                       {postalCodeShipping.includes(parseInt(postalCode)
                       ? '0633981015'
                       : 'slkjslajlsaj'
-                      }
+                      },
                       </p>
                     </div>
                   </div>
@@ -253,7 +253,8 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
                       <p className="font-Century-Gothic text-[12px] text-center">
                       {postalCodeShipping.includes(parseInt(postalCode))
                       ? 'Bancomer'
-                      : 'slkjslajlsaj'}
+                      : 'slkjslajlsaj'
+                      },
                       </p>
                     </div>
                     <div className="border-r border-r-[#C1C1C1] p-2">
@@ -275,7 +276,7 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
                       {postalCodeShipping.includes(parseInt(postalCode)
                       ? '0633981015'
                       : 'slkjslajlsaj'
-                      }
+                      },
                       </p>
                     </div>
                   </div>
