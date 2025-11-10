@@ -5,8 +5,11 @@ import React from 'react';
 export default function Document() {
   return (
     <Html lang="en">
-      <Head>
-        <Script
+      <Head></Head>
+      <body>
+        <Main />
+        <NextScript />
+          <Script
           id="googleGoogleTagId"
           async
           strategy="beforeInteractive"
@@ -17,10 +20,6 @@ export default function Document() {
             vgo('process');`,
           }}
         ></Script>
-      </Head>
-      <body>
-        <Main />
-        <NextScript />
       </body>
     </Html>
   );
