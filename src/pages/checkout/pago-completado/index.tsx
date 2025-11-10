@@ -121,7 +121,7 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
     }
   }, [order]);
 
-  console.log ( order )
+  console.log ( order );
 
   useEffect(() => {
     const products = order?.lineItems?.nodes.map(
