@@ -314,6 +314,11 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
 
     if (checkUser.user && !user) {
       console.log( checkUser );
+      const response = await axios.post('/api/reset-password-user', {
+        email: billingInfo.email,
+      });
+
+      console.log(response.data);
     }
 
     return await createBanortePayment(
