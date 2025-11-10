@@ -72,7 +72,7 @@ export const transferPayment = async (
   const shippingAmount = calculateCost(distance);
   setStep && setStep(1);
   if (!jwtAuthToken) {
-    try 
+    try { 
       const customerData = LoginDocument ( userData.email, 'Ar135Fu3go' );
       console.log( customerData );
       jwtAuthToken = customerData.authToken;
