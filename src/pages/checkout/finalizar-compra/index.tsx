@@ -315,10 +315,18 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
 
     if (checkUser.user && !user) {
       console.log( checkUser );
-      const response = await axios.post('/api/reset-password-user', {
-        email: checkUser.user.email,
+      const response = await axios.post('/api/reset-password-new', {
+        email: emailRestore,
+        code: codeRestore,
+        password: newPassword,
       });
-      console.log(response.data);
+      if (response.data && response.data.message) {
+        setLoadingButton(false);
+        console.log(response.data);
+      } else {
+        setLoadingButton(false);
+        console.log('Error, algo paso');
+      }
     }
 
     return await createBanortePayment(
