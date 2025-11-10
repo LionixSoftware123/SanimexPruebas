@@ -121,14 +121,14 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
     }
   }, [order]);
 
+  console.log ( order )
+
   useEffect(() => {
     const products = order?.lineItems?.nodes.map(
       (node: LineItem) => node.productId,
     ) as number[];
     processUTMURLs(orderId ? parseInt(orderId.toString()) : 0, products);
   }, [orderId, order?.lineItems?.nodes, processUTMURLs]);
-
-  console.log( shipping );
 
   return (
     <RootLayout>
