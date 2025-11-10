@@ -229,7 +229,8 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
                       <p className="font-Century-Gothic text-[12px] text-center">
                       {postalCodeShipping.includes(parseInt(postalCode)
                       ? '0633981015'
-                      : 'slkjslajlsaj'}
+                      : 'slkjslajlsaj'
+                      }
                       </p>
                     </div>
                     <div className="p-2 m">
@@ -237,9 +238,10 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
                         A nombre de:
                       </p>
                       <p className="font-Century-Gothic text-[12px] text-center">
-                      {postalCodeShipping.includes(parseInt(postalCode))
-                      ? 'Grupo Sanimex Ayuntamiento'
-                      : 'slkjslajlsaj'}
+                      {postalCodeShipping.includes(parseInt(postalCode)
+                      ? '0633981015'
+                      : 'slkjslajlsaj'
+                      }
                       </p>
                     </div>
                   </div>
@@ -259,9 +261,10 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
                         Número de cuenta:
                       </p>
                       <p className="font-Century-Gothic text-[12px] text-center">
-                      {postalCodeShipping.includes(parseInt(postalCode))
-                      ? '0117847610'
-                      : 'slkjslajlsaj'}
+                      {postalCodeShipping.includes(parseInt(postalCode)
+                      ? '0633981015'
+                      : 'slkjslajlsaj'
+                      }
                       </p>
                     </div>
                     <div className="p-2 m">
@@ -269,9 +272,10 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
                         A nombre de:
                       </p>
                       <p className="font-Century-Gothic text-[12px] text-center">
-                      {postalCodeShipping.includes(parseInt(postalCode))
-                      ? 'Grupo Sanimex Ayuntamiento'
-                      : 'slkjslajlsaj'}
+                      {postalCodeShipping.includes(parseInt(postalCode)
+                      ? '0633981015'
+                      : 'slkjslajlsaj'
+                      }
                       </p>
                     </div>
                   </div>
