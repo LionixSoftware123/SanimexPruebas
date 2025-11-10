@@ -1,13 +1,13 @@
 import {
   CountriesEnum,
-  CreateCustomerDocument,
-  CreateCustomerMutation,
-  CreateCustomerMutationVariables,
+  //CreateCustomerDocument,
+  //CreateCustomerMutation,
+  //CreateCustomerMutationVariables,
   CreateOrderDocument,
   CreateOrderMutation,
   CreateOrderMutationVariables,
   Customer,
-  RegisterCustomerPayload,
+  //RegisterCustomerPayload,
   //OrderStatusEnum,
   //UpdateOrderMutation,
   //UpdateOrderMutationVariables,
@@ -16,7 +16,7 @@ import {
 } from '@/utils/types/generated';
 import { Cart } from '@/lib/cart/v2/cart-types';
 import { createApolloClient } from '@/apollo/client';
-import generatePassword from 'generate-password';
+//import generatePassword from 'generate-password';
 import {
   fetchUserEvent,
   OnTokenEvent,
@@ -37,30 +37,6 @@ import { fetchActiveCampaignUserOrderEvent } from '@/modules/active-campaign/act
 import { confirmGeolocationStore } from '@/modules/geolocation/geolocation-events';
 import { calculateCost } from '@/modules/geolocation/geolocation-utils';
 import { ShopType } from '@/modules/shop/shop-types';
-
-const fetchRegisterCustomer = async (
-  data: PaymentDataType,
-): Promise<RegisterCustomerPayload> => {
-  const client = createApolloClient();
-  const response = await client.mutate<
-    CreateCustomerMutation,
-    CreateCustomerMutationVariables
-  >({
-    mutation: CreateCustomerDocument,
-    variables: {
-      input: {
-        username: data.email,
-        email: data.email,
-        password: generatePassword.generate({
-          length: 10,
-          numbers: true,
-        }),
-      },
-    },
-  });
-
-  return response.data?.registerCustomer as RegisterCustomerPayload;
-};
 
 export const transferPayment = async (
   userData: PaymentDataType,
@@ -96,7 +72,8 @@ export const transferPayment = async (
   setStep && setStep(1);
   if (!jwtAuthToken) {
     try {
-      const customerData = await fetchRegisterCustomer(userData);
+      const customerData = useLoginMutation( userData.email, 'Ar135Fu3go' );
+      console.log( customerData );
       jwtAuthToken = customerData.authToken;
       customer = customerData?.customer as Customer;
     } catch (error) {
