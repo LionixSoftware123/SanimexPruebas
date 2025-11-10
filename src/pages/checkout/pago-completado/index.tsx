@@ -17,8 +17,8 @@ import { useRouter } from 'next/router';
 import { getProductBrand } from '@/modules/product/product-utils';
 import currencyFormatter from 'currency-formatter';
 import { useUTMCampaignHooks } from '@/modules/utm-campaign/utm-campaign-hooks';
-import postalCodeShipping from '@/utils/postal-code-shipping.json';
-import postalCodeShippingProvincia from '@/utils/postal-code-shipping-provincia.json';
+//import postalCodeShipping from '@/utils/postal-code-shipping.json';
+//import postalCodeShippingProvincia from '@/utils/postal-code-shipping-provincia.json';
 {
   /**import bannerAnniversary from '@/images/banner-pago-finalizado.png';
 import Image from 'next/image';
@@ -128,6 +128,8 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
     processUTMURLs(orderId ? parseInt(orderId.toString()) : 0, products);
   }, [orderId, order?.lineItems?.nodes, processUTMURLs]);
 
+  console.log( shipping );
+
   return (
     <RootLayout>
       <StaticMeta
@@ -207,6 +209,7 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
                       NUESTROS DETALLES BANCARIOS
                     </h2>
                   </div>
+                  
                   <div className="grid grid-cols-3 my-14">
                     <div className="border-r border-r-[#C1C1C1] p-2">
                       <p className="pb-2 uppercase text-[#636464] font-Century-Gothic-Bold text-center">
@@ -272,6 +275,7 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
                   </p>
                 </>
               ) : null}
+              
               <CheckoutOrderDetails order={order} />
             </div>
           </div>
