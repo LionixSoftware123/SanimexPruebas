@@ -17,6 +17,8 @@ import { useRouter } from 'next/router';
 import { getProductBrand } from '@/modules/product/product-utils';
 import currencyFormatter from 'currency-formatter';
 import { useUTMCampaignHooks } from '@/modules/utm-campaign/utm-campaign-hooks';
+import postalCodeShipping from '@/utils/postal-code-shipping.json';
+import postalCodeShippingProvincia from '@/utils/postal-code-shipping-provincia.json';
 {
   /**import bannerAnniversary from '@/images/banner-pago-finalizado.png';
 import Image from 'next/image';
