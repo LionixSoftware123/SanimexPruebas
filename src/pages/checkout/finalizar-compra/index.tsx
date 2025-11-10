@@ -307,7 +307,7 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
       email: user ? user.email : data.billingAddress?.email,
     };
 
-    /*const checkUser = await fetchUser({
+    const checkUser = await fetchUser({
       idType: UserNodeIdTypeEnum.Email,
       id: billingInfo.email as string,
     });
@@ -315,7 +315,7 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
     if (checkUser.user && !user) {
       setLoadingButton(false);
       console.log( checkUser );
-    }*/
+    }
 
     return await createBanortePayment(
       data.card,
