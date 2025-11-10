@@ -227,7 +227,7 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
                         Número de cuenta:
                       </p>
                       <p className="font-Century-Gothic text-[12px] text-center">
-                      {postalCodeShipping.includes(parseInt(postalCode as string))
+                      {postalCodeShipping.includes(parseInt(postalCode)
                       ? '0633981015'
                       : 'slkjslajlsaj'}
                       </p>
@@ -237,7 +237,7 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
                         A nombre de:
                       </p>
                       <p className="font-Century-Gothic text-[12px] text-center">
-                      {postalCodeShipping.includes(parseInt(postalCode as string))
+                      {postalCodeShipping.includes(parseInt(postalCode))
                       ? 'Grupo Sanimex Ayuntamiento'
                       : 'slkjslajlsaj'}
                       </p>
@@ -249,7 +249,7 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
                         Banco:
                       </p>
                       <p className="font-Century-Gothic text-[12px] text-center">
-                      {postalCodeShipping.includes(parseInt(postalCode as string))
+                      {postalCodeShipping.includes(parseInt(postalCode))
                       ? 'Bancomer'
                       : 'slkjslajlsaj'}
                       </p>
@@ -259,7 +259,7 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
                         Número de cuenta:
                       </p>
                       <p className="font-Century-Gothic text-[12px] text-center">
-                      {postalCodeShipping.includes(parseInt(postalCode as string))
+                      {postalCodeShipping.includes(parseInt(postalCode))
                       ? '0117847610'
                       : 'slkjslajlsaj'}
                       </p>
@@ -269,7 +269,7 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
                         A nombre de:
                       </p>
                       <p className="font-Century-Gothic text-[12px] text-center">
-                      {postalCodeShipping.includes(parseInt(postalCode as string))
+                      {postalCodeShipping.includes(parseInt(postalCode))
                       ? 'Grupo Sanimex Ayuntamiento'
                       : 'slkjslajlsaj'}
                       </p>
