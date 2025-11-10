@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
 import dynamic from 'next/dynamic';
-import axios from 'axios';
 import { useCartHook } from '@/lib/cart/v2/cart-hooks';
 import InputMask from 'react-input-mask';
 import { useToasts } from 'react-toast-notifications';
@@ -314,19 +313,8 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
     });
 
     if (checkUser.user && !user) {
+      setLoadingButton(false);
       console.log( checkUser );
-      const response = await axios.post('/api/reset-password-new', {
-        email: emailRestore,
-        code: codeRestore,
-        password: newPassword,
-      });
-      if (response.data && response.data.message) {
-        setLoadingButton(false);
-        console.log(response.data);
-      } else {
-        setLoadingButton(false);
-        console.log('Error, algo paso');
-      }
     }
 
     return await createBanortePayment(
@@ -447,9 +435,9 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
     });
 
     if (checkUser.user && !user) {
-      console.log( checkUser );
+     setLoadingButton(false);
+     console.log( checkUser );
     }
-
 
     transferPayment(
       billingInfo as PaymentDataType,
