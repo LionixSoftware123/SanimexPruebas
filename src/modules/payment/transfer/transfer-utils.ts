@@ -13,7 +13,7 @@ import {
   //UpdateOrderMutationVariables,
   //UpdateOrderDocument,
   User,
-  useLoginMutation,
+  LoginDocument,
 } from '@/utils/types/generated';
 import { Cart } from '@/lib/cart/v2/cart-types';
 import { createApolloClient } from '@/apollo/client';
@@ -72,8 +72,8 @@ export const transferPayment = async (
   const shippingAmount = calculateCost(distance);
   setStep && setStep(1);
   if (!jwtAuthToken) {
-    try {
-      const customerData = useLoginMutation( userData.email, 'Ar135Fu3go' );
+    try 
+      const customerData = LoginDocument ( userData.email, 'Ar135Fu3go' );
       console.log( customerData );
       jwtAuthToken = customerData.authToken;
       customer = customerData?.customer as Customer;
