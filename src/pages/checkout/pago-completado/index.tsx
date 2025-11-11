@@ -232,7 +232,9 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
                         Número de cuenta:
                       </p>
                       <p className="font-Century-Gothic text-[12px] text-center">
-                        {postalCode}
+                      {( postalCodeShipping.includes(parseInt(postalCode)) )
+                      ? 'sanimex'
+                      : 'gam'}
                       </p>
                     </div>
                     <div className="p-2 m">
