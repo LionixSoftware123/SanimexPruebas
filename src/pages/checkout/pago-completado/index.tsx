@@ -17,7 +17,7 @@ import { useRouter } from 'next/router';
 import { getProductBrand } from '@/modules/product/product-utils';
 import currencyFormatter from 'currency-formatter';
 import { useUTMCampaignHooks } from '@/modules/utm-campaign/utm-campaign-hooks';
-//import postalCodeShipping from '@/utils/postal-code-shipping.json';
+import postalCodeShipping from '@/utils/postal-code-shipping.json';
 {
   /**import bannerAnniversary from '@/images/banner-pago-finalizado.png';
 import Image from 'next/image';
@@ -50,7 +50,13 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
   const postalShipping = order?.shipping?.postcode as string;
 
   const postalCode = postalBilling !== postalShipping ? postalShipping : postalBilling;
-
+  if ( postalCodeShipping.includes(parseInt(postalCode)) ) {
+    const cuenta = 'cuenta sanimex';
+    const nombre = 'cuenta sanimex';
+  } else {
+    const cuenta = 'cuenta gam';
+    const nombre = 'cuenta sanimex';
+  }
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const shipping = currencyFormatter.unformat(
@@ -227,7 +233,7 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
                         Número de cuenta:
                       </p>
                       <p className="font-Century-Gothic text-[12px] text-center">
-                        {postalCode}
+                        {cuenta}
                       </p>
                     </div>
                     <div className="p-2 m">
@@ -235,7 +241,7 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
                         A nombre de:
                       </p>
                       <p className="font-Century-Gothic text-[12px] text-center">
-                      {postalCode}
+                      {nombre}
                       </p>
                     </div>
                   </div>
@@ -253,7 +259,7 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
                         Número de cuenta:
                       </p>
                       <p className="font-Century-Gothic text-[12px] text-center">
-                      {postalCode}
+                      {cuenta}
                       </p>
                     </div>
                     <div className="p-2 m">
@@ -261,7 +267,7 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
                         A nombre de:
                       </p>
                       <p className="font-Century-Gothic text-[12px] text-center">
-                      {postalCode}
+                      {nombre}
                       </p>
                     </div>
                   </div>
