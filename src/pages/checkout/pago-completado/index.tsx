@@ -51,6 +51,14 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
   const postalShipping = order?.shipping?.postcode as string;
 
   const postalCode = postalBilling !== postalShipping ? postalShipping : postalBilling;
+
+  if( !postalCodeShipping.includes(parseInt(postalCode)) ) {
+    if( postalCodeShippingProvinciaNL.includes(parseInt(postalCode)) ) {
+      console.log('Mty');
+    } else {
+      console.log('el resto');
+    }
+  }
   
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -230,10 +238,7 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
                       <p className="font-Century-Gothic text-[12px] text-center">
                       {( postalCodeShipping.includes(parseInt(postalCode)) )
                       ? '0633981015'
-                      : {( postalCodeShippingProvinciaNL.includes(parseInt(postalCode)) )
-                          ? '0196 9524 17'
-                          : '1213451805'
-                        }
+                      : '0196 9524 17'
                       }
                       </p>
                     </div>
