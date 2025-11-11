@@ -231,6 +231,7 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
                         '0633981015'
                         ) : (
                         '0196 9524 17'
+                        )}
                       </p>
                     </div>
                     <div className="p-2 m">
