@@ -18,6 +18,7 @@ import { getProductBrand } from '@/modules/product/product-utils';
 import currencyFormatter from 'currency-formatter';
 import { useUTMCampaignHooks } from '@/modules/utm-campaign/utm-campaign-hooks';
 import postalCodeShipping from '@/utils/postal-code-shipping.json';
+//import postalCodeShippingProvinciaNL from '@/utils/postal-code-shipping-provincia-nl.json';
 {
   /**import bannerAnniversary from '@/images/banner-pago-finalizado.png';
 import Image from 'next/image';
@@ -219,7 +220,7 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
                         Banco:
                       </p>
                       <p className="font-Century-Gothic text-[12px] text-center">
-                        Banorte
+                        BANORTE
                       </p>
                     </div>
                     <div className="border-r border-r-[#C1C1C1] p-2">
@@ -232,14 +233,24 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
                       : '0196 9524 17'}
                       </p>
                     </div>
+                    <div className="border-r border-r-[#C1C1C1] p-2">
+                      <p className="pb-2 uppercase text-[#636464] font-Century-Gothic-Bold text-center">
+                        Clabe:
+                      </p>
+                      <p className="font-Century-Gothic text-[12px] text-center">
+                      {( postalCodeShipping.includes(parseInt(postalCode)) )
+                      ? '072 180 00633981015 6'
+                      : '072 180 00196952417 6'}
+                      </p>
+                    </div>
                     <div className="p-2 m">
                       <p className="pb-2 uppercase text-[#636464] font-Century-Gothic-Bold text-center">
                         A nombre de:
                       </p>
                       <p className="font-Century-Gothic text-[12px] text-center">
                       {( postalCodeShipping.includes(parseInt(postalCode)) )
-                      ? 'Grupo Sanimex Ayuntamiento'
-                      : 'Grupo azulejero'}
+                      ? 'GRUPO SANIMEX AYUNTAMIENTO S.A. DE C.V.'
+                      : 'GRUPO AZULEJERO DE MAYORISTAS S.A. DE C.V.'}
                       </p>
                     </div>
                   </div>
@@ -249,7 +260,7 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
                         Banco:
                       </p>
                       <p className="font-Century-Gothic text-[12px] text-center">
-                        Bancomer
+                        BBVA
                       </p>
                     </div>
                     <div className="border-r border-r-[#C1C1C1] p-2">
@@ -259,7 +270,17 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
                       <p className="font-Century-Gothic text-[12px] text-center">
                       {( postalCodeShipping.includes(parseInt(postalCode)) )
                       ? '0117847610'
-                      : '011 783 72 75'}
+                      : '0117837275'}
+                      </p>
+                    </div>
+                    <div className="border-r border-r-[#C1C1C1] p-2">
+                      <p className="pb-2 uppercase text-[#636464] font-Century-Gothic-Bold text-center">
+                        Clabe:
+                      </p>
+                      <p className="font-Century-Gothic text-[12px] text-center">
+                      {( postalCodeShipping.includes(parseInt(postalCode)) )
+                      ? '012 180 001178476101'
+                      : '012 180 001178372755'}
                       </p>
                     </div>
                     <div className="p-2 m">
@@ -268,8 +289,8 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
                       </p>
                       <p className="font-Century-Gothic text-[12px] text-center">
                       {( postalCodeShipping.includes(parseInt(postalCode)) )
-                      ? 'Grupo Sanimex Ayuntamiento'
-                      : 'Grupo azulejero'}
+                      ? 'GRUPO SANIMEX AYUNTAMIENTO S.A. DE C.V.'
+                      : 'GRUPO AZULEJERO DE MAYORISTAS S.A. DE C.V.'}
                       </p>
                     </div>
                   </div>
