@@ -18,7 +18,7 @@ import { getProductBrand } from '@/modules/product/product-utils';
 import currencyFormatter from 'currency-formatter';
 import { useUTMCampaignHooks } from '@/modules/utm-campaign/utm-campaign-hooks';
 import postalCodeShipping from '@/utils/postal-code-shipping.json';
-//import postalCodeShippingProvinciaNL from '@/utils/postal-code-shipping-provincia-nl.json';
+import postalCodeShippingProvinciaNL from '@/utils/postal-code-shipping-provincia-nl.json';
 {
   /**import bannerAnniversary from '@/images/banner-pago-finalizado.png';
 import Image from 'next/image';
@@ -230,7 +230,11 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
                       <p className="font-Century-Gothic text-[12px] text-center">
                       {( postalCodeShipping.includes(parseInt(postalCode)) )
                       ? '0633981015'
-                      : '0196 9524 17'}
+                      : {( postalCodeShippingProvinciaNL.includes(parseInt(postalCode)) )
+                          ? '0196 9524 17'
+                          : '1213451805'
+                        }
+                      }
                       </p>
                     </div>
                     <div className="border-r border-r-[#C1C1C1] p-2">
