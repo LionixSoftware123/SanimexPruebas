@@ -51,11 +51,9 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
 
   const postalCode = postalBilling !== postalShipping ? postalShipping : postalBilling;
   if ( postalCodeShipping.includes(parseInt(postalCode)) ) {
-    const cuenta = 'cuenta sanimex';
-    const nombre = 'cuenta sanimex';
+    console.log( 'sanimex' );
   } else {
-    const cuenta = 'cuenta gam';
-    const nombre = 'cuenta sanimex';
+    console.log( 'gam' );
   }
   useEffect(() => {
     if (typeof window !== 'undefined') {
