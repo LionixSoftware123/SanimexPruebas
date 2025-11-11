@@ -50,11 +50,6 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
   const postalShipping = order?.shipping?.postcode as string;
 
   const postalCode = postalBilling !== postalShipping ? postalShipping : postalBilling;
-  if ( postalCodeShipping.includes(parseInt(postalCode)) ) {
-    console.log( 'sanimex' );
-  } else {
-    console.log( 'gam' );
-  }
   
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -233,8 +228,8 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
                       </p>
                       <p className="font-Century-Gothic text-[12px] text-center">
                       {( postalCodeShipping.includes(parseInt(postalCode)) )
-                      ? 'sanimex'
-                      : 'gam'}
+                      ? '0633981015'
+                      : '0196 9524 17'}
                       </p>
                     </div>
                     <div className="p-2 m">
@@ -242,7 +237,9 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
                         A nombre de:
                       </p>
                       <p className="font-Century-Gothic text-[12px] text-center">
-                      {postalCode}
+                      {( postalCodeShipping.includes(parseInt(postalCode)) )
+                      ? 'Grupo Sanimex Ayuntamiento'
+                      : 'Grupo azulejero'}
                       </p>
                     </div>
                   </div>
@@ -260,7 +257,9 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
                         Número de cuenta:
                       </p>
                       <p className="font-Century-Gothic text-[12px] text-center">
-                      {postalCode}
+                      {( postalCodeShipping.includes(parseInt(postalCode)) )
+                      ? '0117847610'
+                      : '011 783 72 75'}
                       </p>
                     </div>
                     <div className="p-2 m">
@@ -268,7 +267,9 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
                         A nombre de:
                       </p>
                       <p className="font-Century-Gothic text-[12px] text-center">
-                      {postalCode}
+                      {( postalCodeShipping.includes(parseInt(postalCode)) )
+                      ? 'Grupo Sanimex Ayuntamiento'
+                      : 'Grupo azulejero'}
                       </p>
                     </div>
                   </div>
