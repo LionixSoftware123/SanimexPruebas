@@ -55,6 +55,7 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
   } else {
     console.log( 'gam' );
   }
+  
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const shipping = currencyFormatter.unformat(
