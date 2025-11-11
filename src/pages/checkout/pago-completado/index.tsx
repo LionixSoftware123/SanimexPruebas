@@ -17,7 +17,7 @@ import { useRouter } from 'next/router';
 import { getProductBrand } from '@/modules/product/product-utils';
 import currencyFormatter from 'currency-formatter';
 import { useUTMCampaignHooks } from '@/modules/utm-campaign/utm-campaign-hooks';
-import postalCodeShipping from '@/utils/postal-code-shipping.json';
+//import postalCodeShipping from '@/utils/postal-code-shipping.json';
 {
   /**import bannerAnniversary from '@/images/banner-pago-finalizado.png';
 import Image from 'next/image';
@@ -49,7 +49,7 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
 
   const postalShipping = order?.shipping?.postcode as string;
 
-  const postalCode = parseInt(postalBilling !== postalShipping ? postalShipping : postalBilling);
+  const postalCode = postalBilling !== postalShipping ? postalShipping : postalBilling;
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -227,11 +227,7 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
                         Número de cuenta:
                       </p>
                       <p className="font-Century-Gothic text-[12px] text-center">
-                        {postalCodeShipping.includes(postalCode) (
-                        '0633981015'
-                        ) : (
-                        '0196 9524 17'
-                        )}
+                        {postalCode}
                       </p>
                     </div>
                     <div className="p-2 m">
@@ -239,11 +235,7 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
                         A nombre de:
                       </p>
                       <p className="font-Century-Gothic text-[12px] text-center">
-                      {postalCodeShipping.includes(postalCode) (
-                        '0633981015'
-                      ) : (
-                        '0196 9524 17'
-                      )}
+                      {postalCode}
                       </p>
                     </div>
                   </div>
@@ -261,11 +253,7 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
                         Número de cuenta:
                       </p>
                       <p className="font-Century-Gothic text-[12px] text-center">
-                      {postalCodeShipping.includes(postalCode) (
-                        '0633981015'
-                      ) : (
-                        '0196 9524 17'
-                      )}
+                      {postalCode}
                       </p>
                     </div>
                     <div className="p-2 m">
@@ -273,11 +261,7 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
                         A nombre de:
                       </p>
                       <p className="font-Century-Gothic text-[12px] text-center">
-                      {postalCodeShipping.includes(postalCode) (
-                        '0633981015'
-                      ) : (
-                        '0196 9524 17'
-                      )}
+                      {postalCode}
                       </p>
                     </div>
                   </div>
