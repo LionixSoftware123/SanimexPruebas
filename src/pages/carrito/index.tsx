@@ -173,7 +173,7 @@ const CartPage: React.FC<CartPageProps> = ({ internalBanner }) => {
                       </div>
                     </div>
 
-                    <div className="justify-end">
+                    <div className="flex max-w-\[300px\] justify-end">
                       <CartDetails cart={cart} />
                       <div className="mb-6">
                         {internalBanner?.redirectUrl &&
