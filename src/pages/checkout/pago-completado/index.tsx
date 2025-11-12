@@ -56,15 +56,17 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
   if( !postalCodeShipping.includes(parseInt(postalCode)) ) {
     if( postalCodeShippingProvinciaNL.includes(parseInt(postalCode)) ) {
       console.log('Mty');
-      const AccountDetails = () => { return '1213451805'; }
+      const AccountDetails = '1213451805';
     } else {
       console.log('el resto de provincia');
-      const AccountDetails = () => { return '0196952417'; }
+      const AccountDetails = '0196952417';
     }
   } else {
       console.log('cdmx y edo de mexico');
-      const AccountDetails = () => { return '0633981015'; }    
+      const AccountDetails = '0633981015';
   }
+
+ console.log( AccountDetails );
   
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -242,7 +244,7 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
                         Número de cuenta:
                       </p>
                       <p className="font-Century-Gothic text-[12px] text-center">
-                        <AccountDetails /> 
+                       {AccountDetails}
                       </p>
                     </div>
                     <div className="border-r border-r-[#C1C1C1] p-2">
