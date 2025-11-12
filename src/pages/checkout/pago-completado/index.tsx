@@ -55,9 +55,7 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
 
   const postalCode = postalBilling !== postalShipping ? postalShipping : postalBilling;
 
- const AccountDetails = '0633981015';
-
- const establecerValor = () => {
+  const establecerValor = () => {
   if( !postalCodeShipping.includes(parseInt(postalCode)) ) {
     if( postalCodeShippingProvinciaNL.includes(parseInt(postalCode)) ) {
      setMiValor("1213451805");
@@ -65,7 +63,7 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
      setMiValor("0196952417");
     }
   }
- };
+  };
   
   useEffect(() => {
     if (typeof window !== 'undefined') {
