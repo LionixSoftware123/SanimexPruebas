@@ -53,29 +53,27 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
 
   const postalCode = postalBilling !== postalShipping ? postalShipping : postalBilling;
 
-  let AccountDetailsBanorte = '';
-  let ClabeDetailsBanorte = '';
-  let AccountDetailsBbva = '';
-  let ClabeDetailsBbva = '';
+  let BancoDetails = '';
+  let AccountDetails = '';
+  let ClabeDetails = '';
   let NameDetails = '';
 
   if( !postalCodeShipping.includes(parseInt(postalCode)) ) {
     if( postalCodeShippingProvinciaNL.includes(parseInt(postalCode)) ) {
-      AccountDetailsBanorte = '1213451805';
-      ClabeDetailsBanorte = '072 180 012134518058';
+      BancoDetails = 'BANORTE';
+      AccountDetails = '1213451805';
+      ClabeDetails = '072 180 012134518058';
       NameDetails = 'GRUPO AZULEJERO DE MAYORISTAS NORTE S.A. DE C.V.';
    } else {
-      AccountDetailsBanorte = '0196952417';
-      ClabeDetailsBanorte = '072 180 00196952417 6';
-      AccountDetailsBbva = '0117837275';
-      ClabeDetailsBbva = '012 180 001178372755';
+      BancoDetails = 'BANORTE<br>BBVA';
+      AccountDetails = '0196952417<br>0117837275';
+      ClabeDetails = '072 180 00196952417 6<br>012 180 001178372755';
       NameDetails = 'GRUPO AZULEJERO DE MAYORISTAS S.A. DE C.V.';
     }
   } else {
-    AccountDetailsBanorte = '0633981015';
-    ClabeDetailsBanorte = '072 180 00633981015 6';
-    AccountDetailsBbva = '0117847610';
-    ClabeDetailsBbva = '012 180 001178476101';
+    BancoDetails = 'BANORTE<br>BBVA';
+    AccountDetails = '0633981015<br>0117847610';
+    ClabeDetails = '072 180 00633981015 6<br>012 180 001178476101';
     NameDetails = 'GRUPO SANIMEX AYUNTAMIENTO S.A. DE C.V.';
   }
   
@@ -247,7 +245,7 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
                         Banco:
                       </p>
                       <p className="font-Century-Gothic text-[12px] text-center">
-                        BANORTE
+                        {BancoDetails}
                       </p>
                     </div>
                     <div className="border-r border-r-[#C1C1C1] p-2">
@@ -255,7 +253,7 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
                         Número de cuenta:
                       </p>
                       <p className="font-Century-Gothic text-[12px] text-center">
-                       {AccountDetailsBanorte}
+                       {AccountDetails}
                       </p>
                     </div>
                     <div className="border-r border-r-[#C1C1C1] p-2">
@@ -263,7 +261,7 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
                         Clabe:
                       </p>
                       <p className="font-Century-Gothic text-[12px] text-center">
-                      {ClabeDetailsBanorte}
+                      {ClabeDetails}
                       </p>
                     </div>
                     <div className="p-2 m">
@@ -275,43 +273,6 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
                       </p>
                     </div>
                   </div>
-
-                 {!postalCodeShippingProvinciaNL.includes(parseInt(postalCode))  (
-                  <div className="grid grid-cols-4 my-14">
-                    <div className="border-r border-r-[#C1C1C1] p-2">
-                      <p className="pb-2 uppercase text-[#636464] font-Century-Gothic-Bold text-center">
-                        Banco:
-                      </p>
-                      <p className="font-Century-Gothic text-[12px] text-center">
-                        BBVA
-                      </p>
-                    </div>
-                    <div className="border-r border-r-[#C1C1C1] p-2">
-                      <p className="pb-2 uppercase text-[#636464] font-Century-Gothic-Bold text-center">
-                        Número de cuenta:
-                      </p>
-                      <p className="font-Century-Gothic text-[12px] text-center">
-                      {AccountDetailsBbva}
-                      </p>
-                    </div>
-                    <div className="border-r border-r-[#C1C1C1] p-2">
-                      <p className="pb-2 uppercase text-[#636464] font-Century-Gothic-Bold text-center">
-                        Clabe:
-                      </p>
-                      <p className="font-Century-Gothic text-[12px] text-center">
-                      {ClabeDetailsBbva}
-                      </p>
-                    </div>
-                    <div className="p-2 m">
-                      <p className="pb-2 uppercase text-[#636464] font-Century-Gothic-Bold text-center">
-                        A nombre de:
-                      </p>
-                      <p className="font-Century-Gothic text-[12px] text-center">
-                      {NameDetails}
-                      </p>
-                    </div>
-                  </div>
-                 ) : null}
              
                   <p className="font-Century-Gothic text-[12px] text-center pb-4">
                     <strong>
