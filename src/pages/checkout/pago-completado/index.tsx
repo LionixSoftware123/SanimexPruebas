@@ -56,39 +56,34 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
   let BancoDetailsBanorte = '';
   let AccountDetailsBanorte = '';
   let ClabeDetailsBanorte = '';
-  let NameDetailsBanorte = '';
   let BancoDetailsBbva = '';
   let AccountDetailsBbva = '';
   let ClabeDetailsBbva = '';
-  let NameDetailsBbva = '';
+  let NameDetails = '';
 
   if( !postalCodeShipping.includes(parseInt(postalCode)) ) {
     if( postalCodeShippingProvinciaNL.includes(parseInt(postalCode)) ) {
       BancoDetailsBanorte = 'BANORTE';
       AccountDetailsBanorte = '1213451805';
       ClabeDetailsBanorte = '072 180 012134518058';
-      NameDetailsBanorte = 'GRUPO AZULEJERO DE MAYORISTAS NORTE S.A. DE C.V.';
+      NameDetails = 'GRUPO AZULEJERO DE MAYORISTAS NORTE S.A. DE C.V.';
    } else {
       BancoDetailsBanorte = 'BANORTE';
       AccountDetailsBanorte = '0196952417';
       ClabeDetailsBanorte = '072 180 00196952417 6';
-      NameDetailsBanorte = 'GRUPO AZULEJERO DE MAYORISTAS S.A. DE C.V.';
-
       BancoDetailsBbva = 'BBVA';
       AccountDetailsBbva = '0117837275';
       ClabeDetailsBbva = '012 180 001178372755';
-      NameDetailsBbva = 'GRUPO AZULEJERO DE MAYORISTAS S.A. DE C.V.';
+      NameDetails = 'GRUPO AZULEJERO DE MAYORISTAS S.A. DE C.V.';
 }
   } else {
     BancoDetailsBanorte = 'BANORTE';
     AccountDetailsBanorte = '0633981015';
     ClabeDetailsBanorte = '072 180 00633981015 6';
-    NameDetailsBanorte = 'GRUPO SANIMEX AYUNTAMIENTO S.A. DE C.V.';
-
     BancoDetailsBbva = 'BBVA';
     AccountDetailsBbva = '0117847610';
     ClabeDetailsBbva = '012 180 001178476101';
-    NameDetailsBbva = 'GRUPO SANIMEX AYUNTAMIENTO S.A. DE C.V.';
+    NameDetails = 'GRUPO SANIMEX AYUNTAMIENTO S.A. DE C.V.';
   }
   
   useEffect(() => {
@@ -279,8 +274,7 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
                       <p className="pb-2 uppercase text-[#636464] font-Century-Gothic-Bold text-center">
                         A nombre de:
                       </p>
-                      <p className="font-Century-Gothic text-[12px] text-center">{NameDetailsBanorte}</p>
-                      <p className="font-Century-Gothic text-[12px] text-center">{NameDetailsBbva}</p>
+                      <p className="font-Century-Gothic text-[12px] text-center">{NameDetails}</p>
                     </div>
                   </div>
              
