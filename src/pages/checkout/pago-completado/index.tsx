@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+ import React, { useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import { GetServerSidePropsContext } from 'next';
 import {
@@ -58,9 +58,12 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
       console.log('Mty');
       const AccountDetails = () => { return '1213451805'; }
     } else {
-      console.log('el resto');
+      console.log('el resto de provincia');
       const AccountDetails = () => { return '0196952417'; }
     }
+  } else {
+      console.log('cdmx y edo de mexico');
+      const AccountDetails = () => { return '0633981015'; }    
   }
   
   useEffect(() => {
@@ -239,10 +242,7 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
                         Número de cuenta:
                       </p>
                       <p className="font-Century-Gothic text-[12px] text-center">
-                      {( postalCodeShipping.includes(parseInt(postalCode)) )
-                      ? '0633981015'
-                      : <AccountDetails /> 
-                      }
+                        <AccountDetails /> 
                       </p>
                     </div>
                     <div className="border-r border-r-[#C1C1C1] p-2">
