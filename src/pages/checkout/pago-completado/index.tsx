@@ -53,19 +53,15 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
 
   const postalCode = postalBilling !== postalShipping ? postalShipping : postalBilling;
 
+ const AccountDetails = '0633981015';
+
   if( !postalCodeShipping.includes(parseInt(postalCode)) ) {
     if( postalCodeShippingProvinciaNL.includes(parseInt(postalCode)) ) {
-      console.log('Mty');
       const AccountDetails = '1213451805';
     } else {
-      console.log('el resto de provincia');
       const AccountDetails = '0196952417';
     }
-  } else {
-      console.log('cdmx y edo de mexico');
-      const AccountDetails = '0633981015';
   }
-
  console.log( AccountDetails );
   
   useEffect(() => {
