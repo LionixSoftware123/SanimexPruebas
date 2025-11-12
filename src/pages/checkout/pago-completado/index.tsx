@@ -38,6 +38,7 @@ type PaymentCompleteProps = {
   order?: Order;
   orderId: number;
 };
+
 const PaymentComplete: React.FC<PaymentCompleteProps> = ({
   order,
   orderId,
@@ -55,10 +56,10 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
   if( !postalCodeShipping.includes(parseInt(postalCode)) ) {
     if( postalCodeShippingProvinciaNL.includes(parseInt(postalCode)) ) {
       console.log('Mty');
-      let nocuenta = '1213451805';
+      const AccountDetails = () => { return 1213451805 };
     } else {
       console.log('el resto');
-      let nocuenta = '0196952417';
+      const AccountDetails = () => { return 0196952417 };
     }
   }
   
@@ -240,7 +241,7 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
                       <p className="font-Century-Gothic text-[12px] text-center">
                       {( postalCodeShipping.includes(parseInt(postalCode)) )
                       ? '0633981015'
-                      : {nocuenta}
+                      : <AccountDetails /> 
                       }
                       </p>
                     </div>
