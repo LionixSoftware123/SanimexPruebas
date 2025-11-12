@@ -46,24 +46,23 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
   const router = useRouter();
 
   const { processUTMURLs } = useUTMCampaignHooks();
-
-  const [miValor, setMiValor] = useState(null);
-
+ 
   const postalBilling = order?.billing?.postcode as string;
 
   const postalShipping = order?.shipping?.postcode as string;
 
   const postalCode = postalBilling !== postalShipping ? postalShipping : postalBilling;
 
-  const establecerValor = () => {
+  let AccountDetails = '0633981015';
+
   if( !postalCodeShipping.includes(parseInt(postalCode)) ) {
     if( postalCodeShippingProvinciaNL.includes(parseInt(postalCode)) ) {
-     setMiValor("1213451805");
+      AccountDetails = '1213451805';
     } else {
-     setMiValor("0196952417");
+      AccountDetails = '0196952417';
     }
   }
-  };
+ console.log( AccountDetails );
   
   useEffect(() => {
     if (typeof window !== 'undefined') {
