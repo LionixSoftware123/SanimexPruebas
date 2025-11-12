@@ -53,28 +53,42 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
 
   const postalCode = postalBilling !== postalShipping ? postalShipping : postalBilling;
 
-  let BancoDetails = '';
-  let AccountDetails = '';
-  let ClabeDetails = '';
-  let NameDetails = '';
+  let BancoDetailsBanorte = '';
+  let AccountDetailsBanorte = '';
+  let ClabeDetailsBanorte = '';
+  let NameDetailsBanorte = '';
+  let BancoDetailsBbva = '';
+  let AccountDetailsBbva = '';
+  let ClabeDetailsBbva = '';
+  let NameDetailsBbva = '';
 
   if( !postalCodeShipping.includes(parseInt(postalCode)) ) {
     if( postalCodeShippingProvinciaNL.includes(parseInt(postalCode)) ) {
-      BancoDetails = 'BANORTE';
-      AccountDetails = '1213451805';
-      ClabeDetails = '072 180 012134518058';
-      NameDetails = 'GRUPO AZULEJERO DE MAYORISTAS NORTE S.A. DE C.V.';
+      BancoDetailsBanorte = 'BANORTE';
+      AccountDetailsBanorte = '1213451805';
+      ClabeDetailsBanorte = '072 180 012134518058';
+      NameDetailsBanorte = 'GRUPO AZULEJERO DE MAYORISTAS NORTE S.A. DE C.V.';
    } else {
-      BancoDetails = 'BANORTE<br>BBVA';
-      AccountDetails = '0196952417<br>0117837275';
-      ClabeDetails = '072 180 00196952417 6<br>012 180 001178372755';
-      NameDetails = 'GRUPO AZULEJERO DE MAYORISTAS S.A. DE C.V.';
-    }
+      BancoDetailsBanorte = 'BANORTE';
+      AccountDetailsBanorte = '0196952417';
+      ClabeDetailsBanorte = '072 180 00196952417 6';
+      NameDetailsBanorte = 'GRUPO AZULEJERO DE MAYORISTAS S.A. DE C.V.';
+
+      BancoDetailsBbva = 'BBVA';
+      AccountDetailsBbva = '0117837275';
+      ClabeDetailsBbva = '012 180 001178372755';
+      NameDetailsBbva = 'GRUPO AZULEJERO DE MAYORISTAS S.A. DE C.V.';
+}
   } else {
-    BancoDetails = 'BANORTE<br>BBVA';
-    AccountDetails = '0633981015<br>0117847610';
-    ClabeDetails = '072 180 00633981015 6<br>012 180 001178476101';
-    NameDetails = 'GRUPO SANIMEX AYUNTAMIENTO S.A. DE C.V.';
+    BancoDetailsBanorte = 'BANORTE';
+    AccountDetailsBanorte = '0633981015';
+    ClabeDetailsBanorte = '072 180 00633981015 6';
+    NameDetailsBanorte = 'GRUPO SANIMEX AYUNTAMIENTO S.A. DE C.V.';
+
+    BancoDetailsBbva = 'BBVA';
+    AccountDetailsBbva = '0117847610';
+    ClabeDetailsBbva = '012 180 001178476101';
+    NameDetailsBbva = 'GRUPO SANIMEX AYUNTAMIENTO S.A. DE C.V.';
   }
   
   useEffect(() => {
@@ -245,7 +259,9 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
                         Banco:
                       </p>
                       <p className="font-Century-Gothic text-[12px] text-center">
-                        {BancoDetails}
+                        {BancoDetailsBanorte}
+                        <br>
+                        {BancoDetailsBbva}
                       </p>
                     </div>
                     <div className="border-r border-r-[#C1C1C1] p-2">
@@ -253,7 +269,9 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
                         Número de cuenta:
                       </p>
                       <p className="font-Century-Gothic text-[12px] text-center">
-                       {AccountDetails}
+                        {AccountDetailsBanorte}
+                        <br>
+                        {AccountDetailsBbva}
                       </p>
                     </div>
                     <div className="border-r border-r-[#C1C1C1] p-2">
@@ -261,7 +279,9 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
                         Clabe:
                       </p>
                       <p className="font-Century-Gothic text-[12px] text-center">
-                      {ClabeDetails}
+                       {ClabeDetailsBanorte}
+                       <br>
+                       {AccountDetailsBbva}
                       </p>
                     </div>
                     <div className="p-2 m">
@@ -269,7 +289,9 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
                         A nombre de:
                       </p>
                       <p className="font-Century-Gothic text-[12px] text-center">
-                      {NameDetails}
+                        {NameDetailsBanorte}
+                        <br>
+                        {AccountDetailsBbva}
                       </p>
                     </div>
                   </div>
