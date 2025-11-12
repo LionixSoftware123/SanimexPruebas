@@ -275,7 +275,8 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
                       </p>
                     </div>
                   </div>
-                 
+
+                 {( !postalCodeShippingProvinciaNL.includes(parseInt(postalCode)) ) (
                   <div className="grid grid-cols-4 my-14">
                     <div className="border-r border-r-[#C1C1C1] p-2">
                       <p className="pb-2 uppercase text-[#636464] font-Century-Gothic-Bold text-center">
@@ -310,7 +311,8 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
                       </p>
                     </div>
                   </div>
-                 
+                 ) : null}
+             
                   <p className="font-Century-Gothic text-[12px] text-center pb-4">
                     <strong>
                       Para generar la referencia de pago comenzar con la palabra{' '}
