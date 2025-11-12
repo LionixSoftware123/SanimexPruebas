@@ -273,14 +273,14 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
                         Clabe:
                       </p>
                       <p className="font-Century-Gothic text-[12px] text-center">{ClabeDetailsBanorte}</p>
-                      <p className="font-Century-Gothic text-[12px] text-center">{AccountDetailsBbva}</p>
+                      <p className="font-Century-Gothic text-[12px] text-center">{ClabeDetailsBbva}</p>
                     </div>
                     <div className="p-2 m">
                       <p className="pb-2 uppercase text-[#636464] font-Century-Gothic-Bold text-center">
                         A nombre de:
                       </p>
                       <p className="font-Century-Gothic text-[12px] text-center">{NameDetailsBanorte}</p>
-                      <p className="font-Century-Gothic text-[12px] text-center">{AccountDetailsBbva}</p>
+                      <p className="font-Century-Gothic text-[12px] text-center">{NameDetailsBbva}</p>
                     </div>
                   </div>
              
