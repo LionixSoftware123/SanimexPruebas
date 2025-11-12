@@ -55,10 +55,10 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
   if( !postalCodeShipping.includes(parseInt(postalCode)) ) {
     if( postalCodeShippingProvinciaNL.includes(parseInt(postalCode)) ) {
       console.log('Mty');
-      const nocuenta = '1213451805';
+      let nocuenta = '1213451805';
     } else {
       console.log('el resto');
-      const nocuenta = '0196952417';
+      let nocuenta = '0196952417';
     }
   }
   
