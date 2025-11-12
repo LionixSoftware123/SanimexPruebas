@@ -53,16 +53,31 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
 
   const postalCode = postalBilling !== postalShipping ? postalShipping : postalBilling;
 
-  let AccountDetails = '0633981015';
+  let AccountDetailsBanorte = '';
+  let ClabeDetailsBanorte = '';
+  let AccountDetailsBbva = '';
+  let ClabeDetailsBbva = '';
+  let NameDetails = '';
 
   if( !postalCodeShipping.includes(parseInt(postalCode)) ) {
     if( postalCodeShippingProvinciaNL.includes(parseInt(postalCode)) ) {
-      AccountDetails = '1213451805';
-    } else {
-      AccountDetails = '0196952417';
+      AccountDetailsBanorte = '1213451805';
+      ClabeDetailsBanorte = '072 180 012134518058';
+      NameDetails = 'GRUPO AZULEJERO DE MAYORISTAS NORTE S.A. DE C.V.';
+   } else {
+      AccountDetailsBanorte = '0196952417';
+      ClabeDetailsBanorte = '072 180 00196952417 6';
+      AccountDetailsBbva = '0117837275';
+      ClabeDetailsBbva = '012 180 001178372755';
+      NameDetails = 'GRUPO AZULEJERO DE MAYORISTAS S.A. DE C.V.';
     }
+  } else {
+    AccountDetailsBanorte = '0633981015';
+    ClabeDetailsBanorte = '072 180 00633981015 6';
+    AccountDetailsBbva = '0117847610';
+    ClabeDetailsBbva = '012 180 001178476101';
+    NameDetails = 'GRUPO SANIMEX AYUNTAMIENTO S.A. DE C.V.';
   }
- console.log( AccountDetails );
   
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -225,7 +240,7 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
                       NUESTROS DETALLES BANCARIOS
                     </h2>
                   </div>
-                  
+                 
                   <div className="grid grid-cols-4 my-14">
                     <div className="border-r border-r-[#C1C1C1] p-2">
                       <p className="pb-2 uppercase text-[#636464] font-Century-Gothic-Bold text-center">
@@ -240,7 +255,7 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
                         Número de cuenta:
                       </p>
                       <p className="font-Century-Gothic text-[12px] text-center">
-                       {AccountDetails}
+                       {AccountDetailsBanorte}
                       </p>
                     </div>
                     <div className="border-r border-r-[#C1C1C1] p-2">
@@ -248,9 +263,7 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
                         Clabe:
                       </p>
                       <p className="font-Century-Gothic text-[12px] text-center">
-                      {( postalCodeShipping.includes(parseInt(postalCode)) )
-                      ? '072 180 00633981015 6'
-                      : '072 180 00196952417 6'}
+                      {ClabeDetailsBanorte}
                       </p>
                     </div>
                     <div className="p-2 m">
@@ -258,12 +271,11 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
                         A nombre de:
                       </p>
                       <p className="font-Century-Gothic text-[12px] text-center">
-                      {( postalCodeShipping.includes(parseInt(postalCode)) )
-                      ? 'GRUPO SANIMEX AYUNTAMIENTO S.A. DE C.V.'
-                      : 'GRUPO AZULEJERO DE MAYORISTAS S.A. DE C.V.'}
+                      {NameDetails}
                       </p>
                     </div>
                   </div>
+                 
                   <div className="grid grid-cols-4 my-14">
                     <div className="border-r border-r-[#C1C1C1] p-2">
                       <p className="pb-2 uppercase text-[#636464] font-Century-Gothic-Bold text-center">
@@ -278,9 +290,7 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
                         Número de cuenta:
                       </p>
                       <p className="font-Century-Gothic text-[12px] text-center">
-                      {( postalCodeShipping.includes(parseInt(postalCode)) )
-                      ? '0117847610'
-                      : '0117837275'}
+                      {AccountDetailsBbva}
                       </p>
                     </div>
                     <div className="border-r border-r-[#C1C1C1] p-2">
@@ -288,9 +298,7 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
                         Clabe:
                       </p>
                       <p className="font-Century-Gothic text-[12px] text-center">
-                      {( postalCodeShipping.includes(parseInt(postalCode)) )
-                      ? '012 180 001178476101'
-                      : '012 180 001178372755'}
+                      {ClabeDetailsBbva}
                       </p>
                     </div>
                     <div className="p-2 m">
@@ -298,12 +306,11 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
                         A nombre de:
                       </p>
                       <p className="font-Century-Gothic text-[12px] text-center">
-                      {( postalCodeShipping.includes(parseInt(postalCode)) )
-                      ? 'GRUPO SANIMEX AYUNTAMIENTO S.A. DE C.V.'
-                      : 'GRUPO AZULEJERO DE MAYORISTAS S.A. DE C.V.'}
+                      {NameDetails}
                       </p>
                     </div>
                   </div>
+                 
                   <p className="font-Century-Gothic text-[12px] text-center pb-4">
                     <strong>
                       Para generar la referencia de pago comenzar con la palabra{' '}
