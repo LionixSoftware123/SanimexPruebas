@@ -276,7 +276,7 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
                     </div>
                   </div>
 
-                 {( !postalCodeShippingProvinciaNL.includes(parseInt(postalCode)) ) (
+                 {!postalCodeShippingProvinciaNL.includes(parseInt(postalCode))  (
                   <div className="grid grid-cols-4 my-14">
                     <div className="border-r border-r-[#C1C1C1] p-2">
                       <p className="pb-2 uppercase text-[#636464] font-Century-Gothic-Bold text-center">
