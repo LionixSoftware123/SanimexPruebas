@@ -47,6 +47,7 @@ export type FormType = {
   MERCHANT_ID: string;
   TERMINAL_ID: string;
   MERCHANT_CITY: string;
+  MERCHANT_NAME: string;
   FORWARD_PATH: string;
   '3D_CERTIFICATION': string;
   REFERENCE3D: string;
@@ -286,7 +287,13 @@ export const createBanortePayment = async (
         parseInt(shipping.postalCode || (userData.postalCode as string)),
       )
         ? '91592131'
-        : '91600801',      
+        : '91600801',
+    MERCHANT_NAME:
+      postalCodeShipping.includes(
+        parseInt(shipping.postalCode || (userData.postalCode as string)),
+      )
+        ? 'SANIMEX AYUNTAMIENTO'
+        : 'FERR GRUPO AZULEJERO M',    
     MERCHANT_CITY: 'ESTADO DE MEXICO',
     FORWARD_PATH: BANORTE_PAYMENT_ENDPOINT,
     '3D_CERTIFICATION': '03',
