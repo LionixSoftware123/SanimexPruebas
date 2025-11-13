@@ -1,4 +1,4 @@
- import React, { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import { GetServerSidePropsContext } from 'next';
 import {
@@ -19,6 +19,7 @@ import currencyFormatter from 'currency-formatter';
 import { useUTMCampaignHooks } from '@/modules/utm-campaign/utm-campaign-hooks';
 import postalCodeShipping from '@/utils/postal-code-shipping.json';
 import postalCodeShippingProvinciaNL from '@/utils/postal-code-shipping-provincia-nl.json';
+import IconWhatsapp from '@/images/icon-whatsapp-modal.svg';
 {
   /**import bannerAnniversary from '@/images/banner-pago-finalizado.png';
 import Image from 'next/image';
@@ -275,6 +276,7 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
                         A nombre de:
                       </p>
                       <p className="font-Century-Gothic text-[12px] text-center">{NameDetails}</p>
+                      <IconWhatsapp />
                     </div>
                   </div>
              
