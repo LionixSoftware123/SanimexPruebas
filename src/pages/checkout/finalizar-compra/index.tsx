@@ -5,10 +5,10 @@ import InputMask from 'react-input-mask';
 import { useToasts } from 'react-toast-notifications';
 import cardValidator from 'card-validator';
 import {
-  //UserNodeIdTypeEnum,
+  UserNodeIdTypeEnum,
   InternalBannerResponse,
 } from '@/utils/types/generated';
-//import { fetchUser } from '@/modules/auth/auth-actions';
+import { fetchUser } from '@/modules/auth/auth-actions';
 import Link from 'next/link';
 //import { FRONTEND_ENDPOINT } from '@/utils/constants';
 import { useUserHook } from '@/modules/auth/user-hooks';
@@ -307,15 +307,14 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
       email: user ? user.email : data.billingAddress?.email,
     };
 
-    /**const checkUser = await fetchUser({
+    const checkUser = await fetchUser({
       idType: UserNodeIdTypeEnum.Email,
       id: billingInfo.email as string,
     });
 
     if (checkUser.user && !user) {
-      setLoadingButton(false);
       console.log( checkUser );
-    }**/
+    }
 
     return await createBanortePayment(
       data.card,
@@ -429,15 +428,14 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
       email: user ? user.email : data.billingAddress?.email,
     };
 
-    /**const checkUser = await fetchUser({
+    const checkUser = await fetchUser({
       idType: UserNodeIdTypeEnum.Email,
       id: billingInfo.email as string,
     });
 
     if (checkUser.user && !user) {
-     setLoadingButton(false);
      console.log( checkUser );
-    }**/
+    }
 
     transferPayment(
       billingInfo as PaymentDataType,
