@@ -280,7 +280,7 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
                         A nombre de:
                       </p>
                       <p className="font-Century-Gothic text-[12px] text-center">{NameDetails}</p>
-                      Atención a clientes: {WhatsApp} <IconWhatsapp />
+                      Atención a clientes: <a href="{WhatsApp}"><IconWhatsapp /></a>
                     </div>
                   </div>
              
