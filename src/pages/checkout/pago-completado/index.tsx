@@ -280,7 +280,7 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
                         A nombre de:
                       </p>
                       <p className="font-Century-Gothic text-[12px] text-center">{NameDetails}</p>
-                      <p className="font-Century-Gothic text-[10px] text-center">Atención a clientes: <a href={`https://api.whatsapp.com/send?phone=${WhatsApp}`} className=" flex self-center ml-1 w-[30px] h-[30px] md:w-[30px] md:h-[30px] drop-shadow-lg pointer-events-auto"
+                      <p className="flex self-center font-Century-Gothic text-[10px] text-center justify-center items-center">Atención a clientes: <a href={`https://api.whatsapp.com/send?phone=${WhatsApp}`} className=" flex self-center ml-1 w-[20px] h-[20px] md:w-[20px] md:h-[20px] drop-shadow-lg pointer-events-auto"
           target="_blank"><IconWhatsapp /></a></p>
                     </div>
                   </div>
