@@ -61,6 +61,7 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
   let AccountDetailsBbva = '';
   let ClabeDetailsBbva = '';
   let NameDetails = '';
+  let WhatsApp = '';
 
   if( !postalCodeShipping.includes(parseInt(postalCode)) ) {
     if( postalCodeShippingProvinciaNL.includes(parseInt(postalCode)) ) {
@@ -68,6 +69,7 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
       AccountDetailsBanorte = '1213451805';
       ClabeDetailsBanorte = '072 180 012134518058';
       NameDetails = 'GRUPO AZULEJERO DE MAYORISTAS NORTE S.A. DE C.V.';
+      WhatsApp = 'https://api.whatsapp.com/send?phone=5215581353955&text=%C2%A1Hola!%20%C2%';
    } else {
       BancoDetailsBanorte = 'BANORTE';
       AccountDetailsBanorte = '0196952417';
@@ -76,6 +78,7 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
       AccountDetailsBbva = '0117837275';
       ClabeDetailsBbva = '012 180 001178372755';
       NameDetails = 'GRUPO AZULEJERO DE MAYORISTAS S.A. DE C.V.';
+      WhatsApp = 'https://api.whatsapp.com/send?phone=5215581353955&text=%C2%A1Hola!%20%C2%';
 }
   } else {
     BancoDetailsBanorte = 'BANORTE';
@@ -85,6 +88,7 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
     AccountDetailsBbva = '0117847610';
     ClabeDetailsBbva = '012 180 001178476101';
     NameDetails = 'GRUPO SANIMEX AYUNTAMIENTO S.A. DE C.V.';
+    WhatsApp = 'https://api.whatsapp.com/send?phone=5215510794275&text=%C2%A1Hola!%20%C2%';
   }
   
   useEffect(() => {
@@ -276,7 +280,7 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
                         A nombre de:
                       </p>
                       <p className="font-Century-Gothic text-[12px] text-center">{NameDetails}</p>
-                      <IconWhatsapp />
+                      Atención a clientes: <a href="{whatsapp}" className=" flex self-center ml-1 w-[30px] h-[30px] md:w-[30px] md:h-[30px] drop-shadow-lg pointer-events-auto" target="_blank"><IconWhatsapp />
                     </div>
                   </div>
              
