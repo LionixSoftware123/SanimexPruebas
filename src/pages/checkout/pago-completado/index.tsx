@@ -69,7 +69,7 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
       AccountDetailsBanorte = '1213451805';
       ClabeDetailsBanorte = '072 180 012134518058';
       NameDetails = 'GRUPO AZULEJERO DE MAYORISTAS NORTE S.A. DE C.V.';
-      WhatsApp = '5581353955';
+      WhatsApp = 'https://api.whatsapp.com/send?phone=5581353955';
    } else {
       BancoDetailsBanorte = 'BANORTE';
       AccountDetailsBanorte = '0196952417';
@@ -280,7 +280,10 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
                         A nombre de:
                       </p>
                       <p className="font-Century-Gothic text-[12px] text-center">{NameDetails}</p>
-                      Atención a clientes: <a href="{WhatsApp}"><IconWhatsapp /></a>
+                      Atención a clientes:
+                      <a href={`https://api.whatsapp.com/send?phone=${WhatsApp}`}>
+                       <IconWhatsapp />
+                      </a>
                     </div>
                   </div>
              
