@@ -283,7 +283,7 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
                     </div>
                   </div>
              
-                  <p className="pb-4 flex self-center font-Century-Gothic text-[10px] text-center justify-center items-center">Atención a clientes: <a href={`https://api.whatsapp.com/send?phone=${WhatsApp}&text=¿Tienes%20dudas?%20Escríbenos,%20estamos%20para%20ayudarte
+                  <p className="pb-4 flex self-center font-Century-Gothic text-[12px] text-center justify-center items-center">Atención a clientes: <a href={`https://api.whatsapp.com/send?phone=${WhatsApp}&text=¿Tienes%20dudas?%20Escríbenos,%20estamos%20para%20ayudarte
 `} className=" flex self-center ml-1 w-[20px] h-[20px] md:w-[20px] md:h-[20px] drop-shadow-lg pointer-events-auto"
           target="_blank"><IconWhatsapp /></a></p>
                   
