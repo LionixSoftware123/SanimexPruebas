@@ -46,8 +46,9 @@ export const data = {
         { label: 'Adhesivos', slug: 'adhesivos' },
         { label: 'Boquillas', slug: 'boquillas' },
         { label: 'Crucetas y niveladores', slug: 'crucetas-y-niveladores' },
-        { label: 'Limpiadores', slug: 'limpiadores' },
         { label: 'Kits de instalación', slug: 'kits-de-instalacion' },
+        { label: 'Limpiadores', slug: 'limpiadores' },
+        { label: 'Mortero', slug: 'mortero' },
         /**{ label: 'Complementos/Accesorios', slug: 'complementos' },**/
       ],
     },
