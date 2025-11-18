@@ -161,7 +161,7 @@ const ProductsPage: React.FC = () => {
     <ProductLayout>
       <StaticMeta
         title={'Sanimex - Productos'}
-        description={'Sanimex - Productos'}
+        description={'Sanimex - Los más vendidos'}
         asPath={router.asPath}
         image="/favicon.ico"
       />
