@@ -17,7 +17,7 @@ export const data = {
       label: 'Baños',
       slug: 'banos',
       childrenRoutes: [
-        { label: 'Ecológico', slug: 'ecologico' },
+        /**{ label: 'Ecológico', slug: 'ecologico' },**/
         { label: 'Sanitarios', slug: 'sanitarios-sanitarios' },
         { label: 'Muebles para baño', slug: 'muebles-para-bano' },
         { label: 'Grifería', slug: 'griferia' },
