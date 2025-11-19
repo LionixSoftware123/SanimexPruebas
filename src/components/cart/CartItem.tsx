@@ -15,11 +15,8 @@ import { updateCartItemsStore } from '@/modules/cart/cart-events';
 import Link from 'next/link';
 import { getImageAttributes } from '@/utils/utils';
 
-/**const ProductInputQuantity = dynamic(
-  () => import('@/components/product/components/ProductInputQuantity'),
-);**/
 const ProductInputQuantity = dynamic(
-  () => import('@/lib/cart/v2/components/ProductInputQuantity'),
+  () => import('@/components/product/components/ProductInputQuantity'),
 );
 
 type CartItemProps = {
