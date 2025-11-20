@@ -152,7 +152,7 @@ const CartItemComponent: React.FC<CartItemProps> = ({ cartItem }) => {
         <div className="text-end">
           <div className="flex justify-end items-center">
             <div className="text-[#666666] mr-3 font-Century-Gothic-Bold text-[14px]">
-               {formatCurrency(cartItem?.totals?.total_price ?? 0)} MXN
+               {formatCurrency(cartItem?.totals?.line_subtotal_tax ?? 0)} MXN
             </div>
             {loading ? (
               <svg
