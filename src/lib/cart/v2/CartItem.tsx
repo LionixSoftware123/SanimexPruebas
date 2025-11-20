@@ -70,6 +70,8 @@ const CartItemComponent: React.FC<CartItemProps> = ({ cartItem }) => {
     '',
   )}`;
 
+  console.log( cartItem?.totals?.total_price );
+
   return (
     <div className="grid grid-cols-12 py-8 border-[#C1C1C1] border-b items-center gap-4 mb-6">
       
@@ -152,7 +154,7 @@ const CartItemComponent: React.FC<CartItemProps> = ({ cartItem }) => {
         <div className="text-end">
           <div className="flex justify-end items-center">
             <div className="text-[#666666] mr-3 font-Century-Gothic-Bold text-[14px]">
-               {formatCurrency(cartItem?.totals?.total_price)} MXN
+               {formatCurrency(cartItem?.totals?.total_price ?? 0)} MXN
             </div>
             {loading ? (
               <svg
