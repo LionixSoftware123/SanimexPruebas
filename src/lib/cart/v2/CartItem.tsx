@@ -57,6 +57,10 @@ const CartItemComponent: React.FC<CartItemProps> = ({ cartItem }) => {
   const onHandleUpdate = (_quantity: number) => {
     const difference = _quantity - quantity;
 
+    console.log( _quantity );
+    console.log( quantity );
+    console.log( difference );
+
     callAddCart({
       id: cartItem.id,
       quantity: difference,
