@@ -16,7 +16,6 @@ const ProductInputQuantity: React.FC<ProductInputQuantityProps> = ({
   maxQuantity,
 }) => {
   const { addToast } = useToasts();
-  console.log( quantity );
   return (
     <div className="self-center  w-[111px] flex border border-[#838383] py-[5px] min-w-[120px] rounded-[5px] justify-center items-center">
       <button
