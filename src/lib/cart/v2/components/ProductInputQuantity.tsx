@@ -12,7 +12,7 @@ type ProductInputQuantityProps = {
 const ProductInputQuantity: React.FC<ProductInputQuantityProps> = ({
   onChange,
   product,
-  quantity = 1,
+  quantity,
   maxQuantity,
 }) => {
   const { addToast } = useToasts();
