@@ -70,8 +70,6 @@ const CartItemComponent: React.FC<CartItemProps> = ({ cartItem }) => {
     '',
   )}`;
 
-  console.log( cartItem?.totals?.total_price );
-
   return (
     <div className="grid grid-cols-12 py-8 border-[#C1C1C1] border-b items-center gap-4 mb-6">
       
