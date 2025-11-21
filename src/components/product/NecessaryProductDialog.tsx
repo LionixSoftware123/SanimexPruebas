@@ -45,7 +45,7 @@ const NecessaryProductDialog: React.FC<NecessaryProductDialogProps> = () => {
     <Transition.Root show={isOpen} as={Fragment}>
       <Dialog
         as="div"
-        className="relative z-[999]"
+        className="relative zindex-modal"
         initialFocus={cancelButtonRef}
         onClose={() => closeNecessaryProductDialogStoreAction()}
       >
