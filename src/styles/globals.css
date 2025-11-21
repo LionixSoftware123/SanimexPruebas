@@ -435,9 +435,6 @@ p > a {
   display: none;
 }
 
-
-
-
 .coupon-title {
   font-size: 1.25rem;
   font-weight: bold;
@@ -479,6 +476,9 @@ p > a {
   left: 50%;
   transform: translateX(-50%);
 }
+
+/* AxisKg 20112025 */
+.zindex-modal { z-index: 9999999999; }
 
 /* SKELETON TIME */
 
