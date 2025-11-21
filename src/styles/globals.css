@@ -473,7 +473,7 @@ p > a {
 }
 
 /* AxisKg 20112025 */
-.zindex-modal { z-index: 9999999999; }
+#assistantPopup { z-index: 999!important; }
 
 /* SKELETON TIME */
 @keyframes sandFallTop {
