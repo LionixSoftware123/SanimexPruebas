@@ -48,7 +48,7 @@ const AddCartButton: React.FC<AddCartButtonProps> = ({
       refetchCart?.();
     },
     onError: () => {
-      addToast('Tenemos problemas para agregar el producto! Será este el mensaje que sale?', {
+      addToast('Tenemos problemas para agregar el producto!', {
         appearance: 'error',
       });
     },
