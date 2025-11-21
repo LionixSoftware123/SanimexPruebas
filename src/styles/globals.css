@@ -171,13 +171,11 @@
 }
 .post-details > div > div > .twitter-tweet {
   display: flex;
-
   margin: auto;
 }
 
 .post-details > div > .twitter-tweet {
   display: flex;
-
   margin: auto;
 }
 
@@ -311,8 +309,6 @@ p > a {
    padding: 7px;
    font-size: 10px;
    font-weight: bold;
-
-
 }
 
 #tooltipText{
@@ -387,7 +383,6 @@ p > a {
   border-color: #bbf7d0 #0000 #0000 #0000;
   overflow: visible;
   z-index: 99999;
-
 }
 
 #tooltipTextEcoCategory::before{
@@ -478,7 +473,7 @@ p > a {
 }
 
 /* AxisKg 20112025 */
-.zindex-modal { z-index: 9999999999; }
+#assistantPopup { z-index: 999!important; }
 
 /* SKELETON TIME */
 
