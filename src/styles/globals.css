@@ -473,10 +473,9 @@ p > a {
 }
 
 /* AxisKg 20112025 */
-#assistantPopup { z-index: 999!important; }
+.zindex-modal { z-index: 9999999999; }
 
 /* SKELETON TIME */
-
 @keyframes sandFallTop {
   0%, 100% {
     transform: translateY(0) scaleY(1);
@@ -530,9 +529,6 @@ p > a {
 .st1 {
   fill: #B9D6EF;
 }
-
-
-
 
 .hourglass {
   width: 100px;
