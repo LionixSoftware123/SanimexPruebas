@@ -35,7 +35,7 @@ const CartItemComponent: React.FC<CartItemProps> = ({ cartItem }) => {
       // });
     },
     onError: () => {
-      addToast('Tenemos problemas para agregar el producto! solo ver si es este', {
+      addToast('Tenemos problemas para agregar el producto!', {
         appearance: 'error',
       });
     },
