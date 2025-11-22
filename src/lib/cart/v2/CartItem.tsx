@@ -77,8 +77,7 @@ const CartItemComponent: React.FC<CartItemProps> = ({ cartItem }) => {
   const itemTotal = Number(cartItem?.totals?.line_subtotal) + Number(cartItem?.totals?.line_subtotal_tax);
 
   return (
-    <tr className="woocommerce-cart-form__cart-item cart_item">
-      
+    <tr>
       <td className="product-thumbnail">
         <Link href={productSlug}>
           <ImageWithFallback
@@ -89,7 +88,6 @@ const CartItemComponent: React.FC<CartItemProps> = ({ cartItem }) => {
           />
         </Link>
       </td>
-
       <td className="product-name" data-title="Producto">
         <Link href={productSlug}>
           <div
@@ -97,36 +95,7 @@ const CartItemComponent: React.FC<CartItemProps> = ({ cartItem }) => {
             dangerouslySetInnerHTML={{ __html: cartItem?.name }}
           ></div>
         </Link>
-        <br>
-        <span className="font-Century-Gothic">Código:</span>
-        <span className="text-[#B2B2B2] first-letter:uppercase"> {cartItem?.sku}</span>
-        {cartItem?.variation &&
-          cartItem?.variation?.map(
-            (item: CartItemVariation, key: number) => {
-              return (
-                <br></br>
-                <div className="flex gap-2 text-[#111111]" key={key}>
-                  <span className="font-Century-Gothic">{item.attribute}:</span>
-                  <span className="text-[#B2B2B2] first-letter:uppercase">{item.value}</span>
-                </div>
-              );
-            },
-        )}
-        {cartItem?.prices?.price !== cartItem?.prices?.regular_price ? (
-          <>
-            <br>
-            <div className="col-span-2 text-[#111111] font-Century-Gothic">
-              <div className="col-span-2 bg-[#E9E9E9] line-through text-black rounded text-[12px] min-w-[50px] h-[20px] px-[5px] mb-1">
-                Antes {formatCurrency(cartItem?.prices?.regular_price)} MXN
-              </div>
-              <div className="col-span-2 bg-[#F17523] text-white rounded text-[12px] rounded min-w-[50px] h-[20px] px-[5px]">
-                Con descuento {formatCurrency(cartItem?.prices?.price)} MXN
-              </div>
-            </div>
-          </>
-        ) : null}
       </td>
-      
       <td className="product-quantity" data-title="Cantidad">
         <ProductInputQuantity
           quantity={quantity}
@@ -134,21 +103,17 @@ const CartItemComponent: React.FC<CartItemProps> = ({ cartItem }) => {
           onChange={(value) => onHandleUpdate(value)}
         />
       </td>
-      
       <td className="product-subtotal" data-title="Subtotal">
         {formatCurrency(cartItem?.totals?.line_subtotal ?? 0)} MXN
       </td>
-      
       <td className="product-subtotal" data-title="IVA">
         {formatCurrency(cartItem?.totals?.line_subtotal_tax ?? 0)} MXN
       </td>
-
       <td className="product-subtotal" data-title="Total">
         <div className="text-[#666666] mr-3 font-Century-Gothic-Bold text-[14px]">
           {formatCurrency( itemTotal ?? 0)} MXN
         </div>
       </td>
-
       <td className="product-remove">
         {loading ? (
           <svg
@@ -178,7 +143,6 @@ const CartItemComponent: React.FC<CartItemProps> = ({ cartItem }) => {
           />
         )}
       </td>
-
     </tr>
   );
 };
