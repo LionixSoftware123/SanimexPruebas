@@ -77,9 +77,9 @@ const CartItemComponent: React.FC<CartItemProps> = ({ cartItem }) => {
   const itemTotal = Number(cartItem?.totals?.line_subtotal) + Number(cartItem?.totals?.line_subtotal_tax);
 
   return (
-    <tr class="woocommerce-cart-form__cart-item cart_item">
+    <tr className="woocommerce-cart-form__cart-item cart_item">
       
-      <td class="product-thumbnail">
+      <td className="product-thumbnail">
         <Link href={productSlug}>
           <ImageWithFallback
             fill
@@ -90,7 +90,7 @@ const CartItemComponent: React.FC<CartItemProps> = ({ cartItem }) => {
         </Link>
       </td>
 
-      <td scope="row" role="rowheader" class="product-name" data-title="Producto">
+      <td className="product-name" data-title="Producto">
         <Link href={productSlug}>
           <div
             className="text-[#0033A1] font-Century-Gothic-Bold"
@@ -114,7 +114,7 @@ const CartItemComponent: React.FC<CartItemProps> = ({ cartItem }) => {
         )}
         {cartItem?.prices?.price !== cartItem?.prices?.regular_price ? (
           <>
-            <br>>
+            <br>
             <div className="col-span-2 text-[#111111] font-Century-Gothic">
               <div className="col-span-2 bg-[#E9E9E9] line-through text-black rounded text-[12px] min-w-[50px] h-[20px] px-[5px] mb-1">
                 Antes {formatCurrency(cartItem?.prices?.regular_price)} MXN
@@ -127,7 +127,7 @@ const CartItemComponent: React.FC<CartItemProps> = ({ cartItem }) => {
         ) : null}
       </td>
       
-      <td class="product-quantity" data-title="Cantidad">
+      <td className="product-quantity" data-title="Cantidad">
         <ProductInputQuantity
           quantity={quantity}
           product={cartItem}
@@ -135,21 +135,21 @@ const CartItemComponent: React.FC<CartItemProps> = ({ cartItem }) => {
         />
       </td>
       
-      <td class="product-subtotal" data-title="Subtotal">
+      <td className="product-subtotal" data-title="Subtotal">
         {formatCurrency(cartItem?.totals?.line_subtotal ?? 0)} MXN
       </td>
       
-      <td class="product-subtotal" data-title="IVA">
+      <td className="product-subtotal" data-title="IVA">
         {formatCurrency(cartItem?.totals?.line_subtotal_tax ?? 0)} MXN
       </td>
 
-      <td class="product-subtotal" data-title="Total">
+      <td className="product-subtotal" data-title="Total">
         <div className="text-[#666666] mr-3 font-Century-Gothic-Bold text-[14px]">
           {formatCurrency( itemTotal ?? 0)} MXN
         </div>
       </td>
 
-      <td class="product-remove">
+      <td className="product-remove">
         {loading ? (
           <svg
             aria-hidden="true"
