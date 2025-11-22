@@ -83,7 +83,7 @@ const CartPage: React.FC<CartPageProps> = ({ internalBanner }) => {
                   <div className="col-span-full mt-24">
 
                     <div className="col-span-full md:col-span-12 ">
-                      <table class="shop_table shop_table_responsive" cellspacing="0">
+                      <table className="shop_table shop_table_responsive" cellspacing="0">
                         <thead>
                           <tr>
                             <th className="product-thumbnail"><span className="screen-reader-text">Thumbnail image</span></th>
@@ -123,7 +123,7 @@ const CartPage: React.FC<CartPageProps> = ({ internalBanner }) => {
                             </td>
                           </tr>
                           <tr>
-                            <td colspan="7" class="actions">
+                            <td colspan="7" className="actions">
                               <Link href="/productos">
                                 <button className="mb-2 border border-[#0071CE] rounded-[2px] uppercase h-[45px] w-full md:w-[300px] text-[#0071CE] font-Century-Gothic-Bold flex items-center justify-center text-[15px]">
                                   SEGUIR COMPRANDO
