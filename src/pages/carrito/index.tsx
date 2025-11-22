@@ -159,7 +159,7 @@ const CartPage: React.FC<CartPageProps> = ({ internalBanner }) => {
                               </button>                                
                             </td>
                           </tr>
-                        <tbody>
+                        </tbody>
                       </table>
                     </div>
 
