@@ -86,13 +86,13 @@ const CartPage: React.FC<CartPageProps> = ({ internalBanner }) => {
                       <table class="shop_table shop_table_responsive" cellspacing="0">
                         <thead>
                           <tr>
-                            <th class="product-thumbnail"><span class="screen-reader-text">Thumbnail image</span></th>
-                            <th scope="col" class="product-name">Producto</th>
-                            <th scope="col" class="product-quantity">Cantidad</th>
-                            <th scope="col" class="product-subtotal">Subtotal</th>
-                            <th scope="col" class="product-subtotal">IVA</th>
-                            <th scope="col" class="product-price">Total</th>
-                            <th class="product-remove"><span class="screen-reader-text">Eliminar artículo</span></th>
+                            <th className="product-thumbnail"><span className="screen-reader-text">Thumbnail image</span></th>
+                            <th scope="col" className="product-name">Producto</th>
+                            <th scope="col" className="product-quantity">Cantidad</th>
+                            <th scope="col" className="product-subtotal">Subtotal</th>
+                            <th scope="col" className="product-subtotal">IVA</th>
+                            <th scope="col" className="product-price">Total</th>
+                            <th className="product-remove"><span className="screen-reader-text">Eliminar artículo</span></th>
                           </tr>
                         </thead>
 
@@ -106,7 +106,7 @@ const CartPage: React.FC<CartPageProps> = ({ internalBanner }) => {
                           ))}
 
                           <tr>
-                            <td colspan="7" class="actions">
+                            <td colspan="7" className="actions">
                                 <div className="col-span-full text-end">
                                   <button
                                     className="inline-flex text-[#F17523] text-[12px]"
