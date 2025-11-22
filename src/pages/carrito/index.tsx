@@ -106,7 +106,7 @@ const CartPage: React.FC<CartPageProps> = ({ internalBanner }) => {
                           ))}
 
                           <tr>
-                            <td colspan="7" className="actions">
+                            <td className="actions">
                                 <div className="col-span-full text-end">
                                   <button
                                     className="inline-flex text-[#F17523] text-[12px]"
@@ -123,7 +123,7 @@ const CartPage: React.FC<CartPageProps> = ({ internalBanner }) => {
                             </td>
                           </tr>
                           <tr>
-                            <td colspan="7" className="actions">
+                            <td className="actions">
                               <Link href="/productos">
                                 <button className="mb-2 border border-[#0071CE] rounded-[2px] uppercase h-[45px] w-full md:w-[300px] text-[#0071CE] font-Century-Gothic-Bold flex items-center justify-center text-[15px]">
                                   SEGUIR COMPRANDO
