@@ -50,9 +50,9 @@ const CartDetails: React.FC<CartDetailsProps> = ({ cart }) => {
   }
 
   return (
-    <div className="border border-[#707070] mb-6">
+    <div className="w-resumen border border-[#707070] mb-6">
       <div className="p-2 text-[#666666] text-[14px] font-Century-Gothic border-b border-b-[#C1C1C1] text-center">
-        Resumen
+        Total del Carrito
       </div>
       <div className="p-4 text-[14px] ">
         <div className="text-[#666666] flex justify-between items-center font-Century-Gothic text-[12px]">
