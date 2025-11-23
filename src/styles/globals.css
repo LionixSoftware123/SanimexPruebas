@@ -590,32 +590,30 @@ table.shop_table .screen-reader-text {
 }
 table.shop_table {
     border: 1px solid rgba(0, 0, 0, .1);
-    margin: 0 -1px 24px 0;
+    margin: 0px;
     text-align: left;
     width: 100%;
     border-collapse: separate;
-    border-radius: 5px;
+    border-spacing: 5px;
 }
 table.shop_table td {
-    border-top: 1px solid rgba(0, 0, 0, .1);
-    padding: 9px 12px;
+    padding: 0px 5px;
     vertical-align: middle;
-    line-height: 1.5em;
 }
-table.shop_table .product-thumbnail { min-width: 32px; }
 @media only screen and (max-width: 768px) {
     table.shop_table td {
         display: block;
         text-align: right;
     }
-    table.shop_table_responsive thead {
+    table.shop_table thead {
         display: none;
     }
-    table.shop_table_responsive.product-name tr td::before,
-    table.shop_table_responsive.product-quantity tr td::before,
-    table.shop_table_responsive.product-subtotal tr td::before,
-    table.shop_table_responsive.product-iva tr td::before,
-    table.shop_table_responsive.product-total tr td::before {
+    table.shop_table .product-thumbnail { display: none; }
+    table.shop_table .product-name::before,
+    table.shop_table .product-quantity::before,
+    table.shop_table .product-subtotal::before,
+    table.shop_table .product-iva::before,
+    table.shop_table .product-total::before {
         content: attr(data-title) ": ";
         font-weight: 700;
         float: left;
