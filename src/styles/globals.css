@@ -575,8 +575,8 @@ p > a {
 .zindex-modal { z-index: 9999999999; }
 
 /* tabla para el carrito */
-flex-t { display: flex; }
-justify-end-t { justify-content: flex-end; }
+.flex-t { display: flex; }
+.justify-end-t { justify-content: flex-end; }
 table.shop_table .screen-reader-text {
     clip: rect(1px, 1px, 1px, 1px);
     word-wrap: normal !important;
@@ -591,20 +591,25 @@ table.shop_table .screen-reader-text {
     width: 1px;
 }
 table.shop_table {
-    border: 1px solid rgba(0, 0, 0, .1);
-    margin: 0px;
+    margin: 0px 0px 15px 0px;
     text-align: left;
     width: 100%;
     border-collapse: separate;
     border-spacing: 5px;
 }
+table.shop_table thead {
+  border-bottom: 1px solid rgba(112, 112, 112, 1);
+}
 table.shop_table td {
     padding: 5px;
     vertical-align: middle;
 }
+table.shop_table tr:last-child {
+  border-top: 1px solid rgba(112, 112, 112, 1);
+}
 @media only screen and (max-width: 768px) {
-    flex-t { ddisplay: block; }
-    table.shop_table td { display: block; text-align: right; }
+    .flex-t { display: block; }
+    table.shop_table td { display: block; margin-bottom: 5px; }
     table.shop_table thead { display: none; }
     table.shop_table .product-thumbnail { display: none; }
     table.shop_table .product-name::before,
