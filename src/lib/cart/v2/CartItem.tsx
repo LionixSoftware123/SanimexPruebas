@@ -100,25 +100,25 @@ const CartItemComponent: React.FC<CartItemProps> = ({ cartItem }) => {
           ></span>
         </Link>
       </td>
-      <td className="product-quantity" data-title="Cantidad">
+      <td className="product-quantity text-center-t" data-title="Cantidad">
         <ProductInputQuantity
           quantity={quantity}
           product={cartItem}
           onChange={(value) => onHandleUpdate(value)}
         />
       </td>
-      <td className="product-subtotal" data-title="Subtotal">
+      <td className="product-subtotal text-center-t" data-title="Subtotal">
         {formatCurrency(cartItem?.totals?.line_subtotal ?? 0)} MXN
       </td>
-      <td className="product-iva" data-title="IVA">
+      <td className="product-iva text-center-t" data-title="IVA">
         {formatCurrency(cartItem?.totals?.line_subtotal_tax ?? 0)} MXN
       </td>
-      <td className="product-total" data-title="Total">
+      <td className="product-total text-center-t" data-title="Total">
         <span className="text-[#666666] mr-3 font-Century-Gothic-Bold text-[14px]">
           {formatCurrency( itemTotal ?? 0)} MXN
         </span>
       </td>
-      <td className="product-remove">
+      <td className="product-remove text-center-t">
         {loading ? (
           <svg
             aria-hidden="true"
