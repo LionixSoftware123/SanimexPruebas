@@ -94,10 +94,10 @@ const CartItemComponent: React.FC<CartItemProps> = ({ cartItem }) => {
       </td>
       <td className="product-name" data-title="Producto">
         <Link href={productSlug}>
-          <div
+          <span
             className="text-[#0033A1] font-Century-Gothic-Bold"
             dangerouslySetInnerHTML={{ __html: cartItem?.name }}
-          ></div>
+          ></span>
         </Link>
       </td>
       <td className="product-quantity" data-title="Cantidad">
@@ -114,9 +114,9 @@ const CartItemComponent: React.FC<CartItemProps> = ({ cartItem }) => {
         {formatCurrency(cartItem?.totals?.line_subtotal_tax ?? 0)} MXN
       </td>
       <td className="product-total" data-title="Total">
-        <div className="text-[#666666] mr-3 font-Century-Gothic-Bold text-[14px]">
+        <span className="text-[#666666] mr-3 font-Century-Gothic-Bold text-[14px]">
           {formatCurrency( itemTotal ?? 0)} MXN
-        </div>
+        </span>
       </td>
       <td className="product-remove">
         {loading ? (
