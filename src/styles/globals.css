@@ -603,7 +603,7 @@ table.shop_table {
     border-spacing: 5px;
 }
 table.shop_table thead {
-  border-bottom: border-bottom: 1px solid rgba(193, 193, 193, 1);
+  border-bottom: 1px solid rgba(193, 193, 193, 1);
 }
 table.shop_table td {
     padding: 5px;
