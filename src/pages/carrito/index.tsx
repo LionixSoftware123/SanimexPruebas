@@ -124,6 +124,7 @@ const CartPage: React.FC<CartPageProps> = ({ internalBanner }) => {
                           </tr>
                           <tr>
                             <td colSpan={7} className="actions">
+                              <div className="flex-t justify-end-t">
                               <Link href="/productos">
                                 <button className="mb-2 border border-[#0071CE] rounded-[2px] uppercase h-[45px] w-full md:w-[300px] text-[#0071CE] font-Century-Gothic-Bold flex items-center justify-center text-[15px]">
                                   SEGUIR COMPRANDO
@@ -156,7 +157,8 @@ const CartPage: React.FC<CartPageProps> = ({ internalBanner }) => {
                                 ) : (
                                   <div className="">ACTUALIZAR CARRITO</div>
                                 )}
-                              </button>                                
+                              </button>
+                              </div>
                             </td>
                           </tr>
                         </tbody>
