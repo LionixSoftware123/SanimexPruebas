@@ -4,7 +4,8 @@ import ImageWithFallback from '@/utils/ImageWithFallback';
 import dynamic from 'next/dynamic';
 import { useCallAction } from '@cobuildlab/react-simple-state';
 import Link from 'next/link';
-import { CartItem, CartItemVariation } from './cart-types';
+//import { CartItem, CartItemVariation } from './cart-types';
+import { CartItem } from './cart-types';
 import { formatCurrency } from './utils/formats';
 import { addCartAction, removeCartAction } from '@/lib/cart/v2/cart-actions';
 
