@@ -577,6 +577,7 @@ p > a {
 /* tabla para el carrito */
 .flex-t { display: flex; }
 .justify-end-t { justify-content: flex-end; }
+.text-center-t { text-align: center!important; }
 table.shop_table .screen-reader-text {
     clip: rect(1px, 1px, 1px, 1px);
     word-wrap: normal !important;
@@ -609,6 +610,7 @@ table.shop_table tr:last-child {
 }
 @media only screen and (max-width: 768px) {
     .flex-t { display: block; }
+    .text-center-t { text-align: left!important; }
     table.shop_table td { display: block; margin-bottom: 5px; }
     table.shop_table thead { display: none; }
     table.shop_table .product-thumbnail { display: none; }
