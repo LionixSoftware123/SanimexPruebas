@@ -81,12 +81,17 @@ const CartItemComponent: React.FC<CartItemProps> = ({ cartItem }) => {
     <tr>
       <td className="product-thumbnail">
         <Link href={productSlug}>
-          <ImageWithFallback
-            fill
-            style={{ objectFit: 'contain' }}
-            src={cartItem?.images[0].thumbnail as string}
-            alt={cartItem?.name as string}
-          />
+          <div className="w-full h-[100px] relative">
+            <ImageWithFallback
+              layout="responsive"
+              width={100}
+              height={100}
+              fill
+              style={{ objectFit: 'contain', background: 'white' }}            
+              src={cartItem?.images[0].thumbnail as string}
+              alt={cartItem?.name as string}
+            />
+          </div>
         </Link>
       </td>
       <td className="product-name" data-title="Producto">
