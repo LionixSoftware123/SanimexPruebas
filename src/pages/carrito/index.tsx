@@ -188,7 +188,7 @@ const CartPage: React.FC<CartPageProps> = ({ internalBanner }) => {
                     </div>
 
                     {upsell && upsell.length ? (
-                      <div className="col-span-full md:col-span-12">
+                      <div className="hidden col-span-full md:col-span-12">
                         <div className="text-[20px] font-Century-Gothic mb-4">
                           Materiales de instalación necesarios
                         </div>
