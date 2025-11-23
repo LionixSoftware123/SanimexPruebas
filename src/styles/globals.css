@@ -575,8 +575,8 @@ p > a {
 .zindex-modal { z-index: 9999999999; }
 
 /* tabla para el carrito */
-table.shop_table flex-t { display: flex; }
-table.shop_table justify-end-t { justify-content: flex-end; }
+flex-t { display: flex; }
+justify-end-t { justify-content: flex-end; }
 table.shop_table .screen-reader-text {
     clip: rect(1px, 1px, 1px, 1px);
     word-wrap: normal !important;
@@ -603,7 +603,7 @@ table.shop_table td {
     vertical-align: middle;
 }
 @media only screen and (max-width: 768px) {
-    table.shop_table flex-t { ddisplay: block; }
+    flex-t { ddisplay: block; }
     table.shop_table td { display: block; text-align: right; }
     table.shop_table thead { display: none; }
     table.shop_table .product-thumbnail { display: none; }
