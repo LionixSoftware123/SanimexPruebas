@@ -164,7 +164,7 @@ const GeolocationDialog: React.FC<GeolocationDialogProps> = ({
                       Calcular distancia
                     </Dialog.Title>
                     <Dialog.Description>
-                      <div className="grid grid-cols-2 gap-4">
+                      <div className="grid .grid-cols-2-geo gap-4">
                         <div className="col-span-1">
                           {isLoaded ? (
                             <>
