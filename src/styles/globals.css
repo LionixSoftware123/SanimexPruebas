@@ -604,13 +604,13 @@ table.shop_table td {
 }
 table.shop_table .product-thumbnail { min-width: 32px; }
 @media only screen and (max-width: 768px) {
+    table.shop_table td {
+        display: block;
+        text-align: right;
+    }
     table.shop_table_responsive thead {
         display: none;
     }
-    .table.shop_table_responsive tr td {
-        display: block !important;
-        text-align: right !important;
-    }  
     table.shop_table_responsive.product-name tr td::before,
     table.shop_table_responsive.product-quantity tr td::before,
     table.shop_table_responsive.product-subtotal tr td::before,
