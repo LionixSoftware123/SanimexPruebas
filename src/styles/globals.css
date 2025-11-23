@@ -597,7 +597,7 @@ table.shop_table {
     border-spacing: 5px;
 }
 table.shop_table td {
-    padding: 0px 5px;
+    padding: 5px;
     vertical-align: middle;
 }
 @media only screen and (max-width: 768px) {
