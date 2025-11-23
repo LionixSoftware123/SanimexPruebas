@@ -83,7 +83,7 @@ const CartItemComponent: React.FC<CartItemProps> = ({ cartItem }) => {
         <Link href={productSlug}>
           <ImageWithFallback
             fill
-            style={{ objectFit: 'cover' }}
+            style={{ objectFit: 'contain' }}
             src={cartItem?.images[0].thumbnail as string}
             alt={cartItem?.name as string}
           />
