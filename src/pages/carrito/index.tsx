@@ -86,13 +86,13 @@ const CartPage: React.FC<CartPageProps> = ({ internalBanner }) => {
                       <table className="shop_table shop_table_responsive">
                         <thead>
                           <tr>
-                            <th className="product-thumbnail"><span className="screen-reader-text">Thumbnail image</span></th>
-                            <th scope="col" className="product-name">Producto</th>
-                            <th scope="col" className="product-quantity">Cantidad</th>
-                            <th scope="col" className="product-subtotal">Subtotal</th>
-                            <th scope="col" className="product-subtotal">IVA</th>
-                            <th scope="col" className="product-price">Total</th>
-                            <th className="product-remove"><span className="screen-reader-text">Eliminar artículo</span></th>
+                            <th><span className="screen-reader-text">Thumbnail image</span></th>
+                            <th scope="col">Producto</th>
+                            <th scope="col" className="text-center-t">Cantidad</th>
+                            <th scope="col" className="text-center-t">Subtotal</th>
+                            <th scope="col" className="text-center-t">IVA</th>
+                            <th scope="col" className="text-center-t">Total</th>
+                            <th className="text-center-t"><span className="screen-reader-text">Eliminar artículo</span></th>
                           </tr>
                         </thead>
 
@@ -106,7 +106,7 @@ const CartPage: React.FC<CartPageProps> = ({ internalBanner }) => {
                           ))}
 
                           <tr>
-                            <td colSpan={7} className="actions">
+                            <td colSpan={7}>
                                 <div className="col-span-full text-end">
                                   <button
                                     className="inline-flex text-[#F17523] text-[12px]"
@@ -123,10 +123,10 @@ const CartPage: React.FC<CartPageProps> = ({ internalBanner }) => {
                             </td>
                           </tr>
                           <tr>
-                            <td colSpan={7} className="actions">
+                            <td colSpan={7}>
                               <div className="flex-t justify-end-t">
                               <Link href="/productos">
-                                <button className="mb-2 border border-[#0071CE] rounded-[2px] uppercase h-[45px] w-full md:w-[300px] text-[#0071CE] font-Century-Gothic-Bold flex items-center justify-center text-[15px]">
+                                <button className="mbr-t mb-2 border border-[#0071CE] rounded-[2px] uppercase h-[45px] w-full md:w-[300px] text-[#0071CE] font-Century-Gothic-Bold flex items-center justify-center text-[15px]">
                                   SEGUIR COMPRANDO
                                 </button>
                               </Link>
