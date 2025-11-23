@@ -81,11 +81,11 @@ const CartItemComponent: React.FC<CartItemProps> = ({ cartItem }) => {
     <tr>
       <td className="product-thumbnail">
         <Link href={productSlug}>
-          <div className="w-full h-[100px] relative">
+          <div className="max-w-\[80px\] h-[80px] relative">
             <ImageWithFallback
               layout="responsive"
-              width={100}
-              height={100}
+              width={80}
+              height={80}
               fill
               style={{ objectFit: 'contain', background: 'white' }}            
               src={cartItem?.images[0].thumbnail as string}
