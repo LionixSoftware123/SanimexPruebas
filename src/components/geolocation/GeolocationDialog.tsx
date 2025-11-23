@@ -164,7 +164,7 @@ const GeolocationDialog: React.FC<GeolocationDialogProps> = ({
                       Calcular distancia
                     </Dialog.Title>
                     <Dialog.Description>
-                      <div className="grid .grid-cols-2-geo gap-4">
+                      <div className="grid grid-cols-2-geo gap-4">
                         <div className="col-span-1">
                           {isLoaded ? (
                             <>
@@ -292,7 +292,7 @@ const GeolocationDialog: React.FC<GeolocationDialogProps> = ({
                                   </div>
                                   <a
                                     href={`https://api.whatsapp.com/send?phone=5215581353955&text=Necesito ayuda excedo el limite de distancia permitida para la entrega a domicilio`}
-                                    className={`rounded-[5px] border border-[#0033A1]   h-[45px] w-[150px]  flex justify-center items-center text-[#0033A1] text-[11px] px-4`}
+                                    className={`rounded-[5px] border border-[#0033A1] h-[45px] w-[150px] flex justify-center items-center text-[#0033A1] text-[11px] px-4`}
                                     target="_blank"
                                   >
                                     <div className="flex self-center w-[20px] h-[20px] mr-2">
@@ -323,7 +323,7 @@ const GeolocationDialog: React.FC<GeolocationDialogProps> = ({
                   </div>
                   <div className="bg-gray-50 px-4 py-3 flex flex-col mx-auto lg:flex-row justify-center w-[240px] lg:w-full">
                     <button
-                      className="border border-[#1C355E] hover:bg-[#0033A1] hover:text-white mb-4 lg:mb-0 lg:mr-2 rounded-[5px] bg-white  h-[45px] flex items-center text-[#1C355E] text-[12px] px-8"
+                      className="border border-[#1C355E] hover:bg-[#0033A1] hover:text-white mb-4 lg:mb-0 lg:mr-2 rounded-[5px] bg-white  h-[45px] flex justify-center items-center text-[#1C355E] text-[12px] px-8"
                       onClick={() => {
                         setSelectedShop(undefined);
                         setDirections(undefined);
@@ -334,7 +334,7 @@ const GeolocationDialog: React.FC<GeolocationDialogProps> = ({
                     </button>
                     <button
                       disabled={canConfirm}
-                      className="border border-[#1C355E] disabled:opacity-70 text-white mb-4 lg:mb-0 lg:mr-2 rounded-[5px] bg-[#0033A1]  h-[45px] flex items-center text-[12px] px-8"
+                      className="border border-[#1C355E] disabled:opacity-70 text-white mb-4 lg:mb-0 lg:mr-2 rounded-[5px] bg-[#0033A1]  h-[45px] flex justify-center items-center text-[12px] px-8"
                       onClick={() => {
                         setOpen(false);
                         confirmGeolocationStoreAction(distance, selectedShop);
