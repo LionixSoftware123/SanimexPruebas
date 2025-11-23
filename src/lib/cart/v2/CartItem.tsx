@@ -78,7 +78,7 @@ const CartItemComponent: React.FC<CartItemProps> = ({ cartItem }) => {
   const itemTotal = Number(cartItem?.totals?.line_subtotal) + Number(cartItem?.totals?.line_subtotal_tax);
 
   return (
-    <tr>
+    <tr className="border-bottom-t">
       <td className="product-thumbnail">
         <Link href={productSlug}>
           <div className="max-w-\[80px\] h-[80px] relative">
