@@ -51,7 +51,7 @@ const ProductUpsale: React.FC<ProductSixProps> = ({ product }) => {
 
   return (
     <div>
-      <div className="hidden lg:grid grid-cols-6 py-6  items-center gap-4 ">
+      <div className="lg:grid grid-cols-6 py-6  items-center gap-4 ">
         <div className="col-span-2">
           <div className="grid grid-cols-2">
             <div>
