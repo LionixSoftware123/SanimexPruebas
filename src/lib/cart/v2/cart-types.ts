@@ -184,6 +184,10 @@ export type CartAddItemData = {
   quantity: number;
 };
 
+export type CartRestItemData = {
+  keys: string[];
+};
+
 export type CartRemoveItemData = {
   keys: string[];
 };
