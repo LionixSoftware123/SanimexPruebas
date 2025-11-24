@@ -11,6 +11,15 @@ export const addCartEvent = createEvent<CartResponse>({
 
 export const addCartErrorEvent = createEvent<Error>();
 
+export const restCartEvent = createEvent<CartResponse>({
+  initialValue: {
+    cart: undefined,
+    token: '',
+  },
+});
+
+export const restCartErrorEvent = createEvent<Error>();
+
 export const removeCartEvent = createEvent<CartResponse>({
   initialValue: {
     cart: undefined,
