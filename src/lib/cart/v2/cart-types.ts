@@ -186,6 +186,7 @@ export type CartAddItemData = {
 
 export type CartRestItemData = {
   keys: string[];
+  quantity: number;
 };
 
 export type CartRemoveItemData = {
