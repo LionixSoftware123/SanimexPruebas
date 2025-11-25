@@ -90,7 +90,7 @@ const CartItemComponent: React.FC<CartItemProps> = ({ cartItem }) => {
 
       setQuantity(_quantity);
     } else {
-      addToast('Ingrese una cantidad mayor de 0', {
+      addToast('La cantidad debe ser mayor de 0', {
         appearance: 'error',
       });
 
