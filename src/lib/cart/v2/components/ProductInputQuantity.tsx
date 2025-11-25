@@ -23,6 +23,17 @@ const ProductInputQuantity: React.FC<ProductInputQuantityProps> = ({
         onClick={() => {
           if (quantity > 0) {
             onChange && onChange(quantity - 1);
+          } else {
+            addToast(
+              <div>
+                <div>
+                  Ingrese una cantidad mayor de 0
+                </div>
+              </div>,
+              {
+                appearance: 'error',
+              },
+            );            
           }
         }}
       >
