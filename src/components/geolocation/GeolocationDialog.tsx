@@ -308,7 +308,10 @@ const GeolocationDialog: React.FC<GeolocationDialogProps> = ({
                                   Costo total del km extra:{' '}
                                   <strong>
                                   $
-                                  {((distance.value - 10000) / 1000).toFixed(1)}{' '}
+                                  {calculateCost(
+                                      ((distance.value - 10000) / 1000).toFixed(1),
+                                      FreeShipping,
+                                    ).toFixed(2)}
                                   </strong>
                                   <br />
                                   Costo total de envío:{' '}
