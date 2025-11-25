@@ -7,7 +7,7 @@ import Link from 'next/link';
 //import { CartItem, CartItemVariation } from './cart-types';
 import { CartItem } from './cart-types';
 import { formatCurrency } from './utils/formats';
-import { addCartAction, removeCartAction } from '@/lib/cart/v2/cart-actions';
+import { addCartAction, restCartAction, removeCartAction } from '@/lib/cart/v2/cart-actions';
 
 import { useCartHook } from './cart-hooks';
 import { useToasts } from 'react-toast-notifications';
@@ -54,6 +54,19 @@ const CartItemComponent: React.FC<CartItemProps> = ({ cartItem }) => {
       // });
     },
   });
+  const [callRestCart] = useCallAction(restCartAction, {
+    onCompleted: (data) => {
+      updateCart?.(data?.cart);
+      // addToast('El carrito se ha actualizado correctamente correctamente!', {
+      //   appearance: 'success',
+      // });
+    },
+    onError: () => {
+      // addToast('Tenemos problemas para agregar el producto!', {
+      //   appearance: 'error',
+      // });
+    },
+  });
 
   const onHandleUpdate = (_quantity: number) => {
     const difference = _quantity - quantity;
@@ -62,10 +75,17 @@ const CartItemComponent: React.FC<CartItemProps> = ({ cartItem }) => {
     console.log( quantity );
     console.log( difference );
 
-    callAddCart({
-      id: cartItem.id,
-      quantity: difference,
-    });
+    if( difference > 0 ) {
+      callAddCart({
+        id: cartItem.id,
+        quantity: difference,
+      });
+    } else {
+      callRestCart({
+        key: cartItem.key,
+        quantity: _quantity,
+      });      
+    }
 
     setQuantity(_quantity);
   };
