@@ -2,6 +2,8 @@ import { createAction } from '@cobuildlab/react-simple-state';
 import {
   addCartErrorEvent,
   addCartEvent,
+  restCartErrorEvent,
+  restCartEvent,
   applyCouponErrorEvent,
   applyCouponEvent,
   removeCartErrorEvent,
@@ -13,6 +15,7 @@ import axios, { AxiosError } from 'axios';
 import {
   ApplyCouponData,
   CartAddItemData,
+  CartRestItemData,
   CartRemoveItemData,
   CartResponse,
   UpsaleAttribute,
@@ -35,6 +38,21 @@ export const addCartAction = createAction(
       throw Error((error as AxiosError).response?.data as string);
     }
 
+    return response.data;
+  },
+);
+
+export const restCartAction = createAction(
+  restCartEvent,
+  restCartErrorEvent,
+  async (data: CartRestItemData) => {
+    let response;
+
+    try {
+      response = await axios.post('/api/cart/v2/update-item', data);
+    } catch (error) {
+      throw Error((error as AxiosError).response?.data as string);
+    }
     return response.data;
   },
 );
