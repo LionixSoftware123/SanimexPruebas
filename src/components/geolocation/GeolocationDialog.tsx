@@ -12,7 +12,6 @@ import {
   calculateCost,
   getDistance,
 } from '@/modules/geolocation/geolocation-utils';
-import { COST_BY_KM } from '@/modules/geolocation/geolocation-constants';
 import SelectGoogleAutocomplete from '@/components/geolocation/components/SelectGoogleAutocomplete';
 import { LngLatType } from '@/modules/geolocation/geolocation-types';
 import { confirmGeolocationStore } from '@/modules/geolocation/geolocation-events';
@@ -277,7 +276,7 @@ const GeolocationDialog: React.FC<GeolocationDialogProps> = ({
                               {distance.value > 10000 ? (
                                 <div>
                                   km extra:{' '}
-                                  {((distance.value - 10000) / 1000).toFixed(2)}{' '}
+                                  {((distance.value - 10000) / 1000).toFixed(1)}{' '}
                                   km
                                 </div>
                               ) : null}
@@ -306,14 +305,6 @@ const GeolocationDialog: React.FC<GeolocationDialogProps> = ({
                                 </div>
                               ) : (
                                 <div>
-                                  Costo total del km extra:{' '}
-                                  <strong>
-                                  $
-                                  {(
-                                    Math.round((((distance.value - 10000) / 1000) * COST_BY_KM) * 100)/100
-                                  ).toFixed(2)}
-                                  </strong>
-                                  <br />
                                   Costo total de envío:{' '}
                                   <strong>
                                     $
