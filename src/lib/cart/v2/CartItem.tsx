@@ -82,7 +82,7 @@ const CartItemComponent: React.FC<CartItemProps> = ({ cartItem }) => {
       });
     } else {
       callRestCart({
-        key: cartItem.key,
+        keys: [cartItem.key],
         quantity: _quantity,
       });      
     }
