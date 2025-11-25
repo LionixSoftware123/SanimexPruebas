@@ -75,7 +75,7 @@ const CartItemComponent: React.FC<CartItemProps> = ({ cartItem }) => {
     console.log( quantity );
     console.log( difference );    
 
-    if( _quantity !== 0 )  
+    if( _quantity !== 0 )  {
       if( difference > 0 ) {
         callAddCart({
           id: cartItem.id,
