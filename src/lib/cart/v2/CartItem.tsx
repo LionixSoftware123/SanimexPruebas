@@ -71,16 +71,22 @@ const CartItemComponent: React.FC<CartItemProps> = ({ cartItem }) => {
   const onHandleUpdate = (_quantity: number) => {
     const difference = _quantity - quantity;
 
-    if( difference > 0 ) {
-      callAddCart({
-        id: cartItem.id,
-        quantity: difference,
-      });
-    } else if ( difference < 0 ) {
-      callRestCart({
-        keys: [cartItem.key],
-        quantity: _quantity,
-      });      
+    console.log( _quantity );
+    console.log( quantity );
+    console.log( difference );    
+
+    if( _quantity !== 0 )  
+      if( difference > 0 ) {
+        callAddCart({
+          id: cartItem.id,
+          quantity: difference,
+        });
+      } else {
+        callRestCart({
+          keys: [cartItem.key],
+          quantity: _quantity,
+        });      
+      }
     } else {
       addToast('Ingrese una cantidad mayor de 0', {
         appearance: 'error',
