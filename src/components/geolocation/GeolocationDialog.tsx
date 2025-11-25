@@ -310,8 +310,7 @@ const GeolocationDialog: React.FC<GeolocationDialogProps> = ({
                                   $
                                   {((distance.value - 10000) / 1000).toFixed(1)}{' '}
                                   </strong>
-                                </div>                              
-                                <div>
+                                  <br />
                                   Costo total de envío:{' '}
                                   <strong>
                                     $
