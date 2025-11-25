@@ -87,13 +87,15 @@ const CartItemComponent: React.FC<CartItemProps> = ({ cartItem }) => {
           quantity: _quantity,
         });      
       }
+
+      setQuantity(_quantity);
     } else {
       addToast('Ingrese una cantidad mayor de 0', {
         appearance: 'error',
-      });      
-    }
+      });
 
-    setQuantity(_quantity);
+      setQuantity(quantity);
+    }
   };
 
   const productSlug = `${cartItem?.permalink.replace(
