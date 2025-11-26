@@ -84,15 +84,15 @@ const GeolocationDialog: React.FC<GeolocationDialogProps> = ({
       setSelectedShop(data.shop);
       setDirections(data.directions);
       setCanConfirm(!(calculateCost(_distance, FreeShipping) <= 25));
-      console.log(
+      /**console.log(
         'calculateCost(_distance, FreeShipping) <= 25',
         calculateCost(_distance, FreeShipping) <= 25,
-      );
+      );**/
     },
   });
 
   const distance = getDistance(directions);
-  console.log(selectedShippingOption);
+  console.log(distance);
   return (
     <>
       <div
