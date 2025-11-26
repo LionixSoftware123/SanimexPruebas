@@ -267,7 +267,7 @@ const ProductsPage: React.FC = () => {
                     handleQuery({ design: value, page: 1 })
                   }
                   loading={loadingAttributes}
-                >
+                />
                 ) : null}
                 
                 {measures.length > 0 && !visible ? (
@@ -279,7 +279,7 @@ const ProductsPage: React.FC = () => {
                     handleQuery({ measure: value, page: 1 })
                   }
                   loading={loadingAttributes}
-                >
+                />
                 ) : null}
 
               </div>
