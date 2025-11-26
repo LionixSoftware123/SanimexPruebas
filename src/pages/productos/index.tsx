@@ -23,12 +23,13 @@ const ProductsPage: React.FC = () => {
   const [materials, setMaterials] = useState([]);
   const [brands, setBrands] = useState([]);
   const [colors, setColors] = useState([]);
-  //const [designs, setDesigns] = useState([]);
-  //const [measures, setMeasures] = useState([]);  
+  const [designs, setDesigns] = useState([]);
+  const [measures, setMeasures] = useState([]);  
   const [loadingAttributes, setLoadingAttributes] = useState<boolean>(true);
   const [total, setTotal] = useState(0);
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState<boolean>(true);
+  const [visible, setVisible] = useState<boolean>(true);
 
   const handleSortChange = (newSortBy: string) => {
     setSortBy(newSortBy);
@@ -126,7 +127,7 @@ const ProductsPage: React.FC = () => {
     }
   }, []);
 
-  /**const fetchDesigns = useCallback(async () => {
+  const fetchDesigns = useCallback(async () => {
     setLoadingAttributes(true);
     
     try {
@@ -156,7 +157,7 @@ const ProductsPage: React.FC = () => {
       console.error('Error fetching measures:', error);
       setLoadingAttributes(false);
     }
-  }, []);**/
+  }, []);
 
   useEffect(() => {
     fetchProducts();
@@ -174,13 +175,13 @@ const ProductsPage: React.FC = () => {
     fetchBrands();
   }, [fetchBrands]);
 
-  /**useEffect(() => {
+  useEffect(() => {
     fetchDesigns();
   }, [fetchDesigns]);
 
   useEffect(() => {
     fetchMeasures();
-  }, [fetchMeasures]);**/
+  }, [fetchMeasures]);
 
   return (
     <ProductLayout>
@@ -225,7 +226,7 @@ const ProductsPage: React.FC = () => {
                   </div>
                 ) : null}
                 
-                {colors.length > 0 ? (
+                {colors.length > 0 && visible ? (
                 <EasySearchAttributeList
                   selected={router.query.color as string}
                   items={colors}
@@ -235,7 +236,7 @@ const ProductsPage: React.FC = () => {
                 />
                 ) : null}
 
-                {brands.length > 0 ? (
+                {brands.length > 0 && visible ? (
                 <EasySearchAttributeList
                   selected={router.query.brand as string}
                   items={brands}
@@ -245,7 +246,7 @@ const ProductsPage: React.FC = () => {
                 />
                 ) : null}
 
-                {materials.length > 0 ? (                
+                {materials.length > 0 && visible ? (                
                 <EasySearchAttributeList
                   selected={router.query.material as string}
                   items={materials}
@@ -257,29 +258,29 @@ const ProductsPage: React.FC = () => {
                 />
                 ) : null}
                 
-                //{designs.length > 0 ? (
-                //<EasySearchAttributeList
-                //  selected={router.query.design as string}
-                //  items={designs}
-                //  title="Diseños"
-                //  onSelected={(value) =>
-                //    handleQuery({ design: value, page: 1 })
-                //  }
-                //  loading={loadingAttributes}
-                ///>
-                //) : null}
+                {designs.length > 0 && !visible ? (
+                <EasySearchAttributeList
+                  selected={router.query.design as string}
+                  items={designs}
+                  title="Diseños"
+                  onSelected={(value) =>
+                    handleQuery({ design: value, page: 1 })
+                  }
+                  loading={loadingAttributes}
+                >
+                ) : null}
                 
-                //{measures.length > 0 ? (
-                //<EasySearchAttributeList
-                //  selected={router.query.measure as string}
-                //  items={measures}
-                //  title="Medidas"
-                //  onSelected={(value) =>
-                //    handleQuery({ measure: value, page: 1 })
-                //  }
-                //  loading={loadingAttributes}
-                ///>
-                //) : null}
+                {measures.length > 0 && !visible ? (
+                <EasySearchAttributeList
+                  selected={router.query.measure as string}
+                  items={measures}
+                  title="Medidas"
+                  onSelected={(value) =>
+                    handleQuery({ measure: value, page: 1 })
+                  }
+                  loading={loadingAttributes}
+                >
+                ) : null}
 
               </div>
               <div className="lg:col-span-3 ">
