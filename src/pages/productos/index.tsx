@@ -23,6 +23,8 @@ const ProductsPage: React.FC = () => {
   const [materials, setMaterials] = useState([]);
   const [brands, setBrands] = useState([]);
   const [colors, setColors] = useState([]);
+  const [designs, setDesigns] = useState([]);
+  const [measures, setMeasures] = useState([]);  
   const [loadingAttributes, setLoadingAttributes] = useState<boolean>(true);
   const [total, setTotal] = useState(0);
   const [products, setProducts] = useState([]);
@@ -54,6 +56,8 @@ const ProductsPage: React.FC = () => {
       color: (router.query.color as string) || '',
       brand: (router.query.brand as string) || '',
       material: (router.query.material as string) || '',
+      design: (router.query.design as string) || '',
+      measure: (router.query.measure as string) || '',
       sort: (router.query.sort as string) || 'desc',
       skip: skip.toString(),
       take: NUMBER_PRODUCTS_FOR_PAGE.toString(),
@@ -122,6 +126,46 @@ const ProductsPage: React.FC = () => {
     }
   }, []);
 
+  const fetchDesigns = useCallback(async () => {
+    setLoadingAttributes(true);
+    
+    const params = new URLSearchParams({
+      parent_category: 'pisos-y-azulejos',
+    });
+
+    try {
+      const response = await fetch(`/api/basicsearch/designs?${params.toString()}`);
+      const data = await response.json();
+      const dataItem = data.items;
+      const sorteddataItem = dataItem.sort((a: { name: string }, b: { name: string }) => { if (a.name < b.name) { return -1; } if (a.name > b.name) { return 1; } return 0; });
+      setDesigns(sorteddataItem || []);
+      setLoadingAttributes(false);
+    } catch (error) {
+      console.error('Error fetching designs:', error);
+      setLoadingAttributes(false);
+    }
+  }, []);
+
+  const fetchMeasures = useCallback(async () => {
+    setLoadingAttributes(true);
+    
+    const params = new URLSearchParams({
+      parent_category: 'pisos-y-azulejos',
+    });
+
+    try {
+      const response = await fetch(`/api/basicsearch/measures?${params.toString()}`);
+      const data = await response.json();
+      const dataItem = data.items;
+      const sorteddataItem = dataItem.sort((a: { name: string }, b: { name: string }) => { if (a.name < b.name) { return -1; } if (a.name > b.name) { return 1; } return 0; });
+      setMeasures(sorteddataItem || []);
+      setLoadingAttributes(false);
+    } catch (error) {
+      console.error('Error fetching measures:', error);
+      setLoadingAttributes(false);
+    }
+  }, []);  
+
   useEffect(() => {
     fetchProducts();
   }, [fetchProducts, router.query.sort]);
@@ -137,6 +181,14 @@ const ProductsPage: React.FC = () => {
   useEffect(() => {
     fetchBrands();
   }, [fetchBrands]);
+
+  useEffect(() => {
+    fetchDesigns();
+  }, [fetchDesigns]);
+
+  useEffect(() => {
+    fetchMeasures();
+  }, [fetchMeasures]);
 
   return (
     <ProductLayout>
@@ -205,6 +257,27 @@ const ProductsPage: React.FC = () => {
                   }
                   loading={loadingAttributes}
                 />
+
+                <EasySearchAttributeList
+                  selected={router.query.design as string}
+                  items={designs}
+                  title="Diseños"
+                  onSelected={(value) =>
+                    handleQuery({ design: value, page: 1 })
+                  }
+                  loading={loadingAttributes}
+                />
+
+                <EasySearchAttributeList
+                  selected={router.query.measure as string}
+                  items={measures}
+                  title="Medidas"
+                  onSelected={(value) =>
+                    handleQuery({ measure: value, page: 1 })
+                  }
+                  loading={loadingAttributes}
+                />
+
               </div>
               <div className="lg:col-span-3 ">
                 <div className="grid sm:grid-cols-2 md:grid-cols-3 mb-[20px]">
