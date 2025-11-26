@@ -201,10 +201,10 @@ const GeolocationDialog: React.FC<GeolocationDialogProps> = ({
                             />
                           </div>
                           <div className="mb-2">
-                            Costo mínimo de envío: $250
+                            Costo mínimo de envío: $250.00
                           </div>
                           <div className="mb-2">
-                            Luego de 10 km se le agrega un adicional de $20 por
+                            Luego de 10 km se le agrega un adicional de $20.00 por
                             km
                           </div>
                           <button
@@ -272,7 +272,7 @@ const GeolocationDialog: React.FC<GeolocationDialogProps> = ({
                                   </div>
                                 ) : null}
                               </div>
-                              <div>Distancia recorrida: {((distance.value)/1000)}</div>
+                              <div>Distancia recorrida: {((distance.value)/1000)} km</div>
                               {distance.value > 10000 ? (
                                 <div>
                                   km extra:{' '}
