@@ -92,7 +92,7 @@ const GeolocationDialog: React.FC<GeolocationDialogProps> = ({
   });
 
   const distance = getDistance(directions);
-  console.log(distance);
+  //console.log(distance);
   return (
     <>
       <div
@@ -112,7 +112,7 @@ const GeolocationDialog: React.FC<GeolocationDialogProps> = ({
             :
             <span className="font-bold">
               {' '}
-              ${calculateCost(distanceResult, FreeShipping).toFixed(2)}
+              ${calculateCost(distanceResult, FreeShipping)}
             </span>
           </div>
         ) : (
