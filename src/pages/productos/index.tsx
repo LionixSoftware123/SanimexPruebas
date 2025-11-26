@@ -23,8 +23,8 @@ const ProductsPage: React.FC = () => {
   const [materials, setMaterials] = useState([]);
   const [brands, setBrands] = useState([]);
   const [colors, setColors] = useState([]);
-  const [designs, setDesigns] = useState([]);
-  const [measures, setMeasures] = useState([]);  
+  //const [designs, setDesigns] = useState([]);
+  //const [measures, setMeasures] = useState([]);  
   const [loadingAttributes, setLoadingAttributes] = useState<boolean>(true);
   const [total, setTotal] = useState(0);
   const [products, setProducts] = useState([]);
@@ -126,13 +126,9 @@ const ProductsPage: React.FC = () => {
     }
   }, []);
 
-  const fetchDesigns = useCallback(async () => {
+  /**const fetchDesigns = useCallback(async () => {
     setLoadingAttributes(true);
     
-    const params = new URLSearchParams({
-      parent_category: 'pisos-y-azulejos',
-    });
-
     try {
       const response = await fetch(`/api/basicsearch/designs?${params.toString()}`);
       const data = await response.json();
@@ -148,10 +144,6 @@ const ProductsPage: React.FC = () => {
 
   const fetchMeasures = useCallback(async () => {
     setLoadingAttributes(true);
-    
-    const params = new URLSearchParams({
-      parent_category: 'pisos-y-azulejos',
-    });
 
     try {
       const response = await fetch(`/api/basicsearch/measures?${params.toString()}`);
@@ -164,7 +156,7 @@ const ProductsPage: React.FC = () => {
       console.error('Error fetching measures:', error);
       setLoadingAttributes(false);
     }
-  }, []);  
+  }, []);**/
 
   useEffect(() => {
     fetchProducts();
@@ -182,13 +174,13 @@ const ProductsPage: React.FC = () => {
     fetchBrands();
   }, [fetchBrands]);
 
-  useEffect(() => {
+  /**useEffect(() => {
     fetchDesigns();
   }, [fetchDesigns]);
 
   useEffect(() => {
     fetchMeasures();
-  }, [fetchMeasures]);
+  }, [fetchMeasures]);**/
 
   return (
     <ProductLayout>
@@ -265,29 +257,29 @@ const ProductsPage: React.FC = () => {
                 />
                 ) : null}
                 
-                {designs.length > 0 ? (
-                <EasySearchAttributeList
-                  selected={router.query.design as string}
-                  items={designs}
-                  title="Diseños"
-                  onSelected={(value) =>
-                    handleQuery({ design: value, page: 1 })
-                  }
-                  loading={loadingAttributes}
-                />
-                ) : null}
+                //{designs.length > 0 ? (
+                //<EasySearchAttributeList
+                //  selected={router.query.design as string}
+                //  items={designs}
+                //  title="Diseños"
+                //  onSelected={(value) =>
+                //    handleQuery({ design: value, page: 1 })
+                //  }
+                //  loading={loadingAttributes}
+                ///>
+                //) : null}
                 
-                {measures.length > 0 ? (
-                <EasySearchAttributeList
-                  selected={router.query.measure as string}
-                  items={measures}
-                  title="Medidas"
-                  onSelected={(value) =>
-                    handleQuery({ measure: value, page: 1 })
-                  }
-                  loading={loadingAttributes}
-                />
-                ) : null}
+                //{measures.length > 0 ? (
+                //<EasySearchAttributeList
+                //  selected={router.query.measure as string}
+                //  items={measures}
+                //  title="Medidas"
+                //  onSelected={(value) =>
+                //    handleQuery({ measure: value, page: 1 })
+                //  }
+                //  loading={loadingAttributes}
+                ///>
+                //) : null}
 
               </div>
               <div className="lg:col-span-3 ">
