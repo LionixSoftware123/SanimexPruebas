@@ -243,6 +243,7 @@ const ProductsPage: React.FC = () => {
                 />
                 ) : null}
 
+                {brands.length > 0 ? (
                 <EasySearchAttributeList
                   selected={router.query.brand as string}
                   items={brands}
@@ -250,7 +251,9 @@ const ProductsPage: React.FC = () => {
                   onSelected={(value) => handleQuery({ brand: value, page: 1 })}
                   loading={loadingAttributes}
                 />
+                ) : null}
 
+                {materials.length > 0 ? (                
                 <EasySearchAttributeList
                   selected={router.query.material as string}
                   items={materials}
@@ -260,7 +263,9 @@ const ProductsPage: React.FC = () => {
                   }
                   loading={loadingAttributes}
                 />
-
+                ) : null}
+                
+                {designs.length > 0 ? (
                 <EasySearchAttributeList
                   selected={router.query.design as string}
                   items={designs}
@@ -270,7 +275,8 @@ const ProductsPage: React.FC = () => {
                   }
                   loading={loadingAttributes}
                 />
-
+                
+                {measures.length > 0 ? (
                 <EasySearchAttributeList
                   selected={router.query.measure as string}
                   items={measures}
@@ -280,6 +286,7 @@ const ProductsPage: React.FC = () => {
                   }
                   loading={loadingAttributes}
                 />
+                ) : null}
 
               </div>
               <div className="lg:col-span-3 ">
