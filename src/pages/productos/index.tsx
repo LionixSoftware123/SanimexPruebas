@@ -67,7 +67,7 @@ const ProductsPage: React.FC = () => {
       const response = await fetch(
         `/api/basicsearch/search?${params.toString()}`,
       );
-      console.log('params.toString()', params.toString());
+      //console.log('params.toString()', params.toString());
       const data = await response.json();
       setProducts(data.items || []);
       setTotal(data.count || 0);
@@ -232,6 +232,8 @@ const ProductsPage: React.FC = () => {
                     </div>
                   </div>
                 ) : null}
+                
+                {colors.length > 0 ? (
                 <EasySearchAttributeList
                   selected={router.query.color as string}
                   items={colors}
@@ -239,6 +241,7 @@ const ProductsPage: React.FC = () => {
                   onSelected={(value) => handleQuery({ color: value, page: 1 })}
                   loading={loadingAttributes}
                 />
+                ) : null}
 
                 <EasySearchAttributeList
                   selected={router.query.brand as string}
