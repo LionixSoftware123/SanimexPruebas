@@ -131,7 +131,7 @@ const ProductsPage: React.FC = () => {
     setLoadingAttributes(true);
     
     try {
-      const response = await fetch(`/api/basicsearch/designs?${params.toString()}`);
+      const response = await fetch(`/api/basicsearch/designs`);
       const data = await response.json();
       const dataItem = data.items;
       const sorteddataItem = dataItem.sort((a: { name: string }, b: { name: string }) => { if (a.name < b.name) { return -1; } if (a.name > b.name) { return 1; } return 0; });
@@ -147,7 +147,7 @@ const ProductsPage: React.FC = () => {
     setLoadingAttributes(true);
 
     try {
-      const response = await fetch(`/api/basicsearch/measures?${params.toString()}`);
+      const response = await fetch(`/api/basicsearch/measures`);
       const data = await response.json();
       const dataItem = data.items;
       const sorteddataItem = dataItem.sort((a: { name: string }, b: { name: string }) => { if (a.name < b.name) { return -1; } if (a.name > b.name) { return 1; } return 0; });
