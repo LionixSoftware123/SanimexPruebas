@@ -2,7 +2,7 @@
 import { DirectionType } from '@/modules/geolocation/geolocation-types';
 import { ShopType } from '@/modules/shop/shop-types';
 import shops from '@/utils/sucursales.json';
-import { COST_BY_KM } from '@/modules/geolocation/geolocation-constants';
+import { COST_FIJO, COST_BY_KM } from '@/modules/geolocation/geolocation-constants';
 
 export const getDistance = (
   _direction: google.maps.DirectionsResult | undefined,
@@ -66,7 +66,7 @@ export const calculateCost = (
 ) => {
   if (freeShipping) return 0;
   if (distance && distance.value >= 10000)
-    return Math.round((250 + ((distance.value - 10000) / 1000) * COST_BY_KM) * 100)/100;
-  if (distance) return 250;
+    return Math.round(( COST_FIXED + ((distance.value - 10000) / 1000) * COST_BY_KM) * 100)/100;
+  if (distance) return COST_FIXED;
   return 0;
 };
