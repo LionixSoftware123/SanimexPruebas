@@ -65,8 +65,10 @@ export const calculateCost = (
   freeShipping: boolean = false
 ) => {
   if (freeShipping) return 0;
-  if (distance && distance.value >= 10000)
-    return (COST_FIXED + ((distance.value - 10000) / 1000) * COST_BY_KM);
+  if (distance && distance.value >= 10000) {
+    const costoTotal = (COST_FIXED + ((distance.value - 10000) / 1000) * COST_BY_KM);
+    return Math.round(costoTotal * Math.pow(10, 2)) / Math.pow(10, 2);
+  }
   if (distance) return COST_FIXED;
   return 0;
 };
