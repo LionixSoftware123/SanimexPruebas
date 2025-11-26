@@ -2,7 +2,7 @@
 import { DirectionType } from '@/modules/geolocation/geolocation-types';
 import { ShopType } from '@/modules/shop/shop-types';
 import shops from '@/utils/sucursales.json';
-import { COST_FIJO, COST_BY_KM } from '@/modules/geolocation/geolocation-constants';
+import { COST_FIXED, COST_BY_KM } from '@/modules/geolocation/geolocation-constants';
 
 export const getDistance = (
   _direction: google.maps.DirectionsResult | undefined,
