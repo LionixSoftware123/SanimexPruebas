@@ -275,6 +275,7 @@ const ProductsPage: React.FC = () => {
                   }
                   loading={loadingAttributes}
                 />
+                ) : null}
                 
                 {measures.length > 0 ? (
                 <EasySearchAttributeList
