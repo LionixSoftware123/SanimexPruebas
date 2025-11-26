@@ -112,7 +112,7 @@ const GeolocationDialog: React.FC<GeolocationDialogProps> = ({
             :
             <span className="font-bold">
               {' '}
-              ${calculateCost(distanceResult, FreeShipping)}
+              ${calculateCost(distanceResult, FreeShipping).toFixed(2)}
             </span>
           </div>
         ) : (
@@ -311,7 +311,7 @@ const GeolocationDialog: React.FC<GeolocationDialogProps> = ({
                                     {calculateCost(
                                       distance,
                                       FreeShipping,
-                                    )}
+                                    ).toFixed(2)}
                                   </strong>
                                 </div>
                               )}
