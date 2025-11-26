@@ -272,11 +272,11 @@ const GeolocationDialog: React.FC<GeolocationDialogProps> = ({
                                   </div>
                                 ) : null}
                               </div>
-                              <div>Distancia recorrida: {((distance.value)/1000).toFixed(2)} km</div>
+                              <div>Distancia recorrida: {((distance.value)/1000)} km</div>
                               {distance.value > 10000 ? (
                                 <div>
                                   km extra:{' '}
-                                  {((distance.value - 10000) / 1000).toFixed(2)}{' '}
+                                  {((distance.value - 10000) / 1000)}{' '}
                                   km
                                 </div>
                               ) : null}
@@ -311,7 +311,7 @@ const GeolocationDialog: React.FC<GeolocationDialogProps> = ({
                                     {calculateCost(
                                       distance,
                                       FreeShipping,
-                                    ).toFixed(2)}
+                                    )}
                                   </strong>
                                 </div>
                               )}
