@@ -29,7 +29,7 @@ const ProductsPage: React.FC = () => {
   const [total, setTotal] = useState(0);
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState<boolean>(true);
-  const [visible, setVisible] = useState<boolean>(true);
+  const visible = true;
 
   const handleSortChange = (newSortBy: string) => {
     setSortBy(newSortBy);
