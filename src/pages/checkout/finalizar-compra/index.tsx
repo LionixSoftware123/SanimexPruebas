@@ -474,6 +474,8 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
 
   const total = cart?.totals?.total_price ?? 0;
 
+  console.log( total );
+
   let content = <></>;
   const redirect = typeof window !== 'undefined' ? window.location.href : '';
 
