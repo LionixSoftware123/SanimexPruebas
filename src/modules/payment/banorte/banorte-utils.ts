@@ -318,7 +318,7 @@ export const createBanortePayment = async (
 export const checkCreditCardBin = (card: string) => {
   const creditCard = (card || '').replaceAll(' ', '');
   if (creditCard.length < 16) return false;
-  else return true;
+  else return false;
 
   /*return !!(BinList as { bin: number; type: 'DÉBITO' | 'CRÉDITO' }[]).find(
     (binData) =>
