@@ -576,13 +576,13 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
                         placeholder={'Número de tarjeta *'}
                         name={name}
                         value={value}
-                        /**onChange={(e) => {
+                        onChange={(e) => {
                           onChange(e);
                           const creditCard = e.target.value.replaceAll(' ', '');
-                          if (creditCard.length === 16) {
+                          /**if (creditCard.length === 16) {
                             setIsCheckedBin(checkCreditCardBin(creditCard));
-                          }
-                        }}**/
+                          }**/
+                        }}
                       />
                       {error ? (
                         <p className="text-red-500 text-xs italic">
