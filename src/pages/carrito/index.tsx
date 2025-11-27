@@ -63,10 +63,7 @@ const CartPage: React.FC<CartPageProps> = ({ internalBanner }) => {
   // });
 
   const upsell = cart?.up_sells;
-
   const router = useRouter();
-
-  console.log(  cart );
 
   return (
     <RootLayout>
