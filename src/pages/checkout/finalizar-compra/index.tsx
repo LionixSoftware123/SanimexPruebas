@@ -578,8 +578,8 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
                         value={value}
                         onChange={(e) => {
                           onChange(e);
-                          const creditCard = e.target.value.replaceAll(' ', '');
-                          /**if (creditCard.length === 16) {
+                          /**const creditCard = e.target.value.replaceAll(' ', '');
+                          if (creditCard.length === 16) {
                             setIsCheckedBin(checkCreditCardBin(creditCard));
                           }**/
                         }}
