@@ -66,6 +66,8 @@ const CartPage: React.FC<CartPageProps> = ({ internalBanner }) => {
 
   const router = useRouter();
 
+  console.log(  cart );
+
   return (
     <RootLayout>
       <StaticMeta
