@@ -49,7 +49,6 @@ import { Cart, CartItem } from '@/lib/cart/v2/cart-types';
 import { applyCouponAction, fetchCart } from '@/lib/cart/v2/cart-actions';
 import { UniversalCookies } from '@/lib/cart/v2/utils/cookies';
 //import { updateActiveCampaignCompleteContact } from '@/modules/active-campaign/active-campaign-actions';
-import currencyFormatter from 'currency-formatter';
 
 const ImageWithFallback = dynamic(() => import('@/utils/ImageWithFallback'));
 const StaticMeta = dynamic(() => import('@/components/utils/StaticMeta'));
@@ -474,10 +473,7 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
 
   const postalCode = isShipping ? shippingPostalCodeForm : postalCodeForm;
 
-  //const total = cart?.totals?.total_price ?? 0;
-  const total = currencyFormatter.unformat(cart?.totals?.total_price as string, {
-    code: 'USD',
-  });
+  const total = cart?.totals?.total_price ?? 0;
   console.log( total );
 
   let content = <></>;
