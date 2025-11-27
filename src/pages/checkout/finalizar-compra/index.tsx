@@ -473,7 +473,8 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
 
   const postalCode = isShipping ? shippingPostalCodeForm : postalCodeForm;
 
-  const total = cart?.totals?.total_price ?? 0;
+  //const total = cart?.totals?.total_price ?? 0;
+  const total =  Number(cart?.totals?.total_price);
   console.log( total );
 
   let content = <></>;
