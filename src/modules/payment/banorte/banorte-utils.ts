@@ -33,7 +33,7 @@ import randomString from 'randomstring';
 import cardValidator from 'card-validator';
 import { fetchActiveCampaignUserOrderEvent } from '@/modules/active-campaign/active-campaign-events';
 import currencyFormatter from 'currency-formatter';
-import BinList from '@/utils/bin-list2.json';
+//import BinList from '@/utils/bin-list2.json';
 import { confirmGeolocationStore } from '@/modules/geolocation/geolocation-events';
 import { calculateCost } from '@/modules/geolocation/geolocation-utils';
 import { ShopType } from '@/modules/shop/shop-types';
@@ -315,7 +315,7 @@ export const createBanortePayment = async (
   return onSuccess({ form, orderId: order?.data?.createOrder?.orderId });
 };
 
-export const checkCreditCardBin = (card: string) => {
+/**export const checkCreditCardBin = (card: string) => {
   const creditCard = (card || '').replaceAll(' ', '');
   if (creditCard.length < 16) return false;
 
@@ -323,4 +323,4 @@ export const checkCreditCardBin = (card: string) => {
     (binData) =>
       creditCard.includes(binData.bin.toString()) && binData.type === 'CRÉDITO',
   );
-};
+};**/
