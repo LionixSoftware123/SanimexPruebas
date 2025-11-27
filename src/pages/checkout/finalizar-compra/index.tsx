@@ -280,7 +280,7 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
   //   }
   // }, [cart]);
 
-  console.log({ cart });
+  //console.log({ cart });
   //console.log({ shop });
 
   const handleOrderCompletion = (orderId: number | undefined) => {
@@ -472,8 +472,7 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
 
   const postalCode = isShipping ? shippingPostalCodeForm : postalCodeForm;
 
-  const total = cart?.totals?.total_price ?? 0;
-
+  const total = parseFloat(cart?.totals?.total_price)/100 ?? 0;
   console.log( total );
 
   let content = <></>;
