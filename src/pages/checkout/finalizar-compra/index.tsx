@@ -30,7 +30,7 @@ import {
 } from 'react-hook-form';
 import { useRouter } from 'next/router';
 import {
-  checkCreditCardBin,
+  //checkCreditCardBin,
   createBanortePayment,
   FormType,
 } from '@/modules/payment/banorte/banorte-utils';
@@ -107,7 +107,7 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
   } = useUserHook();
   const { handleSubmit, control /**, watch */ } = useForm();
   const [hasProductSku, setHasProductSku] = useState('');
-  const [isCheckedBin, setIsCheckedBin] = useState<boolean>(false);
+  //const [isCheckedBin, setIsCheckedBin] = useState<boolean>(false);
   const postalCodeForm = useWatch({
     control,
     name: 'billingAddress.postalCode',
@@ -366,7 +366,7 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
             WOO_SESSION_TOKEN: OnWooSessionTokenEvent.get()?.token as string,
           };
 
-          if ((Number(total) >= 6000 && isCheckedBin) || free) {
+          if ((Number(total) >= 6000) || free) {
             requiredFields.INITIAL_DEFERMENT = '00';
             requiredFields.PAYMENTS_NUMBER = initialDeferment;
             requiredFields.PLAN_TYPE = '03';
@@ -480,7 +480,7 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
   const disableDropdown = () => {
     //if (free) return false;
 
-    return !(Number(total) >= 6000 && isCheckedBin);
+    return !(Number(total) >= 6000);
   };
 
   const PaymentForm: React.FC = () => {
@@ -576,13 +576,13 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
                         placeholder={'Número de tarjeta *'}
                         name={name}
                         value={value}
-                        onChange={(e) => {
+                        /**onChange={(e) => {
                           onChange(e);
                           const creditCard = e.target.value.replaceAll(' ', '');
                           if (creditCard.length === 16) {
                             setIsCheckedBin(checkCreditCardBin(creditCard));
                           }
-                        }}
+                        }}**/
                       />
                       {error ? (
                         <p className="text-red-500 text-xs italic">
@@ -682,13 +682,13 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
                   value={initialDeferment}
                 >
                   <option value="">Pago única exhibicion</option>
-                  {Number(total) >= 6000 && isCheckedBin && (
+                  {Number(total) >= 6000 &&  (
                     <option value="03">Promoción 3 Meses sin intereses</option>
                   )}
-                  {/**Number(total) >= 10000 && isCheckedBin && (
+                  {/**Number(total) >= 10000 &&  (
                     <option value="06">Promoción 6 Meses sin intereses</option>
                   )} */}
-                  {/**{total >= 10000 && isCheckedBin && (
+                  {/**{total >= 10000 &&  (
                    <option value="06">Promoción 6 Meses sin intereses</option>
                    )} */}
 
