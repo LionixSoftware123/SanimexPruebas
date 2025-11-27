@@ -479,8 +479,7 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
 
   const disableDropdown = () => {
     //if (free) return false;
-
-    return !(Number(total) >= 6000);
+    if ( Number(total) < 6000 ) return false;
   };
 
   const PaymentForm: React.FC = () => {
