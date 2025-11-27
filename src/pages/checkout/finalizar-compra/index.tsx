@@ -280,7 +280,7 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
   //   }
   // }, [cart]);
 
-  //console.log({ cart });
+  console.log({ cart });
   //console.log({ shop });
 
   const handleOrderCompletion = (orderId: number | undefined) => {
