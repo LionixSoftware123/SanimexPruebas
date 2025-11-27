@@ -474,7 +474,7 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
   const postalCode = isShipping ? shippingPostalCodeForm : postalCodeForm;
 
   //const total = cart?.totals?.total_price ?? 0;
-  const total =  parseFloat(Number(cart?.totals?.total_price))/100;
+  const total =  parseFloat(cart?.totals?.total_price)/100;
   console.log( total );
 
   let content = <></>;
