@@ -24,11 +24,12 @@ const ProductsPage: React.FC = () => {
   const [brands, setBrands] = useState([]);
   const [colors, setColors] = useState([]);
   const [designs, setDesigns] = useState([]);
-  const [measures, setMeasures] = useState([]);
+  const [measures, setMeasures] = useState([]);  
   const [loadingAttributes, setLoadingAttributes] = useState<boolean>(true);
   const [total, setTotal] = useState(0);
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState<boolean>(true);
+  const visible = true;
 
   const handleSortChange = (newSortBy: string) => {
     setSortBy(newSortBy);
@@ -68,6 +69,7 @@ const ProductsPage: React.FC = () => {
       const response = await fetch(
         `/api/basicsearch/search?${params.toString()}`,
       );
+      //console.log('params.toString()', params.toString());
       const data = await response.json();
       setProducts(data.items || []);
       setTotal(data.count || 0);
@@ -86,9 +88,7 @@ const ProductsPage: React.FC = () => {
     });
 
     try {
-      const response = await fetch(
-        `/api/basicsearch/colors?${params.toString()}`,
-      );
+      const response = await fetch(`/api/basicsearch/colors?${params.toString()}`);
       const data = await response.json();
       const dataItem = data.items;
       const sorteddataItem = dataItem.sort((a: { name: string }, b: { name: string }) => { if (a.name < b.name) { return -1; } if (a.name > b.name) { return 1; } return 0; });
@@ -108,23 +108,21 @@ const ProductsPage: React.FC = () => {
     });
 
     try {
-      const response = await fetch(
-        `/api/basicsearch/brands?${params.toString()}`,
-      );                                   
+      const response = await fetch(`/api/basicsearch/brands?${params.toString()}`);
       const data = await response.json();
       const dataItem = data.items;
       const sorteddataItem = dataItem.sort((a: { name: string }, b: { name: string }) => { if (a.name < b.name) { return -1; } if (a.name > b.name) { return 1; } return 0; });
       setBrands(sorteddataItem || []);
       setLoadingAttributes(false);
     } catch (error) {
-      console.error('Error fetching brands:', error);
+      console.error('Error fetching colors:', error);
       setLoadingAttributes(false);
     }
   }, []);
 
   const fetchMaterials = useCallback(async () => {
     setLoadingAttributes(true);
-    
+
     const params = new URLSearchParams({
       parent_category: 'pisos-y-azulejos',
     });
@@ -137,18 +135,18 @@ const ProductsPage: React.FC = () => {
       setMaterials(sorteddataItem || []);
       setLoadingAttributes(false);
     } catch (error) {
-      console.error('Error fetching materials:', error);
+      console.error('Error fetching colors:', error);
       setLoadingAttributes(false);
     }
   }, []);
 
   const fetchDesigns = useCallback(async () => {
     setLoadingAttributes(true);
-    
+
     const params = new URLSearchParams({
       parent_category: 'pisos-y-azulejos',
     });
-
+    
     try {
       const response = await fetch(`/api/basicsearch/designs?${params.toString()}`);
       const data = await response.json();
@@ -164,7 +162,7 @@ const ProductsPage: React.FC = () => {
 
   const fetchMeasures = useCallback(async () => {
     setLoadingAttributes(true);
-    
+
     const params = new URLSearchParams({
       parent_category: 'pisos-y-azulejos',
     });
@@ -184,7 +182,7 @@ const ProductsPage: React.FC = () => {
 
   useEffect(() => {
     fetchProducts();
-  }, [fetchProducts]);
+  }, [fetchProducts, router.query.sort]);
 
   useEffect(() => {
     fetchMaterials();
@@ -205,11 +203,6 @@ const ProductsPage: React.FC = () => {
   useEffect(() => {
     fetchMeasures();
   }, [fetchMeasures]);
-
-
-  console.log({
-    count: Math.ceil(total / NUMBER_PRODUCTS_FOR_PAGE)
-  });
 
   return (
     <ProductLayout>
@@ -253,6 +246,8 @@ const ProductsPage: React.FC = () => {
                     </div>
                   </div>
                 ) : null}
+                
+                {colors.length > 0 && visible ? (
                 <EasySearchAttributeList
                   selected={router.query.color as string}
                   items={colors}
@@ -260,7 +255,9 @@ const ProductsPage: React.FC = () => {
                   onSelected={(value) => handleQuery({ color: value, page: 1 })}
                   loading={loadingAttributes}
                 />
+                ) : null}
 
+                {brands.length > 0 && visible ? (
                 <EasySearchAttributeList
                   selected={router.query.brand as string}
                   items={brands}
@@ -268,7 +265,9 @@ const ProductsPage: React.FC = () => {
                   onSelected={(value) => handleQuery({ brand: value, page: 1 })}
                   loading={loadingAttributes}
                 />
+                ) : null}
 
+                {materials.length > 0 && visible ? (                
                 <EasySearchAttributeList
                   selected={router.query.material as string}
                   items={materials}
@@ -278,7 +277,9 @@ const ProductsPage: React.FC = () => {
                   }
                   loading={loadingAttributes}
                 />
-
+                ) : null}
+                
+                {designs.length > 0 && visible ? (
                 <EasySearchAttributeList
                   selected={router.query.design as string}
                   items={designs}
@@ -288,7 +289,9 @@ const ProductsPage: React.FC = () => {
                   }
                   loading={loadingAttributes}
                 />
-
+                ) : null}
+                
+                {measures.length > 0 && visible ? (
                 <EasySearchAttributeList
                   selected={router.query.measure as string}
                   items={measures}
@@ -298,6 +301,8 @@ const ProductsPage: React.FC = () => {
                   }
                   loading={loadingAttributes}
                 />
+                ) : null}
+
               </div>
               <div className="lg:col-span-3 ">
                 <div className="grid sm:grid-cols-2 md:grid-cols-3 mb-[20px]">
@@ -392,5 +397,3 @@ const ProductsPage: React.FC = () => {
     </ProductLayout>
   );
 };
-
-export default ProductsPage;
