@@ -397,3 +397,5 @@ const ProductsPage: React.FC = () => {
     </ProductLayout>
   );
 };
+
+export default ProductsPage;
