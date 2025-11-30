@@ -62,7 +62,7 @@ const ProductsPage: React.FC = () => {
       sort: (router.query.sort as string) || 'desc',
       skip: skip.toString(),
       take: NUMBER_PRODUCTS_FOR_PAGE.toString(),
-      parent_category: 'pisos-y-azulejos',
+      parent_category: router.query.category as string,
     });
 
     try {
@@ -84,7 +84,7 @@ const ProductsPage: React.FC = () => {
     setLoadingAttributes(true);
 
     const params = new URLSearchParams({
-      parent_category: 'pisos-y-azulejos',
+      parent_category: router.query.category as string,
     });
 
     try {
@@ -104,7 +104,7 @@ const ProductsPage: React.FC = () => {
     setLoadingAttributes(true);
 
     const params = new URLSearchParams({
-      parent_category: 'pisos-y-azulejos',
+      parent_category: router.query.category as string,
     });
 
     try {
@@ -124,7 +124,7 @@ const ProductsPage: React.FC = () => {
     setLoadingAttributes(true);
 
     const params = new URLSearchParams({
-      parent_category: 'pisos-y-azulejos',
+      parent_category: router.query.category as string,
     });
 
     try {
@@ -144,7 +144,7 @@ const ProductsPage: React.FC = () => {
     setLoadingAttributes(true);
 
     const params = new URLSearchParams({
-      parent_category: 'pisos-y-azulejos',
+      parent_category: router.query.category as string,
     });
     
     try {
@@ -164,7 +164,7 @@ const ProductsPage: React.FC = () => {
     setLoadingAttributes(true);
 
     const params = new URLSearchParams({
-      parent_category: 'pisos-y-azulejos',
+      parent_category: router.query.category as string,
     });
 
     try {
