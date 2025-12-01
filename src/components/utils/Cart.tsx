@@ -55,7 +55,7 @@ const Cart: React.FC = () => {
         >
           <Menu.Items className="absolute right-0 z-10 mt-2 w-[350px] origin-top-right bg-white shadow-lg ring-1 ring-black right-[-10px] ring-opacity-5 focus:outline-none ">
             <div className="flex justify-between text-black px-4 py-2 text-[14px] font-Century-Gothic border-b border-b-[#C1C1C1]">
-              <div>Carrito de compra</div>
+              <div>Carrito de compra saber si es el popup</div>
 
               <div className=" relative  flex self-center h-[9px] w-[9px]">
                 <Menu.Button>
