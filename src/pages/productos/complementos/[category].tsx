@@ -279,7 +279,7 @@ const ProductsPage: React.FC = () => {
                 />
                 ) : null}
                 
-                {designs.length > 0 && visible ? (
+                {designs.length > 0 && !visible ? (
                 <EasySearchAttributeList
                   selected={router.query.design as string}
                   items={designs}
@@ -291,7 +291,7 @@ const ProductsPage: React.FC = () => {
                 />
                 ) : null}
                 
-                {measures.length > 0 && visible ? (
+                {measures.length > 0 && !visible ? (
                 <EasySearchAttributeList
                   selected={router.query.measure as string}
                   items={measures}
