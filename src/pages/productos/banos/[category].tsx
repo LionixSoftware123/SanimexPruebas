@@ -46,8 +46,6 @@ const ProductsPage: React.FC = () => {
       { shallow: true },
     );
   };
-
-  console.log(router.query.category);
   
   const fetchProducts = useCallback(async () => {
     setLoading(true);
@@ -292,18 +290,32 @@ const ProductsPage: React.FC = () => {
                   loading={loadingAttributes}
                 />
                 ) : null}
-                
-                {measures.length > 0 && !visible ? (
-                <EasySearchAttributeList
-                  selected={router.query.measure as string}
-                  items={measures}
-                  title="Medidas"
-                  onSelected={(value) =>
-                    handleQuery({ measure: value, page: 1 })
-                  }
-                  loading={loadingAttributes}
-                />
-                ) : null}
+
+                {router.query.category as string === 'canceles-sanitarios' ? (
+                  {measures.length > 0 && visible ? (
+                  <EasySearchAttributeList
+                    selected={router.query.measure as string}
+                    items={measures}
+                    title="Medidas"
+                    onSelected={(value) =>
+                      handleQuery({ measure: value, page: 1 })
+                    }
+                    loading={loadingAttributes}
+                  />
+                  ) : null}
+                ) : (
+                  {measures.length > 0 && !visible ? (
+                  <EasySearchAttributeList
+                    selected={router.query.measure as string}
+                    items={measures}
+                    title="Medidas"
+                    onSelected={(value) =>
+                      handleQuery({ measure: value, page: 1 })
+                    }
+                    loading={loadingAttributes}
+                  />
+                  ) : null}                
+                )}
 
               </div>
               <div className="lg:col-span-3 ">
