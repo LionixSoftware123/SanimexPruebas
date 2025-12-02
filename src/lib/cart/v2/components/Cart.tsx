@@ -24,6 +24,7 @@ const Cart: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const { topBanner } = useEvent(renderTopBannerEvent);
   const total =  parseFloat(cart?.totals?.total_price as string)/100;
+  const faltan = parseFloat(total - 6000);
 
   useEffect(() => {
     if (cart) {
@@ -54,19 +55,8 @@ const Cart: React.FC = () => {
           leaveTo="transform opacity-0 scale-95"
         >
           <Menu.Items className="absolute z-10 mt-2 w-[350px] origin-top-right bg-white shadow-lg ring-1 ring-black right-[-10px] ring-opacity-5 focus:outline-none ">
-            <div className="flex justify-between text-black px-4 py-2 text-[14px] font-Century-Gothic border-b border-b-[#C1C1C1]">
-              {total>0 && topBanner ? (
-              <div className="flex space-x-2">
-                <div
-                  className="text-white text-[12px] rounded min-w-[50px] text-center h-[20px] px-[5px]"
-                  style={{ backgroundColor: topBanner.color as string }}
-                >
-                  Te faltan {total} para obtener MSI
-                </div>
-              </div>
-              ) : null}             
+            <div className="flex justify-between text-black px-4 py-2 text-[14px] font-Century-Gothic border-b border-b-[#C1C1C1]">             
               <div>Carrito de compra</div>
-
               <div className=" relative  flex self-center h-[9px] w-[9px]">
                 <Menu.Button>
                   <div className="w-[12px] h-[12px] flex self-center">
@@ -75,6 +65,18 @@ const Cart: React.FC = () => {
                 </Menu.Button>
               </div>
             </div>
+
+            {total>0 && topBanner ? (
+            <div className="px-1 py-1">
+              <div
+                className="text-white text-[14px] rounded min-w-[50px] text-center h-[20px] px-[5px]"
+                style={{ backgroundColor: topBanner.color as string }}
+              >
+                Te faltan {formatCurrency(faltan} para obtener MSI
+              </div>
+            </div>
+            ) : null}
+            
             <div className="max-h-[350px] overflow-auto">
               {cart?.items?.map((item: CartItem, key: number) => (
                 <CartItemMenu item={item} key={key} />
