@@ -11,7 +11,6 @@ import { renderTopBannerEvent } from '@/modules/banner/banner-events';
 import { useUserHook } from '@/modules/auth/user-hooks';
 import { formatCurrency } from '../utils/formats';
 import { CartItem } from '../cart-types';
-import currencyFormatter from 'currency-formatter';
 
 const CartItemMenu = dynamic(
   () => import('@/lib/cart/v2/components/CartItemMenu'),
@@ -24,13 +23,6 @@ const Cart: React.FC = () => {
   } = useUserHook();
   const [isLoading, setIsLoading] = useState(true);
   const { topBanner } = useEvent(renderTopBannerEvent);
-  const formatPrice = (price: string) => {
-    const numericPrice = parseFloat(price);
-    const formattedPrice = currencyFormatter.format(numericPrice, {
-      code: 'MXN',
-    });
-    return formattedPrice;
-  };
   const total =  parseFloat(cart?.totals?.total_price as string)/100;
   const faltan = 6000-Number(total);
 
