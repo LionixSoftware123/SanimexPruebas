@@ -24,7 +24,14 @@ const Cart: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const { topBanner } = useEvent(renderTopBannerEvent);
   const total =  parseFloat(cart?.totals?.total_price as string)/100;
-  const faltan = 6000-Number(total);
+  const faltan = formatPrice(6000-Number(total));
+  const formatPrice = (price: string) => {
+    const numericPrice = parseFloat(price);
+    const formattedPrice = currencyFormatter.format(numericPrice, {
+      code: 'MXN',
+    });
+    return formattedPrice;
+  };
 
   useEffect(() => {
     if (cart) {
@@ -72,7 +79,7 @@ const Cart: React.FC = () => {
                 className="text-white text-[14px] rounded min-w-[50px] text-center h-[20px] px-[5px] font-Century-Gothic-Bold"
                 style={{ backgroundColor: topBanner.color as string }}
               >
-                Te faltan {formatPrice(faltan as string)} para obtener MSI
+                Te faltan {faltan} para obtener MSI
               </div>
             </div>
             ) : null}
