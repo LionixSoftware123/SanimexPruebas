@@ -11,6 +11,7 @@ import { renderTopBannerEvent } from '@/modules/banner/banner-events';
 import { useUserHook } from '@/modules/auth/user-hooks';
 import { formatCurrency } from '../utils/formats';
 import { CartItem } from '../cart-types';
+import currencyFormatter from 'currency-formatter';
 
 const CartItemMenu = dynamic(
   () => import('@/lib/cart/v2/components/CartItemMenu'),
