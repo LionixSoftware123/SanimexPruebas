@@ -24,7 +24,7 @@ const Cart: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const { topBanner } = useEvent(renderTopBannerEvent);
   const total =  parseFloat(cart?.totals?.total_price as string)/100;
-  const faltan = parseFloat(total - 6000);
+  const faltan = Number(total) - 6000;
 
   useEffect(() => {
     if (cart) {
@@ -69,7 +69,7 @@ const Cart: React.FC = () => {
             {total>0 && topBanner ? (
             <div className="px-1 py-1">
               <div
-                className="text-white text-[14px] rounded min-w-[50px] text-center h-[20px] px-[5px]"
+                className="text-white text-[14px] rounded min-w-[50px] text-center h-[20px] px-[5px] font-Century-Gothic-Bold"
                 style={{ backgroundColor: topBanner.color as string }}
               >
                 Te faltan {formatCurrency(faltan} para obtener MSI
