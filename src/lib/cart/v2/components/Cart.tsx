@@ -23,8 +23,6 @@ const Cart: React.FC = () => {
   } = useUserHook();
   const [isLoading, setIsLoading] = useState(true);
   const { topBanner } = useEvent(renderTopBannerEvent);
-  const total =  parseFloat(cart?.totals?.total_price as string)/100;
-  const faltan = formatPrice(6000-Number(total));
   const formatPrice = (price: string) => {
     const numericPrice = parseFloat(price);
     const formattedPrice = currencyFormatter.format(numericPrice, {
@@ -32,6 +30,8 @@ const Cart: React.FC = () => {
     });
     return formattedPrice;
   };
+  const total =  parseFloat(cart?.totals?.total_price as string)/100;
+  const faltan = formatPrice(6000-Number(total));
 
   useEffect(() => {
     if (cart) {
