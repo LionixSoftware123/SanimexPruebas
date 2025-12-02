@@ -6,6 +6,8 @@ import Link from 'next/link';
 import Crossclose from '@/images/crossClose.svg';
 import { useCartHook } from '@/lib/cart/v2/cart-hooks';
 import dynamic from 'next/dynamic';
+import { useEvent } from '@cobuildlab/react-simple-state';
+import { renderTopBannerEvent } from '@/modules/banner/banner-events';
 import { useUserHook } from '@/modules/auth/user-hooks';
 import { formatCurrency } from '../utils/formats';
 import { CartItem } from '../cart-types';
@@ -19,8 +21,8 @@ const Cart: React.FC = () => {
   const {
     state: { user },
   } = useUserHook();
-
   const [isLoading, setIsLoading] = useState(true);
+  const { topBanner } = useEvent(renderTopBannerEvent);
 
   useEffect(() => {
     if (cart) {
@@ -52,7 +54,15 @@ const Cart: React.FC = () => {
         >
           <Menu.Items className="absolute z-10 mt-2 w-[350px] origin-top-right bg-white shadow-lg ring-1 ring-black right-[-10px] ring-opacity-5 focus:outline-none ">
             <div className="flex justify-between text-black px-4 py-2 text-[14px] font-Century-Gothic border-b border-b-[#C1C1C1]">
-              <div>Carrito de compra popup modal</div>
+              <div className="flex space-x-2">
+                <div
+                  className="text-white text-[12px] rounded min-w-[50px] text-center h-[20px] px-[5px]"
+                  style={{ backgroundColor: topBanner.color as string }}
+                >
+                  Te Falta $0.00 para tener MSI en tu compra
+                </div>
+              </div>             
+              <div>Carrito de compra</div>
 
               <div className=" relative  flex self-center h-[9px] w-[9px]">
                 <Menu.Button>
