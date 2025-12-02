@@ -80,7 +80,7 @@ const Cart: React.FC = () => {
                 className="text-white text-[14px] rounded min-w-[50px] text-center h-[20px] px-[5px] font-Century-Gothic-Bold"
                 style={{ backgroundColor: topBanner.color as string }}
               >
-                Te faltan {formatPrice(faltan as string)} para obtener MSI
+                Te faltan {currencyFormatter(faltan)} para obtener MSI
               </div>
             </div>
             ) : null}
