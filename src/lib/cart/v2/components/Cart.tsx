@@ -24,7 +24,7 @@ const Cart: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const { topBanner } = useEvent(renderTopBannerEvent);
   const total =  parseFloat(cart?.totals?.total_price as string)/100;
-  const faltan = Number(total) - 6000;
+  const faltan = 6000-Number(total);
 
   useEffect(() => {
     if (cart) {
@@ -66,13 +66,13 @@ const Cart: React.FC = () => {
               </div>
             </div>
 
-            {total>0 && topBanner ? (
+            {total<6000 && topBanner ? (
             <div className="px-1 py-1">
               <div
                 className="text-white text-[14px] rounded min-w-[50px] text-center h-[20px] px-[5px] font-Century-Gothic-Bold"
                 style={{ backgroundColor: topBanner.color as string }}
               >
-                Te faltan {formatCurrency(faltan)} para obtener MSI
+                Te faltan {faltan} para obtener MSI
               </div>
             </div>
             ) : null}
