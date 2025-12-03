@@ -72,7 +72,7 @@ const Cart: React.FC = () => {
                 className="text-white text-[14px] rounded min-w-[50px] text-center h-[20px] px-[5px] font-Century-Gothic-Bold"
                 style={{ backgroundColor: topBanner.color as string }}
               >
-                Te faltan {formatCurrency2(faltan)} para obtener los 3 meses sin intereses (MSI)
+                Te faltan {formatCurrency2(faltan)} para obtener tus MSI
               </div>
             </div>
             ) : null}
