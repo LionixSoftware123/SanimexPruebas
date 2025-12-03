@@ -7,6 +7,9 @@ import Link from 'next/link';
 import { useToasts } from 'react-toast-notifications';
 import { useCallAction } from '@cobuildlab/react-simple-state';
 import { useRouter } from 'next/router';
+import { useEvent } from '@cobuildlab/react-simple-state';
+import { renderTopBannerEvent } from '@/modules/banner/banner-events';
+import { formatCurrency2 } from '@/lib/cart/v2/utils/formats';
 import { fetchInternalBanner } from '@/modules/banner/banner-actions';
 import { removeCartAction } from '@/lib/cart/v2/cart-actions';
 import { UpsaleItem } from '@/lib/cart/v2/cart-types';
@@ -64,6 +67,9 @@ const CartPage: React.FC<CartPageProps> = ({ internalBanner }) => {
 
   const upsell = cart?.up_sells;
   const router = useRouter();
+  const { topBanner } = useEvent(renderTopBannerEvent);
+  const total =  parseFloat(cart?.totals?.total_price as string)/100;
+  const faltan = 6000-Number(total);
 
   return (
     <RootLayout>
@@ -80,6 +86,17 @@ const CartPage: React.FC<CartPageProps> = ({ internalBanner }) => {
               <>
                 {cart && cart?.items && cart?.items?.length ? (
                   <div className="col-span-full mt-24">
+
+                    {total<6000 && topBanner ? (
+                    <div className="px-1 py-1">
+                      <div
+                        className="text-white text-[14px] rounded min-w-[50px] text-center h-[20px] px-[5px] font-Century-Gothic-Bold"
+                        style={{ backgroundColor: topBanner.color as string }}
+                      >
+                        Te faltan {formatCurrency2(faltan)} para obtener tus MSI
+                      </div>
+                    </div>
+                    ) : null}
 
                     <div className="col-span-full md:col-span-12 ">
                       <table className="shop_table shop_table_responsive">
