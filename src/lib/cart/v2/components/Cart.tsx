@@ -9,7 +9,7 @@ import dynamic from 'next/dynamic';
 import { useEvent } from '@cobuildlab/react-simple-state';
 import { renderTopBannerEvent } from '@/modules/banner/banner-events';
 import { useUserHook } from '@/modules/auth/user-hooks';
-import { formatCurrency } from '../utils/formats';
+import { formatCurrency, formatCurrency2 } from '../utils/formats';
 import { CartItem } from '../cart-types';
 
 const CartItemMenu = dynamic(
@@ -72,7 +72,7 @@ const Cart: React.FC = () => {
                 className="text-white text-[14px] rounded min-w-[50px] text-center h-[20px] px-[5px] font-Century-Gothic-Bold"
                 style={{ backgroundColor: topBanner.color as string }}
               >
-                Te faltan {formatCurrency(faltan)} para obtener los 3 meses sin intereses (MSI)
+                Te faltan {formatCurrency2(faltan)} para obtener los 3 meses sin intereses (MSI)
               </div>
             </div>
             ) : null}
