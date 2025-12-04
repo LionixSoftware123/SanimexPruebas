@@ -10,7 +10,7 @@ import {
 } from '@/utils/types/generated';
 import { fetchUser } from '@/modules/auth/auth-actions';
 import Link from 'next/link';
-import { FRONTEND_ENDPOINT } from '@/utils/constants';
+//import { FRONTEND_ENDPOINT } from '@/utils/constants';
 import { useUserHook } from '@/modules/auth/user-hooks';
 import { ShippingEnum } from '@/components/checkout/CheckoutShippingMethods';
 import {
@@ -205,22 +205,7 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
     });
 
     if (checkUser.user && !user) {
-      setLoadingButton(false);
-      return addToast(
-        <div>
-          El email ya se encuentra registrado, por favor{' '}
-          <Link
-            className="underline font-bold"
-            href={`/auth?redirect=${FRONTEND_ENDPOINT}/checkout/finalizar-compra`}
-          >
-            ingrese con su cuenta
-          </Link>{' '}
-          para mantener la información de sus compras
-        </div>,
-        {
-          appearance: 'error',
-        },
-      );
+      console.log( checkUser );
     }
 
     return await createBanortePayment(
@@ -341,22 +326,7 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
     });
 
     if (checkUser.user && !user) {
-      setLoadingButton(false);
-      return addToast(
-        <div>
-          El email ya se encuentra registrado, por favor{' '}
-          <Link
-            className="underline font-bold"
-            href={`/auth?redirect=${FRONTEND_ENDPOINT}/checkout/finalizar-compra`}
-          >
-            ingrese con su cuenta
-          </Link>{' '}
-          para mantener la información de sus compras
-        </div>,
-        {
-          appearance: 'error',
-        },
-      );
+     console.log( checkUser );
     }
 
     transferPayment(
@@ -394,8 +364,10 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
 
   const postalCode = isShipping ? shippingPostalCodeForm : postalCodeForm;
 
+  //const total = cart?.totals?.total_price ?? 0;
   const total =  parseFloat(cart?.totals?.total_price as string)/100;
-  
+  console.log( total );
+
   let content = <></>;
   const redirect = typeof window !== 'undefined' ? window.location.href : '';
 
@@ -711,8 +683,7 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
 
   if (
     (postalCodeShipping.includes(parseInt(postalCode as string)) ||
-    postalCodeShippingProvincia.includes(parseInt(postalCode as string))) &&
-    postalCodeShippingProvinciaNL.includes(parseInt(postalCode as string))) &&
+    postalCodeShippingProvincia.includes(parseInt(postalCode as string)) || postalCodeShipping.includes(parseInt(postalCode as string))) &&
     postalCode &&
     postalCode?.length > 4
   )
