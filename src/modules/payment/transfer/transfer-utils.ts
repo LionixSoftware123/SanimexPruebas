@@ -25,6 +25,7 @@ import {
 import { ShippingEnum } from '@/components/checkout/CheckoutShippingMethods';
 import postalCodeShipping from '@/utils/postal-code-shipping.json';
 import postalCodeShippingProvincia from '@/utils/postal-code-shipping-provincia.json';
+import postalCodeShippingProvinciaNL from '@/utils/postal-code-shipping-provincia-nl.json';
 import {
   PaymentDataType,
   ShippingAddressType,
@@ -172,6 +173,12 @@ export const transferPayment = async (
                         ? shipping.postalCode
                         : (userData.postalCode as string),
                     ),
+                  ) || postalCodeShippingProvinciaNL.includes(
+                    parseInt(
+                      shipping.postalCode
+                        ? shipping.postalCode
+                        : (userData.postalCode as string),
+                    ),
                   )
                 )
                 ? 'Envió a Domicilio'
@@ -250,6 +257,12 @@ export const transferPayment = async (
                         ? shipping.postalCode
                         : (userData.postalCode as string),
                     ),
+                  ) || postalCodeShippingProvinciaNL.includes(
+                    parseInt(
+                      shipping.postalCode
+                        ? shipping.postalCode
+                        : (userData.postalCode as string),
+                    ),
                   )
                 )
               ? 'Envió a Domicilio'
@@ -276,6 +289,12 @@ export const transferPayment = async (
                         : (userData.postalCode as string),
                     ),
                   ) || postalCodeShippingProvincia.includes(
+                    parseInt(
+                      shipping.postalCode
+                        ? shipping.postalCode
+                        : (userData.postalCode as string),
+                    ),
+                  ) || postalCodeShippingProvinciaNL.includes(
                     parseInt(
                       shipping.postalCode
                         ? shipping.postalCode
