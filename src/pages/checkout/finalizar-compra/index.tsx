@@ -383,13 +383,7 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
             Información de pago
           </div>
         </div>
-        <div 
-          className={` ${
-            !(postalCodeShipping.includes(parseInt(postalCode as string)) || postalCodeShippingProvincia.includes(parseInt(postalCode as string)))
-            ? 'hidden'
-            : ' flex'
-          } col-span-full `}
-        >        
+        <div className="col-span-full">        
           <div className="flex items-center mb-2">
             <div
               onClick={() => {
