@@ -10,7 +10,7 @@ import {
 } from '@/utils/types/generated';
 import { fetchUser } from '@/modules/auth/auth-actions';
 import Link from 'next/link';
-//import { FRONTEND_ENDPOINT } from '@/utils/constants';
+import { FRONTEND_ENDPOINT } from '@/utils/constants';
 import { useUserHook } from '@/modules/auth/user-hooks';
 import { ShippingEnum } from '@/components/checkout/CheckoutShippingMethods';
 import {
@@ -169,117 +169,7 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
   }, [cart]);
 
   const hasProductWithSku = hasProductSku === 'T10-00-0-07';
-
-  // const [removeCart] = useCallAction(removeCartFromPaymentCompleteAction, {
-  //   onCompleted: () => {
-  //     setLoading(false);
-  //     setPaymentStep(1);
-  //     return (window.location.href = `/checkout/pago-completado?order_id=${orderId}`);
-  //   },
-  //   onError: () => {
-  //     setLoading(false);
-  //   },
-  // });
-
   const { processUTMURLs } = useUTMCampaignHooks();
-
-  // const [updateContact] = useCallAction(updateActiveCampaignCompleteContact, {
-  //   onCompleted: () => {
-  //     console.log('Contacto actualizado exitosamente.');
-  //   },
-  //   onError: (error) => {
-  //     console.error('Error al actualizar el contacto:', error);
-  //   },
-  // });
-
-  //  useEffect(() => {
-  //   const subscription = watch((value) => {
-  //     console.log(value.billingAddress);
-  //     updateContact(value.billingAddress);
-  //   });
-  //   return () => subscription.unsubscribe();
-  // }, [updateContact, watch]);
-
-  // useEffect(() => {
-  //   const subscription = watch((value) =>
-  //     emitActiveCampaignCustomer(value.billingAddress),
-  //   );
-  //   return () => subscription.unsubscribe();
-  // }, [emitActiveCampaignCustomer, watch]);
-
-  // useEffect(() => {
-  //   if (typeof window !== 'undefined' && cart) {
-  //     const shipping = currencyFormatter.unformat(
-  //       cart?.shippingTotal as string,
-  //       {
-  //         code: 'USD',
-  //       },
-  //     );
-
-  //     const totalTax = currencyFormatter.unformat(cart?.totalTax as string, {
-  //       code: 'USD',
-  //     });
-
-  //     const total = currencyFormatter.unformat(cart?.total as string, {
-  //       code: 'USD',
-  //     });
-
-  //     window.gtag('event', 'begin_checkout', {
-  //       currency: 'MXN',
-  //       value: total,
-  //       tax: totalTax,
-  //       shipping: shipping,
-  //       items: cart?.contents?.nodes?.map((node: CartItem) => {
-  //         const categories: any = {};
-
-  //         node.product?.node.productCategories?.nodes.forEach((category, i) => {
-  //           if (i)
-  //             categories[`item_category${i}` as keyof any] = (
-  //               category as ProductCategory
-  //             ).name;
-  //           else
-  //             categories['item_category' as keyof any] = (
-  //               category as ProductCategory
-  //             ).name;
-  //         });
-
-  //         if (node?.variation) {
-  //           const price = currencyFormatter.unformat(
-  //             node.variation.node.price as string,
-  //             {
-  //               code: 'USD',
-  //             },
-  //           );
-
-  //           return {
-  //             item_name: node.variation.node.name,
-  //             item_id: node.variation.node.databaseId,
-  //             price: price,
-  //             item_brand: getProductBrand(node.product?.node as Product),
-  //             quantity: node.quantity,
-  //             ...categories,
-  //           };
-  //         }
-
-  //         const price = currencyFormatter.unformat(
-  //           (node.product?.node as SimpleProduct).price as string,
-  //           {
-  //             code: 'USD',
-  //           },
-  //         );
-
-  //         return {
-  //           item_name: node.product?.node.name,
-  //           item_id: node.product?.node.databaseId,
-  //           price: price,
-  //           item_brand: getProductBrand(node.product?.node as Product),
-  //           quantity: node.quantity,
-  //           ...categories,
-  //         };
-  //       }),
-  //     });
-  //   }
-  // }, [cart]);
 
   //console.log({ cart });
   //console.log({ shop });
@@ -314,7 +204,22 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
     });
 
     if (checkUser.user && !user) {
-      console.log( checkUser );
+      setLoadingButton(false);
+      return addToast(
+        <div>
+          El email ya se encuentra registrado, por favor{' '}
+          <Link
+            className="underline font-bold"
+            href={`/auth?redirect=${FRONTEND_ENDPOINT}/checkout/finalizar-compra`}
+          >
+            ingrese con su cuenta
+          </Link>{' '}
+          para mantener la información de sus compras
+        </div>,
+        {
+          appearance: 'error',
+        },
+      );
     }
 
     return await createBanortePayment(
@@ -435,7 +340,22 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
     });
 
     if (checkUser.user && !user) {
-     console.log( checkUser );
+      setLoadingButton(false);
+      return addToast(
+        <div>
+          El email ya se encuentra registrado, por favor{' '}
+          <Link
+            className="underline font-bold"
+            href={`/auth?redirect=${FRONTEND_ENDPOINT}/checkout/finalizar-compra`}
+          >
+            ingrese con su cuenta
+          </Link>{' '}
+          para mantener la información de sus compras
+        </div>,
+        {
+          appearance: 'error',
+        },
+      );
     }
 
     transferPayment(
@@ -473,10 +393,8 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
 
   const postalCode = isShipping ? shippingPostalCodeForm : postalCodeForm;
 
-  //const total = cart?.totals?.total_price ?? 0;
   const total =  parseFloat(cart?.totals?.total_price as string)/100;
-  console.log( total );
-
+  
   let content = <></>;
   const redirect = typeof window !== 'undefined' ? window.location.href : '';
 
