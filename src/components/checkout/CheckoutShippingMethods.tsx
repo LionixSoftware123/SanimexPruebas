@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import postalCodeShipping from '@/utils/postal-code-shipping.json';
 import postalCodeShippingProvincia from '@/utils/postal-code-shipping-provincia.json';
+import postalCodeShippingProvinciaNL from '@/utils/postal-code-shipping-provincia-nl.json';
 import shops from '@/utils/sucursales.json';
 import dynamic from 'next/dynamic';
 import { selectedShopStoreAction } from '@/modules/shop/shop-actions';
@@ -114,7 +115,7 @@ const CheckoutShippingMethods: React.FC<CheckoutShippingMethodsProps> = ({
                 e.preventDefault();
               }}
               className={` ${
-                !(postalCodeShipping.includes(parseInt(postalCode as string)) || postalCodeShippingProvincia.includes(parseInt(postalCode as string)))
+                !(postalCodeShipping.includes(parseInt(postalCode as string)) || postalCodeShippingProvincia.includes(parseInt(postalCode as string)) || postalCodeShippingProvinciaNL.includes(parseInt(postalCode as string)))
                   ? 'hidden'
                   : ' flex'
               } rounded-full  border border-[#919191] w-[14px] h-[14px] mx-2 flex ml-8 mb-6 self-center items-start justify-start absolute `}
