@@ -24,6 +24,7 @@ import {
 } from '@/modules/auth/auth-events';
 import postalCodeShipping from '@/utils/postal-code-shipping.json';
 import postalCodeShippingProvincia from '@/utils/postal-code-shipping-provincia.json';
+import postalCodeShippingProvinciaNL from '@/utils/postal-code-shipping-provincia-nl.json';
 import {
   BANORTE_MERCHANT_ID,
   BANORTE_GAM_MERCHANT_ID,
@@ -193,6 +194,12 @@ export const createBanortePayment = async (
                         : (userData.postalCode as string),
                     ),
                   ) || postalCodeShippingProvincia.includes(
+                    parseInt(
+                      shipping.postalCode
+                        ? shipping.postalCode
+                        : (userData.postalCode as string),
+                    ),
+                  ) || postalCodeShippingProvinciaNL.includes(
                     parseInt(
                       shipping.postalCode
                         ? shipping.postalCode
