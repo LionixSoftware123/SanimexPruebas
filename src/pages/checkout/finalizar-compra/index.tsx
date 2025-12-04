@@ -366,7 +366,6 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
 
   //const total = cart?.totals?.total_price ?? 0;
   const total =  parseFloat(cart?.totals?.total_price as string)/100;
-  console.log( total );
 
   let content = <></>;
   const redirect = typeof window !== 'undefined' ? window.location.href : '';
@@ -384,7 +383,13 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
             Información de pago
           </div>
         </div>
-        <div className="col-span-full">
+        <div 
+          className={` ${
+            !(postalCodeShipping.includes(parseInt(postalCode as string)) || postalCodeShippingProvincia.includes(parseInt(postalCode as string)))
+            ? 'hidden'
+            : ' flex'
+          } col-span-full `}
+        >        
           <div className="flex items-center mb-2">
             <div
               onClick={() => {
@@ -404,6 +409,7 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
           </div>
           <BankList />
         </div>
+
         {selectedPaymentMethod === PaymentMethodEnum.OpenPay ? (
           <div className="col-span-full">
             <div className="mb-4 text-[#1C355E]">
