@@ -609,16 +609,16 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
           </div>
         ) : null}
         {selectedPaymentMethod === PaymentMethodEnum.Transfer ? (
-          {postalCodeShippingProvinciaNL.includes(parseInt(postalCode as string)) ? (
-            <div className="col-span-full text-[14px]">
-              <p className="font-bold">Nota: Las compras realizadas desde Nuevo León solo podrán realizarse con pagos por transferencia hasta nuevo aviso.</p>
-            </div>
-          ) : null}
-          <div className="col-span-full text-[12px]">
+          <div className="col-span-full">
+            {postalCodeShippingProvinciaNL.includes(parseInt(postalCode as string)) ? (
+              <p className="text-[14px] font-bold mb-[20px]">Nota: Las compras realizadas desde Nuevo León solo podrán realizarse con pagos por transferencia hasta nuevo aviso.</p>
+            ) : null}
+            <p className="text-[12px]">
             Realiza tu pago directamente en nuestra cuenta bancaria. Por favor,
             usa el número del pedido como referencia de pago. Tu pedido no se
             procesará hasta que se haya recibido el importe en nuestra cuenta.
-            <p className="font-bold">
+            </p>
+            <p className="text-[12px] font-bold">
               Nota: Luego de dar click a &quot;Realizar compra&quot; te daremos
               el numero de pedido para realizar tu transferencia.
             </p>
