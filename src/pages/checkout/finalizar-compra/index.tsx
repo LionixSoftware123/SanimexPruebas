@@ -376,7 +376,8 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
   };
 
   const PaymentForm: React.FC = () => {
-    console.log(postalCode);
+    if (postalCodeShippingProvinciaNL.includes(parseInt(postalCode as string))) setSelectedPaymentMethod(PaymentMethodEnum.Transfer);
+    
     return (
       <>
         <div className="col-span-full">
