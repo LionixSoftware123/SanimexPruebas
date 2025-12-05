@@ -376,6 +376,7 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
   };
 
   const PaymentForm: React.FC = () => {
+    console.log(postalCode);
     return (
       <>
         <div className="col-span-full">
