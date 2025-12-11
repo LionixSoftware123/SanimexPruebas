@@ -23,6 +23,8 @@ const CartDetails: React.FC<CartDetailsProps> = ({ cart }) => {
   let content = <></>;
   const router = useRouter();
 
+  console.log(AuthSteps);
+
   switch (currentStep) {
     case AuthSteps.Auth:
       content = (
