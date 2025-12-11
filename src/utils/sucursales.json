@@ -1,1266 +1,29 @@
 [
   {
     "ID": 1,
-    "TIENDA": "SANTA CLARA 2",
-    "CALLE": "Vía Morelos No. 33",
-    "COLONIA": "Col. San Cristóbal Centro",
-    "CP": 55040,
-    "CIUDAD": "Ecatepec ",
-    "ESTADO": "Estado de México",
+    "TIENDA": "Oaxaca 1",
+    "CALLE": "Melchor Ocampo No. 809 entre Carbonera y Xóchitl",
+    "COLONIA": "Col. Centro",
+    "CP": 68000,
+    "CIUDAD": "Oaxaca de Juárez",
+    "ESTADO": "Oaxaca",
     "TELÉFONOS": [
       {
-        "key": "5557703413",
-        "value": "5557703413"
+        "key": "9515163134",
+        "value": "9515163134"
       },
       {
-        "key": "5557703410",
-        "value": "5557703410"
+        "key": "9515146504",
+        "value": "9515146504"
       }
     ],
     "LOCATION": {
-      "lat": 19.5965475,
-      "lng": -99.0372039
+      "lat": 17.0541746,
+      "lng": -96.7252117
     }
   },
   {
     "ID": 2,
-    "TIENDA": "SANTA CLARA 3",
-    "CALLE": "Vía Morelos No. 45 Bis",
-    "COLONIA": "Col. Nuevo Laredo",
-    "CP": 55080,
-    "CIUDAD": "Ecatepec ",
-    "ESTADO": "Estado de México",
-    "TELÉFONOS": [
-      {
-        "key": "5557870087",
-        "value": "5557870087"
-      },
-      {
-        "key": "5557872299",
-        "value": "5557872299"
-      }
-    ],
-    "LOCATION": {
-      "lat": 19.5757029,
-      "lng": -99.0427336
-    }
-  },
-  {
-    "ID": 3,
-    "TIENDA": "INSURGENTES",
-    "CALLE": "Av. Insurgentes S/N",
-    "COLONIA": "Col. La Curiela",
-    "CP": 55060,
-    "CIUDAD": "Ecatepec ",
-    "ESTADO": "Estado de México",
-    "TELÉFONOS": [
-      {
-        "key": "55 57 87 83 57",
-        "value": "5557878357"
-      }
-    ],
-    "LOCATION": {
-      "lat": 19.6002201,
-      "lng": -99.0527193
-    }
-  },
-  {
-    "ID": 4,
-    "TIENDA": "SANTA CLARA 1",
-    "CALLE": "Av. Hidalgo No. 143 - A",
-    "COLONIA": "Col. Santa Clara",
-    "CP": 55540,
-    "CIUDAD": "Ecatepec ",
-    "ESTADO": "Estado de México",
-    "TELÉFONOS": [
-      {
-        "key": "5556990426",
-        "value": "5556990426"
-      },
-      {
-        "key": "5556990427",
-        "value": "5556990427"
-      }
-    ],
-    "LOCATION": {
-      "lat": 19.5382819,
-      "lng": -99.0598875
-    }
-  },
-  {
-    "ID": 5,
-    "TIENDA": "SANTA CLARA 4",
-    "CALLE": "Vía Morelos km 15.5",
-    "COLONIA": "Col. Santa Clara",
-    "CP": 55540,
-    "CIUDAD": "Ecatepec ",
-    "ESTADO": "Estado de México",
-    "TELÉFONOS": [
-      {
-        "key": "5556990457",
-        "value": "5556990457"
-      },
-      {
-        "key": "5557497084",
-        "value": "5557497084"
-      }
-    ],
-    "LOCATION": {
-      "lat": 19.5366259,
-      "lng": -99.0623316
-    }
-  },
-  {
-    "ID": 6,
-    "TIENDA": "R1",
-    "CALLE": "Vicente Lombardo Toledano No. 21 Local 4 y 5",
-    "COLONIA": "Col. Laguna Xalostoc",
-    "CP": 55338,
-    "CIUDAD": "Ecatepec ",
-    "ESTADO": "Estado de México",
-    "TELÉFONOS": [
-      {
-        "key": "55 56 99 76 47",
-        "value": "5556997647"
-      }
-    ],
-    "LOCATION": {
-      "lat": 19.5290298,
-      "lng": -99.0567546
-    }
-  },
-  {
-    "ID": 7,
-    "TIENDA": "SANTA CLARA 7",
-    "CALLE": "Vía Morelos No. 464 Local, A1 ",
-    "COLONIA": "Col. Cuauhtémoc Xalostoc ",
-    "CP": 55310,
-    "CIUDAD": "Ecatepec ",
-    "ESTADO": "Estado de México",
-    "TELÉFONOS": [
-      {
-        "key": "55 56 99 76 47",
-        "value": "5556997647"
-      }
-    ],
-    "LOCATION": {
-      "lat": 19.529414,
-      "lng": -99.0781396
-    }
-  },
-  {
-    "ID": 8,
-    "TIENDA": "SANTA CLARA 8 BODEGA",
-    "CALLE": "Vía Morelos No. 416",
-    "COLONIA": "Col. Cuauhtémoc Xalostoc",
-    "CP": 55310,
-    "CIUDAD": "Ecatepec ",
-    "ESTADO": "Estado de México",
-    "TELÉFONOS": [
-      {
-        "key": "55 55 69 56 31",
-        "value": "5555695631"
-      }
-    ],
-    "LOCATION": {
-      "lat": 19.5324563,
-      "lng": -99.0719896
-    }
-  },
-  {
-    "ID": 9,
-    "TIENDA": "EL GAVILLERO ",
-    "CALLE": "Km.20 Carretera Progreso Industrial",
-    "COLONIA": "Colonia El Gavillero",
-    "CP": 54459,
-    "CIUDAD": "Nicolás de Romero",
-    "ESTADO": "Estado de México",
-    "TELÉFONOS": [
-      {
-        "key": "55 16 60 15 08",
-        "value": "5516601508"
-      }
-    ],
-    "LOCATION": {
-      "lat": 19.6237378,
-      "lng": -99.333362
-    }
-  },
-  {
-    "ID": 10,
-    "TIENDA": "IZCALLI",
-    "CALLE": "Av. Chalma No. 5",
-    "COLONIA": "Col. La Hacienda",
-    "CP": 54730,
-    "CIUDAD": "Cuautitlán Izcalli ",
-    "ESTADO": "Estado de México",
-    "TELÉFONOS": [
-      {
-        "key": "55 11 13 14 11",
-        "value": "5511131411"
-      }
-    ],
-    "LOCATION": {
-      "lat": 19.6701011,
-      "lng": -99.2025081
-    }
-  },
-  {
-    "ID": 11,
-    "TIENDA": "LIBERTAD",
-    "CALLE": "Lerdo de Tejada N° 9",
-    "COLONIA": "Col. Libertad",
-    "CP": 54407,
-    "CIUDAD": "Villa Nicolás Romero",
-    "ESTADO": "Estado de México",
-    "TELÉFONOS": [
-      {
-        "key": "55 24 64 01 09",
-        "value": "5524640109"
-      }
-    ],
-    "LOCATION": {
-      "lat": 19.6417479,
-      "lng": -99.3016611
-    }
-  },
-  {
-    "ID": 12,
-    "TIENDA": "HUEHUETOCA",
-    "CALLE": "Carretera Jorobas Tula Km 0.5",
-    "COLONIA": "Col. Jorobas Huehuetoca",
-    "CP": 54680,
-    "CIUDAD": "Huehuetoca ",
-    "ESTADO": "Estado de México",
-    "TELÉFONOS": [
-      {
-        "key": "59 39 16 30 26",
-        "value": "5939163026"
-      }
-    ],
-    "LOCATION": {
-      "lat": 19.8421338,
-      "lng": -99.2392714
-    }
-  },
-  {
-    "ID": 13,
-    "TIENDA": "TEOLOYUCAN",
-    "CALLE": "Av. 5 de Mayo No. 5",
-    "COLONIA": "Col. Tepanquiahuac",
-    "CP": 54770,
-    "CIUDAD": "Teoloyucan",
-    "ESTADO": "Estado de México",
-    "TELÉFONOS": [
-      {
-        "key": "59 39 14 80 10",
-        "value": "5939148010"
-      }
-    ],
-    "LOCATION": {
-      "lat": 19.7416166,
-      "lng": -99.179398
-    }
-  },
-  {
-    "ID": 14,
-    "TIENDA": "ZUMPANGO 2",
-    "CALLE": "Av. Jorge Jiménez Cantú No. 19",
-    "COLONIA": "Col. Barrio de San Juan",
-    "CP": 55600,
-    "CIUDAD": "Zumpango",
-    "ESTADO": "Estado de México",
-    "TELÉFONOS": [
-      {
-        "key": "59 11 00 67 27",
-        "value": "5911006727"
-      }
-    ],
-    "LOCATION": {
-      "lat": 19.7989552,
-      "lng": -99.1035335
-    }
-  },
-  {
-    "ID": 15,
-    "TIENDA": "SANIMEX ESPACIOS",
-    "CALLE": "Blvd. Manuel Ávila Camacho No. 92 ",
-    "COLONIA": "Col. El Conde",
-    "CP": 53500,
-    "CIUDAD": "Naucalpan de Juárez",
-    "ESTADO": "Estado de México",
-    "TELÉFONOS": [
-      {
-        "key": "5553580423",
-        "value": "5553580423"
-      },
-      {
-        "key": "5553586626",
-        "value": "5553586626"
-      }
-    ],
-    "LOCATION": {
-      "lat": 19.4680573,
-      "lng": -99.2264644
-    }
-  },
-  {
-    "ID": 16,
-    "TIENDA": "TOREO 2 ARQUICERAMICA",
-    "CALLE": "Blvd. Manuel Ávila Camacho No.435",
-    "COLONIA": "Col. San Andrés Atoto",
-    "CP": 5400,
-    "CIUDAD": "Naucalpan de Juárez",
-    "ESTADO": "Estado de México",
-    "TELÉFONOS": [
-      {
-        "key": "55 55 76 07 08",
-        "value": "5555760708"
-      }
-    ],
-    "LOCATION": {
-      "lat": 19.4679859,
-      "lng": -99.225664
-    }
-  },
-  {
-    "ID": 17,
-    "TIENDA": "TECÁMAC ",
-    "CALLE": "Av.Mexiquense Lt-B1",
-    "COLONIA": "Los Héroes Tecámac",
-    "CP": 55765,
-    "CIUDAD": "Tecamac",
-    "ESTADO": "Estado de México",
-    "TELÉFONOS": [
-      {
-        "key": "55 49 78 71 53",
-        "value": "5549787153"
-      }
-    ],
-    "LOCATION": {
-      "lat": 19.6328539,
-      "lng": -99.0261811
-    }
-  },
-  {
-    "ID": 18,
-    "TIENDA": "CHICONAUTLA",
-    "CALLE": "Carretera México Pachuca km 30.5",
-    "COLONIA": "Col. Santo Tomas Chiconautla",
-    "CP": 55068,
-    "CIUDAD": "Ecatepec ",
-    "ESTADO": "Estado de México",
-    "TELÉFONOS": [
-      {
-        "key": "55 15 50 83 40",
-        "value": "5515508340"
-      }
-    ],
-    "LOCATION": {
-      "lat": 19.6461704,
-      "lng": -99.0048553
-    }
-  },
-  {
-    "ID": 19,
-    "TIENDA": "ZUMPANGO 1",
-    "CALLE": "Carretera  México Pachuca km 44 + 100",
-    "COLONIA": "Col. Santa María Ajoloapan",
-    "CP": 55750,
-    "CIUDAD": "Tecámac",
-    "ESTADO": "Estado de México",
-    "TELÉFONOS": [
-      {
-        "key": "59 69 24 09 94",
-        "value": "5969240994"
-      }
-    ],
-    "LOCATION": {
-      "lat": 19.7661143,
-      "lng": -98.9734418
-    }
-  },
-  {
-    "ID": 20,
-    "TIENDA": "NEZA",
-    "CALLE": "Av. Adolfo López Mateos No. 660",
-    "COLONIA": "Col. El Palmar",
-    "CP": 57310,
-    "CIUDAD": "Ciudad Nezahualcóyotl ",
-    "ESTADO": "Estado de México",
-    "TELÉFONOS": [
-      {
-        "key": "5557434283",
-        "value": "5557434283"
-      },
-      {
-        "key": "5557434612",
-        "value": "5557434612"
-      }
-    ],
-    "LOCATION": {
-      "lat": 19.4143805,
-      "lng": -99.0206244
-    }
-  },
-  {
-    "ID": 21,
-    "TIENDA": "LOS REYES TEXCOCO",
-    "CALLE": "Carretera Federal Los Reyes - Texcoco km 27.5",
-    "COLONIA": "Col. Revolución ",
-    "CP": 56390,
-    "CIUDAD": "San Vicente Chicoloapan",
-    "ESTADO": "Estado de México",
-    "TELÉFONOS": [
-      {
-        "key": "55 15 51 31 82",
-        "value": "5515513182"
-      }
-    ],
-    "LOCATION": {
-      "lat": 19.4027597,
-      "lng": -98.9283404
-    }
-  },
-  {
-    "ID": 22,
-    "TIENDA": "CHALCO",
-    "CALLE": "Av. Arturo Montiel Rojas Mz. 1 Lt. 11",
-    "COLONIA": "Col. El Portal",
-    "CP": 56600,
-    "CIUDAD": "Chalco",
-    "ESTADO": "Estado de México",
-    "TELÉFONOS": [
-      {
-        "key": "5559733960",
-        "value": "5559733960"
-      },
-      {
-        "key": "5559734549",
-        "value": "5559734549"
-      }
-    ],
-    "LOCATION": {
-      "lat": 19.2504536,
-      "lng": -98.901428
-    }
-  },
-  {
-    "ID": 23,
-    "TIENDA": "CHALCO 2 LAMOSA",
-    "CALLE": "Av. Arturo Montiel Rojas Mz. 1 Lt. 24",
-    "COLONIA": "Col. El Portal",
-    "CP": 56600,
-    "CIUDAD": "Chalco",
-    "ESTADO": "Estado de México",
-    "TELÉFONOS": [
-      {
-        "key": "55 5973 3129",
-        "value": "5559733129"
-      }
-    ],
-    "LOCATION": {
-      "lat": 19.2505753,
-      "lng": -98.9021556
-    }
-  },
-  {
-    "ID": 24,
-    "TIENDA": "ARAGÓN 1",
-    "CALLE": "Av. Central No. 53",
-    "COLONIA": "Col. Valle De Aragón 3ra Sección",
-    "CP": 55280,
-    "CIUDAD": "Ecatepec ",
-    "ESTADO": "Estado de México",
-    "TELÉFONOS": [
-      {
-        "key": "5557804934",
-        "value": "5557804934"
-      },
-      {
-        "key": "5557801542",
-        "value": "5557801542"
-      }
-    ],
-    "LOCATION": {
-      "lat": 19.5073799,
-      "lng": -99.0398805
-    }
-  },
-  {
-    "ID": 25,
-    "TIENDA": "ARAGÓN 2",
-    "CALLE": "Av. Central No. 759",
-    "COLONIA": "Col. Valle De Aragón 2da Sección",
-    "CP": 57100,
-    "CIUDAD": "Nezahualcóyotl ",
-    "ESTADO": "Estado de México",
-    "TELÉFONOS": [
-      {
-        "key": "55 57 80 16 50",
-        "value": "5557801650"
-      }
-    ],
-    "LOCATION": {
-      "lat": 19.4870429,
-      "lng": -99.048054
-    }
-  },
-  {
-    "ID": 26,
-    "TIENDA": "ARAGÓN 3",
-    "CALLE": "Av. Central No. 186",
-    "COLONIA": "Col. Valle De Aragón 3ra Sección",
-    "CP": 55280,
-    "CIUDAD": "Ecatepec ",
-    "ESTADO": "Estado de México",
-    "TELÉFONOS": [
-      {
-        "key": "5551214735",
-        "value": "5551214735"
-      },
-      {
-        "key": "5551214770",
-        "value": "5551214770"
-      }
-    ],
-    "LOCATION": {
-      "lat": 19.4982329,
-      "lng": -99.0431007
-    }
-  },
-  {
-    "ID": 27,
-    "TIENDA": "ARAGÓN 4",
-    "CALLE": "Av. Central Mz. 429 Lt. 44-46 Esq. Boulevard de los Aztecas",
-    "COLONIA": "Ciudad Azteca 1ra Sección",
-    "CP": 55120,
-    "CIUDAD": "Ecatepec ",
-    "ESTADO": "Estado de México",
-    "TELÉFONOS": [
-      {
-        "key": "55 26 46 53 44",
-        "value": "5526465344"
-      }
-    ],
-    "LOCATION": {
-      "lat": 19.5371371,
-      "lng": -99.0269586
-    }
-  },
-  {
-    "ID": 28,
-    "TIENDA": "30-30",
-    "CALLE": "Av. Revolución No. 203",
-    "COLONIA": "Col. Residencial San Cristóbal",
-    "CP": 55000,
-    "CIUDAD": "Ecatepec ",
-    "ESTADO": "Estado de México",
-    "TELÉFONOS": [
-      {
-        "key": "55 57 87 24 44",
-        "value": "5557872444"
-      }
-    ],
-    "LOCATION": {
-      "lat": 19.607519,
-      "lng": -99.0522217
-    }
-  },
-  {
-    "ID": 29,
-    "TIENDA": "COACALCO",
-    "CALLE": "Eje 3 #128",
-    "COLONIA": "Col. Granjas San Pablo ",
-    "CP": 54930,
-    "CIUDAD": "Tultitlan",
-    "ESTADO": "Estado de México",
-    "TELÉFONOS": [
-      {
-        "key": "55 58 79 11 05",
-        "value": "5558791105"
-      }
-    ],
-    "LOCATION": {
-      "lat": 19.6587072,
-      "lng": -99.08008
-    }
-  },
-  {
-    "ID": 30,
-    "TIENDA": "LÓPEZ 1",
-    "CALLE": "Vía López Portillo km 13.5 LOCAL 1 Y 2",
-    "COLONIA": "Col. Guadalupe Victoria",
-    "CP": 55010,
-    "CIUDAD": "Ecatepec ",
-    "ESTADO": "Estado de México",
-    "TELÉFONOS": [
-      {
-        "key": "55 58 82 04 30",
-        "value": "5558820430"
-      }
-    ],
-    "LOCATION": {
-      "lat": 19.6214156,
-      "lng": -99.0714053
-    }
-  },
-  {
-    "ID": 31,
-    "TIENDA": "LÓPEZ 2",
-    "CALLE": "Vía López Portillo km 13.5 LOCAL 15",
-    "COLONIA": "Col. Guadalupe Victoria",
-    "CP": 55011,
-    "CIUDAD": "Ecatepec ",
-    "ESTADO": "Estado de México",
-    "TELÉFONOS": [
-      {
-        "key": "55 58 82 04 60",
-        "value": "5558820460"
-      }
-    ],
-    "LOCATION": {
-      "lat": 19.6214156,
-      "lng": -99.0714053
-    }
-  },
-  {
-    "ID": 32,
-    "TIENDA": "Ayuntamiento 1",
-    "CALLE": "Ayuntamiento # 44 BIS",
-    "COLONIA": "Col. Centro",
-    "CP": 6010,
-    "CIUDAD": "Cuauhtémoc",
-    "ESTADO": "Ciudad de México",
-    "TELÉFONOS": [
-      {
-        "key": "55 5512 3934",
-        "value": "5555123934"
-      }
-    ],
-    "LOCATION": {
-      "lat": 19.4306493,
-      "lng": -99.1440669
-    }
-  },
-  {
-    "ID": 33,
-    "TIENDA": "Ayuntamiento 4",
-    "CALLE": "Ayuntamiento #42",
-    "COLONIA": "Col. Centro",
-    "CP": 6010,
-    "CIUDAD": "Cuauhtémoc",
-    "ESTADO": "Ciudad de México",
-    "TELÉFONOS": [
-      {
-        "key": "55 5518 5317",
-        "value": "5555185317"
-      }
-    ],
-    "LOCATION": {
-      "lat": 19.4307214,
-      "lng": -99.1445484
-    }
-  },
-  {
-    "ID": 34,
-    "TIENDA": "Ayuntamiento 5",
-    "CALLE": "Ayuntamiento # 35-B",
-    "COLONIA": "Col. Centro",
-    "CP": 6010,
-    "CIUDAD": "Cuauhtémoc",
-    "ESTADO": "Ciudad de México",
-    "TELÉFONOS": [
-      {
-        "key": "55 5521 5914",
-        "value": "5555215914"
-      }
-    ],
-    "LOCATION": {
-      "lat": 19.430634,
-      "lng": -99.1439564
-    }
-  },
-  {
-    "ID": 35,
-    "TIENDA": "Ayuntamiento 6",
-    "CALLE": "Ayuntamiento  # 45-B",
-    "COLONIA": "Col. Centro",
-    "CP": 6010,
-    "CIUDAD": "Cuauhtémoc",
-    "ESTADO": "Ciudad de México",
-    "TELÉFONOS": [
-      {
-        "key": "55 5512 7767",
-        "value": "5555127767"
-      }
-    ],
-    "LOCATION": {
-      "lat": 19.4306689,
-      "lng": -99.1441985
-    }
-  },
-  {
-    "ID": 36,
-    "TIENDA": "Ayuntamiento 7",
-    "CALLE": "Ayuntaniento #42",
-    "COLONIA": "Col. Centro",
-    "CP": 6010,
-    "CIUDAD": "Cuauhtémoc",
-    "ESTADO": "Ciudad de México",
-    "TELÉFONOS": [
-      {
-        "key": "5518-5317",
-        "value": "55185317"
-      }
-    ],
-    "LOCATION": {
-      "lat": 19.4306561,
-      "lng": -99.1440978
-    }
-  },
-  {
-    "ID": 37,
-    "TIENDA": "Ayuntamiento 8",
-    "CALLE": "Ayuntamiento # 59-F",
-    "COLONIA": "Col. Centro",
-    "CP": 6010,
-    "CIUDAD": "Cuauhtémoc",
-    "ESTADO": "Ciudad de México",
-    "TELÉFONOS": [
-      {
-        "key": "55 5510 9764",
-        "value": "5555109764"
-      }
-    ],
-    "LOCATION": {
-      "lat": 19.4309053,
-      "lng": -99.1454844
-    }
-  },
-  {
-    "ID": 38,
-    "TIENDA": "Ayuntamiento 11 ARQUICERAMICA",
-    "CALLE": "Ayuntamiento # 98",
-    "COLONIA": "Col. Centro",
-    "CP": 6070,
-    "CIUDAD": "Cuauhtémoc",
-    "ESTADO": "Ciudad de México",
-    "TELÉFONOS": [
-      {
-        "key": "5555184811",
-        "value": "5555184811"
-      },
-      {
-        "key": "5555184810",
-        "value": "5555184810"
-      }
-    ],
-    "LOCATION": {
-      "lat": 19.4311196,
-      "lng": -99.1472877
-    }
-  },
-  {
-    "ID": 39,
-    "TIENDA": "Ayuntamiento 14",
-    "CALLE": "Ayuntamiento #42",
-    "COLONIA": "Col. Centro",
-    "CP": 6010,
-    "CIUDAD": "Cuauhtémoc",
-    "ESTADO": "Ciudad de México",
-    "TELÉFONOS": [
-      {
-        "key": "55 5518 5317",
-        "value": "5555185317"
-      }
-    ],
-    "LOCATION": {
-      "lat": 19.4306414,
-      "lng": -99.1439909
-    }
-  },
-  {
-    "ID": 40,
-    "TIENDA": "Interlomas",
-    "CALLE": "Blvrd. Interlomas No. 5",
-    "COLONIA": "Col. Niño Artillero",
-    "CP": 52786,
-    "CIUDAD": "Naucalpan de Juárez",
-    "ESTADO": "Estado de México",
-    "TELÉFONOS": [
-      {
-        "key": "55 5290 5900",
-        "value": "5552905900"
-      }
-    ],
-    "LOCATION": {
-      "lat": 19.3932187,
-      "lng": -99.2643755
-    }
-  },
-  {
-    "ID": 41,
-    "TIENDA": "Aguascalientes 3 CEDIS",
-    "CALLE": "Av. Convención Sur No. 1229",
-    "COLONIA": "Col. Ojo de Agua",
-    "CP": 20230,
-    "CIUDAD": "Aguascalientes",
-    "ESTADO": "Aguascalientes",
-    "TELÉFONOS": [
-      {
-        "key": "4499184795",
-        "value": "4499184795"
-      },
-      {
-        "key": "4499942648",
-        "value": "4499942648"
-      }
-    ],
-    "LOCATION": {
-      "lat": 21.8663363,
-      "lng": -102.2804985
-    }
-  },
-  {
-    "ID": 42,
-    "TIENDA": "Aguascalientes 5",
-    "CALLE": "Av. Siglo XXI No. 4928 Esq. Mesillas",
-    "COLONIA": "Col. Haciendas de Aguascalientes",
-    "CP": 20196,
-    "CIUDAD": "Aguascalientes",
-    "ESTADO": "Aguascalientes",
-    "TELÉFONOS": [
-      {
-        "key": "4499939105",
-        "value": "4499939105"
-      }
-    ],
-    "LOCATION": {
-      "lat": 21.8902165,
-      "lng": -102.2903297
-    }
-  },
-  {
-    "ID": 43,
-    "TIENDA": "Aguascalientes 6",
-    "CALLE": "Miguel de la Madrid No. 916",
-    "COLONIA": "Col. Corral de Barrancos",
-    "CP": 20900,
-    "CIUDAD": "Aguascalientes",
-    "ESTADO": "Aguascalientes",
-    "TELÉFONOS": [
-      {
-        "key": "4499736914",
-        "value": "4499736914"
-      }
-    ],
-    "LOCATION": {
-      "lat": 21.9469505,
-      "lng": -102.2903297
-    }
-  },
-  {
-    "ID": 44,
-    "TIENDA": "Aguascalientes Rincón de Romos",
-    "CALLE": "Plutarco Elías Calles No. 101",
-    "COLONIA": "Col. San Jose",
-    "CP": 20415,
-    "CIUDAD": "Aguascalientes",
-    "ESTADO": "Aguascalientes",
-    "TELÉFONOS": [
-      {
-        "key": "4658514176",
-        "value": "4658514176"
-      }
-    ],
-    "LOCATION": {
-      "lat": 22.2214877,
-      "lng": -102.3190598
-    }
-  },  
-  {
-    "ID": 45,
-    "TIENDA": "Le\u00f3n 1 CEDIS",
-    "CALLE": "Blvd. Calzada Tepeyac No. 1119 y 1118",
-    "COLONIA": "Col. San Nicol\u00e1s",
-    "CP": 37460,
-    "CIUDAD": "Le\u00f3n",
-    "ESTADO": "Guanajuato",
-    "TELÉFONOS": [
-      {
-        "key": "4777125938",
-        "value": "4777125938"
-      }
-    ],
-    "LOCATION": {
-      "lat": 21.1042819,
-      "lng": -101.7073394
-    }
-  },
-  {
-    "ID": 46,
-    "TIENDA": "Le\u00f3n 3",
-    "CALLE": "Blvd. Juan Jos\u00e9 Torres Landa No. 1605",
-    "COLONIA": "Col. Portales de San Sebasti\u00e1n",
-    "CP": 37460,
-    "CIUDAD": "Le\u00f3n",
-    "ESTADO": "Guanajuato",
-    "TELÉFONOS": [
-      {
-        "key": "4777782271",
-        "value": "4777782271"
-      }
-    ],
-    "LOCATION": {
-      "lat": 21.1335753,
-      "lng": -101.7809525
-    }
-  },
-  {
-    "ID": 47,
-    "TIENDA": "Le\u00f3n 4",
-    "CALLE": "Blvd. Juan Alonso de Torres No. 617 ",
-    "COLONIA": "Col. Vibar",
-    "CP": 37330,
-    "CIUDAD": "Le\u00f3n",
-    "ESTADO": "Guanajuato",
-    "TELÉFONOS": [
-      {
-        "key": "4777776919",
-        "value": "4777776919"
-      }
-    ],
-    "LOCATION": {
-      "lat": 21.1333783,
-      "lng": -101.7169831
-    }
-  },
-  {
-    "ID": 48,
-    "TIENDA": "Guadalajara 11",
-    "CALLE": "Federalismo No. 690",
-    "COLONIA": "Col. Americana",
-    "CP": 44190,
-    "CIUDAD": "Guadalajara",
-    "ESTADO": "Jalisco",
-    "TELÉFONOS": [
-      {
-        "key": "3338110309",
-        "value": "3338110309"
-      }
-    ],
-    "LOCATION": {
-      "lat": 20.6660395,
-      "lng": -103.3586557
-    }
-  },
-  {
-    "ID": 49,
-    "TIENDA": "Guadalajara 12",
-    "CALLE": "Av. Niños Héroes No. 1330",
-    "COLONIA": "Col. Moderna",
-    "CP": 44190,
-    "CIUDAD": "Guadalajara",
-    "ESTADO": "Jalisco",
-    "TELÉFONOS": [
-      {
-        "key": "3338108708",
-        "value": "3338108708"
-      }
-    ],
-    "LOCATION": {
-      "lat": 20.6658865,
-      "lng": -103.3562735
-    }
-  },
-  {
-    "ID": 50,
-    "TIENDA": "Le\u00f3n 1 CEDIS",
-    "CALLE": "Blvd. Calzada Tepeyac No. 1119 y 1118",
-    "COLONIA": "Col. San Nicol\u00e1s",
-    "CP": 37460,
-    "CIUDAD": "Le\u00f3n",
-    "ESTADO": "Guanajuato",
-    "TELÉFONOS": [
-      {
-        "key": "4777125938",
-        "value": "4777125938"
-      }
-    ],
-    "LOCATION": {
-      "lat": 21.1042819,
-      "lng": -101.7073394
-    }
-  },
-  {
-    "ID": 51,
-    "TIENDA": "Le\u00f3n 3",
-    "CALLE": "Blvd. Juan Jos\u00e9 Torres Landa No. 1605",
-    "COLONIA": "Col. Portales de San Sebasti\u00e1n",
-    "CP": 37460,
-    "CIUDAD": "Le\u00f3n",
-    "ESTADO": "Guanajuato",
-    "TELÉFONOS": [
-      {
-        "key": "4777782271",
-        "value": "4777782271"
-      }
-    ],
-    "LOCATION": {
-      "lat": 21.1335753,
-      "lng": -101.7809525
-    }
-  },
-  {
-    "ID": 52,
-    "TIENDA": "Le\u00f3n 4",
-    "CALLE": "Blvd. Juan Alonso de Torres No. 617 ",
-    "COLONIA": "Col. Vibar",
-    "CP": 37330,
-    "CIUDAD": "Le\u00f3n",
-    "ESTADO": "Guanajuato",
-    "TELÉFONOS": [
-      {
-        "key": "4777776919",
-        "value": "4777776919"
-      }
-    ],
-    "LOCATION": {
-      "lat": 21.1333783,
-      "lng": -101.7169831
-    }
-  },
-  {
-    "ID": 53,
-    "TIENDA": "Guadalajara 11",
-    "CALLE": "Federalismo No. 690",
-    "COLONIA": "Col. Americana",
-    "CP": 44190,
-    "CIUDAD": "Guadalajara",
-    "ESTADO": "Jalisco",
-    "TELÉFONOS": [
-      {
-        "key": "3338110309",
-        "value": "3338110309"
-      }
-    ],
-    "LOCATION": {
-      "lat": 20.6660395,
-      "lng": -103.3586557
-    }
-  },
-  {
-    "ID": 54,
-    "TIENDA": "Guadalajara 14",
-    "CALLE": "López Mateos Sur No. 2015-D",
-    "COLONIA": "Col. El Mante",
-    "CP": 45035,
-    "CIUDAD": "Guadalajara",
-    "ESTADO": "Jalisco",
-    "TELÉFONOS": [
-      {
-        "key": "3336936031",
-        "value": "333693601"
-      }
-    ],
-    "LOCATION": {
-      "lat": 20.6122374,
-      "lng": -103.4288448
-    }
-  },
-  {
-    "ID": 55,
-    "TIENDA": "Guadalajara 19",
-    "CALLE": "Av. Tonaltecas No. 3500",
-    "COLONIA": "Col. Los Tulipanes 2a sección",
-    "CP": 45404,
-    "CIUDAD": "Guadalajara",
-    "ESTADO": "Jalisco",
-    "TELÉFONOS": [
-      {
-        "key": "3322652963",
-        "value": "3322652963"
-      }
-    ],
-    "LOCATION": {
-      "lat": 20.6833623,
-      "lng": -103.2468968
-    }
-  },
-  {
-    "ID": 56,
-    "TIENDA": "La Piedad 02",
-    "CALLE": "Av. Juan Pablo No. 1",
-    "COLONIA": "Col. Estrellas ",
-    "CP": 44190,
-    "CIUDAD": "La Piedad",
-    "ESTADO": "Michoacán",
-    "TELÉFONOS": [
-      {
-        "key": "3525265987",
-        "value": "3525265987"
-      }
-    ],
-    "LOCATION": {
-      "lat": 20.35,
-      "lng": -102.0463468
-    }
-  },
-  {
-    "ID": 57,
-    "TIENDA": "Morelia 02",
-    "CALLE": "Calzada de la Huerta No. 3056",
-    "COLONIA": "Col. Hermanos Lopez Rayón",
-    "CP": 58089,
-    "CIUDAD": "Morelia",
-    "ESTADO": "Michoacan",
-    "TELÉFONOS": [
-      {
-        "key": "4432984801",
-        "value": "4432984801"
-      }
-    ],
-    "LOCATION": {
-      "lat": 19.6744704,
-      "lng": -101.2210556
-    }
-  },
-  {
-    "ID": 58,
-    "TIENDA": "Morelia 03",
-    "CALLE": "Av. Ventura Puente No. 640, Esquina Av. Lázaro Cárdenas",
-    "COLONIA": "Col. Ventura Puente",
-    "CP": 58020,
-    "CIUDAD": "Morelia",
-    "ESTADO": "Michoacan",
-    "TELÉFONOS": [
-      {
-        "key": "4433148672",
-        "value": "4433148672"
-      }
-    ],
-    "LOCATION": {
-      "lat": 19.6935894,
-      "lng": -101.1794004
-    }
-  },
-  {
-    "ID": 59,
-    "TIENDA": "Morelia 08",
-    "CALLE": "Av. Francisco I. Madero Poniente 6000",
-    "COLONIA": "Colonia tzindurio",
-    "CP": 58337,
-    "CIUDAD": "Morelia",
-    "ESTADO": "Michoacan",
-    "TELÉFONOS": [
-      {
-        "key": "4432980823",
-        "value": "4432980823"
-      }
-    ],
-    "LOCATION": {
-      "lat": 19.6994086,
-      "lng": -101.2484556
-    }
-  },
-  {
-    "ID": 60,
-    "TIENDA": "Morelia 10",
-    "CALLE": "Av. Lazaro Cardenas No. 1547",
-    "COLONIA": "Col. Cuauhtemoc",
-    "CP": 58020,
-    "CIUDAD": "Morelia",
-    "ESTADO": "Michoacan",
-    "TELÉFONOS": [
-      {
-        "key": "4433143846",
-        "value": "4433143846"
-      }
-    ],
-    "LOCATION": {
-      "lat": 19.693729,
-      "lng": -101.1801248
-    }
-  },
-    {
-    "ID": 61,
-    "TIENDA": "Morelia 11",
-    "CALLE": "Av. Lázaro Cárdenas #1368",
-    "COLONIA": "Ventura Puente",
-    "CP": 58020,
-    "CIUDAD": "Morelia",
-    "ESTADO": "Michoacan",
-    "TELÉFONOS": [
-      {
-        "key": "4433123829",
-        "value": "4433123829"
-      }
-    ],
-    "LOCATION": {
-      "lat": 19.6939391,
-      "lng": -101.1815707
-    }
-  },
-  {
-    "ID": 62,
-    "TIENDA": "Morelia 12",
-    "CALLE": "Av. Madero Pte. 8915 ",
-    "COLONIA": "Ejido San Pascual ",
-    "CP": 38337,
-    "CIUDAD": "Morelia",
-    "ESTADO": "Michoacan",
-    "TELÉFONOS": [
-      {
-        "key": "4433049861",
-        "value": "4433049861"
-      }
-    ],
-    "LOCATION": {
-      "lat": 19.6744704,
-      "lng": -101.2210556
-    }
-  },
-  {
-    "ID":63,
-    "TIENDA": "Monterrey Arturo de la Garza",
-    "CALLE": "Av. Arturo B. de la Garza 1010 Pte",
-    "COLONIA": "Col. Joaquín Garza y Garza",
-    "CP": 67267,
-    "CIUDAD": "Ciudad Juárez",
-    "ESTADO": "Nuevo León",
-    "TELÉFONOS": [
-      {
-        "key": "4433049861",
-        "value": "4433049861"
-      }
-    ],
-    "LOCATION": {
-      "lat": 25.6405818,
-      "lng": -100.1327173
-    }
-  },
-  {
-    "ID": 64,
-    "TIENDA": "Monterrey Bernardo Reyes",
-    "CALLE": "Av. Bernardo Reyes, No. 3737",
-    "COLONIA": "Col. Niño Artillero",
-    "CP": 64280,
-    "CIUDAD": "Monterrey",
-    "ESTADO": "Nuevo León",
-    "TELÉFONOS": [
-      {
-        "key": "811 35 40 227",
-        "value": "8113540227"
-      }
-    ],
-    "LOCATION": {
-      "lat": 25.6974433,
-      "lng": -100.3356094
-    }
-  },
-  {
-    "ID": 65,
     "TIENDA": "Oaxaca 2",
     "CALLE": "Prolongación Calzada Madero 1324",
     "COLONIA": "Col. Centro",
@@ -1274,12 +37,12 @@
       }
     ],
     "LOCATION": {
-      "lat": 17.0818957,
-      "lng": -96.7436165
+      "lat": 17.0819246,
+      "lng": -96.7435861
     }
   },
   {
-    "ID": 66,
+    "ID": 3,
     "TIENDA": "Oaxaca 3 CEDIS",
     "CALLE": "Av. Símbolos Patrios #105",
     "COLONIA": "Col. Ex Hacienda Candiani",
@@ -1298,7 +61,26 @@
     }
   },
   {
-    "ID": 67,
+    "ID": 6,
+    "TIENDA": "Puebla 33 Sur ",
+    "CALLE": "25 Poniente No. 3306",
+    "COLONIA": "Col. Santa Cruz Los Ángeles",
+    "CP": 72180,
+    "CIUDAD": "Puebla",
+    "ESTADO": "Puebla",
+    "TELÉFONOS": [
+      {
+        "key": "2222483133",
+        "value": "2222483133"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.0469641,
+      "lng": -98.227939
+    }
+  },
+  {
+    "ID": 10,
     "TIENDA": "Amozoc Menudeo",
     "CALLE": "Carretera Federal Puebla-Tehuacán km 10",
     "COLONIA": "Col. San Juan Chachapa",
@@ -1312,31 +94,12 @@
       }
     ],
     "LOCATION": {
-      "lat": 19.0464146,
-      "lng": -98.1036841
-    }
-  },
-    {
-    "ID": 68,
-    "TIENDA": "Atlixco 2",
-    "CALLE": "Av. Independencia No. 2101  - A ",
-    "COLONIA": "Col. Francisco I. Madero",
-    "CP": 74290,
-    "CIUDAD": "Atlixco",
-    "ESTADO": "Puebla",
-    "TELÉFONOS": [
-      {
-        "key": "2244454858",
-        "value": "2244454858"
-      }
-    ],
-    "LOCATION": {
-      "lat": 18.8980276,
-      "lng": -98.4381378
+      "lat": 19.048642,
+      "lng": -98.2323325
     }
   },
   {
-    "ID": 69,
+    "ID": 11,
     "TIENDA": "Puebla Forjadores",
     "CALLE": "Boulevard Forjadores No. 3519 ",
     "COLONIA": "Col. Santa Cruz Guadalupe",
@@ -1350,69 +113,12 @@
       }
     ],
     "LOCATION": {
-      "lat": 19.0729144,
-      "lng": -98.2578861
+      "lat": 19.0464146,
+      "lng": -98.1036841
     }
   },
   {
-    "ID": 70,
-    "TIENDA": "Izúcar 3",
-    "CALLE": "Carretera Matamoros Atencingo S/N - Crucero 4 caminos ",
-    "COLONIA": "Col. Santa Cruz",
-    "CP": 74400,
-    "CIUDAD": "Izúcar de Matamoros",
-    "ESTADO": "Puebla",
-    "TELÉFONOS": [
-      {
-        "key": "2434364586",
-        "value": "2434364586"
-      }
-    ],
-    "LOCATION": {
-      "lat": 18.6088461,
-      "lng": -98.4654484
-    }
-  },
-  {
-    "ID": 71,
-    "TIENDA": "Izúcar 4",
-    "CALLE": "Diagonal Santiago No.110",
-    "COLONIA": "Barrio de Santiago Mihuacan",
-    "CP": 74420,
-    "CIUDAD": "Izúcar de Matamoros",
-    "ESTADO": "Puebla",
-    "TELÉFONOS": [
-      {
-        "key": "2434328172",
-        "value": "2434328172"
-      }
-    ],
-    "LOCATION": {
-      "lat": 18.6088461,
-      "lng": -98.4654484
-    }
-  },
-  {
-    "ID": 72,
-    "TIENDA": "Izúcar 5 CEDIS",
-    "CALLE": "Carretera México-Oaxaca S/N - Antes agencia NISSAN",
-    "COLONIA": "Col. Santa Cruz Tecoxco",
-    "CP": 74490,
-    "CIUDAD": "Izúcar de Matamoros",
-    "ESTADO": "Puebla",
-    "TELÉFONOS": [
-      {
-        "key": "2434328096",
-        "value": "2434328096"
-      }
-    ],
-    "LOCATION": {
-      "lat": 18.5982874,
-      "lng": -98.4893126
-    }
-  },
-  {
-    "ID": 73,
+    "ID": 12,
     "TIENDA": "Puebla 11 Sur ",
     "CALLE": "Calle 11 sur  No. 11969",
     "COLONIA": "Col. San Francisco Mayorazgo",
@@ -1426,88 +132,214 @@
       }
     ],
     "LOCATION": {
-      "lat": 18.986143,
-      "lng": -98.2496475
-    }
-  },
- {
-    "ID": 74,
-    "TIENDA": "Puebla 25 Poniente",
-    "CALLE": "25 Poniente No. 2901",
-    "COLONIA": "Col. Santa Cruz los Ángeles",
-    "CP": 72400,
-    "CIUDAD": "Puebla",
-    "ESTADO": "Puebla",
-    "TELÉFONOS": [
-      {
-        "key": "2222718168",
-        "value": "2222718168"
-      }
-    ],
-    "LOCATION": {
-      "lat": 19.045741,
-      "lng": -98.2253089
-    }
-  },
- {
-    "ID": 75,
-    "TIENDA": "Puebla 31 Sur",
-    "CALLE": "25 Poniente No. 3117",
-    "COLONIA": "Col. Santa Cruz los Ángeles",
-    "CP": 72400,
-    "CIUDAD": "Puebla",
-    "ESTADO": "Puebla",
-    "TELÉFONOS": [
-      {
-        "key": "2222315438",
-        "value": "2222315438"
-      }
-    ],
-    "LOCATION": {
-      "lat": 19.0469435,
-      "lng": -98.2279913
-    }
-  },
- {
-    "ID": 76,
-    "TIENDA": "Puebla 33 Sur",
-    "CALLE": "Av 25 Pte #3306",
-    "COLONIA": "Col. Belisario Domínguez",
-    "CP": 72400,
-    "CIUDAD": "Puebla",
-    "ESTADO": "Puebla",
-    "TELÉFONOS": [
-      {
-        "key": "2222483133",
-        "value": "2222483133"
-      }
-    ],
-    "LOCATION": {
-      "lat": 19.045011,
-      "lng": -98.2239198
-    }
-  },
- {
-    "ID": 77,
-    "TIENDA": "Puebla Boulevard 2",
-    "CALLE": "Boulevard Atlixco No. 2506 - casi esquina con la 25 poniente",
-    "COLONIA": "Col. Belisario Domínguez",
-    "CP": 72180,
-    "CIUDAD": "Puebla",
-    "ESTADO": "Puebla",
-    "TELÉFONOS": [
-      {
-        "key": "2222267310",
-        "value": "2222267310"
-      }
-    ],
-    "LOCATION": {
-      "lat": 19.0488241,
-      "lng": -98.23198
+      "lat": 19.0729144,
+      "lng": -98.2578861
     }
   },
   {
-    "ID": 78,
+    "ID": 13,
+    "TIENDA": "Tehuacán ",
+    "CALLE": "Av. Independencia Poniente No. 625 Local E",
+    "COLONIA": "Col. Arcadia",
+    "CP": 75700,
+    "CIUDAD": "Chila de la sal",
+    "ESTADO": "Puebla",
+    "TELÉFONOS": [
+      {
+        "key": "2383827028",
+        "value": "2383827028"
+      }
+    ],
+    "LOCATION": {
+      "lat": 18.9863855,
+      "lng": -98.2495028
+    }
+  },
+  {
+    "ID": 15,
+    "TIENDA": "Juchitán",
+    "CALLE": "Carretera Juchitán Ixtepec km 1.6",
+    "COLONIA": "Carretera Juchitán Ixtepec",
+    "CP": 70033,
+    "CIUDAD": "Juchitán",
+    "ESTADO": "Oaxaca",
+    "TELÉFONOS": [
+      {
+        "key": "9717112970",
+        "value": "9717112970"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.0486958,
+      "lng": -98.2321035
+    }
+  },
+  {
+    "ID": 16,
+    "TIENDA": "Veracruz  5 Zon. Industrial",
+    "CALLE": "Carretera Veracruz Jalapa km 10 ",
+    "COLONIA": " Col. Amapolas",
+    "CP": 91697,
+    "CIUDAD": "Veracruz",
+    "ESTADO": "Veracruz",
+    "TELÉFONOS": [
+      {
+        "key": "2291558098",
+        "value": "2291558098"
+      },
+      {
+        "key": "2291558099",
+        "value": "2291558099"
+      }
+    ],
+    "LOCATION": {
+      "lat": 16.457626,
+      "lng": -95.0316904
+    }
+  },
+  {
+    "ID": 17,
+    "TIENDA": "Veracruz Bolívar",
+    "CALLE": "La Fragua No. 1620",
+    "COLONIA": "Col. Moderno",
+    "CP": 91918,
+    "CIUDAD": "Veracruz",
+    "ESTADO": "Veracruz",
+    "TELÉFONOS": [
+      {
+        "key": "2299806353",
+        "value": "2299806353"
+      },
+      {
+        "key": "2299806352",
+        "value": "2299806352"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.1598487,
+      "lng": -96.2023382
+    }
+  },
+  {
+    "ID": 18,
+    "TIENDA": "Veracruz Cuauhtémoc CEDIS",
+    "CALLE": "Av. Cuauhtémoc No. 725  - Esquina Jesús Molina -",
+    "COLONIA": " Fracc. Los Pinos",
+    "CP": 91870,
+    "CIUDAD": "Veracruz",
+    "ESTADO": "Veracruz",
+    "TELÉFONOS": [
+      {
+        "key": "2299394709",
+        "value": "2299394709"
+      },
+      {
+        "key": "2299394710",
+        "value": "2299394710"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.1738834,
+      "lng": -96.1347989
+    }
+  },
+  {
+    "ID": 19,
+    "TIENDA": "Veracruz Miguel Alemán",
+    "CALLE": "Miguel Alemán No. 1939",
+    "COLONIA": "Col. Pascual Ortiz Rubio",
+    "CP": 91789,
+    "CIUDAD": "Veracruz",
+    "ESTADO": "Veracruz",
+    "TELÉFONOS": [
+      {
+        "key": "2291003155",
+        "value": "2291003155"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.2069802,
+      "lng": -96.161758
+    }
+  },
+  {
+    "ID": 22,
+    "TIENDA": "Coatzacoalcos 4 CEDIS",
+    "CALLE": "Av. Universidad Veracruzana No. 168",
+    "COLONIA": "Col. Pensiones",
+    "CP": 96530,
+    "CIUDAD": "Coatzacoalcos",
+    "ESTADO": "Veracruz",
+    "TELÉFONOS": [
+      {
+        "key": "9212107163",
+        "value": "9212107163"
+      }
+    ],
+    "LOCATION": {
+      "lat": 18.1144788,
+      "lng": -94.4488325
+    }
+  },
+  {
+    "ID": 23,
+    "TIENDA": "Coatzacoalcos 5 ",
+    "CALLE": "Hilario Rodríguez Malpica No. 433  Esq. 16 de Septiembre",
+    "COLONIA": "Col. Centro",
+    "CP": 96400,
+    "CIUDAD": "Coatzacoalcos",
+    "ESTADO": "Veracruz",
+    "TELÉFONOS": [
+      {
+        "key": "9212122460",
+        "value": "9212122460"
+      }
+    ],
+    "LOCATION": {
+      "lat": 18.1441615,
+      "lng": -94.417344
+    }
+  },
+  {
+    "ID": 24,
+    "TIENDA": "Minatitlán 2",
+    "CALLE": " Justo Sierra No. 161",
+    "COLONIA": "Col. Nueva Mina",
+    "CP": 96700,
+    "CIUDAD": "Minatitlán",
+    "ESTADO": "Veracruz",
+    "TELÉFONOS": [
+      {
+        "key": "9222234526",
+        "value": "9222234526"
+      }
+    ],
+    "LOCATION": {
+      "lat": 17.9905466,
+      "lng": -94.5665162
+    }
+  },
+  {
+    "ID": 25,
+    "TIENDA": "Huamantla",
+    "CALLE": "Abasolo Poniente No. 309 Esq. Victoria Norte",
+    "COLONIA": "Centro Huamantla Tlaxcala",
+    "CP": 90500,
+    "CIUDAD": "Huamantla",
+    "ESTADO": "Tlaxcala",
+    "TELÉFONOS": [
+      {
+        "key": "2474720685",
+        "value": "2474720685"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.3161453,
+      "lng": -97.927464
+    }
+  },
+  {
+    "ID": 27,
     "TIENDA": "San Martin Texmelucan",
     "CALLE": "Carretera Federal Mexico Puebla No 61 ",
     "COLONIA": "Col. San Cristobal Tepatlaxco",
@@ -1526,26 +358,544 @@
     }
   },
   {
-    "ID": 79,
-    "TIENDA": "Valsequillo",
-    "CALLE": "Blvd. Capitán Carlos Camacho Espíritu No. 2217",
-    "COLONIA": "Col. San Francisco Totimehuacan",
-    "CP": 72595,
-    "CIUDAD": "Valsequillo",
-    "ESTADO": "Puebla",
+    "ID": 28,
+    "TIENDA": "Apizaco 1 CEDIS",
+    "CALLE": "Calle Independencia No. 113",
+    "COLONIA": "Col. San Miguel",
+    "CP": 90339,
+    "CIUDAD": "Apizaco",
+    "ESTADO": "Tlaxcala",
     "TELÉFONOS": [
       {
-        "key": "2221973856",
-        "value": "2221973856"
+        "key": "2414177170",
+        "value": "2414177170"
       }
     ],
     "LOCATION": {
-      "lat": 18.9609584,
-      "lng": -98.1712296
+      "lat": 19.4176912,
+      "lng": -98.1463019
     }
   },
   {
-    "ID": 80,
+    "ID": 31,
+    "TIENDA": "Cuernavaca 2 - cedis",
+    "CALLE": "Av. Hidalgo No. 1 Local 7",
+    "COLONIA": "Col. Tejalpa Jiutepec",
+    "CP": 62550,
+    "CIUDAD": "Cuernavaca",
+    "ESTADO": "Morelos",
+    "TELÉFONOS": [
+      {
+        "key": "7773202886",
+        "value": "7773202886"
+      }
+    ],
+    "LOCATION": {
+      "lat": 18.8981967,
+      "lng": -99.223444
+    }
+  },
+  {
+    "ID": 33,
+    "TIENDA": "Cuautla 1",
+    "CALLE": "Avenida Insurgentes No. 152",
+    "COLONIA": "Colonia Emiliano Zapata",
+    "CP": 62843,
+    "CIUDAD": "Cuautla",
+    "ESTADO": "Morelos",
+    "TELÉFONOS": [
+      {
+        "key": "7351141071",
+        "value": "7351141071"
+      }
+    ],
+    "LOCATION": {
+      "lat": 18.8212611,
+      "lng": -98.952003
+    }
+  },
+  {
+    "ID": 35,
+    "TIENDA": "Cuautla 3",
+    "CALLE": "Carretera Federal Mexico Cuautla No. 133 ",
+    "COLONIA": "Col. Tetelcingo",
+    "CP": 62751,
+    "CIUDAD": "Cuautla",
+    "ESTADO": "Morelos",
+    "TELÉFONOS": [
+      {
+        "key": "7353015121",
+        "value": "7353015121"
+      }
+    ],
+    "LOCATION": {
+      "lat": 18.8647643,
+      "lng": -98.930931
+    }
+  },
+  {
+    "ID": 36,
+    "TIENDA": "Cuautla 4",
+    "CALLE": "Carretera Federal México-Cuautla, Km 67",
+    "COLONIA": "Col. Ferrocarril",
+    "CP": 62843,
+    "CIUDAD": "San Francisco Atlatlahuacan",
+    "ESTADO": "Morelos",
+    "TELÉFONOS": [
+      {
+        "key": "7356885329",
+        "value": "7356885329"
+      }
+    ],
+    "LOCATION": {
+      "lat": 18.8263505,
+      "lng": -98.9577475
+    }
+  },
+  {
+    "ID": 38,
+    "TIENDA": "Izúcar 4",
+    "CALLE": "Diagonal Santiago No.110",
+    "COLONIA": "Barrio de Santiago Mihuacan",
+    "CP": 74420,
+    "CIUDAD": "Izúcar de Matamoros",
+    "ESTADO": "Puebla",
+    "TELÉFONOS": [
+      {
+        "key": "2434328172",
+        "value": "2434328172"
+      }
+    ],
+    "LOCATION": {
+      "lat": 18.6088461,
+      "lng": -98.4654484
+    }
+  },
+  {
+    "ID": 39,
+    "TIENDA": "Izúcar 5 CEDIS",
+    "CALLE": "Carretera México-Oaxaca S/N - Antes agencia NISSAN",
+    "COLONIA": "Col. Santa Cruz Tecoxco",
+    "CP": 74490,
+    "CIUDAD": "Izúcar de Matamoros",
+    "ESTADO": "Puebla",
+    "TELÉFONOS": [
+      {
+        "key": "2434328096",
+        "value": "2434328096"
+      }
+    ],
+    "LOCATION": {
+      "lat": 18.5982874,
+      "lng": -98.4893126
+    }
+  },
+  {
+    "ID": 40,
+    "TIENDA": "Atlixco 1 CEDIS",
+    "CALLE": "23 Oriente No. 207, Esquina 2 Oriente y 4 Sur",
+    "COLONIA": "Col. Francisco I. Madero,  ",
+    "CP": 74290,
+    "CIUDAD": "Atlixco",
+    "ESTADO": "Puebla",
+    "TELÉFONOS": [
+      {
+        "key": "2444463821",
+        "value": "2444463821"
+      }
+    ],
+    "LOCATION": {
+      "lat": 18.5982874,
+      "lng": -98.4893126
+    }
+  },
+  {
+    "ID": 41,
+    "TIENDA": "Atlixco 2",
+    "CALLE": "Av. Independencia No. 2101  - A ",
+    "COLONIA": "Col. Francisco I. Madero",
+    "CP": 74290,
+    "CIUDAD": "Atlixco",
+    "ESTADO": "Puebla",
+    "TELÉFONOS": [
+      {
+        "key": "2244454858",
+        "value": "2244454858"
+      }
+    ],
+    "LOCATION": {
+      "lat": 18.8980276,
+      "lng": -98.4381378
+    }
+  },
+  {
+    "ID": 42,
+    "TIENDA": "Huajuapan",
+    "CALLE": "Carretera a Juxtlahuaca km 2.6",
+    "COLONIA": "Col. El Carmen ",
+    "CP": 69007,
+    "CIUDAD": "Huajuapan",
+    "ESTADO": "Oaxaca",
+    "TELÉFONOS": [
+      {
+        "key": "9535552128",
+        "value": "9535552128"
+      },
+      {
+        "key": "9535552165",
+        "value": "9535552165"
+      }
+    ],
+    "LOCATION": {
+      "lat": 17.7906244,
+      "lng": -97.7861691
+    }
+  },
+  {
+    "ID": 46,
+    "TIENDA": "Tepic 5",
+    "CALLE": "Zacatecas No. 434  ",
+    "COLONIA": "Col. Centro",
+    "CP": 63000,
+    "CIUDAD": "Tepic",
+    "ESTADO": "Nayarit",
+    "TELÉFONOS": [
+      {
+        "key": "3112164253",
+        "value": "3112164253"
+      }
+    ],
+    "LOCATION": {
+      "lat": 21.5150468,
+      "lng": -104.9592992
+    }
+  },
+  {
+    "ID": 47,
+    "TIENDA": "Guadalajara 04",
+    "CALLE": "Av. González Gallo No. 1061",
+    "COLONIA": "Col. Quinta Velarde",
+    "CP": 44840,
+    "CIUDAD": "Guadalajara",
+    "ESTADO": "Jalisco",
+    "TELÉFONOS": [
+      {
+        "key": "3336190236",
+        "value": "3336190236"
+      }
+    ],
+    "LOCATION": {
+      "lat": 20.6513513,
+      "lng": -103.3365465
+    }
+  },
+  {
+    "ID": 49,
+    "TIENDA": "Guadalajara 09",
+    "CALLE": "Niños Héroes No. 1440",
+    "COLONIA": "Col. Moderna",
+    "CP": 44900,
+    "CIUDAD": "Guadalajara",
+    "ESTADO": "Jalisco",
+    "TELÉFONOS": [
+      {
+        "key": "3338252333",
+        "value": "3338252333"
+      }
+    ],
+    "LOCATION": {
+      "lat": 20.6663996,
+      "lng": -103.3582505
+    }
+  },
+  {
+    "ID": 53,
+    "TIENDA": "Guadalajara 15 ",
+    "CALLE": "Francisco Silva Romero No. 179",
+    "COLONIA": "Col. Los Altos",
+    "CP": 45520,
+    "CIUDAD": "Guadalajara",
+    "ESTADO": "Jalisco",
+    "TELÉFONOS": [
+      {
+        "key": "3336572413Y3336572443",
+        "value": "3336572413Y3336572443"
+      }
+    ],
+    "LOCATION": {
+      "lat": 20.6361205,
+      "lng": -103.2988403
+    }
+  },
+  {
+    "ID": 54,
+    "TIENDA": "Guadalajara 18",
+    "CALLE": "Av. Patria No. 1076",
+    "COLONIA": "Col. Prados del Nilo",
+    "CP": 44840,
+    "CIUDAD": "Guadalajara",
+    "ESTADO": "Jalisco",
+    "TELÉFONOS": [
+      {
+        "key": "3336015322",
+        "value": "3336015322"
+      }
+    ],
+    "LOCATION": {
+      "lat": 0,
+      "lng": 0
+    }
+  },
+  {
+    "ID": 55,
+    "TIENDA": "Guadalajara 03 ",
+    "CALLE": "Prol. López Mateos Sur No. 4499",
+    "COLONIA": "Col. El Mante",
+    "CP": 45235,
+    "CIUDAD": "Guadalajara",
+    "ESTADO": "Jalisco",
+    "TELÉFONOS": [
+      {
+        "key": "3336846072",
+        "value": "3336846072"
+      }
+    ],
+    "LOCATION": {
+      "lat": 20.6097008,
+      "lng": -103.4303235
+    }
+  },
+  {
+    "ID": 56,
+    "TIENDA": "Guadalajara 08 CEDIS",
+    "CALLE": "Periférico Poniente No.9051",
+    "COLONIA": "Col. Lomas del Colli",
+    "CP": 45010,
+    "CIUDAD": "Guadalajara",
+    "ESTADO": "Jalisco",
+    "TELÉFONOS": [
+      {
+        "key": "3336274566",
+        "value": "3336274566"
+      },
+      {
+        "key": "3336274578",
+        "value": "3336274578"
+      }
+    ],
+    "LOCATION": {
+      "lat": 20.6654069,
+      "lng": -103.4526213
+    }
+  },
+  {
+    "ID": 58,
+    "TIENDA": "Guadalajara 16",
+    "CALLE": "Blvd. Adolfo B. Horn  No. 3511",
+    "COLONIA": "Col. La Gigantera",
+    "CP": 45640,
+    "CIUDAD": "Guadalajara",
+    "ESTADO": "Jalisco",
+    "TELÉFONOS": [
+      {
+        "key": "3336010416",
+        "value": "3336010416"
+      },
+      {
+        "key": "3336010462",
+        "value": "3336010462"
+      }
+    ],
+    "LOCATION": {
+      "lat": 20.5665889,
+      "lng": -103.3656014
+    }
+  },
+  {
+    "ID": 59,
+    "TIENDA": "Guadalajara 17",
+    "CALLE": "Juan Gil Preciado No. 5707 Esq. Eliseo Orozco Gtz.",
+    "COLONIA": "Col. Jardines de Nuevo México",
+    "CP": 45200,
+    "CIUDAD": "Guadalajara",
+    "ESTADO": "Jalisco",
+    "TELÉFONOS": [
+      {
+        "key": "3313719101",
+        "value": "3313719101"
+      }
+    ],
+    "LOCATION": {
+      "lat": 20.7704021,
+      "lng": -103.4481627
+    }
+  },
+  {
+    "ID": 60,
+    "TIENDA": "Guadalajara 19",
+    "CALLE": "Av. Tonaltecas No. 3500",
+    "COLONIA": "Col. Los Tulipanes 2a sección.",
+    "CP": 45404,
+    "CIUDAD": "Guadalajara",
+    "ESTADO": "Jalisco",
+    "TELÉFONOS": [
+      {
+        "key": "3322652963",
+        "value": "3322652963"
+      },
+      {
+        "key": "3322652964",
+        "value": "3322652964"
+      }
+    ],
+    "LOCATION": {
+      "lat": 20.6833623,
+      "lng": -103.2468968
+    }
+  },
+  {
+    "ID": 62,
+    "TIENDA": "La Piedad 3",
+    "CALLE": "Boulevard Lázaro Cárdenas No. 853",
+    "COLONIA": "Fracc. La Peña",
+    "CP": 59389,
+    "CIUDAD": "La Piedad",
+    "ESTADO": "Michoacan",
+    "TELÉFONOS": [
+      {
+        "key": "3525262649",
+        "value": "3525262649"
+      }
+    ],
+    "LOCATION": {
+      "lat": 20.3492659,
+      "lng": -102.0367641
+    }
+  },
+  {
+    "ID": 63,
+    "TIENDA": "Zamora 1 CEDIS",
+    "CALLE": "5 de Mayo No. 7, Esq. República",
+    "COLONIA": "Col. Centro",
+    "CP": 59600,
+    "CIUDAD": "Zamora",
+    "ESTADO": "Michoacan",
+    "TELÉFONOS": [
+      {
+        "key": "3515151375",
+        "value": "3515151375"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.9837185,
+      "lng": -102.2922314
+    }
+  },
+  {
+    "ID": 65,
+    "TIENDA": "Zamora 4",
+    "CALLE": "Calzada Zamora No. 1103 ",
+    "COLONIA": "Col. Centro",
+    "CP": 59800,
+    "CIUDAD": "Zamora",
+    "ESTADO": "Michoacan",
+    "TELÉFONOS": [
+      {
+        "key": "3515166131",
+        "value": "3515166131"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.9697337,
+      "lng": -102.2983138
+    }
+  },
+  {
+    "ID": 66,
+    "TIENDA": "Colima 1 CEDIS",
+    "CALLE": "Camino Real No. 129",
+    "COLONIA": "Col. Jardines de las Lomas",
+    "CP": 28014,
+    "CIUDAD": "Colima",
+    "ESTADO": "Colima",
+    "TELÉFONOS": [
+      {
+        "key": "3123071031",
+        "value": "3123071031"
+      },
+      {
+        "key": "3123071032",
+        "value": "3123071032"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.2271009,
+      "lng": -103.7883559
+    }
+  },
+  {
+    "ID": 68,
+    "TIENDA": "Tecomán CEDIS",
+    "CALLE": "Av. 20 de Noviembre S/N",
+    "COLONIA": "Col. Unión ",
+    "CP": 28100,
+    "CIUDAD": "Tecomán",
+    "ESTADO": "Colima",
+    "TELÉFONOS": [
+      {
+        "key": "3133252780",
+        "value": "3133252780"
+      }
+    ],
+    "LOCATION": {
+      "lat": 18.9122494,
+      "lng": -103.880505
+    }
+  },
+  {
+    "ID": 69,
+    "TIENDA": "Moroleón",
+    "CALLE": "Av. America No. 1450 ",
+    "COLONIA": "Col. El Progreso",
+    "CP": 38820,
+    "CIUDAD": "Moroleón",
+    "ESTADO": "Guanajuato",
+    "TELÉFONOS": [
+      {
+        "key": "4454571452",
+        "value": "4454571452"
+      }
+    ],
+    "LOCATION": {
+      "lat": 20.1235049,
+      "lng": -101.1797782
+    }
+  },
+  {
+    "ID": 70,
+    "TIENDA": "Celaya",
+    "CALLE": "Av. Tecnológico No. 672 ",
+    "COLONIA": "Col. Las Aves",
+    "CP": 38010,
+    "CIUDAD": "Celaya",
+    "ESTADO": "Guanajuato",
+    "TELÉFONOS": [
+      {
+        "key": "4616117038",
+        "value": "4616117038"
+      },
+      {
+        "key": "4616116746",
+        "value": "4616116746"
+      }
+    ],
+    "LOCATION": {
+      "lat": 20.5479587,
+      "lng": -100.8219154
+    }
+  },
+  {
+    "ID": 71,
     "TIENDA": "Querétaro 1 ",
     "CALLE": "Av. Pasteur sur No. 289 - Esquina Palenque- ",
     "COLONIA": "Fracc. Laurel Querétaro",
@@ -1568,7 +918,7 @@
     }
   },
   {
-    "ID": 81,
+    "ID": 72,
     "TIENDA": "Querétaro 2 CEDIS",
     "CALLE": "Prolongación Bernardo Quintana No. A2960 ",
     "COLONIA": "Col. Cerrito Colorado ",
@@ -1587,26 +937,7 @@
     }
   },
   {
-    "ID": 82,
-    "TIENDA": "San Juan del Río 2",
-    "CALLE": "Av. Central No. 2",
-    "COLONIA": "Col. San Cayetano",
-    "CP": 76801,
-    "CIUDAD": "San Juan del Rio",
-    "ESTADO": "Querétaro",
-    "TELÉFONOS": [
-      {
-        "key": "4272720416",
-        "value": "4272720416"
-      }
-    ],
-    "LOCATION": {
-      "lat": 20.3836546,
-      "lng": -99.9851093
-    }
-  },
-  {
-    "ID": 83,
+    "ID": 73,
     "TIENDA": "San Juan del Río CEDIS",
     "CALLE": "Av. Central No. 153",
     "COLONIA": "Col. Centro",
@@ -1625,144 +956,472 @@
     }
   },
   {
-    "ID": 84,
-    "TIENDA": "Apizaco 2",
-    "CALLE": "16 de Septiembre No. 1004",
-    "COLONIA": "Col. Alianza Ferrocarrilera",
-    "CP": 90300,
-    "CIUDAD": "Apizaco",
-    "ESTADO": "Tlaxcala",
+    "ID": 77,
+    "TIENDA": "Morelia 2",
+    "CALLE": "Calzada de la Huerta No. 3056",
+    "COLONIA": "Col. Hermanos Lopez Rayón",
+    "CP": 58089,
+    "CIUDAD": "Morelia",
+    "ESTADO": "Michoacan",
     "TELÉFONOS": [
       {
-        "key": "2411131855",
-        "value": "2411131855"
+        "key": "4432984801",
+        "value": "4432984801"
       }
     ],
     "LOCATION": {
-      "lat": 19.4139876,
-      "lng": -98.1360389
+      "lat": 19.6744704,
+      "lng": -101.2210556
+    }
+  },
+  {
+    "ID": 78,
+    "TIENDA": "Morelia 3",
+    "CALLE": "Av. Ventura Puente No. 640, Esquina Av. Lázaro Cárdenas",
+    "COLONIA": "Col. Ventura Puente",
+    "CP": 58020,
+    "CIUDAD": "Morelia",
+    "ESTADO": "Michoacan",
+    "TELÉFONOS": [
+      {
+        "key": "4433148672",
+        "value": "4433148672"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.6935894,
+      "lng": -101.1794004
+    }
+  },
+  {
+    "ID": 79,
+    "TIENDA": "Morelia 4 CEDIS",
+    "CALLE": " Periférico Paseo de la Republica No. 2424",
+    "COLONIA": "Col. Ampliación el Realito",
+    "CP": 56115,
+    "CIUDAD": "Morelia",
+    "ESTADO": "Michoacan",
+    "TELÉFONOS": [
+      {
+        "key": "4433532398",
+        "value": "4433532398"
+      },
+      {
+        "key": "4433208018",
+        "value": "4433208018"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.726168,
+      "lng": -101.2112241
+    }
+  },
+  {
+    "ID": 81,
+    "TIENDA": "Morelia 12",
+    "CALLE": "Av. Madero Pte. 8915 ",
+    "COLONIA": " Ejido San Pascual ",
+    "CP": 38337,
+    "CIUDAD": "Morelia",
+    "ESTADO": "Michoacan",
+    "TELÉFONOS": [
+      {
+        "key": "4433049861",
+        "value": "4433049861"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.6947803,
+      "lng": -101.2692351
+    }
+  },
+  {
+    "ID": 82,
+    "TIENDA": "Morelia 8",
+    "CALLE": "Av. Francisco I. Madero Poniente 6000",
+    "COLONIA": "Colonia tzindurio",
+    "CP": 58337,
+    "CIUDAD": "Morelia",
+    "ESTADO": "Michoacan",
+    "TELÉFONOS": [
+      {
+        "key": "4432980823",
+        "value": "4432980823"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.7006283,
+      "lng": -101.2653166
+    }
+  },
+  {
+    "ID": 83,
+    "TIENDA": "Uruapan 2",
+    "CALLE": "Carretera Uruapan Patzcuaro km 1 S/N",
+    "COLONIA": "Col. Fracc. Lomas del Valle",
+    "CP": 60110,
+    "CIUDAD": "Uruapan",
+    "ESTADO": "Michoacan",
+    "TELÉFONOS": [
+      {
+        "key": "4525239508",
+        "value": "4525239508"
+      },
+      {
+        "key": "4525242095",
+        "value": "4525242095"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.4258436,
+      "lng": -102.0468053
     }
   },
   {
     "ID": 85,
-    "TIENDA": "Huamantla 2",
-    "CALLE": "Juan Pablo II No. 267",
-    "COLONIA": " Col. Ignacio Zaragoza",
-    "CP": 90507,
-    "CIUDAD": "Huamantla",
-    "ESTADO": "Tlaxcala",
+    "TIENDA": "Uruapan 4",
+    "CALLE": "Av. Juárez No. 99",
+    "COLONIA": " Col. Morelos",
+    "CP": 60050,
+    "CIUDAD": "Uruapan",
+    "ESTADO": "Michoacan",
     "TELÉFONOS": [
       {
-        "key": "2471023123",
-        "value": "2471023123"
+        "key": "4525027493",
+        "value": "4525027493"
       }
     ],
     "LOCATION": {
-      "lat": 19.2998478,
-      "lng": -97.9219098
+      "lat": 19.4157756,
+      "lng": -102.056872
     }
   },
   {
     "ID": 86,
-    "TIENDA": "Coatzacoalcos 3",
-    "CALLE": "Av. Vicente Guerrero #100",
-    "COLONIA": "Col. Centro",
-    "CP": 96400,
-    "CIUDAD": "Coatzacoalcos",
-    "ESTADO": "Veracruz",
+    "TIENDA": "Uruapan CEDIS",
+    "CALLE": "Paseo Lázaro Cárdenas No. 906",
+    "COLONIA": "Col. La Magdalena",
+    "CP": 60080,
+    "CIUDAD": "Uruapan",
+    "ESTADO": "Michoacan",
     "TELÉFONOS": [
       {
-        "key": "9212126995",
-        "value": "9212126995"
+        "key": "4525191588",
+        "value": "4525191588"
       }
     ],
     "LOCATION": {
-      "lat": 18.1437605,
-      "lng": -94.421347
-    }
-  },
-  {
-    "ID": 87,
-    "TIENDA": "Coatzacoalcos 5",
-    "CALLE": "Av. Hilario Rodriguez Malpica #433",
-    "COLONIA": "Col. Centro",
-    "CP": 96400,
-    "CIUDAD": "Coatzacoalcos",
-    "ESTADO": "Veracruz",
-    "TELÉFONOS": [
-      {
-        "key": "9212122460",
-        "value": "9212122460"
-      }
-    ],
-    "LOCATION": {
-      "lat": 18.1442542,
-      "lng": -94.4172415
+      "lat": 19.4100676,
+      "lng": -102.0549274
     }
   },
   {
     "ID": 88,
-    "TIENDA": "Martínez de la Torre",
-    "CALLE": "Blvr. Carlos Salinas de Gortari #101",
-    "COLONIA": "Col. Dante Delgado Ranauro",
-    "CP": 93600,
-    "CIUDAD": "Coatzacoalcos",
-    "ESTADO": "Veracruz",
+    "TIENDA": "León 1 CEDIS",
+    "CALLE": "Blvd. Calzada Tepeyac No. 1119 y 1118",
+    "COLONIA": "Col. San Nicolás",
+    "CP": 37460,
+    "CIUDAD": "León",
+    "ESTADO": "Guanajuato",
     "TELÉFONOS": [
       {
-        "key": "",
-        "value": ""
+        "key": "4777125938",
+        "value": "4777125938"
+      },
+      {
+        "key": "4777214936",
+        "value": "4777214936"
       }
     ],
     "LOCATION": {
-      "lat": 20.076042,
-      "lng": -97.0374202
+      "lat": 21.1042819,
+      "lng": -101.7073394
     }
   },
   {
-    "ID": 89,
-    "TIENDA": "Veracruz 5 Zon. Industrial",
-    "CALLE": "Carretera Veracruz Jalapa km 10 ",
-    "COLONIA": " Col. Amapolas",
-    "CP": 91697,
-    "CIUDAD": "Veracruz",
-    "ESTADO": "Veracruz",
+    "ID": 91,
+    "TIENDA": "León Arquicerámica",
+    "CALLE": "Av.. San Juan Bosco No. 2003",
+    "COLONIA": "Col. Vibar",
+    "CP": 37330,
+    "CIUDAD": "Leon",
+    "ESTADO": "Guanajuato",
     "TELÉFONOS": [
       {
-        "key": "2291558098",
-        "value": "2291558098"
-      },
-      {
-        "key": "2291558099",
-        "value": "2291558099"
+        "key": "4777770188",
+        "value": "4777770188"
       }
     ],
     "LOCATION": {
-      "lat": 19.1598487,
-      "lng": -96.2023382
+      "lat": 21.1339166,
+      "lng": -101.7177238
     }
   },
   {
-    "ID": 86,
-    "TIENDA": "Veracruz Bolívar",
-    "CALLE": "La Fragua No. 1620",
-    "COLONIA": "Col. Moderno",
-    "CP": 91918,
-    "CIUDAD": "Veracruz",
-    "ESTADO": "Veracruz",
+    "ID": 92,
+    "TIENDA": "Irapuato",
+    "CALLE": "Boulevard Gustavo Díaz Ordaz No. 506, Esq. Prolongación 16 De Septiembre",
+    "COLONIA": "Fracc. Las Ánimas",
+    "CP": 36550,
+    "CIUDAD": "Irapuato",
+    "ESTADO": "Guanajuato",
     "TELÉFONOS": [
       {
-        "key": "2299806353",
-        "value": "2299806353"
-      },
-      {
-        "key": "2299806352",
-        "value": "2299806352"
+        "key": "4626260452",
+        "value": "4626260452"
       }
     ],
     "LOCATION": {
-      "lat": 19.1738834,
-      "lng": -96.1347989
+      "lat": 20.6718619,
+      "lng": -101.3399163
     }
-  }     
+  },
+  {
+    "ID": 94,
+    "TIENDA": "Silao 2",
+    "CALLE": "Libramiento Norte No. 2340",
+    "COLONIA": "Col. Predio de la Luz",
+    "CP": 36100,
+    "CIUDAD": "Silao",
+    "ESTADO": "Guanajuato",
+    "TELÉFONOS": [
+      {
+        "key": "4727225889",
+        "value": "4727225889"
+      }
+    ],
+    "LOCATION": {
+      "lat": 20.9551285,
+      "lng": -101.4264429
+    }
+  },
+  {
+    "ID": 95,
+    "TIENDA": "Fresnillo",
+    "CALLE": "Av. Paseo del Mineral No. 697",
+    "COLONIA": "Col. Lomas de Plateros",
+    "CP": 99011,
+    "CIUDAD": "Fresnillo",
+    "ESTADO": "Zacatecas",
+    "TELÉFONOS": [
+      {
+        "key": "4939333030",
+        "value": "4939333030"
+      },
+      {
+        "key": "4939333031",
+        "value": "4939333031"
+      }
+    ],
+    "LOCATION": {
+      "lat": 23.1888264,
+      "lng": -102.8804635
+    }
+  },
+  {
+    "ID": 98,
+    "TIENDA": "Zacatecas CEDIS",
+    "CALLE": "Calle Frontera No. 2 Poniente",
+    "COLONIA": "Col. Lomas del Consuelo",
+    "CP": 98600,
+    "CIUDAD": "Zacatecas",
+    "ESTADO": "Zacatecas",
+    "TELÉFONOS": [
+      {
+        "key": "4929214283",
+        "value": "4929214283"
+      },
+      {
+        "key": "4929214282",
+        "value": "4929214282"
+      }
+    ],
+    "LOCATION": {
+      "lat": 22.7552452,
+      "lng": -102.533842
+    }
+  },
+  {
+    "ID": 99,
+    "TIENDA": "Ciudad Valles",
+    "CALLE": "Blvd. México Laredo No. 207  Norte",
+    "COLONIA": "Zona Centro",
+    "CP": 79000,
+    "CIUDAD": "Ciudad Valles",
+    "ESTADO": "San Luis Potosí",
+    "TELÉFONOS": [
+      {
+        "key": "4813816860",
+        "value": "4813816860"
+      },
+      {
+        "key": "4813816862",
+        "value": "4813816862"
+      }
+    ],
+    "LOCATION": {
+      "lat": 21.9876537,
+      "lng": -99.0120057
+    }
+  },
+  {
+    "ID": 100,
+    "TIENDA": "San Luis Potosí 1",
+    "CALLE": "Av. Carretera Central No. 159",
+    "COLONIA": "Fracc. San Antonio",
+    "CP": 78318,
+    "CIUDAD": "San Luis Potosí",
+    "ESTADO": "San Luis Potosí",
+    "TELÉFONOS": [
+      {
+        "key": "4448226365",
+        "value": "4448226365"
+      }
+    ],
+    "LOCATION": {
+      "lat": 22.1559728,
+      "lng": -100.9600532
+    }
+  },
+  {
+    "ID": 101,
+    "TIENDA": "San Luis Potosí 2 CEDIS",
+    "CALLE": "Periférico Oriente No. 120",
+    "COLONIA": "Col. Estrellas de Oriente",
+    "CP": 78396,
+    "CIUDAD": "San Luis Potosí",
+    "ESTADO": "San Luis Potosí",
+    "TELÉFONOS": [
+      {
+        "key": "4448210731",
+        "value": "4448210731"
+      },
+      {
+        "key": "4448210732",
+        "value": "4448210732"
+      }
+    ],
+    "LOCATION": {
+      "lat": 22.1559728,
+      "lng": -100.9600532
+    }
+  },
+  {
+    "ID": 102,
+    "TIENDA": "San Luis Potosí 3",
+    "CALLE": "Carretera Zacatecas No. 2000",
+    "COLONIA": "Col. Jaral de Paisanos",
+    "CP": 78465,
+    "CIUDAD": "San Luis Potosí",
+    "ESTADO": "San Luis Potosí",
+    "TELÉFONOS": [
+      {
+        "key": "4441015029",
+        "value": "4441015029"
+      }
+    ],
+    "LOCATION": {
+      "lat": 22.2061232,
+      "lng": -101.0309664
+    }
+  },
+  {
+    "ID": 103,
+    "TIENDA": "Aguascalientes 3 CEDIS",
+    "CALLE": "Av. Convención Sur No. 1229",
+    "COLONIA": "Col. Ojo de Agua",
+    "CP": 20230,
+    "CIUDAD": "Aguascalientes",
+    "ESTADO": "Aguascalientes",
+    "TELÉFONOS": [
+      {
+        "key": "4499184795",
+        "value": "4499184795"
+      },
+      {
+        "key": "4499942648",
+        "value": "4499942648"
+      }
+    ],
+    "LOCATION": {
+      "lat": 21.8663363,
+      "lng": -102.2804985
+    }
+  },
+  {
+    "ID": 104,
+    "TIENDA": "Aguascalientes 4 ",
+    "CALLE": "Av. Convención Poniente No. 1720",
+    "COLONIA": "Fraccionamiento Olivares Santa Ana",
+    "CP": 20010,
+    "CIUDAD": "Aguascalientes",
+    "ESTADO": "Aguascalientes",
+    "TELÉFONOS": [
+      {
+        "key": "4499140888",
+        "value": "4499140888"
+      }
+    ],
+    "LOCATION": {
+      "lat": 21.8921298,
+      "lng": -102.3508644
+    }
+  },
+  {
+    "ID": 105,
+    "TIENDA": "Aguascalientes 5",
+    "CALLE": "Av. Siglo XXI No. 4928 Esq. Mesillas",
+    "COLONIA": "Col. Haciendas de Aguascalientes",
+    "CP": 20196,
+    "CIUDAD": "Aguascalientes",
+    "ESTADO": "Aguascalientes",
+    "TELÉFONOS": [
+      {
+        "key": "4499939105",
+        "value": "4499939105"
+      }
+    ],
+    "LOCATION": {
+      "lat": 21.8902165,
+      "lng": -102.2903297
+    }
+  },
+  {
+    "ID": 106,
+    "TIENDA": "Aguascalientes 6",
+    "CALLE": "Miguel de la Madrid No. 916",
+    "COLONIA": "Col. Corral de Barrancos",
+    "CP": 20900,
+    "CIUDAD": "Aguascalientes",
+    "ESTADO": "Aguascalientes",
+    "TELÉFONOS": [
+      {
+        "key": "4499736914",
+        "value": "4499736914"
+      }
+    ],
+    "LOCATION": {
+      "lat": 21.9469505,
+      "lng": -102.2903297
+    }
+  },
+  {
+    "ID": 107,
+    "TIENDA": "Aguascalientes Rincón de Romos",
+    "CALLE": "Plutarco Elías Calles No. 101",
+    "COLONIA": "Col. San Jose",
+    "CP": 20415,
+    "CIUDAD": "Aguascalientes",
+    "ESTADO": "Aguascalientes",
+    "TELÉFONOS": [
+      {
+        "key": "4658514176",
+        "value": "4658514176"
+      }
+    ],
+    "LOCATION": {
+      "lat": 22.2214877,
+      "lng": -102.3190598
+    }
+  }
 ]
