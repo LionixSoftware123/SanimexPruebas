@@ -209,11 +209,11 @@ const CheckoutShippingMethods: React.FC<CheckoutShippingMethodsProps> = ({
                             ...provided,
                             backgroundColor: 'white',
                             borderBottom: '1px solid #ccc',
-                            color: '#B2B2B2',
+                            color: '#000000',
                           }),
                           singleValue: (provided: any) => ({
                             ...provided,
-                            color: '#B2B2B2',
+                            color: '#000000',
                           }),
                         }}
                         onChange={(selectedOption) => {
