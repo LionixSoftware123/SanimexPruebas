@@ -61,7 +61,7 @@
     }
   },
   {
-    "ID": 6,
+    "ID": 4,
     "TIENDA": "Puebla 33 Sur ",
     "CALLE": "25 Poniente No. 3306",
     "COLONIA": "Col. Santa Cruz Los Ángeles",
@@ -80,7 +80,7 @@
     }
   },
   {
-    "ID": 10,
+    "ID": 5,
     "TIENDA": "Amozoc Menudeo",
     "CALLE": "Carretera Federal Puebla-Tehuacán km 10",
     "COLONIA": "Col. San Juan Chachapa",
@@ -99,7 +99,7 @@
     }
   },
   {
-    "ID": 11,
+    "ID": 6,
     "TIENDA": "Puebla Forjadores",
     "CALLE": "Boulevard Forjadores No. 3519 ",
     "COLONIA": "Col. Santa Cruz Guadalupe",
@@ -118,7 +118,7 @@
     }
   },
   {
-    "ID": 12,
+    "ID": 7,
     "TIENDA": "Puebla 11 Sur ",
     "CALLE": "Calle 11 sur  No. 11969",
     "COLONIA": "Col. San Francisco Mayorazgo",
@@ -137,7 +137,7 @@
     }
   },
   {
-    "ID": 13,
+    "ID": 8,
     "TIENDA": "Tehuacán ",
     "CALLE": "Av. Independencia Poniente No. 625 Local E",
     "COLONIA": "Col. Arcadia",
@@ -156,7 +156,7 @@
     }
   },
   {
-    "ID": 15,
+    "ID": 9,
     "TIENDA": "Juchitán",
     "CALLE": "Carretera Juchitán Ixtepec km 1.6",
     "COLONIA": "Carretera Juchitán Ixtepec",
@@ -175,7 +175,7 @@
     }
   },
   {
-    "ID": 16,
+    "ID": 10,
     "TIENDA": "Veracruz  5 Zon. Industrial",
     "CALLE": "Carretera Veracruz Jalapa km 10 ",
     "COLONIA": " Col. Amapolas",
@@ -198,7 +198,7 @@
     }
   },
   {
-    "ID": 17,
+    "ID": 11,
     "TIENDA": "Veracruz Bolívar",
     "CALLE": "La Fragua No. 1620",
     "COLONIA": "Col. Moderno",
@@ -221,7 +221,7 @@
     }
   },
   {
-    "ID": 18,
+    "ID": 12,
     "TIENDA": "Veracruz Cuauhtémoc CEDIS",
     "CALLE": "Av. Cuauhtémoc No. 725  - Esquina Jesús Molina -",
     "COLONIA": " Fracc. Los Pinos",
@@ -244,7 +244,7 @@
     }
   },
   {
-    "ID": 19,
+    "ID": 13,
     "TIENDA": "Veracruz Miguel Alemán",
     "CALLE": "Miguel Alemán No. 1939",
     "COLONIA": "Col. Pascual Ortiz Rubio",
@@ -263,7 +263,7 @@
     }
   },
   {
-    "ID": 22,
+    "ID": 14,
     "TIENDA": "Coatzacoalcos 4 CEDIS",
     "CALLE": "Av. Universidad Veracruzana No. 168",
     "COLONIA": "Col. Pensiones",
@@ -282,7 +282,7 @@
     }
   },
   {
-    "ID": 23,
+    "ID": 15,
     "TIENDA": "Coatzacoalcos 5 ",
     "CALLE": "Hilario Rodríguez Malpica No. 433  Esq. 16 de Septiembre",
     "COLONIA": "Col. Centro",
@@ -301,7 +301,7 @@
     }
   },
   {
-    "ID": 24,
+    "ID": 16,
     "TIENDA": "Minatitlán 2",
     "CALLE": " Justo Sierra No. 161",
     "COLONIA": "Col. Nueva Mina",
@@ -320,7 +320,7 @@
     }
   },
   {
-    "ID": 25,
+    "ID": 17,
     "TIENDA": "Huamantla",
     "CALLE": "Abasolo Poniente No. 309 Esq. Victoria Norte",
     "COLONIA": "Centro Huamantla Tlaxcala",
@@ -339,7 +339,7 @@
     }
   },
   {
-    "ID": 27,
+    "ID": 18,
     "TIENDA": "San Martin Texmelucan",
     "CALLE": "Carretera Federal Mexico Puebla No 61 ",
     "COLONIA": "Col. San Cristobal Tepatlaxco",
@@ -358,7 +358,7 @@
     }
   },
   {
-    "ID": 28,
+    "ID": 19,
     "TIENDA": "Apizaco 1 CEDIS",
     "CALLE": "Calle Independencia No. 113",
     "COLONIA": "Col. San Miguel",
@@ -377,7 +377,8 @@
     }
   },
   {
-    "ID": 31,
+    "ID": 20
+    ,
     "TIENDA": "Cuernavaca 2 - cedis",
     "CALLE": "Av. Hidalgo No. 1 Local 7",
     "COLONIA": "Col. Tejalpa Jiutepec",
@@ -396,7 +397,7 @@
     }
   },
   {
-    "ID": 33,
+    "ID": 21,
     "TIENDA": "Cuautla 1",
     "CALLE": "Avenida Insurgentes No. 152",
     "COLONIA": "Colonia Emiliano Zapata",
@@ -415,7 +416,7 @@
     }
   },
   {
-    "ID": 35,
+    "ID": 22,
     "TIENDA": "Cuautla 3",
     "CALLE": "Carretera Federal Mexico Cuautla No. 133 ",
     "COLONIA": "Col. Tetelcingo",
@@ -434,7 +435,7 @@
     }
   },
   {
-    "ID": 36,
+    "ID": 23,
     "TIENDA": "Cuautla 4",
     "CALLE": "Carretera Federal México-Cuautla, Km 67",
     "COLONIA": "Col. Ferrocarril",
@@ -453,7 +454,7 @@
     }
   },
   {
-    "ID": 38,
+    "ID": 24,
     "TIENDA": "Izúcar 4",
     "CALLE": "Diagonal Santiago No.110",
     "COLONIA": "Barrio de Santiago Mihuacan",
@@ -472,7 +473,7 @@
     }
   },
   {
-    "ID": 39,
+    "ID": 25,
     "TIENDA": "Izúcar 5 CEDIS",
     "CALLE": "Carretera México-Oaxaca S/N - Antes agencia NISSAN",
     "COLONIA": "Col. Santa Cruz Tecoxco",
@@ -491,7 +492,7 @@
     }
   },
   {
-    "ID": 40,
+    "ID": 26,
     "TIENDA": "Atlixco 1 CEDIS",
     "CALLE": "23 Oriente No. 207, Esquina 2 Oriente y 4 Sur",
     "COLONIA": "Col. Francisco I. Madero,  ",
@@ -510,7 +511,7 @@
     }
   },
   {
-    "ID": 41,
+    "ID": 27,
     "TIENDA": "Atlixco 2",
     "CALLE": "Av. Independencia No. 2101  - A ",
     "COLONIA": "Col. Francisco I. Madero",
@@ -529,7 +530,7 @@
     }
   },
   {
-    "ID": 42,
+    "ID": 28,
     "TIENDA": "Huajuapan",
     "CALLE": "Carretera a Juxtlahuaca km 2.6",
     "COLONIA": "Col. El Carmen ",
@@ -552,7 +553,7 @@
     }
   },
   {
-    "ID": 46,
+    "ID": 29,
     "TIENDA": "Tepic 5",
     "CALLE": "Zacatecas No. 434  ",
     "COLONIA": "Col. Centro",
@@ -571,7 +572,7 @@
     }
   },
   {
-    "ID": 47,
+    "ID": 30,
     "TIENDA": "Guadalajara 04",
     "CALLE": "Av. González Gallo No. 1061",
     "COLONIA": "Col. Quinta Velarde",
@@ -590,7 +591,7 @@
     }
   },
   {
-    "ID": 49,
+    "ID": 31,
     "TIENDA": "Guadalajara 09",
     "CALLE": "Niños Héroes No. 1440",
     "COLONIA": "Col. Moderna",
@@ -609,7 +610,7 @@
     }
   },
   {
-    "ID": 53,
+    "ID": 32,
     "TIENDA": "Guadalajara 15 ",
     "CALLE": "Francisco Silva Romero No. 179",
     "COLONIA": "Col. Los Altos",
@@ -628,7 +629,7 @@
     }
   },
   {
-    "ID": 54,
+    "ID": 33,
     "TIENDA": "Guadalajara 18",
     "CALLE": "Av. Patria No. 1076",
     "COLONIA": "Col. Prados del Nilo",
@@ -647,7 +648,7 @@
     }
   },
   {
-    "ID": 55,
+    "ID": 34,
     "TIENDA": "Guadalajara 03 ",
     "CALLE": "Prol. López Mateos Sur No. 4499",
     "COLONIA": "Col. El Mante",
@@ -666,7 +667,7 @@
     }
   },
   {
-    "ID": 56,
+    "ID": 35,
     "TIENDA": "Guadalajara 08 CEDIS",
     "CALLE": "Periférico Poniente No.9051",
     "COLONIA": "Col. Lomas del Colli",
@@ -689,7 +690,7 @@
     }
   },
   {
-    "ID": 58,
+    "ID": 36,
     "TIENDA": "Guadalajara 16",
     "CALLE": "Blvd. Adolfo B. Horn  No. 3511",
     "COLONIA": "Col. La Gigantera",
@@ -712,7 +713,7 @@
     }
   },
   {
-    "ID": 59,
+    "ID": 37,
     "TIENDA": "Guadalajara 17",
     "CALLE": "Juan Gil Preciado No. 5707 Esq. Eliseo Orozco Gtz.",
     "COLONIA": "Col. Jardines de Nuevo México",
@@ -731,7 +732,7 @@
     }
   },
   {
-    "ID": 60,
+    "ID": 38,
     "TIENDA": "Guadalajara 19",
     "CALLE": "Av. Tonaltecas No. 3500",
     "COLONIA": "Col. Los Tulipanes 2a sección.",
@@ -754,7 +755,7 @@
     }
   },
   {
-    "ID": 62,
+    "ID": 39,
     "TIENDA": "La Piedad 3",
     "CALLE": "Boulevard Lázaro Cárdenas No. 853",
     "COLONIA": "Fracc. La Peña",
@@ -773,7 +774,7 @@
     }
   },
   {
-    "ID": 63,
+    "ID": 40,
     "TIENDA": "Zamora 1 CEDIS",
     "CALLE": "5 de Mayo No. 7, Esq. República",
     "COLONIA": "Col. Centro",
@@ -792,7 +793,7 @@
     }
   },
   {
-    "ID": 65,
+    "ID": 41,
     "TIENDA": "Zamora 4",
     "CALLE": "Calzada Zamora No. 1103 ",
     "COLONIA": "Col. Centro",
@@ -811,7 +812,7 @@
     }
   },
   {
-    "ID": 66,
+    "ID": 42,
     "TIENDA": "Colima 1 CEDIS",
     "CALLE": "Camino Real No. 129",
     "COLONIA": "Col. Jardines de las Lomas",
@@ -834,7 +835,7 @@
     }
   },
   {
-    "ID": 68,
+    "ID": 43,
     "TIENDA": "Tecomán CEDIS",
     "CALLE": "Av. 20 de Noviembre S/N",
     "COLONIA": "Col. Unión ",
@@ -853,7 +854,7 @@
     }
   },
   {
-    "ID": 69,
+    "ID": 44,
     "TIENDA": "Moroleón",
     "CALLE": "Av. America No. 1450 ",
     "COLONIA": "Col. El Progreso",
@@ -872,7 +873,7 @@
     }
   },
   {
-    "ID": 70,
+    "ID": 45,
     "TIENDA": "Celaya",
     "CALLE": "Av. Tecnológico No. 672 ",
     "COLONIA": "Col. Las Aves",
@@ -895,7 +896,7 @@
     }
   },
   {
-    "ID": 71,
+    "ID": 46,
     "TIENDA": "Querétaro 1 ",
     "CALLE": "Av. Pasteur sur No. 289 - Esquina Palenque- ",
     "COLONIA": "Fracc. Laurel Querétaro",
@@ -918,7 +919,7 @@
     }
   },
   {
-    "ID": 72,
+    "ID": 47,
     "TIENDA": "Querétaro 2 CEDIS",
     "CALLE": "Prolongación Bernardo Quintana No. A2960 ",
     "COLONIA": "Col. Cerrito Colorado ",
@@ -937,7 +938,7 @@
     }
   },
   {
-    "ID": 73,
+    "ID": 48,
     "TIENDA": "San Juan del Río CEDIS",
     "CALLE": "Av. Central No. 153",
     "COLONIA": "Col. Centro",
@@ -956,7 +957,7 @@
     }
   },
   {
-    "ID": 77,
+    "ID": 49,
     "TIENDA": "Morelia 2",
     "CALLE": "Calzada de la Huerta No. 3056",
     "COLONIA": "Col. Hermanos Lopez Rayón",
@@ -975,7 +976,7 @@
     }
   },
   {
-    "ID": 78,
+    "ID": 50,
     "TIENDA": "Morelia 3",
     "CALLE": "Av. Ventura Puente No. 640, Esquina Av. Lázaro Cárdenas",
     "COLONIA": "Col. Ventura Puente",
@@ -994,7 +995,7 @@
     }
   },
   {
-    "ID": 79,
+    "ID": 51,
     "TIENDA": "Morelia 4 CEDIS",
     "CALLE": " Periférico Paseo de la Republica No. 2424",
     "COLONIA": "Col. Ampliación el Realito",
@@ -1017,7 +1018,7 @@
     }
   },
   {
-    "ID": 81,
+    "ID": 52,
     "TIENDA": "Morelia 12",
     "CALLE": "Av. Madero Pte. 8915 ",
     "COLONIA": " Ejido San Pascual ",
@@ -1036,7 +1037,7 @@
     }
   },
   {
-    "ID": 82,
+    "ID": 53,
     "TIENDA": "Morelia 8",
     "CALLE": "Av. Francisco I. Madero Poniente 6000",
     "COLONIA": "Colonia tzindurio",
@@ -1055,7 +1056,7 @@
     }
   },
   {
-    "ID": 83,
+    "ID": 54,
     "TIENDA": "Uruapan 2",
     "CALLE": "Carretera Uruapan Patzcuaro km 1 S/N",
     "COLONIA": "Col. Fracc. Lomas del Valle",
@@ -1078,7 +1079,7 @@
     }
   },
   {
-    "ID": 85,
+    "ID": 55,
     "TIENDA": "Uruapan 4",
     "CALLE": "Av. Juárez No. 99",
     "COLONIA": " Col. Morelos",
@@ -1097,7 +1098,7 @@
     }
   },
   {
-    "ID": 86,
+    "ID": 56,
     "TIENDA": "Uruapan CEDIS",
     "CALLE": "Paseo Lázaro Cárdenas No. 906",
     "COLONIA": "Col. La Magdalena",
@@ -1116,7 +1117,7 @@
     }
   },
   {
-    "ID": 88,
+    "ID": 57,
     "TIENDA": "León 1 CEDIS",
     "CALLE": "Blvd. Calzada Tepeyac No. 1119 y 1118",
     "COLONIA": "Col. San Nicolás",
@@ -1139,7 +1140,7 @@
     }
   },
   {
-    "ID": 91,
+    "ID": 58,
     "TIENDA": "León Arquicerámica",
     "CALLE": "Av.. San Juan Bosco No. 2003",
     "COLONIA": "Col. Vibar",
@@ -1158,7 +1159,7 @@
     }
   },
   {
-    "ID": 92,
+    "ID": 59,
     "TIENDA": "Irapuato",
     "CALLE": "Boulevard Gustavo Díaz Ordaz No. 506, Esq. Prolongación 16 De Septiembre",
     "COLONIA": "Fracc. Las Ánimas",
@@ -1177,7 +1178,7 @@
     }
   },
   {
-    "ID": 94,
+    "ID": 60,
     "TIENDA": "Silao 2",
     "CALLE": "Libramiento Norte No. 2340",
     "COLONIA": "Col. Predio de la Luz",
@@ -1196,7 +1197,7 @@
     }
   },
   {
-    "ID": 95,
+    "ID": 61,
     "TIENDA": "Fresnillo",
     "CALLE": "Av. Paseo del Mineral No. 697",
     "COLONIA": "Col. Lomas de Plateros",
@@ -1219,7 +1220,7 @@
     }
   },
   {
-    "ID": 98,
+    "ID": 62,
     "TIENDA": "Zacatecas CEDIS",
     "CALLE": "Calle Frontera No. 2 Poniente",
     "COLONIA": "Col. Lomas del Consuelo",
@@ -1242,7 +1243,7 @@
     }
   },
   {
-    "ID": 99,
+    "ID": 63,
     "TIENDA": "Ciudad Valles",
     "CALLE": "Blvd. México Laredo No. 207  Norte",
     "COLONIA": "Zona Centro",
@@ -1265,7 +1266,7 @@
     }
   },
   {
-    "ID": 100,
+    "ID": 64,
     "TIENDA": "San Luis Potosí 1",
     "CALLE": "Av. Carretera Central No. 159",
     "COLONIA": "Fracc. San Antonio",
@@ -1284,7 +1285,7 @@
     }
   },
   {
-    "ID": 101,
+    "ID": 65,
     "TIENDA": "San Luis Potosí 2 CEDIS",
     "CALLE": "Periférico Oriente No. 120",
     "COLONIA": "Col. Estrellas de Oriente",
@@ -1307,7 +1308,7 @@
     }
   },
   {
-    "ID": 102,
+    "ID": 66,
     "TIENDA": "San Luis Potosí 3",
     "CALLE": "Carretera Zacatecas No. 2000",
     "COLONIA": "Col. Jaral de Paisanos",
@@ -1326,7 +1327,7 @@
     }
   },
   {
-    "ID": 103,
+    "ID": 67,
     "TIENDA": "Aguascalientes 3 CEDIS",
     "CALLE": "Av. Convención Sur No. 1229",
     "COLONIA": "Col. Ojo de Agua",
@@ -1349,7 +1350,7 @@
     }
   },
   {
-    "ID": 104,
+    "ID": 68,
     "TIENDA": "Aguascalientes 4 ",
     "CALLE": "Av. Convención Poniente No. 1720",
     "COLONIA": "Fraccionamiento Olivares Santa Ana",
@@ -1368,7 +1369,7 @@
     }
   },
   {
-    "ID": 105,
+    "ID": 69,
     "TIENDA": "Aguascalientes 5",
     "CALLE": "Av. Siglo XXI No. 4928 Esq. Mesillas",
     "COLONIA": "Col. Haciendas de Aguascalientes",
@@ -1387,7 +1388,7 @@
     }
   },
   {
-    "ID": 106,
+    "ID": 70,
     "TIENDA": "Aguascalientes 6",
     "CALLE": "Miguel de la Madrid No. 916",
     "COLONIA": "Col. Corral de Barrancos",
@@ -1406,7 +1407,7 @@
     }
   },
   {
-    "ID": 107,
+    "ID": 71,
     "TIENDA": "Aguascalientes Rincón de Romos",
     "CALLE": "Plutarco Elías Calles No. 101",
     "COLONIA": "Col. San Jose",
