@@ -7,6 +7,17 @@ import { useCallAction } from '@cobuildlab/react-simple-state';
 import { updateActiveCampaignCompleteContact } from '@/modules/active-campaign/active-campaign-actions';
 //import { useCallAction } from '@cobuildlab/react-simple-state';
 //import { updateActiveCampaignContact } from '@/modules/active-campaign/active-campaign-actions';
+import estados from '@/utils/estados.json';
+
+const options = estados.map((estado, i) => ({
+  value: i,
+  label: `${estado.TIENDA}`,
+}));
+
+ const selectOptions = [
+    { value: '', label: 'Seleccionar un Estado' },
+    ...options,
+ ];
 
 type CheckoutBillingAddressProps = {
   control: Control;
@@ -271,36 +282,34 @@ const CheckoutBillingAddress: React.FC<CheckoutBillingAddressProps> = ({
               name={'billingAddress.country'}
             />
           </div>
+
           <div className="col-span-full md:col-span-6">
-            <Controller
-              control={control}
-              rules={{
-                required: 'El estado es requerido',
+            <Select
+              className="select-checkout-shipping bg-[#F9F9F9]"
+              styles={{
+                control: (provided: any) => ({
+                   ...provided,
+                   border: '2px solid #B2B2B2',
+                   borderRadius: '5px',
+                }),
+                option: (provided: any) => ({
+                   ...provided,
+                   backgroundColor: 'white',
+                   borderBottom: '1px solid #ccc',
+                   color: '#000000',
+                }),
+                singleValue: (provided: any) => ({
+                   ...provided,
+                   color: '#000000',
+                }),
               }}
-              render={({
-                field: { onChange, value, name, ref },
-                fieldState: { error },
-              }) => (
-                <>
-                  <input
-                    ref={ref}
-                    className={`w-full h-[45px] border ${
-                      value ? 'border-[#30D672]' : 'border-[#CCCCCC]'
-                    } px-6`}
-                    placeholder="Estado *"
-                    name={name}
-                    onChange={onChange}
-                  />
-                  {error ? (
-                    <p className="text-red-500 text-xs italic">
-                      {error.message}
-                    </p>
-                  ) : null}
-                </>
-              )}
-              name={'billingAddress.state'}
-            />
+              onChange={(selectedOption) => {
+                const value = selectedOption?.value;
+              }}
+              options={selectOptions}
+            />            
           </div>
+          
           <div className="col-span-12">
             <Controller
               control={control}
