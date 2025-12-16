@@ -1,0 +1,42 @@
+[
+  {
+    "ID": 1,
+    "TIENDA": "Aguascalientes"
+  },
+  {
+    "ID": 2,
+    "TIENDA": "Ciudad de México"
+  },
+  {
+    "ID": 3,
+    "TIENDA": "Estado de México"
+  },
+  {
+    "ID": 4,
+    "TIENDA": "Guanajuato"
+  },
+  {
+    "ID": 5,
+    "TIENDA": "Jalisco"
+  },
+  {
+    "ID": 7,
+    "TIENDA": "Nuevo León"
+  },
+  {
+    "ID": 8,
+    "TIENDA": "Oaxaca"
+  },
+  {
+    "ID": 10,
+    "TIENDA": "Querétaro"
+  },
+  {
+    "ID": 11,
+    "TIENDA": "Tlaxcala"
+  },
+  {
+    "ID": 12,
+    "TIENDA": "Veracruz"
+  }
+]
