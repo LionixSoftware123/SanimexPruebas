@@ -8,6 +8,7 @@ import { updateActiveCampaignCompleteContact } from '@/modules/active-campaign/a
 //import { useCallAction } from '@cobuildlab/react-simple-state';
 //import { updateActiveCampaignContact } from '@/modules/active-campaign/active-campaign-actions';
 import estados from '@/utils/estados.json';
+import Select from 'react-select';
 
 const options = estados.map((estado, i) => ({
   value: i,
