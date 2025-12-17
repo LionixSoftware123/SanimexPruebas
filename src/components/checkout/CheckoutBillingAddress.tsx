@@ -304,10 +304,8 @@ const CheckoutBillingAddress: React.FC<CheckoutBillingAddressProps> = ({
                    color: '#000000',
                 }),
               }}
-              onChange={(selectedOption) => {
-                const value = selectedOption?.value;
-              }}
               options={selectOptions}
+              defaultValue={selectOptions[0]}
             />            
           </div>
           
