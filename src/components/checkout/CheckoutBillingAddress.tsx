@@ -1,17 +1,12 @@
-//import React, { useEffect /**{ useEffect } */ } from 'react';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect /**{ useEffect } */ } from 'react';
 import { useUserHook } from '@/modules/auth/user-hooks';
 import validator from 'validator';
 import { Control } from 'react-hook-form/dist/types/form';
 import { Controller /**useWatch  */, useWatch } from 'react-hook-form';
 import { useCallAction } from '@cobuildlab/react-simple-state';
 import { updateActiveCampaignCompleteContact } from '@/modules/active-campaign/active-campaign-actions';
-//import { useCallAction } from '@cobuildlab/react-simple-state';
-//import { updateActiveCampaignContact } from '@/modules/active-campaign/active-campaign-actions';
 
 import estados from '@/utils/estados.json';
-//import { selectedStateAction } from '@/utils/estados-actions';
-//import { EstadosType } from '@/utils/estados-types';
 import Select from 'react-select';
 
 const options = estados.map((estado, i) => ({
@@ -23,10 +18,6 @@ const selectOptions = [
     { value: '', label: 'Seleccionar un Estado' },
     ...options,
 ];
-
-//const [selectedState, setSelectedState] = useState<EstadosType | undefined>(
-//    undefined,
-//);
 
 type CheckoutBillingAddressProps = {
   control: Control;
