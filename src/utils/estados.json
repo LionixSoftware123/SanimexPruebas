@@ -1,42 +1,42 @@
 [
   {
     "ID": 1,
-    "TIENDA": "Aguascalientes"
+    "ESTADO": "Aguascalientes"
   },
   {
     "ID": 2,
-    "TIENDA": "Ciudad de México"
+    "ESTADO": "Ciudad de México"
   },
   {
     "ID": 3,
-    "TIENDA": "Estado de México"
+    "ESTADO": "Estado de México"
   },
   {
     "ID": 4,
-    "TIENDA": "Guanajuato"
+    "ESTADO": "Guanajuato"
   },
   {
     "ID": 5,
-    "TIENDA": "Jalisco"
+    "ESTADO": "Jalisco"
   },
   {
     "ID": 7,
-    "TIENDA": "Nuevo León"
+    "ESTADO": "Nuevo León"
   },
   {
     "ID": 8,
-    "TIENDA": "Oaxaca"
+    "ESTADO": "Oaxaca"
   },
   {
     "ID": 10,
-    "TIENDA": "Querétaro"
+    "ESTADO": "Querétaro"
   },
   {
     "ID": 11,
-    "TIENDA": "Tlaxcala"
+    "ESTADO": "Tlaxcala"
   },
   {
     "ID": 12,
-    "TIENDA": "Veracruz"
+    "ESTADO": "Veracruz"
   }
 ]
