@@ -1,5 +1,5 @@
-//import React, { useEffect /**{ useEffect } */ } from 'react';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect /**{ useEffect } */ } from 'react';
+//import React, { useEffect, useState } from 'react';
 import { useUserHook } from '@/modules/auth/user-hooks';
 import validator from 'validator';
 import { Control } from 'react-hook-form/dist/types/form';
@@ -8,9 +8,10 @@ import { useCallAction } from '@cobuildlab/react-simple-state';
 import { updateActiveCampaignCompleteContact } from '@/modules/active-campaign/active-campaign-actions';
 //import { useCallAction } from '@cobuildlab/react-simple-state';
 //import { updateActiveCampaignContact } from '@/modules/active-campaign/active-campaign-actions';
+
 import estados from '@/utils/estados.json';
-import { selectedStateAction } from '@/utils/estados-actions';
-import { EstadosType } from '@/utils/estados-types';
+//import { selectedStateAction } from '@/utils/estados-actions';
+//import { EstadosType } from '@/utils/estados-types';
 import Select from 'react-select';
 
 const options = estados.map((estado, i) => ({
@@ -18,14 +19,14 @@ const options = estados.map((estado, i) => ({
   label: `${estado.TIENDA}`,
 }));
 
- const selectOptions = [
+const selectOptions = [
     { value: '', label: 'Seleccionar un Estado' },
     ...options,
- ];
+];
 
-const [selectedState, setSelectedState] = useState<EstadosType | undefined>(
-    undefined,
-  );
+//const [selectedState, setSelectedState] = useState<EstadosType | undefined>(
+//    undefined,
+//);
 
 type CheckoutBillingAddressProps = {
   control: Control;
@@ -292,35 +293,7 @@ const CheckoutBillingAddress: React.FC<CheckoutBillingAddressProps> = ({
           </div>
 
           <div className="col-span-full md:col-span-6">
-            <Select
-              className="select-checkout-shipping bg-[#F9F9F9]"
-              styles={{
-                control: (provided: any) => ({
-                   ...provided,
-                   border: '2px solid #B2B2B2',
-                   borderRadius: '5px',
-                }),
-                option: (provided: any) => ({
-                   ...provided,
-                   backgroundColor: 'white',
-                   borderBottom: '1px solid #ccc',
-                   color: '#000000',
-                }),
-                singleValue: (provided: any) => ({
-                   ...provided,
-                   color: '#000000',
-                }),
-              }}
-              onChange={(selectedOption) => {
-                const value = selectedOption?.value;
-                if (value !== undefined) {
-                    setSelectedState((estados as any)?.[value]);
-                    selectedStateAction((estados as any)?.[value]);
-                }
-              }}              
-              options={selectOptions}
-              defaultValue={selectOptions[0]}
-            />            
+            <Select options={selectOptions} />
           </div>
           
           <div className="col-span-12">
