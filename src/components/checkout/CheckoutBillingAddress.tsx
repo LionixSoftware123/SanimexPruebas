@@ -286,13 +286,12 @@ const CheckoutBillingAddress: React.FC<CheckoutBillingAddressProps> = ({
             <Controller
               name={'billingAddress.state'}
               control={control}
-              defaultValue={options[0]} // Set default value
+              defaultValue={options[0]}
               render={({ field }) => (
                 <Select
                   {...field}
                   options={selectOptions}
-                  onChange={(selectedOption) => field.onChange(selectedOption.value)}
-                  value={options.find(option => option.value === field.value)}
+                  onChange={(e) => field.onChange(e.target.value)}
                   isSearchable
                   placeholder="Estado *"
                 />
