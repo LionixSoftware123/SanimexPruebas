@@ -9,7 +9,7 @@ import { updateActiveCampaignCompleteContact } from '@/modules/active-campaign/a
 import estados from '@/utils/estados.json';
 import Select from 'react-select';
 
-const options = estados.map((estado, i) => ({
+const options = estados.map((estado) => ({
   value: `${estado.VALOR}`,
   label: `${estado.ETIQUETA}`,
 }));
