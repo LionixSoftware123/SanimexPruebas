@@ -1,42 +1,46 @@
 [
   {
-    "ID": 1,
-    "ESTADO": "Aguascalientes"
+    "VALOR": "",
+    "ETIQUETA": "Estado *"
   },
   {
-    "ID": 2,
-    "ESTADO": "Ciudad de México"
+    "VALOR": "Aguascalientes",
+    "ETIQUETA": "Aguascalientes"
   },
   {
-    "ID": 3,
-    "ESTADO": "Estado de México"
+    "VALOR": "Ciudad de México",
+    "ETIQUETA": "Ciudad de México"
   },
   {
-    "ID": 4,
-    "ESTADO": "Guanajuato"
+    "VALOR": "Estado de México",
+    "ETIQUETA": "Estado de México"
   },
   {
-    "ID": 5,
-    "ESTADO": "Jalisco"
+    "VALOR": "Guanajuato",
+    "ETIQUETA": "Guanajuato"
   },
   {
-    "ID": 7,
-    "ESTADO": "Nuevo León"
+    "VALOR": "Jalisco",
+    "ETIQUETA": "Jalisco"
   },
   {
-    "ID": 8,
-    "ESTADO": "Oaxaca"
+    "VALOR": "Nuevo León",
+    "ETIQUETA": "Nuevo León"
   },
   {
-    "ID": 10,
-    "ESTADO": "Querétaro"
+    "VALOR": "Oaxaca",
+    "ETIQUETA": "Oaxaca"
   },
   {
-    "ID": 11,
-    "ESTADO": "Tlaxcala"
+    "VALOR": "Querétaro",
+    "ETIQUETA": "Querétaro"
   },
   {
-    "ID": 12,
-    "ESTADO": "Veracruz"
+    "VALOR": "Tlaxcala",
+    "ETIQUETA": "Tlaxcala"
+  },
+  {
+    "VALOR": "Veracruz",
+    "ETIQUETA": "Veracruz"
   }
 ]
