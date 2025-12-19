@@ -10,8 +10,8 @@ import estados from '@/utils/estados.json';
 import Select from 'react-select';
 
 const options = estados.map((estado, i) => ({
-  value: i,
-  label: `${estado.ESTADO}`,
+  value: `${estado.VALOR}`,
+  label: `${estado.ETIQUETA}`,
 }));
 
 const selectOptions = [
