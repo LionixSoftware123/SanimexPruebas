@@ -291,7 +291,6 @@ const CheckoutBillingAddress: React.FC<CheckoutBillingAddressProps> = ({
                 <Select
                   {...field}
                   options={selectOptions}
-                  onChange={(val) => field.onChange(val ? val.value : '')}
                   isSearchable
                   placeholder="Estado *"
                 />
