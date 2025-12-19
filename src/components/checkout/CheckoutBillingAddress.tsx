@@ -11,11 +11,10 @@ import Select from 'react-select';
 
 const options = estados.map((estado, i) => ({
   value: i,
-  label: `${estado.TIENDA}`,
+  label: `${estado.ESTADO}`,
 }));
 
 const selectOptions = [
-    { value: '', label: 'Seleccionar un Estado' },
     ...options,
 ];
 
@@ -284,7 +283,19 @@ const CheckoutBillingAddress: React.FC<CheckoutBillingAddressProps> = ({
           </div>
 
           <div className="col-span-full md:col-span-6">
-            <Select options={selectOptions} />
+            <Controller
+              name={'billingAddress.state'}
+              control={control}
+              defaultValue={options[0]} // Set default value
+              render={({ field }) => (
+                <Select
+                  {...field}
+                  options={selectOptions}
+                  isSearchable
+                  placeholder="Estado *"
+                />
+              )}
+            />
           </div>
           
           <div className="col-span-12">
