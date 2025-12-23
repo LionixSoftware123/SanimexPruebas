@@ -15,7 +15,7 @@ const options = estados.map((estado) => ({
 }));
 
 const selectOptions = [
-    ...options,
+  ...options,
 ];
 
 type CheckoutBillingAddressProps = {
@@ -284,18 +284,22 @@ const CheckoutBillingAddress: React.FC<CheckoutBillingAddressProps> = ({
 
           <div className="col-span-full md:col-span-6">
             <Controller
-              name={'billingAddress.state'}
               control={control}
               defaultValue={options[0]}
+              rules={{
+                required: 'El estado es requerido',
+              }}
               render={({ field }) => (
                 <Select
                   {...field}
+                  name={name}
                   options={selectOptions}
-                  isSearchable
                   placeholder="Estado *"
+                  onChange={onChange}
+                  value={value}
                 />
               )}
-              rules={{ required: true }}
+              name={'billingAddress.state'}
             />
           </div>
           
