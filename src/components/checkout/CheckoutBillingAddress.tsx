@@ -10,7 +10,11 @@ import { updateActiveCampaignCompleteContact } from '@/modules/active-campaign/a
 import estados from '@/utils/estados.json';
 import Select from 'react-select';
 
-const [initialState, setInitialState] = useState('');
+const [valorSeleccionado, setValorSeleccionado] = useState(''); // Estado para guardar el valor
+const handleChange = (event) => {
+  setValorSeleccionado(event.target.value); // Actualiza el estado con el nuevo valor
+};
+
 const options = estados.map((estado) => ({
   value: `${estado.VALOR}`,
   label: `${estado.ETIQUETA}`,
@@ -294,14 +298,11 @@ const CheckoutBillingAddress: React.FC<CheckoutBillingAddressProps> = ({
               render={({ field }) => (
                 <Select
                   {...field}
-                  id="initialState"
                   name={name}
                   options={selectOptions}
                   placeholder="Estado *"
-                  onChange={(e) => {
-                    setInitialState(e.target.value);
-                  }}
-                  value={initialState}
+                  value={valorSeleccionado}
+                  onChange={handleChange}
                 />
               )}
               name={'billingAddress.state'}
