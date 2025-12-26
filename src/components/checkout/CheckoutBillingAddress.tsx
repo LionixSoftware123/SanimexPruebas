@@ -11,7 +11,7 @@ import estados from '@/utils/estados.json';
 import Select from 'react-select';
 
 const [valorSeleccionado, setValorSeleccionado] = useState(''); // Estado para guardar el valor
-const handleChange = (event) => {
+const handleChange = (event: any) => {
   setValorSeleccionado(event.target.value); // Actualiza el estado con el nuevo valor
 };
 
