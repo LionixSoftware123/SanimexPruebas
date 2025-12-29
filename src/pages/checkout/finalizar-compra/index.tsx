@@ -50,6 +50,8 @@ import { Cart, CartItem } from '@/lib/cart/v2/cart-types';
 import { applyCouponAction, fetchCart } from '@/lib/cart/v2/cart-actions';
 import { UniversalCookies } from '@/lib/cart/v2/utils/cookies';
 //import { updateActiveCampaignCompleteContact } from '@/modules/active-campaign/active-campaign-actions';
+import { formatCurrency2 } from '@/lib/cart/v2/utils/formats';
+import { renderTopBannerEvent } from '@/modules/banner/banner-events';
 
 const ImageWithFallback = dynamic(() => import('@/utils/ImageWithFallback'));
 const StaticMeta = dynamic(() => import('@/components/utils/StaticMeta'));
@@ -365,7 +367,9 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
   const postalCode = isShipping ? shippingPostalCodeForm : postalCodeForm;
 
   //const total = cart?.totals?.total_price ?? 0;
+  const { topBanner } = useEvent(renderTopBannerEvent);
   const total =  parseFloat(cart?.totals?.total_price as string)/100;
+  const faltan = 6000-Number(total);
 
   let content = <></>;
   const redirect = typeof window !== 'undefined' ? window.location.href : '';
@@ -743,6 +747,16 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
       />
       <Container>
         <div className="font-Century-Gothic grid grid-cols-12">
+          {total<6000 && topBanner ? (
+          <div className="px-1 py-1">
+            <div
+              className="text-white text-[14px] rounded min-w-[50px] text-center h-[20px] px-[5px] font-Century-Gothic-Bold"
+              style={{ backgroundColor: topBanner.color as string }}
+            >
+              Te faltan {formatCurrency2(faltan)} para obtener tus MSI
+              </div>
+            </div>
+            ) : null}            
           <form
             ref={ref}
             id="banorte-form"
