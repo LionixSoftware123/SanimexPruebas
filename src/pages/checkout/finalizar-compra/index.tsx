@@ -51,6 +51,7 @@ import { applyCouponAction, fetchCart } from '@/lib/cart/v2/cart-actions';
 import { UniversalCookies } from '@/lib/cart/v2/utils/cookies';
 //import { updateActiveCampaignCompleteContact } from '@/modules/active-campaign/active-campaign-actions';
 import { formatCurrency2 } from '@/lib/cart/v2/utils/formats';
+import { useEvent } from '@cobuildlab/react-simple-state';
 import { renderTopBannerEvent } from '@/modules/banner/banner-events';
 
 const ImageWithFallback = dynamic(() => import('@/utils/ImageWithFallback'));
