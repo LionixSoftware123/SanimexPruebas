@@ -748,7 +748,7 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
       />
       <Container>
         <div className="font-Century-Gothic grid grid-cols-12">
-          {total<6000 && topBanner ? (
+          {Number(total) < 6000 && topBanner ? (
           <div className="px-1 py-1">
             <div
               className="text-white text-[14px] rounded min-w-[50px] text-center h-[20px] px-[5px] font-Century-Gothic-Bold"
