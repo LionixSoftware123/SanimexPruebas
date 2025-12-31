@@ -748,16 +748,6 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
       />
       <Container>
         <div className="font-Century-Gothic grid grid-cols-12">
-          {Number(total) < 6000 && topBanner ? (
-          <div className="px-1 py-1">
-            <div
-              className="text-white text-[14px] rounded min-w-[50px] text-center h-[20px] px-[5px] font-Century-Gothic-Bold"
-              style={{ backgroundColor: topBanner.color as string }}
-            >
-              Te faltan {formatCurrency2(faltan)} para obtener tus MSI
-              </div>
-            </div>
-            ) : null}            
           <form
             ref={ref}
             id="banorte-form"
@@ -852,6 +842,18 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
                   </div>
                 ) : null}
               </div>
+
+              {Number(total) < 6000 && topBanner ? (
+              <div className="col-span-full px-1 py-1">
+                <div
+                  className="text-white text-[14px] rounded min-w-[50px] text-center h-[20px] px-[5px] font-Century-Gothic-Bold"
+                  style={{ backgroundColor: topBanner.color as string }}
+                >
+                  Te faltan {formatCurrency2(faltan)} para obtener tus MSI
+                  </div>
+                </div>
+                ) : null}              
+              
               <div className="col-span-full md:col-span-6">
                 <CheckoutBillingAddress control={control} />
                 <div className="flex items-center my-4">
