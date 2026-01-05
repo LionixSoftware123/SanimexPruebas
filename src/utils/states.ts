@@ -88,7 +88,7 @@ import Quere2 from '@/images/sucursales/queretaro2.jpg';
 import Sanjuan2 from '@/images/sucursales/san-juan-2-new.jpg';
 import Sanjuan from '@/images/sucursales/san-juan-new-two.jpg';
 import Piedad2 from '@/images/sucursales/piedad-2-new.jpg';
-import Piedad3 from '@/images/sucursales/piedxad3.jpeg';
+import Piedad3 from '@/images/sucursales/piedad3.jpeg';
 import Morelia2 from '@/images/sucursales/morelia2.jpeg';
 import Morelia3 from '@/images/sucursales/morelia-3-new.jpeg';
 import Morelia4 from '@/images/sucursales/morelia4.jpeg';
