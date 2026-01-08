@@ -894,9 +894,9 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
 
               <div className="col-span-full md:col-span-6">
                 {Number(total) < 6000 && topBanner ? (
-                <div className="col-span-full px-1 py-1">
+                <div className="hidden-t col-span-full px-1 py-1">
                   <div
-                    className="text-white text-[14px] rounded min-w-[50px] text-center h-[20px] px-[5px] font-Century-Gothic-Bold"
+                    className="text-white text-[18px] rounded text-center px-[5px] font-Century-Gothic-Bold"
                     style={{ backgroundColor: topBanner.color as string }}
                   >
                     Te faltan {formatCurrency2(faltan)} para obtener 3 MSI
