@@ -574,6 +574,9 @@ p > a {
 /* Ventana modal de producto siempre adelante de todos los elementos */
 .zindex-modal { z-index: 9999999999; }
 
+/* Otros estilos usando en distintas partes */
+.hidden-lapto { display: none; }
+
 /* tabla para el carrito */
 .flex-t { display: flex; }
 .justify-end-t { justify-content: flex-end; }
@@ -610,7 +613,7 @@ table.shop_table td {
     vertical-align: middle;
 }
 @media only screen and (max-width: 768px) {
-    .flex-t { display: block; }
+    .flex-t, .hidden-lapto { display: block; }
     .text-center-t { text-align: left!important; }
     .mbr-t { margin-right: 0px; }
     .w-resumen { width: 100%; }
