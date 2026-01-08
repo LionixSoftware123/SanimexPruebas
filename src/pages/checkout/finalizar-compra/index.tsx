@@ -841,18 +841,7 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
                     </Link>
                   </div>
                 ) : null}
-              </div>
-
-              {Number(total) < 6000 && topBanner ? (
-              <div className="col-span-full px-1 py-1">
-                <div
-                  className="text-white text-[14px] rounded min-w-[50px] text-center h-[20px] px-[5px] font-Century-Gothic-Bold"
-                  style={{ backgroundColor: topBanner.color as string }}
-                >
-                  Te faltan {formatCurrency2(faltan)} para obtener tus MSI
-                  </div>
-                </div>
-                ) : null}              
+              </div>              
               
               <div className="col-span-full md:col-span-6">
                 <CheckoutBillingAddress control={control} />
@@ -904,6 +893,16 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
               </div>
 
               <div className="col-span-full md:col-span-6">
+                {Number(total) < 6000 && topBanner ? (
+                <div className="col-span-full px-1 py-1">
+                  <div
+                    className="text-white text-[14px] rounded min-w-[50px] text-center h-[20px] px-[5px] font-Century-Gothic-Bold"
+                    style={{ backgroundColor: topBanner.color as string }}
+                  >
+                    Te faltan {formatCurrency2(faltan)} para obtener 3 MSI
+                    </div>
+                  </div>
+                  ) : null}
                 <div className="grid grid-cols-5 ">
                   <div className="col-span-full">
                     <div className="text-[#333E48] font-Century-Gothic-Bold text-[25px]  mb-[20px]">
