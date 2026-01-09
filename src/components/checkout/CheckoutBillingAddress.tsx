@@ -10,11 +10,6 @@ import { updateActiveCampaignCompleteContact } from '@/modules/active-campaign/a
 import estados from '@/utils/estados.json';
 import Select from 'react-select';
 
-//const [valorSeleccionado, setValorSeleccionado] = useState(''); // Estado para guardar el valor
-//const handleChange = (event: any) => {
-//  setValorSeleccionado(event.target.value); // Actualiza el estado con el nuevo valor
-//};
-
 const options = estados.map((estado) => ({
   value: `${estado.VALOR}`,
   label: `${estado.ETIQUETA}`,
@@ -35,43 +30,6 @@ const CheckoutBillingAddress: React.FC<CheckoutBillingAddressProps> = ({
     state: { user },
   } = useUserHook();
 
-  // const updateContact = async (data: any) => {
-  //   try {
-  //     const response = await axios.get(
-  //       `/api/get-contact-email-active-campaign?email=${data.email}`,
-  //       {
-  //         headers: {
-  //           'Api-Token': ACTIVE_CAMPAIGN_TOKEN,
-  //         },
-  //       },
-  //     );
-
-  //     const contact = response?.data?.contacts[0];
-  //     const contactId = contact?.id;
-
-  //     if (contactId) {
-  //       await axios.put(`/api/update-active-campaign-contact?id=${contactId}`, {
-  //         contact: {
-  //           firstname: data.firstname,
-  //           lastname: data.lastname,
-  //           email: data.email,
-  //           phone: data.phone,
-  //           fieldValues: [
-  //             { field: '0', value: 'No tiene Cuenta' },
-  //             { field: '1', value: data.state },
-  //             { field: '2', value: data.postalCode },
-  //             { field: '3', value: data.address1 },
-  //           ],
-  //         },
-  //       });
-  //     } else {
-  //       console.error('No se encontró el contacto con el email proporcionado.');
-  //     }
-  //   } catch (error) {
-  //     console.error('Error al actualizar el contacto:', error);
-  //   }
-  // };
-
   const [updateContact] = useCallAction(updateActiveCampaignCompleteContact, {
     onCompleted: () => {
       console.log('Contacto actualizado exitosamente.');
@@ -80,10 +38,7 @@ const CheckoutBillingAddress: React.FC<CheckoutBillingAddressProps> = ({
       console.error('Error al actualizar el contacto:', error);
     },
   });
-  const postalCodeForm = useWatch({
-    control,
-    name: 'billingAddress.postalCode',
-  });
+  const postalCodeForm = useWatch({ control, name: 'billingAddress.postalCode' });
   const firstnameForm = useWatch({ control, name: 'billingAddress.firstname' });
   const lastnameForm = useWatch({ control, name: 'billingAddress.lastname' });
   const emailForm = useWatch({ control, name: 'billingAddress.email' });
@@ -92,6 +47,8 @@ const CheckoutBillingAddress: React.FC<CheckoutBillingAddressProps> = ({
   const address2Form = useWatch({ control, name: 'billingAddress.address2' });
   const countryForm = useWatch({ control, name: 'billingAddress.country' });
   const stateForm = useWatch({ control, name: 'billingAddress.state' });
+
+  console.log(stateForm);
 
   useEffect(() => {
     const billingAddress = {
@@ -298,11 +255,8 @@ const CheckoutBillingAddress: React.FC<CheckoutBillingAddressProps> = ({
               render={({ field }) => (
                 <Select
                   {...field}
-                  //name={name}
                   options={selectOptions}
                   placeholder="Estado *"
-                  //value={valorSeleccionado}
-                  //onChange={handleChange}
                 />
               )}
               name={'billingAddress.state'}
