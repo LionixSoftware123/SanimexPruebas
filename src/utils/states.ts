@@ -28,7 +28,7 @@ import Juarez from '@/images/sucursales/juarez.jpg';
 import Aragon1 from '@/images/sucursales/aragon1.jpeg';
 import Aragon2 from '@/images/sucursales/aragon2.jpeg';
 import Aragon3 from '@/images/sucursales/aragon3.jpeg';
-import Aragon4 from '@/images/sucursales/aragon4.jpeg';
+import Aragon4 from '@/images/sucursales/aragon4.jpg';
 import Chiconautla from '@/images/sucursales/chiconautla.jpeg';
 import Texcoco from '@/images/sucursales/reyestexcoco.jpeg';
 import Re1 from '@/images/sucursales/r1.jpeg';
@@ -47,10 +47,10 @@ import Lopez2 from '@/images/sucursales/lopez2.jpeg';
 import SucursalOaxaca1 from '@/images/sucursales/oaxaca-1-new.jpg';
 import SucursalOaxaca2 from '@/images/sucursales/oaxaca2.jpg';
 import SucursalOaxaca3 from '@/images/sucursales/oaxaca3.jpg';
-import SucursalHujuapan from '@/images/sucursales/huahuapan-new.jpeg';
+import SucursalHujuapan from '@/images/sucursales/huajuapan1.jpeg';
 import SucursalHujuapan2 from '@/images/sucursales/huahuapan-menudeo-new.jpeg';
-import SucursalJuchitan from '@/images/sucursales/juchitan.jpeg';
-import SucursalAguasCalientes4 from '@/images/sucursales/aguascalientes4.png';
+import SucursalJuchitan from '@/images/sucursales/juchitan.jpg';
+import SucursalAguasCalientes4 from '@/images/sucursales/aguascalientes4.jpg';
 import Aguascalientes3Cedis from '@/images/sucursales/aguascalientes3.jpeg';
 import SucursalAguasCalientes5 from '@/images/sucursales/aguascalientes5.jpg';
 import SucursalAguasCalientes6 from '@/images/sucursales/aguascalientes6.jpg';
@@ -59,14 +59,14 @@ import Coatzacoalcos1 from '@/images/sucursales/coatzacoalcos1.png';
 import coatzacoalcos3 from '@/images/sucursales/coatzacoalcos3.jpg';
 import Coatzacoalcos4 from '@/images/sucursales/coatzacoalcos-4-new.jpeg';
 import coatzacoalcos5 from '@/images/sucursales/coatzacoalcos5.jpeg';
-import Minalitlan from '@/images/sucursales/minatitlan-new.jpeg';
+import Minalitlan from '@/images/sucursales/minatitlan.jpeg';
 import Veracruz5 from '@/images/sucursales/veracruz5.jpg';
 import VeracruzBoulevard from '@/images/sucursales/veracruzboulevard.jpg';
 import Cuauhtemocveracruz from '@/images/sucursales/veracruzcuautehmoc.jpeg';
 import MiguelAleman from '@/images/sucursales/miguelaleman.png';
-import SucursalApizaco1 from '@/images/sucursales/apizaco-cedis-new.jpeg';
+import SucursalApizaco1 from '@/images/sucursales/apizaco1.jpg';
 import SucursalApizaco2 from '@/images/sucursales/apizaco-2-new.jpg';
-import SucursalApizaco3 from '@/images/sucursales/apizaco-3-new.jpeg';
+import SucursalApizaco3 from '@/images/sucursales/apizaco3.jpg';
 import Huamantla from '@/images/sucursales/huamantla-menudeo-new.jpeg';
 import SucursalHuamantla2 from '@/images/sucursales/huamantla2.jpg';
 import SucursalAtlixco1 from '@/images/sucursales/atlixco-1-new.jpg';
@@ -140,7 +140,7 @@ import Cuautla3 from '@/images/sucursales/cuautla-3-new.jpeg';
 import Cuautla4 from '@/images/sucursales/cuautla-4-new.jpeg';
 import Tepic1 from '@/images/sucursales/tepic-new.jpeg';
 import Tepic4cedis from '@/images/sucursales/tepic-4-new.jpeg';
-import Tepic5 from '@/images/sucursales/tepic-5-new.jpeg';
+import Tepic5 from '@/images/sucursales/tepic-5-new.jpg';
 import SucursalCiudadvalles3 from '@/images/sucursales/ciudadvalles.jpeg';
 import Sanluis1 from '@/images/sucursales/sanluis1.jpeg';
 import Sanluis2 from '@/images/sucursales/sanluis2.png';
@@ -149,6 +149,7 @@ import Zacatecas2 from '@/images/sucursales/zacatecas-2-new.jpeg';
 import ZacatecasCedis from '@/images/sucursales/zacatecas-cedis-new.jpeg';
 import Zacatecas3 from '@/images/sucursales/zacatecas-3-new.jpeg';
 import Fresnillo from '@/images/sucursales/fresnillo-new.jpeg';
+import Tizayuca from '@/images/sucursales/tizayuca.jpg';
 
 export const dataStates = [
    {
@@ -993,7 +994,21 @@ export const dataStates = [
       value: 'guanajuato',
       label: 'Guanajuato',
     },
-  },  
+  },
+  {
+    image: Tizayuca,
+    name: 'Tizayuca',
+    address:
+      'Libramiento Club Rotario Sur No.103 Mnz  1 Lt 2 Col. Zona Industrial, Tizayuca, Hidalgo C.P 43803 Tel\u00e9fono: 47 27 22 58 89',
+    link: 'https://maps.app.goo.gl/XU5fX6BYgNek8XN2A',
+    state: 'hidalgo',
+    weekdayssaturday: '9:00 am - 7:00 pm',
+    sunday: '10:00 am - 4:00 pm',
+    city: {
+      value: 'hidalgo',
+      label: 'Hidalgo',
+    },
+  },
   {
     image: SucursalGuadalajara03,
     name: 'Guadalajara 03 ',
@@ -2311,6 +2326,7 @@ export const stateMapping = {
   colima: 'Colima',
   estadodemexico: 'Estado de México',
   guanajuato: 'Guanajuato',
+  hidalgo: 'Hidalgo',
   jalisco: 'Jalisco',
   michoacan: 'Michoacán',
   morelos: 'Morelos',
