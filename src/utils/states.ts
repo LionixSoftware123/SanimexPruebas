@@ -62,7 +62,7 @@ import coatzacoalcos5 from '@/images/sucursales/coatzacoalcos5.jpeg';
 import Minalitlan from '@/images/sucursales/minatitlan.jpeg';
 import Veracruz5 from '@/images/sucursales/veracruz5.jpg';
 import VeracruzBoulevard from '@/images/sucursales/veracruzboulevard.jpg';
-import Cuauhtemocveracruz from '@/images/sucursales/veracruzcuautehmoc.jpeg';
+import Cuauhtemocveracruz from '@/images/sucursales/veracruzcuautehmoc.jpg';
 import MiguelAleman from '@/images/sucursales/miguelaleman.png';
 import SucursalApizaco1 from '@/images/sucursales/apizaco1.jpg';
 import SucursalApizaco2 from '@/images/sucursales/apizaco-2-new.jpg';
