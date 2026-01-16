@@ -999,7 +999,7 @@ export const dataStates = [
     image: Tizayuca,
     name: 'Tizayuca',
     address:
-      'Libramiento Club Rotario Sur No.103 Mnz  1 Lt 2 Col. Zona Industrial, Tizayuca, Hidalgo C.P 43803 Tel\u00e9fono: 47 27 22 58 89',
+      'Libramiento Club Rotario Sur No.103 Mnz  1 Lt 2 Col. Zona Industrial, Tizayuca, Hidalgo C.P 43803 Tel\u00e9fono: 77 91 03 12 18',
     link: 'https://maps.app.goo.gl/XU5fX6BYgNek8XN2A',
     state: 'hidalgo',
     weekdayssaturday: '9:00 am - 7:00 pm',
