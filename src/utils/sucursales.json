@@ -1,6 +1,745 @@
 [
   {
     "ID": 1,
+    "TIENDA": "SANTA CLARA 2",
+    "CALLE": "Vía Morelos No. 33",
+    "COLONIA": "Col. San Cristóbal Centro",
+    "CP": 55040,
+    "CIUDAD": "Ecatepec ",
+    "ESTADO": "Estado de México",
+    "TELÉFONOS": [
+      {
+        "key": "5557703413",
+        "value": "5557703413"
+      },
+      {
+        "key": "5557703410",
+        "value": "5557703410"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.5965475,
+      "lng": -99.0372039
+    }
+  },
+  {
+    "ID": 2,
+    "TIENDA": "SANTA CLARA 3",
+    "CALLE": "Vía Morelos No. 45 Bis",
+    "COLONIA": "Col. Nuevo Laredo",
+    "CP": 55080,
+    "CIUDAD": "Ecatepec ",
+    "ESTADO": "Estado de México",
+    "TELÉFONOS": [
+      {
+        "key": "5557870087",
+        "value": "5557870087"
+      },
+      {
+        "key": "5557872299",
+        "value": "5557872299"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.5757029,
+      "lng": -99.0427336
+    }
+  },
+  {
+    "ID": 3,
+    "TIENDA": "INSURGENTES",
+    "CALLE": "Av. Insurgentes S/N",
+    "COLONIA": "Col. La Curiela",
+    "CP": 55060,
+    "CIUDAD": "Ecatepec ",
+    "ESTADO": "Estado de México",
+    "TELÉFONOS": [
+      {
+        "key": "5557878357",
+        "value": "5557878357"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.6002201,
+      "lng": -99.0527193
+    }
+  },
+  {
+    "ID": 4,
+    "TIENDA": "SANTA CLARA 1",
+    "CALLE": "Av. Hidalgo No. 143 - A",
+    "COLONIA": "Col. Santa Clara",
+    "CP": 55540,
+    "CIUDAD": "Ecatepec ",
+    "ESTADO": "Estado de México",
+    "TELÉFONOS": [
+      {
+        "key": "5556990426",
+        "value": "5556990426"
+      },
+      {
+        "key": "5556990427",
+        "value": "5556990427"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.5382819,
+      "lng": -99.0598875
+    }
+  },
+  {
+    "ID": 5,
+    "TIENDA": "SANTA CLARA 4",
+    "CALLE": "Vía Morelos km 15.5",
+    "COLONIA": "Col. Santa Clara",
+    "CP": 55540,
+    "CIUDAD": "Ecatepec ",
+    "ESTADO": "Estado de México",
+    "TELÉFONOS": [
+      {
+        "key": "5556990457",
+        "value": "5556990457"
+      },
+      {
+        "key": "5557497084",
+        "value": "5557497084"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.5366259,
+      "lng": -99.0623316
+    }
+  },
+  {
+    "ID": 6,
+    "TIENDA": "R1",
+    "CALLE": "Vicente Lombardo Toledano No. 21 Local 4 y 5",
+    "COLONIA": "Col. Laguna Xalostoc",
+    "CP": 55338,
+    "CIUDAD": "Ecatepec ",
+    "ESTADO": "Estado de México",
+    "TELÉFONOS": [
+      {
+        "key": "5556997647",
+        "value": "5556997647"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.5290298,
+      "lng": -99.0567546
+    }
+  },
+  {
+    "ID": 7,
+    "TIENDA": "SANTA CLARA 7",
+    "CALLE": "Vía Morelos No. 464 Local, A1 ",
+    "COLONIA": "Col. Cuauhtémoc Xalostoc ",
+    "CP": 55310,
+    "CIUDAD": "Ecatepec ",
+    "ESTADO": "Estado de México",
+    "TELÉFONOS": [
+      {
+        "key": "5556997647",
+        "value": "5556997647"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.529414,
+      "lng": -99.0781396
+    }
+  },
+  {
+    "ID": 8,
+    "TIENDA": "SANTA CLARA 8 BODEGA",
+    "CALLE": "Vía Morelos No. 416",
+    "COLONIA": "Col. Cuauhtémoc Xalostoc",
+    "CP": 55310,
+    "CIUDAD": "Ecatepec ",
+    "ESTADO": "Estado de México",
+    "TELÉFONOS": [
+      {
+        "key": "5555695631",
+        "value": "5555695631"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.5324563,
+      "lng": -99.0719896
+    }
+  },
+  {
+    "ID": 9,
+    "TIENDA": "EL GAVILLERO ",
+    "CALLE": "Km.20 Carretera Progreso Industrial",
+    "COLONIA": "Colonia El Gavillero",
+    "CP": 54459,
+    "CIUDAD": "Nicolás de Romero",
+    "ESTADO": "Estado de México",
+    "TELÉFONOS": [
+      {
+        "key": "5516601508",
+        "value": "5516601508"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.6237378,
+      "lng": -99.333362
+    }
+  },
+  {
+    "ID": 10,
+    "TIENDA": "IZCALLI",
+    "CALLE": "Av. Chalma No. 5",
+    "COLONIA": "Col. La Hacienda",
+    "CP": 54730,
+    "CIUDAD": "Cuautitlán Izcalli ",
+    "ESTADO": "Estado de México",
+    "TELÉFONOS": [
+      {
+        "key": "5511131411",
+        "value": "5511131411"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.6701011,
+      "lng": -99.2025081
+    }
+  },
+  {
+    "ID": 11,
+    "TIENDA": "LIBERTAD",
+    "CALLE": "Lerdo de Tejada N° 9",
+    "COLONIA": "Col. Libertad",
+    "CP": 54407,
+    "CIUDAD": "Villa Nicolás Romero",
+    "ESTADO": "Estado de México",
+    "TELÉFONOS": [
+      {
+        "key": "5524640109",
+        "value": "5524640109"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.6417479,
+      "lng": -99.3016611
+    }
+  },
+  {
+    "ID": 12,
+    "TIENDA": "HUEHUETOCA",
+    "CALLE": "Carretera Jorobas Tula Km 0.5",
+    "COLONIA": "Col. Jorobas Huehuetoca",
+    "CP": 54680,
+    "CIUDAD": "Huehuetoca ",
+    "ESTADO": "Estado de México",
+    "TELÉFONOS": [
+      {
+        "key": "5939163026",
+        "value": "5939163026"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.8421338,
+      "lng": -99.2392714
+    }
+  },
+  {
+    "ID": 13,
+    "TIENDA": "TEOLOYUCAN",
+    "CALLE": "Av. 5 de Mayo No. 5",
+    "COLONIA": "Col. Tepanquiahuac",
+    "CP": 54770,
+    "CIUDAD": "Teoloyucan",
+    "ESTADO": "Estado de México",
+    "TELÉFONOS": [
+      {
+        "key": "5939148010",
+        "value": "5939148010"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.7416166,
+      "lng": -99.179398
+    }
+  },
+  {
+    "ID": 14,
+    "TIENDA": "ZUMPANGO 2",
+    "CALLE": "Av. Jorge Jiménez Cantú No. 19",
+    "COLONIA": "Col. Barrio de San Juan",
+    "CP": 55600,
+    "CIUDAD": "Zumpango",
+    "ESTADO": "Estado de México",
+    "TELÉFONOS": [
+      {
+        "key": "5911006727",
+        "value": "5911006727"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.7989552,
+      "lng": -99.1035335
+    }
+  },
+  {
+    "ID": 15,
+    "TIENDA": "SANIMEX ESPACIOS",
+    "CALLE": "Blvd. Manuel Ávila Camacho No. 92 ",
+    "COLONIA": "Col. El Conde",
+    "CP": 53500,
+    "CIUDAD": "Naucalpan de Juárez",
+    "ESTADO": "Estado de México",
+    "TELÉFONOS": [
+      {
+        "key": "5553580423",
+        "value": "5553580423"
+      },
+      {
+        "key": "5553586626",
+        "value": "5553586626"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.4680573,
+      "lng": -99.2264644
+    }
+  },
+  {
+    "ID": 16,
+    "TIENDA": "TOREO 2 ARQUICERAMICA",
+    "CALLE": "Blvd. Manuel Ávila Camacho No.435",
+    "COLONIA": "Col. San Andrés Atoto",
+    "CP": 5400,
+    "CIUDAD": "Naucalpan de Juárez",
+    "ESTADO": "Estado de México",
+    "TELÉFONOS": [
+      {
+        "key": "5555760708",
+        "value": "5555760708"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.4679859,
+      "lng": -99.225664
+    }
+  },
+  {
+    "ID": 17,
+    "TIENDA": "TECÁMAC ",
+    "CALLE": "Av.Mexiquense Lt-B1",
+    "COLONIA": "Los Héroes Tecámac",
+    "CP": 55765,
+    "CIUDAD": "Tecamac",
+    "ESTADO": "Estado de México",
+    "TELÉFONOS": [
+      {
+        "key": "5549787153",
+        "value": "5549787153"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.6328539,
+      "lng": -99.0261811
+    }
+  },
+  {
+    "ID": 18,
+    "TIENDA": "CHICONAUTLA",
+    "CALLE": "Carretera México Pachuca km 30.5",
+    "COLONIA": "Col. Santo Tomas Chiconautla",
+    "CP": 55068,
+    "CIUDAD": "Ecatepec ",
+    "ESTADO": "Estado de México",
+    "TELÉFONOS": [
+      {
+        "key": "5515508340",
+        "value": "5515508340"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.6461704,
+      "lng": -99.0048553
+    }
+  },
+  {
+    "ID": 19,
+    "TIENDA": "ZUMPANGO 1",
+    "CALLE": "Carretera  México Pachuca km 44 + 100",
+    "COLONIA": "Col. Santa María Ajoloapan",
+    "CP": 55750,
+    "CIUDAD": "Tecámac",
+    "ESTADO": "Estado de México",
+    "TELÉFONOS": [
+      {
+        "key": "5969240994",
+        "value": "5969240994"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.7661143,
+      "lng": -98.9734418
+    }
+  },
+  {
+    "ID": 20,
+    "TIENDA": "NEZA",
+    "CALLE": "Av. Adolfo López Mateos No. 660",
+    "COLONIA": "Col. El Palmar",
+    "CP": 57310,
+    "CIUDAD": "Ciudad Nezahualcóyotl ",
+    "ESTADO": "Estado de México",
+    "TELÉFONOS": [
+      {
+        "key": "5557434283",
+        "value": "5557434283"
+      },
+      {
+        "key": "5557434612",
+        "value": "5557434612"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.4143805,
+      "lng": -99.0206244
+    }
+  },
+  {
+    "ID": 21,
+    "TIENDA": "LOS REYES TEXCOCO",
+    "CALLE": "Carretera Federal Los Reyes - Texcoco km 27.5",
+    "COLONIA": "Col. Revolución ",
+    "CP": 56390,
+    "CIUDAD": "San Vicente Chicoloapan",
+    "ESTADO": "Estado de México",
+    "TELÉFONOS": [
+      {
+        "key": "5515513182",
+        "value": "5515513182"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.4027597,
+      "lng": -98.9283404
+    }
+  },
+  {
+    "ID": 22,
+    "TIENDA": "CHALCO",
+    "CALLE": "Av. Arturo Montiel Rojas Mz. 1 Lt. 11",
+    "COLONIA": "Col. El Portal",
+    "CP": 56600,
+    "CIUDAD": "Chalco",
+    "ESTADO": "Estado de México",
+    "TELÉFONOS": [
+      {
+        "key": "5559733960",
+        "value": "5559733960"
+      },
+      {
+        "key": "5559734549",
+        "value": "5559734549"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.2504536,
+      "lng": -98.901428
+    }
+  },
+  {
+    "ID": 23,
+    "TIENDA": "CHALCO 2 LAMOSA",
+    "CALLE": "Av. Arturo Montiel Rojas Mz. 1 Lt. 24",
+    "COLONIA": "Col. El Portal",
+    "CP": 56600,
+    "CIUDAD": "Chalco",
+    "ESTADO": "Estado de México",
+    "TELÉFONOS": [
+      {
+        "key": "5559733129",
+        "value": "5559733129"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.2505753,
+      "lng": -98.9021556
+    }
+  },
+  {
+    "ID": 24,
+    "TIENDA": "ARAGÓN 1",
+    "CALLE": "Av. Central No. 53",
+    "COLONIA": "Col. Valle De Aragón 3ra Sección",
+    "CP": 55280,
+    "CIUDAD": "Ecatepec ",
+    "ESTADO": "Estado de México",
+    "TELÉFONOS": [
+      {
+        "key": "5557804934",
+        "value": "5557804934"
+      },
+      {
+        "key": "5557801542",
+        "value": "5557801542"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.5073799,
+      "lng": -99.0398805
+    }
+  },
+  {
+    "ID": 25,
+    "TIENDA": "ARAGÓN 2",
+    "CALLE": "Av. Central No. 759",
+    "COLONIA": "Col. Valle De Aragón 2da Sección",
+    "CP": 57100,
+    "CIUDAD": "Nezahualcóyotl ",
+    "ESTADO": "Estado de México",
+    "TELÉFONOS": [
+      {
+        "key": "5557801650",
+        "value": "5557801650"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.4870429,
+      "lng": -99.048054
+    }
+  },
+  {
+    "ID": 26,
+    "TIENDA": "ARAGÓN 3",
+    "CALLE": "Av. Central No. 186",
+    "COLONIA": "Col. Valle De Aragón 3ra Sección",
+    "CP": 55280,
+    "CIUDAD": "Ecatepec ",
+    "ESTADO": "Estado de México",
+    "TELÉFONOS": [
+      {
+        "key": "5551214735",
+        "value": "5551214735"
+      },
+      {
+        "key": "5551214770",
+        "value": "5551214770"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.4982329,
+      "lng": -99.0431007
+    }
+  },
+  {
+    "ID": 27,
+    "TIENDA": "ARAGÓN 4",
+    "CALLE": "Av. Central Mz. 429 Lt. 44-46 Esq. Boulevard de los Aztecas",
+    "COLONIA": "Ciudad Azteca 1ra Sección",
+    "CP": 55120,
+    "CIUDAD": "Ecatepec ",
+    "ESTADO": "Estado de México",
+    "TELÉFONOS": [
+      {
+        "key": "5526465344",
+        "value": "5526465344"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.5371371,
+      "lng": -99.0269586
+    }
+  },
+  {
+    "ID": 28,
+    "TIENDA": "30-30",
+    "CALLE": "Av. Revolución No. 203",
+    "COLONIA": "Col. Residencial San Cristóbal",
+    "CP": 55000,
+    "CIUDAD": "Ecatepec ",
+    "ESTADO": "Estado de México",
+    "TELÉFONOS": [
+      {
+        "key": "5557872444",
+        "value": "5557872444"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.607519,
+      "lng": -99.0522217
+    }
+  },
+  {
+    "ID": 29,
+    "TIENDA": "COACALCO",
+    "CALLE": "Eje 3 #128",
+    "COLONIA": "Col. Granjas San Pablo ",
+    "CP": 54930,
+    "CIUDAD": "Tultitlan",
+    "ESTADO": "Estado de México",
+    "TELÉFONOS": [
+      {
+        "key": "5558791105",
+        "value": "5558791105"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.6587072,
+      "lng": -99.08008
+    }
+  },
+  {
+    "ID": 30,
+    "TIENDA": "LÓPEZ 1",
+    "CALLE": "Vía López Portillo km 13.5 LOCAL 1 Y 2",
+    "COLONIA": "Col. Guadalupe Victoria",
+    "CP": 55010,
+    "CIUDAD": "Ecatepec ",
+    "ESTADO": "Estado de México",
+    "TELÉFONOS": [
+      {
+        "key": "5558820430",
+        "value": "5558820430"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.6214156,
+      "lng": -99.0714053
+    }
+  },
+  {
+    "ID": 31,
+    "TIENDA": "LÓPEZ 2",
+    "CALLE": "Vía López Portillo km 13.5 LOCAL 15",
+    "COLONIA": "Col. Guadalupe Victoria",
+    "CP": 55011,
+    "CIUDAD": "Ecatepec ",
+    "ESTADO": "Estado de México",
+    "TELÉFONOS": [
+      {
+        "key": "5558820460",
+        "value": "5558820460"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.6214156,
+      "lng": -99.0714053
+    }
+  },
+  {
+    "ID": 32,
+    "TIENDA": "Ayuntamiento 4",
+    "CALLE": "Ayuntamiento #42",
+    "COLONIA": "Col. Centro",
+    "CP": 6010,
+    "CIUDAD": "Cuauhtémoc",
+    "ESTADO": "Ciudad de México",
+    "TELÉFONOS": [
+      {
+        "key": "5555185317",
+        "value": "5555185317"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.4307214,
+      "lng": -99.1445484
+    }
+  },
+  {
+    "ID": 33,
+    "TIENDA": "Ayuntamiento 7",
+    "CALLE": "Ayuntaniento #42",
+    "COLONIA": "Col. Centro",
+    "CP": 6010,
+    "CIUDAD": "Cuauhtémoc",
+    "ESTADO": "Ciudad de México",
+    "TELÉFONOS": [
+      {
+        "key": "5555185317",
+        "value": "5555185317"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.4306561,
+      "lng": -99.1440978
+    }
+  },
+  {
+    "ID": 34,
+    "TIENDA": "Ayuntamiento 14",
+    "CALLE": "Ayuntamiento #42",
+    "COLONIA": "Col. Centro",
+    "CP": 6010,
+    "CIUDAD": "Cuauhtémoc",
+    "ESTADO": "Ciudad de México",
+    "TELÉFONOS": [
+      {
+        "key": "5555185317",
+        "value": "5555185317"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.4306414,
+      "lng": -99.1439909
+    }
+  },
+  {
+    "ID": 35,
+    "TIENDA": "Interlomas",
+    "CALLE": "Blvrd. Interlomas No. 5",
+    "COLONIA": "Col. Niño Artillero",
+    "CP": 52786,
+    "CIUDAD": "Naucalpan de Juárez",
+    "ESTADO": "Estado de México",
+    "TELÉFONOS": [
+      {
+        "key": "5552905900",
+        "value": "5552905900"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.3932187,
+      "lng": -99.2643755
+    }
+  },
+  {
+    "ID": 36,
+    "TIENDA": "Lindavista",
+    "CALLE": "Eje 5 Nte 159",
+    "COLONIA": "Col. Lindavista Sur",
+    "CP": 07300,
+    "CIUDAD": "Gustavo A. Madero",
+    "ESTADO": "Ciudad de México",
+    "TELÉFONOS": [
+      {
+        "key": "5591305262",
+        "value": "5591305262"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.488425,
+      "lng": -99.1264883
+    }
+  },
+  {
+    "ID": 37,
+    "TIENDA": "Toluca",
+    "CALLE": "Carretera Toluca Tenango 1073",
+    "COLONIA": "Col. San Miguel totohuitlapilco",
+    "CP": 52143,
+    "CIUDAD": "Toluca",
+    "ESTADO": "Ciudad de México",
+    "TELÉFONOS": [
+      {
+        "key": "7225317641",
+        "value": "7225317641"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.2633558,
+      "lng": -99.8195071
+    }
+  },
+{
+    "ID": 38,
     "TIENDA": "Oaxaca 1",
     "CALLE": "Melchor Ocampo No. 809 entre Carbonera y Xóchitl",
     "COLONIA": "Col. Centro",
@@ -23,7 +762,7 @@
     }
   },
   {
-    "ID": 2,
+    "ID": 39,
     "TIENDA": "Oaxaca 2",
     "CALLE": "Prolongación Calzada Madero 1324",
     "COLONIA": "Col. Centro",
@@ -42,7 +781,7 @@
     }
   },
   {
-    "ID": 3,
+    "ID": 40,
     "TIENDA": "Oaxaca 3 CEDIS",
     "CALLE": "Av. Símbolos Patrios #105",
     "COLONIA": "Col. Ex Hacienda Candiani",
@@ -61,7 +800,7 @@
     }
   },
   {
-    "ID": 4,
+    "ID": 41,
     "TIENDA": "Puebla 33 Sur ",
     "CALLE": "25 Poniente No. 3306",
     "COLONIA": "Col. Santa Cruz Los Ángeles",
@@ -80,7 +819,7 @@
     }
   },
   {
-    "ID": 5,
+    "ID": 42,
     "TIENDA": "Amozoc Menudeo",
     "CALLE": "Carretera Federal Puebla-Tehuacán km 10",
     "COLONIA": "Col. San Juan Chachapa",
@@ -99,7 +838,7 @@
     }
   },
   {
-    "ID": 6,
+    "ID": 43,
     "TIENDA": "Puebla Forjadores",
     "CALLE": "Boulevard Forjadores No. 3519 ",
     "COLONIA": "Col. Santa Cruz Guadalupe",
@@ -118,7 +857,7 @@
     }
   },
   {
-    "ID": 7,
+    "ID": 44,
     "TIENDA": "Puebla 11 Sur ",
     "CALLE": "Calle 11 sur  No. 11969",
     "COLONIA": "Col. San Francisco Mayorazgo",
@@ -137,7 +876,7 @@
     }
   },
   {
-    "ID": 8,
+    "ID": 45,
     "TIENDA": "Tehuacán ",
     "CALLE": "Av. Independencia Poniente No. 625 Local E",
     "COLONIA": "Col. Arcadia",
@@ -156,7 +895,7 @@
     }
   },
   {
-    "ID": 9,
+    "ID": 46,
     "TIENDA": "Juchitán",
     "CALLE": "Carretera Juchitán Ixtepec km 1.6",
     "COLONIA": "Carretera Juchitán Ixtepec",
@@ -175,7 +914,7 @@
     }
   },
   {
-    "ID": 10,
+    "ID": 47,
     "TIENDA": "Veracruz  5 Zon. Industrial",
     "CALLE": "Carretera Veracruz Jalapa km 10 ",
     "COLONIA": " Col. Amapolas",
@@ -198,7 +937,7 @@
     }
   },
   {
-    "ID": 11,
+    "ID": 48,
     "TIENDA": "Veracruz Bolívar",
     "CALLE": "La Fragua No. 1620",
     "COLONIA": "Col. Moderno",
@@ -221,7 +960,7 @@
     }
   },
   {
-    "ID": 12,
+    "ID": 49,
     "TIENDA": "Veracruz Cuauhtémoc CEDIS",
     "CALLE": "Av. Cuauhtémoc No. 725  - Esquina Jesús Molina -",
     "COLONIA": " Fracc. Los Pinos",
@@ -244,7 +983,7 @@
     }
   },
   {
-    "ID": 13,
+    "ID": 50,
     "TIENDA": "Veracruz Miguel Alemán",
     "CALLE": "Miguel Alemán No. 1939",
     "COLONIA": "Col. Pascual Ortiz Rubio",
@@ -263,7 +1002,7 @@
     }
   },
   {
-    "ID": 14,
+    "ID": 51,
     "TIENDA": "Coatzacoalcos 4 CEDIS",
     "CALLE": "Av. Universidad Veracruzana No. 168",
     "COLONIA": "Col. Pensiones",
@@ -282,7 +1021,7 @@
     }
   },
   {
-    "ID": 15,
+    "ID": 52,
     "TIENDA": "Coatzacoalcos 5 ",
     "CALLE": "Hilario Rodríguez Malpica No. 433  Esq. 16 de Septiembre",
     "COLONIA": "Col. Centro",
@@ -301,7 +1040,7 @@
     }
   },
   {
-    "ID": 16,
+    "ID": 53,
     "TIENDA": "Minatitlán 2",
     "CALLE": " Justo Sierra No. 161",
     "COLONIA": "Col. Nueva Mina",
@@ -320,7 +1059,7 @@
     }
   },
   {
-    "ID": 17,
+    "ID": 54,
     "TIENDA": "Huamantla",
     "CALLE": "Abasolo Poniente No. 309 Esq. Victoria Norte",
     "COLONIA": "Centro Huamantla Tlaxcala",
@@ -339,7 +1078,7 @@
     }
   },
   {
-    "ID": 18,
+    "ID": 55,
     "TIENDA": "San Martin Texmelucan",
     "CALLE": "Carretera Federal Mexico Puebla No 61 ",
     "COLONIA": "Col. San Cristobal Tepatlaxco",
@@ -358,7 +1097,7 @@
     }
   },
   {
-    "ID": 19,
+    "ID": 56,
     "TIENDA": "Apizaco 1 CEDIS",
     "CALLE": "Calle Independencia No. 113",
     "COLONIA": "Col. San Miguel",
@@ -377,8 +1116,7 @@
     }
   },
   {
-    "ID": 20
-    ,
+    "ID": 57,
     "TIENDA": "Cuernavaca 2 - cedis",
     "CALLE": "Av. Hidalgo No. 1 Local 7",
     "COLONIA": "Col. Tejalpa Jiutepec",
@@ -397,7 +1135,7 @@
     }
   },
   {
-    "ID": 21,
+    "ID": 58,
     "TIENDA": "Cuautla 1",
     "CALLE": "Avenida Insurgentes No. 152",
     "COLONIA": "Colonia Emiliano Zapata",
@@ -416,7 +1154,7 @@
     }
   },
   {
-    "ID": 22,
+    "ID": 59,
     "TIENDA": "Cuautla 3",
     "CALLE": "Carretera Federal Mexico Cuautla No. 133 ",
     "COLONIA": "Col. Tetelcingo",
@@ -435,7 +1173,7 @@
     }
   },
   {
-    "ID": 23,
+    "ID": 60,
     "TIENDA": "Cuautla 4",
     "CALLE": "Carretera Federal México-Cuautla, Km 67",
     "COLONIA": "Col. Ferrocarril",
@@ -454,7 +1192,7 @@
     }
   },
   {
-    "ID": 24,
+    "ID": 61,
     "TIENDA": "Izúcar 4",
     "CALLE": "Diagonal Santiago No.110",
     "COLONIA": "Barrio de Santiago Mihuacan",
@@ -473,7 +1211,7 @@
     }
   },
   {
-    "ID": 25,
+    "ID": 62,
     "TIENDA": "Izúcar 5 CEDIS",
     "CALLE": "Carretera México-Oaxaca S/N - Antes agencia NISSAN",
     "COLONIA": "Col. Santa Cruz Tecoxco",
@@ -492,7 +1230,7 @@
     }
   },
   {
-    "ID": 26,
+    "ID": 63,
     "TIENDA": "Atlixco 1 CEDIS",
     "CALLE": "23 Oriente No. 207, Esquina 2 Oriente y 4 Sur",
     "COLONIA": "Col. Francisco I. Madero,  ",
@@ -511,7 +1249,7 @@
     }
   },
   {
-    "ID": 27,
+    "ID": 64,
     "TIENDA": "Atlixco 2",
     "CALLE": "Av. Independencia No. 2101  - A ",
     "COLONIA": "Col. Francisco I. Madero",
@@ -530,7 +1268,7 @@
     }
   },
   {
-    "ID": 28,
+    "ID": 65,
     "TIENDA": "Huajuapan",
     "CALLE": "Carretera a Juxtlahuaca km 2.6",
     "COLONIA": "Col. El Carmen ",
@@ -553,9 +1291,28 @@
     }
   },
   {
-    "ID": 29,
+    "ID": 66,
+    "TIENDA": "Tepic 1 ",
+    "CALLE": "Blvd. Tepic Xalisco No. 68",
+    "COLONIA": "Col. Los Fresnos",
+    "CP": 63185,
+    "CIUDAD": "Tepic",
+    "ESTADO": "Nayarit",
+    "TELÉFONOS": [
+      {
+        "key": "3112101601",
+        "value": "3112101601"
+      }
+    ],
+    "LOCATION": {
+      "lat": 21.4823908,
+      "lng": -104.8940447
+    }
+  },
+  {
+    "ID": 67,
     "TIENDA": "Tepic 5",
-    "CALLE": "Zacatecas No. 434  ",
+    "CALLE": "Zacatecas No. 434",
     "COLONIA": "Col. Centro",
     "CP": 63000,
     "CIUDAD": "Tepic",
@@ -572,7 +1329,7 @@
     }
   },
   {
-    "ID": 30,
+    "ID": 68,
     "TIENDA": "Guadalajara 04",
     "CALLE": "Av. González Gallo No. 1061",
     "COLONIA": "Col. Quinta Velarde",
@@ -591,7 +1348,7 @@
     }
   },
   {
-    "ID": 31,
+    "ID": 69,
     "TIENDA": "Guadalajara 09",
     "CALLE": "Niños Héroes No. 1440",
     "COLONIA": "Col. Moderna",
@@ -610,7 +1367,7 @@
     }
   },
   {
-    "ID": 32,
+    "ID": 70,
     "TIENDA": "Guadalajara 15 ",
     "CALLE": "Francisco Silva Romero No. 179",
     "COLONIA": "Col. Los Altos",
@@ -629,7 +1386,7 @@
     }
   },
   {
-    "ID": 33,
+    "ID": 71,
     "TIENDA": "Guadalajara 18",
     "CALLE": "Av. Patria No. 1076",
     "COLONIA": "Col. Prados del Nilo",
@@ -648,7 +1405,7 @@
     }
   },
   {
-    "ID": 34,
+    "ID": 72,
     "TIENDA": "Guadalajara 03 ",
     "CALLE": "Prol. López Mateos Sur No. 4499",
     "COLONIA": "Col. El Mante",
@@ -667,7 +1424,7 @@
     }
   },
   {
-    "ID": 35,
+    "ID": 73,
     "TIENDA": "Guadalajara 08 CEDIS",
     "CALLE": "Periférico Poniente No.9051",
     "COLONIA": "Col. Lomas del Colli",
@@ -690,7 +1447,7 @@
     }
   },
   {
-    "ID": 36,
+    "ID": 74,
     "TIENDA": "Guadalajara 16",
     "CALLE": "Blvd. Adolfo B. Horn  No. 3511",
     "COLONIA": "Col. La Gigantera",
@@ -713,7 +1470,7 @@
     }
   },
   {
-    "ID": 37,
+    "ID": 75,
     "TIENDA": "Guadalajara 17",
     "CALLE": "Juan Gil Preciado No. 5707 Esq. Eliseo Orozco Gtz.",
     "COLONIA": "Col. Jardines de Nuevo México",
@@ -732,7 +1489,7 @@
     }
   },
   {
-    "ID": 38,
+    "ID": 76,
     "TIENDA": "Guadalajara 19",
     "CALLE": "Av. Tonaltecas No. 3500",
     "COLONIA": "Col. Los Tulipanes 2a sección.",
@@ -755,7 +1512,7 @@
     }
   },
   {
-    "ID": 39,
+    "ID": 77,
     "TIENDA": "La Piedad 3",
     "CALLE": "Boulevard Lázaro Cárdenas No. 853",
     "COLONIA": "Fracc. La Peña",
@@ -774,7 +1531,7 @@
     }
   },
   {
-    "ID": 40,
+    "ID": 78,
     "TIENDA": "Zamora 1 CEDIS",
     "CALLE": "5 de Mayo No. 7, Esq. República",
     "COLONIA": "Col. Centro",
@@ -793,7 +1550,7 @@
     }
   },
   {
-    "ID": 41,
+    "ID": 79,
     "TIENDA": "Zamora 4",
     "CALLE": "Calzada Zamora No. 1103 ",
     "COLONIA": "Col. Centro",
@@ -812,7 +1569,26 @@
     }
   },
   {
-    "ID": 42,
+    "ID": 80,
+    "TIENDA": "Tangancícuaro",
+    "CALLE": "Calle General Carlos Zalazar Ote #744. La Peña",
+    "COLONIA": "Col. La Caña",
+    "CP": 59750,
+    "CIUDAD": "Zamora",
+    "ESTADO": "Michoacan",
+    "TELÉFONOS": [
+      {
+        "key": "3555532931",
+        "value": "3555532931"
+      }
+    ],
+    "LOCATION": {
+      "lat": 19.8853858,
+      "lng": -102.2012811
+    }
+  },  
+  {
+    "ID": 81,
     "TIENDA": "Colima 1 CEDIS",
     "CALLE": "Camino Real No. 129",
     "COLONIA": "Col. Jardines de las Lomas",
@@ -835,7 +1611,7 @@
     }
   },
   {
-    "ID": 43,
+    "ID": 82,
     "TIENDA": "Tecomán CEDIS",
     "CALLE": "Av. 20 de Noviembre S/N",
     "COLONIA": "Col. Unión ",
@@ -854,7 +1630,7 @@
     }
   },
   {
-    "ID": 44,
+    "ID": 83,
     "TIENDA": "Moroleón",
     "CALLE": "Av. America No. 1450 ",
     "COLONIA": "Col. El Progreso",
@@ -873,7 +1649,7 @@
     }
   },
   {
-    "ID": 45,
+    "ID": 84,
     "TIENDA": "Celaya",
     "CALLE": "Av. Tecnológico No. 672 ",
     "COLONIA": "Col. Las Aves",
@@ -896,7 +1672,7 @@
     }
   },
   {
-    "ID": 46,
+    "ID": 85,
     "TIENDA": "Querétaro 1 ",
     "CALLE": "Av. Pasteur sur No. 289 - Esquina Palenque- ",
     "COLONIA": "Fracc. Laurel Querétaro",
@@ -919,7 +1695,7 @@
     }
   },
   {
-    "ID": 47,
+    "ID": 86,
     "TIENDA": "Querétaro 2 CEDIS",
     "CALLE": "Prolongación Bernardo Quintana No. A2960 ",
     "COLONIA": "Col. Cerrito Colorado ",
@@ -938,7 +1714,7 @@
     }
   },
   {
-    "ID": 48,
+    "ID": 87,
     "TIENDA": "San Juan del Río CEDIS",
     "CALLE": "Av. Central No. 153",
     "COLONIA": "Col. Centro",
@@ -957,7 +1733,7 @@
     }
   },
   {
-    "ID": 49,
+    "ID": 88,
     "TIENDA": "Morelia 2",
     "CALLE": "Calzada de la Huerta No. 3056",
     "COLONIA": "Col. Hermanos Lopez Rayón",
@@ -976,7 +1752,7 @@
     }
   },
   {
-    "ID": 50,
+    "ID": 89,
     "TIENDA": "Morelia 3",
     "CALLE": "Av. Ventura Puente No. 640, Esquina Av. Lázaro Cárdenas",
     "COLONIA": "Col. Ventura Puente",
@@ -995,7 +1771,7 @@
     }
   },
   {
-    "ID": 51,
+    "ID": 90,
     "TIENDA": "Morelia 4 CEDIS",
     "CALLE": " Periférico Paseo de la Republica No. 2424",
     "COLONIA": "Col. Ampliación el Realito",
@@ -1018,7 +1794,7 @@
     }
   },
   {
-    "ID": 52,
+    "ID": 91,
     "TIENDA": "Morelia 12",
     "CALLE": "Av. Madero Pte. 8915 ",
     "COLONIA": " Ejido San Pascual ",
@@ -1037,7 +1813,7 @@
     }
   },
   {
-    "ID": 53,
+    "ID": 92,
     "TIENDA": "Morelia 8",
     "CALLE": "Av. Francisco I. Madero Poniente 6000",
     "COLONIA": "Colonia tzindurio",
@@ -1056,7 +1832,7 @@
     }
   },
   {
-    "ID": 54,
+    "ID": 93,
     "TIENDA": "Uruapan 2",
     "CALLE": "Carretera Uruapan Patzcuaro km 1 S/N",
     "COLONIA": "Col. Fracc. Lomas del Valle",
@@ -1079,7 +1855,7 @@
     }
   },
   {
-    "ID": 55,
+    "ID": 94,
     "TIENDA": "Uruapan 4",
     "CALLE": "Av. Juárez No. 99",
     "COLONIA": " Col. Morelos",
@@ -1098,7 +1874,7 @@
     }
   },
   {
-    "ID": 56,
+    "ID": 95,
     "TIENDA": "Uruapan CEDIS",
     "CALLE": "Paseo Lázaro Cárdenas No. 906",
     "COLONIA": "Col. La Magdalena",
@@ -1117,7 +1893,7 @@
     }
   },
   {
-    "ID": 57,
+    "ID": 96,
     "TIENDA": "León 1 CEDIS",
     "CALLE": "Blvd. Calzada Tepeyac No. 1119 y 1118",
     "COLONIA": "Col. San Nicolás",
@@ -1140,7 +1916,7 @@
     }
   },
   {
-    "ID": 58,
+    "ID": 97,
     "TIENDA": "León Arquicerámica",
     "CALLE": "Av.. San Juan Bosco No. 2003",
     "COLONIA": "Col. Vibar",
@@ -1159,7 +1935,7 @@
     }
   },
   {
-    "ID": 59,
+    "ID": 98,
     "TIENDA": "Irapuato",
     "CALLE": "Boulevard Gustavo Díaz Ordaz No. 506, Esq. Prolongación 16 De Septiembre",
     "COLONIA": "Fracc. Las Ánimas",
@@ -1178,7 +1954,7 @@
     }
   },
   {
-    "ID": 60,
+    "ID": 99,
     "TIENDA": "Silao 2",
     "CALLE": "Libramiento Norte No. 2340",
     "COLONIA": "Col. Predio de la Luz",
@@ -1197,7 +1973,7 @@
     }
   },
   {
-    "ID": 61,
+    "ID": 100,
     "TIENDA": "Fresnillo",
     "CALLE": "Av. Paseo del Mineral No. 697",
     "COLONIA": "Col. Lomas de Plateros",
@@ -1220,7 +1996,7 @@
     }
   },
   {
-    "ID": 62,
+    "ID": 101,
     "TIENDA": "Zacatecas CEDIS",
     "CALLE": "Calle Frontera No. 2 Poniente",
     "COLONIA": "Col. Lomas del Consuelo",
@@ -1243,7 +2019,7 @@
     }
   },
   {
-    "ID": 63,
+    "ID": 102,
     "TIENDA": "Ciudad Valles",
     "CALLE": "Blvd. México Laredo No. 207  Norte",
     "COLONIA": "Zona Centro",
@@ -1266,7 +2042,7 @@
     }
   },
   {
-    "ID": 64,
+    "ID": 103,
     "TIENDA": "San Luis Potosí 1",
     "CALLE": "Av. Carretera Central No. 159",
     "COLONIA": "Fracc. San Antonio",
@@ -1285,7 +2061,7 @@
     }
   },
   {
-    "ID": 65,
+    "ID": 104,
     "TIENDA": "San Luis Potosí 2 CEDIS",
     "CALLE": "Periférico Oriente No. 120",
     "COLONIA": "Col. Estrellas de Oriente",
@@ -1308,7 +2084,7 @@
     }
   },
   {
-    "ID": 66,
+    "ID": 105,
     "TIENDA": "San Luis Potosí 3",
     "CALLE": "Carretera Zacatecas No. 2000",
     "COLONIA": "Col. Jaral de Paisanos",
@@ -1327,7 +2103,7 @@
     }
   },
   {
-    "ID": 67,
+    "ID": 106,
     "TIENDA": "Aguascalientes 3 CEDIS",
     "CALLE": "Av. Convención Sur No. 1229",
     "COLONIA": "Col. Ojo de Agua",
@@ -1350,7 +2126,7 @@
     }
   },
   {
-    "ID": 68,
+    "ID": 107,
     "TIENDA": "Aguascalientes 4 ",
     "CALLE": "Av. Convención Poniente No. 1720",
     "COLONIA": "Fraccionamiento Olivares Santa Ana",
@@ -1369,7 +2145,7 @@
     }
   },
   {
-    "ID": 69,
+    "ID": 108,
     "TIENDA": "Aguascalientes 5",
     "CALLE": "Av. Siglo XXI No. 4928 Esq. Mesillas",
     "COLONIA": "Col. Haciendas de Aguascalientes",
@@ -1388,7 +2164,7 @@
     }
   },
   {
-    "ID": 70,
+    "ID": 109,
     "TIENDA": "Aguascalientes 6",
     "CALLE": "Miguel de la Madrid No. 916",
     "COLONIA": "Col. Corral de Barrancos",
@@ -1407,7 +2183,7 @@
     }
   },
   {
-    "ID": 71,
+    "ID": 110,
     "TIENDA": "Aguascalientes Rincón de Romos",
     "CALLE": "Plutarco Elías Calles No. 101",
     "COLONIA": "Col. San Jose",
@@ -1424,5 +2200,43 @@
       "lat": 22.2214877,
       "lng": -102.3190598
     }
-  }
+  },
+  {
+    "ID": 111,
+    "TIENDA": "Monterrey Bernardo Reyes",
+    "CALLE": "Av. Bernardo Reyes No. 3737",
+    "COLONIA": "Col. Niño Artillero",
+    "CP": 64280,
+    "CIUDAD": "Monterrey",
+    "ESTADO": "Nuevo Léon",
+    "TELÉFONOS": [
+      {
+        "key": "8113540227",
+        "value": "8113540227"
+      }
+    ],
+    "LOCATION": {
+      "lat": 25.6974433,
+      "lng": -100.3356094
+    }
+  },
+  {
+    "ID": 112,
+    "TIENDA": "Monterrey Arturo de la Garza",
+    "CALLE": "Av. Arturo B. de la Garza 1010 Pte",
+    "COLONIA": "Col. Col. Joaquín Garza y Garza",
+    "CP": 64280,
+    "CIUDAD": "Ciudad Juárez",
+    "ESTADO": "Nuevo Léon",
+    "TELÉFONOS": [
+      {
+        "key": "8112931054",
+        "value": "8112931054"
+      }
+    ],
+    "LOCATION": {
+      "lat": 25.6405818,
+      "lng": -100.1327173
+    }
+  }   
 ]
