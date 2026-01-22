@@ -241,8 +241,9 @@ const CheckoutShippingMethods: React.FC<CheckoutShippingMethodsProps> = ({
       <div>
         {selectedShop ? (
           <div className="w-full">
-            <span className="font-bold">Recoger en:</span> {selectedShop.CALLE},
-            C.P. {selectedShop.CP} Municipio {selectedShop.CIUDAD}{' '}
+            <span className="font-bold">Recoger en:</span><br /> 
+            <span className="font-bold">{selectedShop.TIENDA}</span><br /> 
+            {selectedShop.CALLE}, C.P. {selectedShop.CP} Municipio {selectedShop.CIUDAD}{' '}
             {selectedShop.ESTADO} Teléfono:{' '}
             {selectedShop.TELÉFONOS.map(({ key, value }, index) => (
               <span key={index}>
