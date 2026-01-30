@@ -285,6 +285,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
   };
 
   const ProductTimeDelivery = product?.tiempoDeEntregaPod;
+  const SeoDescripcion = product?.seoDescripcion;
 
   const isPisosMuros = !!getProductCategory(product, 'pisos-y-azulejos');
   const isAdhesivos = !!getProductCategory(product, 'adhesivos');
@@ -653,6 +654,10 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
                   getMarca(product)?.[0]?.toLocaleLowerCase() !== 'grohe'
                 ? '*Envío a domicilio de 5 a 7 dias hábiles'
                 : '*El tiempo de entrega varía de acuerdo al producto y/o existencia'}
+              {SeoDescripcion
+                ? SeoDescripcion
+                : ''
+              }
             </div>
 
             {isTina &&
