@@ -9,7 +9,7 @@ type ProductDescriptionProps = {
   product?: ProductType;
 };
 const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
-  const [option, setOption] = useState(2);
+  const [option, setOption] = useState(1);
   let content = <></>;
 
   switch (option) {
