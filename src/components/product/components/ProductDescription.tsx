@@ -112,16 +112,6 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
   return (
     <div className=" my-auto">
       <div className="grid grid-cols-3 lg:grid-cols-6  font-Century-Gothic">
-        <button
-          onClick={() => setOption(2)}
-          className={`flex items-center  ${
-            option === 2
-              ? 'border-[#B2B2B2] border-l border-r border-t  text-[#0033A1]'
-              : ' text-[#000] border-b border-[#B2B2B2]'
-          } p-2 justify-center `}
-        >
-          Información Adicional
-        </button>
         {product?.description ? (
           <button
             onClick={() => setOption(1)}
@@ -150,6 +140,16 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
         ) : (
           ''
         )}
+        <button
+          onClick={() => setOption(2)}
+          className={`flex items-center  ${
+            option === 2
+              ? 'border-[#B2B2B2] border-l border-r border-t  text-[#0033A1]'
+              : ' text-[#000] border-b border-[#B2B2B2]'
+          } p-2 justify-center `}
+        >
+          Información Adicional
+        </button>        
         <div
           className={`${
             product?.dataSheet ? 'lg:col-span-3 ' : 'lg:col-span-4 col-span-2'
