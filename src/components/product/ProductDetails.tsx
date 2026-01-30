@@ -645,7 +645,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
               </a>
             </div>
 
-            <div className="text-[#000] text-[14px] font-Segoe-Ui">
+            <div className="text-[#000] text-[14px] font-Segoe-Ui mb-6">
               {SeoDescripcion
                 ? SeoDescripcion
                 : null}
@@ -806,7 +806,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
                 </a>
               </div>
 
-              <div className="text-[#000] text-[14px] font-Segoe-Ui">
+              <div className="text-[#000] text-[14px] font-Segoe-Ui mb-6">
                 {SeoDescripcion
                   ? SeoDescripcion
                   : null}
