@@ -15736,6 +15736,8 @@ export type ExternalProduct = ContentNode &
     terms?: Maybe<ProductToTermNodeConnection>;
     /** Tiempo de entrega POD */
     tiempoDeEntregaPod?: Maybe<Scalars['String']['output']>;
+    /** SEO Description */
+    seoDescripcion?: Maybe<Scalars['String']['output']>;
     /** The title of the post. This is currently just the raw title. An amendment to support rendered title needs to be made. */
     title?: Maybe<Scalars['String']['output']>;
     /** Number total of sales */
@@ -18707,6 +18709,8 @@ export type GroupProduct = ContentNode &
     terms?: Maybe<ProductToTermNodeConnection>;
     /** Tiempo de entrega POD */
     tiempoDeEntregaPod?: Maybe<Scalars['String']['output']>;
+    /** SEO Description */
+    seoDescripcion?: Maybe<Scalars['String']['output']>;
     /** The title of the post. This is currently just the raw title. An amendment to support rendered title needs to be made. */
     title?: Maybe<Scalars['String']['output']>;
     /** Number total of sales */
@@ -123927,6 +123931,8 @@ export type Product = {
   terms?: Maybe<ProductToTermNodeConnection>;
   /** Tiempo de entrega POD */
   tiempoDeEntregaPod?: Maybe<Scalars['String']['output']>;
+    /** SEO Description */
+    seoDescripcion?: Maybe<Scalars['String']['output']>;
   /** The title of the post. This is currently just the raw title. An amendment to support rendered title needs to be made. */
   title?: Maybe<Scalars['String']['output']>;
   /** Number total of sales */
@@ -182486,6 +182492,8 @@ export type SimpleProduct = ContentNode &
     terms?: Maybe<ProductToTermNodeConnection>;
     /** Tiempo de entrega POD */
     tiempoDeEntregaPod?: Maybe<Scalars['String']['output']>;
+    /** SEO Description */
+    seoDescripcion?: Maybe<Scalars['String']['output']>;
     /** The title of the post. This is currently just the raw title. An amendment to support rendered title needs to be made. */
     title?: Maybe<Scalars['String']['output']>;
     /** Number total of sales */
@@ -194332,6 +194340,8 @@ export type VariableProduct = ContentNode &
     terms?: Maybe<ProductToTermNodeConnection>;
     /** Tiempo de entrega POD */
     tiempoDeEntregaPod?: Maybe<Scalars['String']['output']>;
+    /** SEO Description */
+    seoDescripcion?: Maybe<Scalars['String']['output']>;
     /** The title of the post. This is currently just the raw title. An amendment to support rendered title needs to be made. */
     title?: Maybe<Scalars['String']['output']>;
     /** Number total of sales */
@@ -200409,6 +200419,7 @@ export type FetchProductQuery = {
         precioPor: string | null;
         maximumQuantity: number | null;
         tiempoDeEntregaPod: string | null;
+        seoDescripcion: string | null;
         slug: string | null;
         stockQuantity: number | null;
         type: ProductTypesEnum | null;
@@ -201722,6 +201733,7 @@ export type FetchProductQuery = {
         precioPor: string | null;
         maximumQuantity: number | null;
         tiempoDeEntregaPod: string | null;
+        seoDescripcion: string | null;
         slug: string | null;
         stockQuantity: number | null;
         type: ProductTypesEnum | null;
@@ -213413,6 +213425,7 @@ export const FetchProductDocument = gql`
         precioPor
         maximumQuantity
         tiempoDeEntregaPod
+        seoDescripcion
         slug
         dataSheet {
           name
@@ -213439,6 +213452,7 @@ export const FetchProductDocument = gql`
         precioPor
         maximumQuantity
         tiempoDeEntregaPod
+        seoDescripcion
         slug
         dataSheet {
           name
