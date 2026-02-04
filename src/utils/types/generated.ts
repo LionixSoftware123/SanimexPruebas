@@ -15738,6 +15738,18 @@ export type ExternalProduct = ContentNode &
     tiempoDeEntregaPod?: Maybe<Scalars['String']['output']>;
     /** SEO Description */
     seoDescripcion?: Maybe<Scalars['String']['output']>;
+    /** SEO Meta Description */
+    seoMeta?: Maybe<Scalars['String']['output']>;
+    /** Beneficios y Uso */
+    beneficiosUso?: Maybe<Scalars['String']['output']>;
+    /** Descripción Técnica */
+    descripcionTecnica?: Maybe<Scalars['String']['output']>;
+    /** Características Destacadas */
+    caracteristicasDestacadas?: Maybe<Scalars['String']['output']>;
+    /** Preguntas Frecuentes */
+    preguntasFrecuentes?: Maybe<Scalars['String']['output']>;
+    /** Cierre Comercial */
+    cierreComercial?: Maybe<Scalars['String']['output']>;
     /** The title of the post. This is currently just the raw title. An amendment to support rendered title needs to be made. */
     title?: Maybe<Scalars['String']['output']>;
     /** Number total of sales */
@@ -18711,6 +18723,18 @@ export type GroupProduct = ContentNode &
     tiempoDeEntregaPod?: Maybe<Scalars['String']['output']>;
     /** SEO Description */
     seoDescripcion?: Maybe<Scalars['String']['output']>;
+    /** SEO Meta Description */
+    seoMeta?: Maybe<Scalars['String']['output']>;
+    /** Beneficios y Uso */
+    beneficiosUso?: Maybe<Scalars['String']['output']>;
+    /** Descripción Técnica */
+    descripcionTecnica?: Maybe<Scalars['String']['output']>;
+    /** Características Destacadas */
+    caracteristicasDestacadas?: Maybe<Scalars['String']['output']>;
+    /** Preguntas Frecuentes */
+    preguntasFrecuentes?: Maybe<Scalars['String']['output']>;
+    /** Cierre Comercial */
+    cierreComercial?: Maybe<Scalars['String']['output']>;
     /** The title of the post. This is currently just the raw title. An amendment to support rendered title needs to be made. */
     title?: Maybe<Scalars['String']['output']>;
     /** Number total of sales */
@@ -123931,8 +123955,20 @@ export type Product = {
   terms?: Maybe<ProductToTermNodeConnection>;
   /** Tiempo de entrega POD */
   tiempoDeEntregaPod?: Maybe<Scalars['String']['output']>;
-    /** SEO Description */
-    seoDescripcion?: Maybe<Scalars['String']['output']>;
+  /** SEO Description */
+  seoDescripcion?: Maybe<Scalars['String']['output']>;
+  /** SEO Meta Description */
+  seoMeta?: Maybe<Scalars['String']['output']>;
+  /** Beneficios y Uso */
+  beneficiosUso?: Maybe<Scalars['String']['output']>;
+  /** Descripción Técnica */
+  descripcionTecnica?: Maybe<Scalars['String']['output']>;
+  /** Características Destacadas */
+  caracteristicasDestacadas?: Maybe<Scalars['String']['output']>;
+  /** Preguntas Frecuentes */
+  preguntasFrecuentes?: Maybe<Scalars['String']['output']>;
+  /** Cierre Comercial */
+  cierreComercial?: Maybe<Scalars['String']['output']>;
   /** The title of the post. This is currently just the raw title. An amendment to support rendered title needs to be made. */
   title?: Maybe<Scalars['String']['output']>;
   /** Number total of sales */
@@ -182494,6 +182530,18 @@ export type SimpleProduct = ContentNode &
     tiempoDeEntregaPod?: Maybe<Scalars['String']['output']>;
     /** SEO Description */
     seoDescripcion?: Maybe<Scalars['String']['output']>;
+    /** SEO Meta Description */
+    seoMeta?: Maybe<Scalars['String']['output']>;
+    /** Beneficios y Uso */
+    beneficiosUso?: Maybe<Scalars['String']['output']>;
+    /** Descripción Técnica */
+    descripcionTecnica?: Maybe<Scalars['String']['output']>;
+    /** Características Destacadas */
+    caracteristicasDestacadas?: Maybe<Scalars['String']['output']>;
+    /** Preguntas Frecuentes */
+    preguntasFrecuentes?: Maybe<Scalars['String']['output']>;
+    /** Cierre Comercial */
+    cierreComercial?: Maybe<Scalars['String']['output']>;
     /** The title of the post. This is currently just the raw title. An amendment to support rendered title needs to be made. */
     title?: Maybe<Scalars['String']['output']>;
     /** Number total of sales */
@@ -194342,6 +194390,18 @@ export type VariableProduct = ContentNode &
     tiempoDeEntregaPod?: Maybe<Scalars['String']['output']>;
     /** SEO Description */
     seoDescripcion?: Maybe<Scalars['String']['output']>;
+    /** SEO Meta Description */
+    seoMeta?: Maybe<Scalars['String']['output']>;
+    /** Beneficios y Uso */
+    beneficiosUso?: Maybe<Scalars['String']['output']>;
+    /** Descripción Técnica */
+    descripcionTecnica?: Maybe<Scalars['String']['output']>;
+    /** Características Destacadas */
+    caracteristicasDestacadas?: Maybe<Scalars['String']['output']>;
+    /** Preguntas Frecuentes */
+    preguntasFrecuentes?: Maybe<Scalars['String']['output']>;
+    /** Cierre Comercial */
+    cierreComercial?: Maybe<Scalars['String']['output']>;
     /** The title of the post. This is currently just the raw title. An amendment to support rendered title needs to be made. */
     title?: Maybe<Scalars['String']['output']>;
     /** Number total of sales */
@@ -200420,6 +200480,12 @@ export type FetchProductQuery = {
         maximumQuantity: number | null;
         tiempoDeEntregaPod: string | null;
         seoDescripcion: string | null;
+        seoMeta: string | null;
+        beneficiosUso: string | null;
+        descripcionTecnica: string | null;
+        caracteristicasDestacadas: string | null;
+        preguntasFrecuentes: string | null;
+        cierreComercial: string | null;
         slug: string | null;
         stockQuantity: number | null;
         type: ProductTypesEnum | null;
@@ -201734,6 +201800,12 @@ export type FetchProductQuery = {
         maximumQuantity: number | null;
         tiempoDeEntregaPod: string | null;
         seoDescripcion: string | null;
+        seoMeta: string | null;
+        beneficiosUso: string | null;
+        descripcionTecnica: string | null;
+        caracteristicasDestacadas: string | null;
+        preguntasFrecuentes: string | null;
+        cierreComercial: string | null;        
         slug: string | null;
         stockQuantity: number | null;
         type: ProductTypesEnum | null;
@@ -213426,6 +213498,12 @@ export const FetchProductDocument = gql`
         maximumQuantity
         tiempoDeEntregaPod
         seoDescripcion
+        seoMeta
+        beneficiosUso
+        descripcionTecnica
+        caracteristicasDestacadas
+        preguntasFrecuentes
+        cierreComercial        
         slug
         dataSheet {
           name
@@ -213453,6 +213531,12 @@ export const FetchProductDocument = gql`
         maximumQuantity
         tiempoDeEntregaPod
         seoDescripcion
+        seoMeta
+        beneficiosUso
+        descripcionTecnica
+        caracteristicasDestacadas
+        preguntasFrecuentes
+        cierreComercial
         slug
         dataSheet {
           name
