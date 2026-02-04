@@ -223,7 +223,7 @@ const ProductPage: React.FC<ProductPageProps> = ({
     <ProductLayout>
       <StaticMeta
         title={`Sanimex - ${product?.name}`}
-        description={`${product?.description || 'Sanimex'}`}
+        description={`${product?.seoMeta || 'Sanimex'}`}
         asPath={router.asPath}
         image="/favicon.ico"
       />
