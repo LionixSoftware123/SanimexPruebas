@@ -251,6 +251,8 @@ p > a {
 }
 
 /* Agregado AxisKG 05022026 */
+iframe { aspect-ratio: 16 / 9; width: 100% !important; }
+.post-details2 { width: 100%; max-width: 100%; margin: 0 5px; }
 .post-details2 > p,
 .post-details2 div > div > p,
 .post-details2 > div > p {
