@@ -15736,6 +15736,8 @@ export type ExternalProduct = ContentNode &
     terms?: Maybe<ProductToTermNodeConnection>;
     /** Tiempo de entrega POD */
     tiempoDeEntregaPod?: Maybe<Scalars['String']['output']>;
+    /** SEO Title */
+    seoTitle?: Maybe<Scalars['String']['output']>;
     /** SEO Description */
     seoDescripcion?: Maybe<Scalars['String']['output']>;
     /** SEO Meta Description */
@@ -18721,6 +18723,8 @@ export type GroupProduct = ContentNode &
     terms?: Maybe<ProductToTermNodeConnection>;
     /** Tiempo de entrega POD */
     tiempoDeEntregaPod?: Maybe<Scalars['String']['output']>;
+    /** SEO Title */
+    seoTitle?: Maybe<Scalars['String']['output']>;
     /** SEO Description */
     seoDescripcion?: Maybe<Scalars['String']['output']>;
     /** SEO Meta Description */
@@ -123955,6 +123959,8 @@ export type Product = {
   terms?: Maybe<ProductToTermNodeConnection>;
   /** Tiempo de entrega POD */
   tiempoDeEntregaPod?: Maybe<Scalars['String']['output']>;
+  /** SEO Title */
+    seoTitle?: Maybe<Scalars['String']['output']>;
   /** SEO Description */
   seoDescripcion?: Maybe<Scalars['String']['output']>;
   /** SEO Meta Description */
@@ -182528,6 +182534,8 @@ export type SimpleProduct = ContentNode &
     terms?: Maybe<ProductToTermNodeConnection>;
     /** Tiempo de entrega POD */
     tiempoDeEntregaPod?: Maybe<Scalars['String']['output']>;
+    /** SEO Title */
+    seoTitle?: Maybe<Scalars['String']['output']>;
     /** SEO Description */
     seoDescripcion?: Maybe<Scalars['String']['output']>;
     /** SEO Meta Description */
@@ -194388,6 +194396,8 @@ export type VariableProduct = ContentNode &
     terms?: Maybe<ProductToTermNodeConnection>;
     /** Tiempo de entrega POD */
     tiempoDeEntregaPod?: Maybe<Scalars['String']['output']>;
+    /** SEO Title */
+    seoTitle?: Maybe<Scalars['String']['output']>;
     /** SEO Description */
     seoDescripcion?: Maybe<Scalars['String']['output']>;
     /** SEO Meta Description */
@@ -200479,6 +200489,7 @@ export type FetchProductQuery = {
         precioPor: string | null;
         maximumQuantity: number | null;
         tiempoDeEntregaPod: string | null;
+        seoTitle: string | null;
         seoDescripcion: string | null;
         seoMeta: string | null;
         beneficiosUso: string | null;
@@ -201799,6 +201810,7 @@ export type FetchProductQuery = {
         precioPor: string | null;
         maximumQuantity: number | null;
         tiempoDeEntregaPod: string | null;
+        seoTitle: string | null;
         seoDescripcion: string | null;
         seoMeta: string | null;
         beneficiosUso: string | null;
@@ -213497,6 +213509,7 @@ export const FetchProductDocument = gql`
         precioPor
         maximumQuantity
         tiempoDeEntregaPod
+        seoTitle
         seoDescripcion
         seoMeta
         beneficiosUso
@@ -213530,6 +213543,7 @@ export const FetchProductDocument = gql`
         precioPor
         maximumQuantity
         tiempoDeEntregaPod
+        seoTitle
         seoDescripcion
         seoMeta
         beneficiosUso
