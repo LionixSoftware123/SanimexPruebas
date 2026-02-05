@@ -223,7 +223,7 @@ const ProductPage: React.FC<ProductPageProps> = ({
     <ProductLayout>
       <StaticMeta
         title={`Sanimex - ${product?.name}`}
-        description={`${product?.seoMeta || ${product?.description }}`}
+        description={`${product?.seoMeta || product?.description}`}
         asPath={router.asPath}
         image="/favicon.ico"
       />
@@ -234,6 +234,11 @@ const ProductPage: React.FC<ProductPageProps> = ({
           </Container>
           <Container classes="mb-6">
             <ProductDescription product={product} />
+            {product?.cierreComercial ? (
+              <div class="text-[#000] text-[14px] font-Segoe-Ui mt-6">product?.cierreComercial</div>
+            ) : (
+              ''
+            )}
           </Container>
           {complementProducts.length > 0 && (
             <Container classes="mb-6">
