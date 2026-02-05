@@ -197,11 +197,6 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
           >
             Fichas Técnicas
           </button>
-          <div
-            className={`${
-              product?.dataSheet ? 'lg:col-span-3 ' : 'lg:col-span-4 col-span-2'
-            }  border-b border-[#B2B2B2]`}
-          ></div>      
         ) : (
           ''
         )}
