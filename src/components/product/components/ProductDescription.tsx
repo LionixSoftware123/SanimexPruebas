@@ -158,16 +158,6 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
       </div>
       {content}
     </div>
-    
-    {product?.cierreComercial ? (
-      <div className="text-[#000000]">
-        <div
-          dangerouslySetInnerHTML={{_html: product?.cierreComercial || '' }}
-        ></div>
-      </div>
-    ) : (
-     ''
-    )}
   );
 };
 
