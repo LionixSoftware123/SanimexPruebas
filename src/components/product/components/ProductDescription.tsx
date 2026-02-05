@@ -111,7 +111,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
               dangerouslySetInnerHTML={{ __html: product?.descripcionTecnica || '' }}
             ></div>          
           ) : ('')}
-          <div className="grid grid-cols-3 lg:grid-cols-6 font-Century-Gothic gap-4 my-4">
+          <div className="grid grid-cols-3 lg:grid-cols-6 font-Century-Gothic gap-4 my-4 grid-cols-3-custom">
           {product?.dataSheet?.map((pdf, index) => (
             <a
               key={index}
