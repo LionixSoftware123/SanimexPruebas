@@ -17,9 +17,9 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
       content = (
         <div
           key={'Preguntas Frecuentes'}
-          className="grid grid-cols-3 lg:grid-cols-6 font-Century-Gothic gap-4 my-4"
+          className="grid grid-cols-1 lg:grid-cols-1 font-Century-Gothic gap-4 my-4"
         >
-          <div className="col-span-3 flex justify-between px-2 py-[0.6rem] border-b border-[#B2B2B2] text-[#B2B2B2] first-letter:uppercase">
+          <div className="col-span-1 flex justify-between px-2 py-[0.6rem] border-b border-[#B2B2B2] text-[#B2B2B2] first-letter:uppercase">
             <div
               className="post-details first-letter:uppercase"
               dangerouslySetInnerHTML={{ __html: product?.preguntasFrecuentes || '' }}
@@ -32,9 +32,9 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
       content = (
         <div
           key={'Características Destacadas'}
-          className="grid grid-cols-3 lg:grid-cols-6 font-Century-Gothic gap-4 my-4"
+          className="grid grid-cols-1 lg:grid-cols-1 font-Century-Gothic gap-4 my-4"
         >
-          <div className="col-span-3 flex justify-between px-2 py-[0.6rem] border-b border-[#B2B2B2] text-[#B2B2B2] first-letter:uppercase">
+          <div className="col-span-1 flex justify-between px-2 py-[0.6rem] border-b border-[#B2B2B2] text-[#B2B2B2] first-letter:uppercase">
             <div
               className="post-details first-letter:uppercase"
               dangerouslySetInnerHTML={{ __html: product?.caracteristicasDestacadas || '' }}
@@ -47,9 +47,9 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
       content = (
         <div
           key={'Beneficios Usos Aplicaciones'}
-          className="grid grid-cols-3 lg:grid-cols-6 font-Century-Gothic gap-4 my-4"
+          className="grid grid-cols-1 lg:grid-cols-1 font-Century-Gothic gap-4 my-4"
         >
-          <div className="col-span-3 flex justify-between px-2 py-[0.6rem] border-b border-[#B2B2B2] text-[#B2B2B2] first-letter:uppercase">
+          <div className="col-span-1 flex justify-between px-2 py-[0.6rem] border-b border-[#B2B2B2] text-[#B2B2B2] first-letter:uppercase">
             <div
               className="post-details first-letter:uppercase"
               dangerouslySetInnerHTML={{ __html: product?.beneficiosUso || '' }}
@@ -62,7 +62,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
       content = (
         <div
           key={'Información adicional'}
-          className="grid grid-cols-3 lg:grid-cols-5 font-Century-Gothic"
+          className="grid grid-cols-1 lg:grid-cols-1 font-Century-Gothic"
         >
           {product?.attributes?.nodes.map(
             (node: GlobalProductAttribute, key: any) => {
@@ -85,7 +85,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
 
               return (
                 <div
-                  className="col-span-3 flex justify-between px-2 py-[0.6rem] border-b border-[#B2B2B2]"
+                  className="col-span-1 flex justify-between px-2 py-[0.6rem] border-b border-[#B2B2B2]"
                   key={key}
                 >
                   <div>{node.label}:</div>
@@ -103,7 +103,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
       content = (
         <div
           key={'Descripción Técnica'}
-          className="grid grid-cols-3 lg:grid-cols-6 font-Century-Gothic gap-4 my-4"
+          className="grid grid-cols-1 lg:grid-cols-1 font-Century-Gothic gap-4 my-4"
         >
           {product?.descripcionTecnica ? (
             <div
@@ -147,9 +147,9 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
       content = (
         <div
           key={'descripcion'}
-          className="grid grid-cols-3 lg:grid-cols-5 font-Century-Gothic"
+          className="grid grid-cols-1 lg:grid-cols-1 font-Century-Gothic"
         >
-          <div className="col-span-3 flex justify-between px-2 py-[0.6rem] border-b border-[#B2B2B2] text-[#B2B2B2] first-letter:uppercase">
+          <div className="col-span-1 flex justify-between px-2 py-[0.6rem] border-b border-[#B2B2B2] text-[#B2B2B2] first-letter:uppercase">
             <div
               className="post-details first-letter:uppercase"
               dangerouslySetInnerHTML={{ __html: product?.description || '' }}
