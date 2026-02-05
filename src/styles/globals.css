@@ -250,6 +250,19 @@ p > a {
   margin-left: 25px;
 }
 
+/* Agregado AxisKG 05022026 */
+.post-details2 > p,
+.post-details2 div > div > p,
+.post-details2 > div > p {
+  width: 100%;
+  font-size: 1rem;
+  line-height: 135%;
+  color: #000000;
+  font-weight: 400;
+  margin: 10px 0;
+  padding-bottom: 20px;
+}
+
 .shadow-top {
   box-shadow: 0 -10px 10px -10px rgba(0, 0, 0, 0.1);
 }
