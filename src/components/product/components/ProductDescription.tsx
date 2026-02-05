@@ -111,8 +111,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
               dangerouslySetInnerHTML={{ __html: product?.descripcionTecnica || '' }}
             ></div>          
           ) : ('')}
-          {product?.dataSheet?.length ? (
-            {product?.dataSheet?.map((pdf, index) => (
+          {product?.dataSheet?.map((pdf, index) => (
             <a
               key={index}
               href={pdf?.url ?? ''}
@@ -140,8 +139,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
                 </p>
               </button>
             </a>
-            ))}
-          ) : ('')}
+          ))}
         </div>
       );
       break;
