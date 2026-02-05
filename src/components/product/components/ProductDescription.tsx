@@ -13,6 +13,36 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
   let content = <></>;
 
   switch (option) {
+    case 7:
+      content = (
+        <div
+          key={'Preguntas Frecuentes'}
+          className="grid grid-cols-3 lg:grid-cols-6 font-Century-Gothic gap-4 my-4"
+        >
+          <div className="col-span-3 flex justify-between px-2 py-[0.6rem] border-b border-[#B2B2B2] text-[#B2B2B2] first-letter:uppercase">
+            <div
+              className="post-details first-letter:uppercase"
+              dangerouslySetInnerHTML={{ __html: product?.preguntasFrecuentes || '' }}
+            ></div>
+          </div>
+        </div>
+      );
+      break;
+    case 6:
+      content = (
+        <div
+          key={'Características Destacadas'}
+          className="grid grid-cols-3 lg:grid-cols-6 font-Century-Gothic gap-4 my-4"
+        >
+          <div className="col-span-3 flex justify-between px-2 py-[0.6rem] border-b border-[#B2B2B2] text-[#B2B2B2] first-letter:uppercase">
+            <div
+              className="post-details first-letter:uppercase"
+              dangerouslySetInnerHTML={{ __html: product?.caracteristicasDestacadas || '' }}
+            ></div>
+          </div>
+        </div>
+      );
+      break;
     case 5:
       content = (
         <div
@@ -27,7 +57,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
           </div>
         </div>
       );
-      break;      
+      break;
     case 4:
       content = (
         <div
@@ -167,6 +197,11 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
           >
             Fichas Técnicas
           </button>
+          <div
+            className={`${
+              product?.dataSheet ? 'lg:col-span-3 ' : 'lg:col-span-4 col-span-2'
+            }  border-b border-[#B2B2B2]`}
+          ></div>      
         ) : (
           ''
         )}
@@ -212,11 +247,36 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
           ''
         )}
 
-        <div
-          className={`${
-            product?.dataSheet ? 'lg:col-span-3 ' : 'lg:col-span-4 col-span-2'
-          }  border-b border-[#B2B2B2]`}
-        ></div>
+        {product?.caracteristicasDestacadas ? (
+          <button
+            onClick={() => setOption(6)}
+            className={`flex items-center  ${
+              option === 6
+                ? 'border-[#B2B2B2] border-l border-r border-t text-[#0033A1]'
+                : ' text-[#000] border-b border-[#B2B2B2]'
+            } p-2 justify-center `}
+          >
+            Características Destacadas
+          </button>
+        ) : (
+          ''
+        )}
+
+        {product?.preguntasFrecuentes ? (
+          <button
+            onClick={() => setOption(7)}
+            className={`flex items-center  ${
+              option === 7
+                ? 'border-[#B2B2B2] border-l border-r border-t text-[#0033A1]'
+                : ' text-[#000] border-b border-[#B2B2B2]'
+            } p-2 justify-center `}
+          >
+            Preguntas Frecuentes
+          </button>
+        ) : (
+          ''
+        )}
+
       </div>
       {content}
     </div>
