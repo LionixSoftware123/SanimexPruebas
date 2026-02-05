@@ -21,7 +21,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
         >
           <div className="col-span-1 flex justify-between px-2 py-[0.6rem] border-b border-[#B2B2B2] text-[#000] first-letter:uppercase">
             <div
-              className="post-details first-letter:uppercase"
+              className="post-details2 first-letter:uppercase"
               dangerouslySetInnerHTML={{ __html: product?.preguntasFrecuentes || '' }}
             ></div>
           </div>
@@ -36,7 +36,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
         >
           <div className="col-span-1 flex justify-between px-2 py-[0.6rem] border-b border-[#B2B2B2] text-[#000] first-letter:uppercase">
             <div
-              className="post-details first-letter:uppercase"
+              className="post-details2 first-letter:uppercase"
               dangerouslySetInnerHTML={{ __html: product?.caracteristicasDestacadas || '' }}
             ></div>
           </div>
@@ -51,7 +51,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
         >
           <div className="col-span-1 flex justify-between px-2 py-[0.6rem] border-b border-[#B2B2B2] text-[#000] first-letter:uppercase">
             <div
-              className="post-details first-letter:uppercase"
+              className="post-details2 first-letter:uppercase"
               dangerouslySetInnerHTML={{ __html: product?.beneficiosUso || '' }}
             ></div>
           </div>
@@ -103,11 +103,11 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
       content = (
         <div
           key={'Descripción Técnica'}
-          className="grid grid-cols-1 lg:grid-cols-1 font-Century-Gothic gap-4 my-4"
+          className="grid grid-cols-1 lg:grid-cols-1 font-Century-Gothic gap-4 my-4 border-b border-[#B2B2B2]"
         >
           {product?.descripcionTecnica ? (
             <div
-              className="post-details first-letter:uppercase"
+              className="post-details2 first-letter:uppercase"
               dangerouslySetInnerHTML={{ __html: product?.descripcionTecnica || '' }}
             ></div>          
           ) : ('')}
@@ -153,7 +153,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
         >
           <div className="col-span-1 flex justify-between px-2 py-[0.6rem] border-b border-[#B2B2B2] text-[#000] first-letter:uppercase">
             <div
-              className="post-details first-letter:uppercase"
+              className="post-details2 first-letter:uppercase"
               dangerouslySetInnerHTML={{ __html: product?.description || '' }}
             ></div>
           </div>
