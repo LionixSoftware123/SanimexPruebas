@@ -19,7 +19,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
           key={'Preguntas Frecuentes'}
           className="grid grid-cols-1 lg:grid-cols-1 font-Century-Gothic gap-4 my-4"
         >
-          <div className="col-span-1 flex justify-between px-2 py-[0.6rem] border-b border-[#B2B2B2] text-[#B2B2B2] first-letter:uppercase">
+          <div className="col-span-1 flex justify-between px-2 py-[0.6rem] border-b border-[#B2B2B2] text-[#000] first-letter:uppercase">
             <div
               className="post-details first-letter:uppercase"
               dangerouslySetInnerHTML={{ __html: product?.preguntasFrecuentes || '' }}
@@ -34,7 +34,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
           key={'Características Destacadas'}
           className="grid grid-cols-1 lg:grid-cols-1 font-Century-Gothic gap-4 my-4"
         >
-          <div className="col-span-1 flex justify-between px-2 py-[0.6rem] border-b border-[#B2B2B2] text-[#B2B2B2] first-letter:uppercase">
+          <div className="col-span-1 flex justify-between px-2 py-[0.6rem] border-b border-[#B2B2B2] text-[#000] first-letter:uppercase">
             <div
               className="post-details first-letter:uppercase"
               dangerouslySetInnerHTML={{ __html: product?.caracteristicasDestacadas || '' }}
@@ -49,7 +49,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
           key={'Beneficios Usos Aplicaciones'}
           className="grid grid-cols-1 lg:grid-cols-1 font-Century-Gothic gap-4 my-4"
         >
-          <div className="col-span-1 flex justify-between px-2 py-[0.6rem] border-b border-[#B2B2B2] text-[#B2B2B2] first-letter:uppercase">
+          <div className="col-span-1 flex justify-between px-2 py-[0.6rem] border-b border-[#B2B2B2] text-[#000] first-letter:uppercase">
             <div
               className="post-details first-letter:uppercase"
               dangerouslySetInnerHTML={{ __html: product?.beneficiosUso || '' }}
@@ -118,7 +118,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
               href={pdf?.url ?? ''}
               download
               target="_blank"
-              className="flex items-center  flex-col justify-center mx-auto h-40 w-40 border  bg-gray-50 rounded hover:border-[#1c355e]"
+              className="flex items-center  flex-col justify-center mx-auto h-40 w-40 border bg-gray-50 rounded hover:border-[#1c355e]"
             >
               <Image src="/pdf.png" alt="PDF Icon" height={30} width={50} />
               <span
@@ -151,7 +151,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
           key={'descripcion'}
           className="grid grid-cols-1 lg:grid-cols-1 font-Century-Gothic"
         >
-          <div className="col-span-1 flex justify-between px-2 py-[0.6rem] border-b border-[#B2B2B2] text-[#B2B2B2] first-letter:uppercase">
+          <div className="col-span-1 flex justify-between px-2 py-[0.6rem] border-b border-[#B2B2B2] text-[#000] first-letter:uppercase">
             <div
               className="post-details first-letter:uppercase"
               dangerouslySetInnerHTML={{ __html: product?.description || '' }}
