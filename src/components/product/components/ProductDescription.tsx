@@ -13,7 +13,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
   let content = <></>;
 
   switch (option) {
-    case 7:
+    case 6:
       content = (
         <div
           key={'Preguntas Frecuentes'}
@@ -28,7 +28,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
         </div>
       );
       break;
-    case 6:
+    case 5:
       content = (
         <div
           key={'Características Destacadas'}
@@ -38,21 +38,6 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
             <div
               className="post-details first-letter:uppercase"
               dangerouslySetInnerHTML={{ __html: product?.caracteristicasDestacadas || '' }}
-            ></div>
-          </div>
-        </div>
-      );
-      break;
-    case 5:
-      content = (
-        <div
-          key={'Descripción Técnica'}
-          className="grid grid-cols-3 lg:grid-cols-6 font-Century-Gothic gap-4 my-4"
-        >
-          <div className="col-span-3 flex justify-between px-2 py-[0.6rem] border-b border-[#B2B2B2] text-[#B2B2B2] first-letter:uppercase">
-            <div
-              className="post-details first-letter:uppercase"
-              dangerouslySetInnerHTML={{ __html: product?.descripcionTecnica || '' }}
             ></div>
           </div>
         </div>
@@ -117,38 +102,46 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
     case 2:
       content = (
         <div
-          key={'Fichas Técnicas'}
+          key={'Descripción Técnica'}
           className="grid grid-cols-3 lg:grid-cols-6 font-Century-Gothic gap-4 my-4"
         >
-          {product?.dataSheet?.map((pdf, index) => (
-            <a
-              key={index}
-              href={pdf?.url ?? ''}
-              download
-              target="_blank"
-              className="flex items-center  flex-col justify-center mx-auto h-40 w-40 border  bg-gray-50 rounded hover:border-[#1c355e]"
-            >
-              <Image src="/pdf.png" alt="PDF Icon" height={30} width={50} />
-              <span
-                className="text-sm font-bold font-Century-Gothic-Bold mt-2"
-                style={{
-                  display: 'inline-block',
-                  maxWidth: '130px', // Ajusta este valor según tus necesidades
-                  overflow: 'hidden',
-                  textOverflow: 'ellipsis',
-                  whiteSpace: 'nowrap',
-                }}
+          {product?.descripcionTecnica ? (
+            <div
+              className="post-details first-letter:uppercase"
+              dangerouslySetInnerHTML={{ __html: product?.descripcionTecnica || '' }}
+            ></div>          
+          ) : ('')}
+          {product?.dataSheet?.length ? (
+            {product?.dataSheet?.map((pdf, index) => (
+              <a
+                key={index}
+                href={pdf?.url ?? ''}
+                download
+                target="_blank"
+                className="flex items-center  flex-col justify-center mx-auto h-40 w-40 border  bg-gray-50 rounded hover:border-[#1c355e]"
               >
-                {pdf && pdf.name}
-              </span>
-
-              <button className="bg-[#1c355e] h-8 w-24 rounded mt-2">
-                <p className="text-sm font-bold text-white  font-Century-Gothic-Bold ">
-                  Descargar
-                </p>
-              </button>
-            </a>
-          ))}
+                <Image src="/pdf.png" alt="PDF Icon" height={30} width={50} />
+                <span
+                  className="text-sm font-bold font-Century-Gothic-Bold mt-2"
+                  style={{
+                    display: 'inline-block',
+                    maxWidth: '130px', // Ajusta este valor según tus necesidades
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    whiteSpace: 'nowrap',
+                  }}
+                >
+                  {pdf && pdf.name}
+                </span>
+  
+                <button className="bg-[#1c355e] h-8 w-24 rounded mt-2">
+                  <p className="text-sm font-bold text-white  font-Century-Gothic-Bold ">
+                    Descargar
+                  </p>
+                </button>
+              </a>
+            )}
+          ) : ('')}
         </div>
       );
       break;
@@ -186,7 +179,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
           ''
         )}
 
-        {product?.dataSheet?.length ? (
+        {product?.dataSheet?.length || product?.descripcionTecnica ? (
           <button
             onClick={() => setOption(2)}
             className={`flex items-center  ${
@@ -195,7 +188,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
                 : ' text-[#000] border-b border-[#B2B2B2]'
             } p-2 justify-center `}
           >
-            Fichas Técnicas
+            Descripción Técnica
           </button>
         ) : (
           ''
@@ -227,26 +220,11 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
           ''
         )}
 
-        {product?.descripcionTecnica ? (
+        {product?.caracteristicasDestacadas ? (
           <button
             onClick={() => setOption(5)}
             className={`flex items-center  ${
               option === 5
-                ? 'border-[#B2B2B2] border-l border-r border-t text-[#0033A1]'
-                : ' text-[#000] border-b border-[#B2B2B2]'
-            } p-2 justify-center `}
-          >
-            Descripción Técnica
-          </button>
-        ) : (
-          ''
-        )}
-
-        {product?.caracteristicasDestacadas ? (
-          <button
-            onClick={() => setOption(6)}
-            className={`flex items-center  ${
-              option === 6
                 ? 'border-[#B2B2B2] border-l border-r border-t text-[#0033A1]'
                 : ' text-[#000] border-b border-[#B2B2B2]'
             } p-2 justify-center `}
@@ -259,9 +237,9 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
 
         {product?.preguntasFrecuentes ? (
           <button
-            onClick={() => setOption(7)}
+            onClick={() => setOption(6)}
             className={`flex items-center  ${
-              option === 7
+              option === 6
                 ? 'border-[#B2B2B2] border-l border-r border-t text-[#0033A1]'
                 : ' text-[#000] border-b border-[#B2B2B2]'
             } p-2 justify-center `}
