@@ -112,6 +112,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
             ></div>          
           ) : ('')}
           {product?.dataSheet?.map((pdf, index) => (
+            <div className="grid grid-cols-3 lg:grid-cols-6 font-Century-Gothic gap-4 my-4">
             <a
               key={index}
               href={pdf?.url ?? ''}
@@ -139,6 +140,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
                 </p>
               </button>
             </a>
+            </div> 
           ))}
         </div>
       );
