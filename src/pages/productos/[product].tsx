@@ -234,11 +234,6 @@ const ProductPage: React.FC<ProductPageProps> = ({
           </Container>
           <Container classes="mb-6">
             <ProductDescription product={product} />
-            {product?.cierreComercial ? (
-              <div class="text-[#000] text-[14px] font-Segoe-Ui mt-6">product?.cierreComercial</div>
-            ) : (
-              ''
-            )}
           </Container>
           {complementProducts.length > 0 && (
             <Container classes="mb-6">
