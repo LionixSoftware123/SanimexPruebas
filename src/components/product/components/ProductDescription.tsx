@@ -13,6 +13,21 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
   let content = <></>;
 
   switch (option) {
+    case 4:
+      content = (
+        <div
+          key={'Beneficios Usos Aplicaciones'}
+          className="grid grid-cols-3 lg:grid-cols-5 font-Century-Gothic"
+        >
+          <div className="col-span-3 flex justify-between px-2 py-[0.6rem] border-b border-[#B2B2B2] text-[#B2B2B2] first-letter:uppercase">
+            <div
+              className="post-details first-letter:uppercase"
+              dangerouslySetInnerHTML={{ __html: product?.beneficiosUso || '' }}
+            ></div>
+          </div>
+        </div>
+      );
+      break;    
     case 3:
       content = (
         <div
@@ -149,7 +164,22 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
           } p-2 justify-center `}
         >
           Información Adicional
-        </button>        
+        </button>
+
+        {product?.beneficiosUso ? (
+          <button
+            onClick={() => setOption(4)}
+            className={`flex items-center  ${
+              option === 4
+                ? 'border-[#B2B2B2] border-l border-r border-t text-[#0033A1]'
+                : ' text-[#000] border-b border-[#B2B2B2]'
+            } p-2 justify-center `}
+          >
+            Beneficios principales, Usos y Aplicaciones
+          </button>
+        ) : (
+          ''
+        )}       
         <div
           className={`${
             product?.dataSheet ? 'lg:col-span-3 ' : 'lg:col-span-4 col-span-2'
