@@ -113,34 +113,34 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
           ) : ('')}
           {product?.dataSheet?.length ? (
             {product?.dataSheet?.map((pdf, index) => (
-              <a
-                key={index}
-                href={pdf?.url ?? ''}
-                download
-                target="_blank"
-                className="flex items-center  flex-col justify-center mx-auto h-40 w-40 border  bg-gray-50 rounded hover:border-[#1c355e]"
+            <a
+              key={index}
+              href={pdf?.url ?? ''}
+              download
+              target="_blank"
+              className="flex items-center  flex-col justify-center mx-auto h-40 w-40 border  bg-gray-50 rounded hover:border-[#1c355e]"
+            >
+              <Image src="/pdf.png" alt="PDF Icon" height={30} width={50} />
+              <span
+                className="text-sm font-bold font-Century-Gothic-Bold mt-2"
+                style={{
+                  display: 'inline-block',
+                  maxWidth: '130px', // Ajusta este valor según tus necesidades
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  whiteSpace: 'nowrap',
+                }}
               >
-                <Image src="/pdf.png" alt="PDF Icon" height={30} width={50} />
-                <span
-                  className="text-sm font-bold font-Century-Gothic-Bold mt-2"
-                  style={{
-                    display: 'inline-block',
-                    maxWidth: '130px', // Ajusta este valor según tus necesidades
-                    overflow: 'hidden',
-                    textOverflow: 'ellipsis',
-                    whiteSpace: 'nowrap',
-                  }}
-                >
-                  {pdf && pdf.name}
-                </span>
-  
-                <button className="bg-[#1c355e] h-8 w-24 rounded mt-2">
-                  <p className="text-sm font-bold text-white  font-Century-Gothic-Bold ">
-                    Descargar
-                  </p>
-                </button>
-              </a>
-            )}
+                {pdf && pdf.name}
+              </span>
+
+              <button className="bg-[#1c355e] h-8 w-24 rounded mt-2">
+                <p className="text-sm font-bold text-white  font-Century-Gothic-Bold ">
+                  Descargar
+                </p>
+              </button>
+            </a>
+            ))}
           ) : ('')}
         </div>
       );
