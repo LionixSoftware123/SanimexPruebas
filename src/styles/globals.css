@@ -262,6 +262,11 @@ p > a {
   margin: 10px 0;
   padding-bottom: 20px;
 }
+.post-details2 > ul {
+  list-style: disc !important;
+  list-style-type: disc !important;
+  margin-left: 25px;
+}
 
 .shadow-top {
   box-shadow: 0 -10px 10px -10px rgba(0, 0, 0, 0.1);
