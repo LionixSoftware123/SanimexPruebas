@@ -13,11 +13,26 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
   let content = <></>;
 
   switch (option) {
+    case 5:
+      content = (
+        <div
+          key={'Descripción Técnica'}
+          className="grid grid-cols-3 lg:grid-cols-6 font-Century-Gothic gap-4 my-4"
+        >
+          <div className="col-span-3 flex justify-between px-2 py-[0.6rem] border-b border-[#B2B2B2] text-[#B2B2B2] first-letter:uppercase">
+            <div
+              className="post-details first-letter:uppercase"
+              dangerouslySetInnerHTML={{ __html: product?.descripcionTecnica || '' }}
+            ></div>
+          </div>
+        </div>
+      );
+      break;      
     case 4:
       content = (
         <div
           key={'Beneficios Usos Aplicaciones'}
-          className="grid grid-cols-3 lg:grid-cols-5 font-Century-Gothic"
+          className="grid grid-cols-3 lg:grid-cols-6 font-Century-Gothic gap-4 my-4"
         >
           <div className="col-span-3 flex justify-between px-2 py-[0.6rem] border-b border-[#B2B2B2] text-[#B2B2B2] first-letter:uppercase">
             <div
@@ -29,45 +44,6 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
       );
       break;    
     case 3:
-      content = (
-        <div
-          key={'Fichas Técnicas'}
-          className="grid grid-cols-3 lg:grid-cols-6 font-Century-Gothic gap-4 my-4"
-        >
-          {product?.dataSheet?.map((pdf, index) => (
-            <a
-              key={index}
-              href={pdf?.url ?? ''}
-              download
-              target="_blank"
-              className="flex items-center  flex-col justify-center mx-auto h-40 w-40 border  bg-gray-50 rounded hover:border-[#1c355e]"
-            >
-              <Image src="/pdf.png" alt="PDF Icon" height={30} width={50} />
-
-              <span
-                className="text-sm font-bold font-Century-Gothic-Bold mt-2"
-                style={{
-                  display: 'inline-block',
-                  maxWidth: '130px', // Ajusta este valor según tus necesidades
-                  overflow: 'hidden',
-                  textOverflow: 'ellipsis',
-                  whiteSpace: 'nowrap',
-                }}
-              >
-                {pdf && pdf.name}
-              </span>
-
-              <button className="bg-[#1c355e] h-8 w-24 rounded mt-2">
-                <p className="text-sm font-bold text-white  font-Century-Gothic-Bold ">
-                  Descargar
-                </p>
-              </button>
-            </a>
-          ))}
-        </div>
-      );
-      break;
-    case 2:
       content = (
         <div
           key={'Información adicional'}
@@ -108,6 +84,44 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
         </div>
       );
       break;
+    case 2:
+      content = (
+        <div
+          key={'Fichas Técnicas'}
+          className="grid grid-cols-3 lg:grid-cols-6 font-Century-Gothic gap-4 my-4"
+        >
+          {product?.dataSheet?.map((pdf, index) => (
+            <a
+              key={index}
+              href={pdf?.url ?? ''}
+              download
+              target="_blank"
+              className="flex items-center  flex-col justify-center mx-auto h-40 w-40 border  bg-gray-50 rounded hover:border-[#1c355e]"
+            >
+              <Image src="/pdf.png" alt="PDF Icon" height={30} width={50} />
+              <span
+                className="text-sm font-bold font-Century-Gothic-Bold mt-2"
+                style={{
+                  display: 'inline-block',
+                  maxWidth: '130px', // Ajusta este valor según tus necesidades
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                {pdf && pdf.name}
+              </span>
+
+              <button className="bg-[#1c355e] h-8 w-24 rounded mt-2">
+                <p className="text-sm font-bold text-white  font-Century-Gothic-Bold ">
+                  Descargar
+                </p>
+              </button>
+            </a>
+          ))}
+        </div>
+      );
+      break;
     case 1:
       content = (
         <div
@@ -141,11 +155,12 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
         ) : (
           ''
         )}
+
         {product?.dataSheet?.length ? (
           <button
-            onClick={() => setOption(3)}
+            onClick={() => setOption(2)}
             className={`flex items-center  ${
-              option === 3
+              option === 2
                 ? 'border-[#B2B2B2] border-l border-r border-t text-[#0033A1]'
                 : ' text-[#000] border-b border-[#B2B2B2]'
             } p-2 justify-center `}
@@ -155,10 +170,11 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
         ) : (
           ''
         )}
+
         <button
-          onClick={() => setOption(2)}
+          onClick={() => setOption(3)}
           className={`flex items-center  ${
-            option === 2
+            option === 3
               ? 'border-[#B2B2B2] border-l border-r border-t  text-[#0033A1]'
               : ' text-[#000] border-b border-[#B2B2B2]'
           } p-2 justify-center `}
@@ -179,7 +195,23 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
           </button>
         ) : (
           ''
-        )}       
+        )}
+
+        {product?.descripcionTecnica ? (
+          <button
+            onClick={() => setOption(5)}
+            className={`flex items-center  ${
+              option === 5
+                ? 'border-[#B2B2B2] border-l border-r border-t text-[#0033A1]'
+                : ' text-[#000] border-b border-[#B2B2B2]'
+            } p-2 justify-center `}
+          >
+            Descripción Técnica
+          </button>
+        ) : (
+          ''
+        )}
+
         <div
           className={`${
             product?.dataSheet ? 'lg:col-span-3 ' : 'lg:col-span-4 col-span-2'
