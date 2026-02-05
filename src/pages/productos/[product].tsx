@@ -236,9 +236,9 @@ const ProductPage: React.FC<ProductPageProps> = ({
             <ProductDescription product={product} />
           </Container>
           {product?.cierreComercial ? (
-            <div className="grid grid-cols-12">
-              <div className=" text-[14px] md:text-[17px] font-Century-Gothic-Bold text-[#000]">{product?.cierreComercial}</div>
-            </div>
+            <Container classes="mb-6">
+              {product?.cierreComercial}
+            </Container>
           ) : (
            ''
           )}
