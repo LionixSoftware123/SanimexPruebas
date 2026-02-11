@@ -198,7 +198,7 @@ const GeolocationDialog: React.FC<GeolocationDialogProps> = ({
                                 setSelectedShop(undefined);
                                 setDirections(undefined);
                                 setCanConfirm(true);
-                                buttonRef.current.click();
+                                if (buttonRef.current) { buttonRef.current.click(); }
                               }}
                             />
                           </div>
