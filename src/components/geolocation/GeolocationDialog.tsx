@@ -47,7 +47,7 @@ const GeolocationDialog: React.FC<GeolocationDialogProps> = ({
   const [canCalculate, setCanCalculate] = useState(true);
   const [country, setCountry] = useState('');
   const cancelButtonRef = useRef(null);
-  const buttonRef = useRef(null);
+  //const buttonRef = useRef(null);
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: GOOGLE_MAP_API_KEY,
     libraries: ['places'],
@@ -191,6 +191,7 @@ const GeolocationDialog: React.FC<GeolocationDialogProps> = ({
                               onChange={(geoData) => {
                                 setCenter(geoData);
                                 setOrigin(geoData);
+                                console.log( geoData );
                               }}
                               onCountry={(country) => {
                                 setCanCalculate(!(country === 'MX'));
@@ -198,7 +199,7 @@ const GeolocationDialog: React.FC<GeolocationDialogProps> = ({
                                 setSelectedShop(undefined);
                                 setDirections(undefined);
                                 setCanConfirm(true);
-                                if (buttonRef.current) { buttonRef.current.click(); }
+                                //if (buttonRef.current) { buttonRef.current.click(); }
                               }}
                             />
                           </div>
@@ -211,7 +212,7 @@ const GeolocationDialog: React.FC<GeolocationDialogProps> = ({
                           </div>
                           <button
                             disabled={canCalculate}
-                            ref={buttonRef}
+                            //ref={buttonRef}
                             className="border border-[#1C355E] disabled:hover:bg-transparent disabled:hover:text-[#1C355E] disabled:cursor-pointer hover:bg-[#0033A1] hover:text-white mb-4 lg:mb-0 lg:mr-2 rounded-[5px] bg-white  h-[45px] flex items-center text-[#1C355E] text-[12px] px-8"
                             onClick={() => callCheckStore(origin)}
                           >
