@@ -77,8 +77,8 @@ const GeolocationDialog: React.FC<GeolocationDialogProps> = ({
 
   // Acción que se ejecuta al hacer clic
   const handleAction = (origin: any) => {
-    // Aquí puedes llamar a tu API en Node.js, ej: axios.post('/api/accion')
     callCheckStore(origin);
+    setCanConfirm(false);
   };  
 
   // useEffect se activa cuando 'isDisabled' cambia
