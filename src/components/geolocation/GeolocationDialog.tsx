@@ -222,7 +222,7 @@ const GeolocationDialog: React.FC<GeolocationDialogProps> = ({
                           </div>
                           <button
                             disabled={canCalculate}
-                            className="hidden border border-[#1C355E] disabled:hover:bg-transparent disabled:hover:text-[#1C355E] disabled:cursor-pointer hover:bg-[#0033A1] hover:text-white mb-4 lg:mb-0 lg:mr-2 rounded-[5px] bg-white  h-[45px] flex items-center text-[#1C355E] text-[12px] px-8"
+                            className="disabled:hover:bg-transparent disabled:hover:text-[#1C355E] disabled:cursor-pointer hover:bg-[#0033A1] hover:text-white bg-white flex items-center text-[#1C355E] text-[12px] px-8"
                             onClick={() => handleAction (origin)}
                           >
                             {loading ? (
@@ -245,9 +245,7 @@ const GeolocationDialog: React.FC<GeolocationDialogProps> = ({
                                 </svg>
                               </div>
                             ) : (
-                              <div className="flex items-center justify-center">
-                                CALCULAR
-                              </div>
+                              <div className="flex items-center justify-center"></div>
                             )}
                           </button>
                           {country && country !== 'MX' ? (
