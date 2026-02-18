@@ -192,8 +192,6 @@ const GeolocationDialog: React.FC<GeolocationDialogProps> = ({
                                 setCenter(geoData);
                                 setOrigin(geoData);
                                 //if( canCalculate ) { callCheckStore( origin ); }
-                                console.log( canCalculate );
-                                console.log( origin );
                               }}
                               onCountry={(country) => {
                                 setCanCalculate(!(country === 'MX'));
@@ -201,6 +199,7 @@ const GeolocationDialog: React.FC<GeolocationDialogProps> = ({
                                 setSelectedShop(undefined);
                                 setDirections(undefined);
                                 setCanConfirm(true);
+                                console.log( origin );
                               }}
                             />
                           </div>
