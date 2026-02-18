@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import React, { Fragment, useCallback, useRef, useState } from 'react';
+import React, { Fragment, useCallback, useRef, useEffect, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { GoogleMap, useLoadScript } from '@react-google-maps/api';
 import { GOOGLE_MAP_API_KEY } from '@/utils/constants';
@@ -74,6 +74,21 @@ const GeolocationDialog: React.FC<GeolocationDialogProps> = ({
   const onUnmount = useCallback(function callback() {
     setMap(undefined);
   }, []);
+
+  // Acción que se ejecuta al hacer clic
+  const handleAction = (origin) => {
+    setMensaje("¡Evento ejecutado automáticamente!");
+    console.log("Acción automática realizada.");
+    // Aquí puedes llamar a tu API en Node.js, ej: axios.post('/api/accion')
+    callCheckStore(origin)
+  };  
+
+  // useEffect se activa cuando 'isDisabled' cambia
+  useEffect(() => {
+    if (!canCalculate) {
+      handleAction(origin);
+    }
+  }, [canCalculate]); // Solo se ejecuta si isDisabled cambia
 
   const [callCheckStore, loading] = useCallAction(checkStoreAction, {
     onCompleted: (data) => {
@@ -199,7 +214,6 @@ const GeolocationDialog: React.FC<GeolocationDialogProps> = ({
                                 setCanConfirm(true);
                               }}
                             />
-                            console.log( origin );
                           </div>
                           <div className="mb-2">
                             Costo mínimo de envío: $250.00
@@ -211,7 +225,7 @@ const GeolocationDialog: React.FC<GeolocationDialogProps> = ({
                           <button
                             disabled={canCalculate}
                             className="border border-[#1C355E] disabled:hover:bg-transparent disabled:hover:text-[#1C355E] disabled:cursor-pointer hover:bg-[#0033A1] hover:text-white mb-4 lg:mb-0 lg:mr-2 rounded-[5px] bg-white  h-[45px] flex items-center text-[#1C355E] text-[12px] px-8"
-                            onClick={() => callCheckStore(origin)}
+                            onClick={() => handleAction (origin)}
                           >
                             {loading ? (
                               <div className="flex justify-center w-full">
