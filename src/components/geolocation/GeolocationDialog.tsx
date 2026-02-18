@@ -78,7 +78,6 @@ const GeolocationDialog: React.FC<GeolocationDialogProps> = ({
   // Acción que se ejecuta al hacer clic
   const handleAction = (origin: any) => {
     callCheckStore(origin);
-    setCanCalculate(false);
   };  
 
   // useEffect se activa cuando 'isDisabled' cambia
@@ -97,6 +96,7 @@ const GeolocationDialog: React.FC<GeolocationDialogProps> = ({
       setSelectedShop(data.shop);
       setDirections(data.directions);
       setCanConfirm(!(calculateCost(_distance, FreeShipping) <= 25));
+      setCanCalculate(false);
       /**console.log(
         'calculateCost(_distance, FreeShipping) <= 25',
         calculateCost(_distance, FreeShipping) <= 25,
