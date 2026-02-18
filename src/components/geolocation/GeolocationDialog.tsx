@@ -47,7 +47,6 @@ const GeolocationDialog: React.FC<GeolocationDialogProps> = ({
   const [canCalculate, setCanCalculate] = useState(true);
   const [country, setCountry] = useState('');
   const cancelButtonRef = useRef(null);
-  //const buttonRef = useRef(null);
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: GOOGLE_MAP_API_KEY,
     libraries: ['places'],
@@ -191,7 +190,6 @@ const GeolocationDialog: React.FC<GeolocationDialogProps> = ({
                               onChange={(geoData) => {
                                 setCenter(geoData);
                                 setOrigin(geoData);
-                                //if( canCalculate ) { callCheckStore( origin ); }
                               }}
                               onCountry={(country) => {
                                 setCanCalculate(!(country === 'MX'));
@@ -199,9 +197,9 @@ const GeolocationDialog: React.FC<GeolocationDialogProps> = ({
                                 setSelectedShop(undefined);
                                 setDirections(undefined);
                                 setCanConfirm(true);
-                                console.log( origin );
                               }}
                             />
+                            console.log( origin );
                           </div>
                           <div className="mb-2">
                             Costo mínimo de envío: $250.00
