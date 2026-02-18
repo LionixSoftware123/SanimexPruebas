@@ -192,6 +192,7 @@ const GeolocationDialog: React.FC<GeolocationDialogProps> = ({
                                 setCenter(geoData);
                                 setOrigin(geoData);
                                 callCheckStore(origin);
+                                console.log(origin);
                               }}
                               onCountry={(country) => {
                                 setCanCalculate(!(country === 'MX'));
