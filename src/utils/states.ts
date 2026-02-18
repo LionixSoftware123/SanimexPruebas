@@ -76,6 +76,7 @@ import Puebla11 from '@/images/sucursales/puebla11sur.jpg';
 import Puebla25 from '@/images/sucursales/puebla25-new.jpg';
 import Puebla31 from '@/images/sucursales/puebla-31-new.jpg';
 import Puebla33 from '@/images/sucursales/puebla33.jpg';
+import PueblaBoulevardOne from '@/images/sucursales/pueblaboulevard1.jpg';
 import PueblaBoulevardTwo from '@/images/sucursales/pueblaboulevard2.jpg';
 import Valsequillo from '@/images/sucursales/valsequillo.png';
 import Texmelucan from '@/images/sucursales/texmelucan.jpeg';
@@ -1308,7 +1309,7 @@ export const dataStates = [
     name: 'Morelia 09 Arquicer\u00e1mica',
     address:
       'Calz. Ventura Puente No. 633 Col. Chapultepec Norte, Morelia, Michoacán C.P 58260 Tel\u00e9fono: 44 33 15 10 44',
-    link: 'https://maps.app.goo.gl/Kpyx8CscHHyoDqHZ6',
+    link: 'https://maps.app.goo.gl/aHrfh8WJKKozp2cc8',
     state: 'michoacan',
     weekdays: '9:00 am - 7:00 pm',
     saturday: '9:00 am - 2:00 pm',
@@ -1897,8 +1898,22 @@ export const dataStates = [
     },
   },
 {
+    image: PueblaBoulevardOne,
+    name: 'Puebla Boulevard',
+    address:
+      'Boulevard Atlixco No. 2502 Col. Belisario Domínguez, Puebla, Puebla C.P 72180 Tel\u00e9fono: 22 22 30 41 49',
+    link: 'https://goo.gl/maps/AZQEWkUUc35A3L4r5',
+    state: 'puebla',
+    weekdays: '9:00 am - 7:00 pm',
+    saturday: '9:00 am - 2:00 pm',
+    city: {
+      value: 'puebla',
+      label: 'Puebla',
+    },
+  },   
+{
     image: PueblaBoulevardTwo,
-    name: 'Puebla Boulevard 2 ',
+    name: 'Puebla Boulevard 2',
     address:
       'Boulevard Atlixco No. 2506 - casi esquina con la 25 poniente Col. Belisario Dom\u00ednguez, Puebla, Puebla C.P 72180 Tel\u00e9fono: 22 22 26 73 10 ',
     link: 'https://goo.gl/maps/PmuMTX7pNrAASkQP8',
