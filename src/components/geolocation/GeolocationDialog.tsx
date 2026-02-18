@@ -78,7 +78,7 @@ const GeolocationDialog: React.FC<GeolocationDialogProps> = ({
   // Acción que se ejecuta al hacer clic
   const handleAction = (origin: any) => {
     callCheckStore(origin);
-    setCanConfirm(false);
+    setCanCalculate(false);
   };  
 
   // useEffect se activa cuando 'isDisabled' cambia
