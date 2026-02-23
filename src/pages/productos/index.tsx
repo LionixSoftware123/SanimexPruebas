@@ -47,8 +47,6 @@ const ProductsPage: React.FC = () => {
     );
   };
 
-  console.log( handleQuery ); 
-
   const fetchProducts = useCallback(async () => {
     setLoading(true);
     const page = parseInt(router.query.page as string) || 1;
@@ -96,6 +94,8 @@ const ProductsPage: React.FC = () => {
       setLoadingAttributes(false);
     }
   }, []);
+
+  console.log( fetchColors );
 
   const fetchBrands = useCallback(async () => {
     setLoadingAttributes(true);
