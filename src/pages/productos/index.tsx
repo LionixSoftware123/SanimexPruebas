@@ -68,7 +68,7 @@ const ProductsPage: React.FC = () => {
       const response = await fetch(
         `/api/basicsearch/search?${params.toString()}`,
       );
-      //console.log('params.toString()', params.toString());
+      console.log('params.toString()', params.toString());
       const data = await response.json();
       setProducts(data.items || []);
       setTotal(data.count || 0);
