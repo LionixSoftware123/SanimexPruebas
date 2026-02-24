@@ -57,45 +57,19 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
           </div>
         </div>
       );
-      break;    
+      break;
     case 3:
       content = (
         <div
-          key={'Información adicional'}
+          key={'descripcion'}
           className="grid grid-cols-1 lg:grid-cols-1 font-Century-Gothic"
         >
-          {product?.attributes?.nodes.map(
-            (node: GlobalProductAttribute, key: any) => {
-              const num = node.terms?.nodes.length ?? 0;
-              let text = '';
-              if (node?.terms?.nodes.length ?? 0 > 1) {
-                for (let i = 0; i < num; i++) {
-                  if (i < num - 1) {
-                    text += node.terms?.nodes[i].name + ', ';
-                  } else {
-                    text += node.terms?.nodes[i].name;
-                  }
-                }
-              }
-              const termName = node.terms?.nodes.length
-                ? num >= 2
-                  ? text
-                  : node.terms.nodes[0].name
-                : '';
-
-              return (
-                <div
-                  className="col-span-1 flex justify-between px-2 py-[0.6rem] border-b border-[#B2B2B2]"
-                  key={key}
-                >
-                  <div>{node.label}:</div>
-                  <div className="text-[#B2B2B2] first-letter:uppercase text-end">
-                    {termName}
-                  </div>
-                </div>
-              );
-            },
-          )}
+          <div className="col-span-1 flex justify-between px-2 py-[0.6rem] border-b border-[#B2B2B2] text-[#000] first-letter:uppercase">
+            <div
+              className="post-details2 first-letter:uppercase"
+              dangerouslySetInnerHTML={{ __html: product?.description || '' }}
+            ></div>
+          </div>
         </div>
       );
       break;
@@ -148,15 +122,41 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
     case 1:
       content = (
         <div
-          key={'descripcion'}
+          key={'Información adicional'}
           className="grid grid-cols-1 lg:grid-cols-1 font-Century-Gothic"
         >
-          <div className="col-span-1 flex justify-between px-2 py-[0.6rem] border-b border-[#B2B2B2] text-[#000] first-letter:uppercase">
-            <div
-              className="post-details2 first-letter:uppercase"
-              dangerouslySetInnerHTML={{ __html: product?.description || '' }}
-            ></div>
-          </div>
+          {product?.attributes?.nodes.map(
+            (node: GlobalProductAttribute, key: any) => {
+              const num = node.terms?.nodes.length ?? 0;
+              let text = '';
+              if (node?.terms?.nodes.length ?? 0 > 1) {
+                for (let i = 0; i < num; i++) {
+                  if (i < num - 1) {
+                    text += node.terms?.nodes[i].name + ', ';
+                  } else {
+                    text += node.terms?.nodes[i].name;
+                  }
+                }
+              }
+              const termName = node.terms?.nodes.length
+                ? num >= 2
+                  ? text
+                  : node.terms.nodes[0].name
+                : '';
+
+              return (
+                <div
+                  className="col-span-1 flex justify-between px-2 py-[0.6rem] border-b border-[#B2B2B2]"
+                  key={key}
+                >
+                  <div>{node.label}:</div>
+                  <div className="text-[#B2B2B2] first-letter:uppercase text-end">
+                    {termName}
+                  </div>
+                </div>
+              );
+            },
+          )}
         </div>
       );
       break;
