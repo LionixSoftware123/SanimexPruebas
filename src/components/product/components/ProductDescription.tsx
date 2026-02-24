@@ -164,20 +164,17 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
   return (
     <div className=" my-auto">
       <div className="grid grid-cols-3 lg:grid-cols-6  font-Century-Gothic">
-        {product?.description ? (
-          <button
-            onClick={() => setOption(1)}
-            className={`flex items-center  ${
-              option === 1
-                ? 'border-[#B2B2B2] border-l border-r border-t text-[#0033A1]'
-                : ' text-[#000] border-b border-[#B2B2B2]'
-            } p-2 justify-center `}
-          >
-            Descripción del producto
-          </button>
-        ) : (
-          ''
-        )}
+
+        <button
+          onClick={() => setOption(1)}
+          className={`flex items-center  ${
+            option === 1
+              ? 'border-[#B2B2B2] border-l border-r border-t  text-[#0033A1]'
+              : ' text-[#000] border-b border-[#B2B2B2]'
+          } p-2 justify-center `}
+        >
+          Información Adicional
+        </button>
 
         {product?.dataSheet?.length || product?.descripcionTecnica ? (
           <button
@@ -194,16 +191,20 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
           ''
         )}
 
-        <button
-          onClick={() => setOption(3)}
-          className={`flex items-center  ${
-            option === 3
-              ? 'border-[#B2B2B2] border-l border-r border-t  text-[#0033A1]'
-              : ' text-[#000] border-b border-[#B2B2B2]'
-          } p-2 justify-center `}
-        >
-          Información Adicional
-        </button>
+        {product?.description ? (
+          <button
+            onClick={() => setOption(3)}
+            className={`flex items-center  ${
+              option === 3
+                ? 'border-[#B2B2B2] border-l border-r border-t text-[#0033A1]'
+                : ' text-[#000] border-b border-[#B2B2B2]'
+            } p-2 justify-center `}
+          >
+            Descripción del producto
+          </button>
+        ) : (
+          ''
+        )}
 
         {product?.beneficiosUso ? (
           <button
