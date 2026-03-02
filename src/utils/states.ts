@@ -61,7 +61,6 @@ import Coatzacoalcos4 from '@/images/sucursales/coatzacoalcos-4-new.jpeg';
 import coatzacoalcos5 from '@/images/sucursales/coatzacoalcos5.jpeg';
 import Minalitlan from '@/images/sucursales/minatitlan.jpeg';
 import Veracruz5 from '@/images/sucursales/veracruz5.jpg';
-import VeracruzBoulevard from '@/images/sucursales/veracruzboulevard.jpg';
 import Cuauhtemocveracruz from '@/images/sucursales/veracruzcuautehmoc.jpg';
 import MiguelAleman from '@/images/sucursales/miguelaleman.png';
 import SucursalApizaco1 from '@/images/sucursales/apizaco1.jpg';
@@ -2222,21 +2221,6 @@ export const dataStates = [
     address:
       'Carretera Veracruz Jalapa km 10   Col. Amapolas, Veracruz, Veracruz C.P 91697 Tel\u00e9fono: 22 91 55 80 98 y 22 91 55 80 99',
     link: 'https://goo.gl/maps/gT6xN3fGH4NrL7ZBA',
-
-    state: 'veracruz',
-    weekdays: '9:00 am - 7:00 pm',
-    saturday: '9:00 am - 2:00 pm',
-    city: {
-      value: 'veracruz',
-      label: 'Veracruz',
-    },
-  },
-  {
-    image: VeracruzBoulevard,
-    name: 'Veracruz Bol\u00edvar',
-    address:
-      'La Fragua No. 1620 Col. Moderno, Veracruz, Veracruz C.P 91918 Tel\u00e9fono: 22 99 80 63 53 y 22 99 80 63 52',
-    link: 'https://goo.gl/maps/E6Jz18sNBk7KzNFA8',
 
     state: 'veracruz',
     weekdays: '9:00 am - 7:00 pm',
