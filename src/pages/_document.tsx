@@ -11,19 +11,6 @@ export default function Document() {
         <Main />
         <NextScript />
         <Script
-          async
-          strategy="beforeInteractive"
-          src="https://www.googletagmanager.com/gtag/js?id=G-BZSVMDZGGK"
-        ></Script>
-        <Script
-          id="googleGoogleTagId"
-          async
-          strategy="beforeInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date()); gtag('config', 'G-BZSVMDZGGK');`,
-          }}
-        ></Script>
-        <Script
           id="googleGoogleTagId"
           async
           strategy="beforeInteractive"
