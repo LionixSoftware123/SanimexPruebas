@@ -8,7 +8,7 @@ export default function Document() {
       <Head>
         <Script
           id="securepubads"
-          strategy="beforeInteractive"
+          strategy="afterInteractive"
           async
           dangerouslySetInnerHTML={{
             __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
