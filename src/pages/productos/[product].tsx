@@ -147,18 +147,20 @@ const ProductPage: React.FC<ProductPageProps> = ({
         else categories['item_category'] = (category as any).name;
       });
 
-      window.gtag('event', 'view_item', {
-        items: [
-          {
-            item_name: product?.name,
-            item_id: product?.databaseId,
-            price,
-            item_brand: (product as any)?.brand,
-            quantity: '1',
-            ...categories,
-          },
-        ],
-      });
+      if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
+        window.gtag('event', 'view_item', {
+          items: [
+            {
+              item_name: product?.name,
+              item_id: product?.databaseId,
+              price,
+              item_brand: (product as any)?.brand,
+              quantity: '1',
+              ...categories,
+            },
+          ],
+        });
+      }
 
       storageSellerUTMCampaignURL(product?.databaseId);
     }
