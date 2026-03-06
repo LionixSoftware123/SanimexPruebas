@@ -1,12 +1,10 @@
 import { Html, Head, Main, NextScript } from 'next/document';
-//import Script from 'next/script';
-import React from 'react';
 
 export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        {/* Google Tag Manager - Script base (Corregido a etiqueta nativa) */}
+        {/* Usamos etiqueta script nativa minúscula para evitar errores de hidratación */}
         <script
           dangerouslySetInnerHTML={{
             __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -20,16 +18,14 @@ export default function Document() {
       <body>
         <noscript
           dangerouslySetInnerHTML={{
-            __html: `
-              <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NTLX9QV"
-              height="0" width="0" style="display:none;visibility:hidden"></iframe>
-            `,
+            __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NTLX9QV"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
           }}
         />
         <Main />
         <NextScript />
-
-        {/* Script de ActiveCampaign / vgo (Corregido a etiqueta nativa) */}
+        
+        {/* Script de ActiveCampaign en HTML Puro */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
