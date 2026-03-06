@@ -147,20 +147,47 @@ const ProductPage: React.FC<ProductPageProps> = ({
         else categories['item_category'] = (category as any).name;
       });
 
-      if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
-        window.gtag('event', 'view_item', {
-          items: [
-            {
-              item_name: product?.name,
-              item_id: product?.databaseId,
-              price,
-              item_brand: (product as any)?.brand,
-              quantity: '1',
-              ...categories,
-            },
-          ],
+      //if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
+      //  window.gtag('event', 'view_item', {
+      //    items: [
+      //      {
+      //        item_name: product?.name,
+      //        item_id: product?.databaseId,
+      //        price,
+      //        item_brand: (product as any)?.brand,
+      //        quantity: '1',
+      //        ...categories,
+      //      },
+      //    ],
+      //  });
+      //}
+      if (typeof window !== 'undefined') {
+        // 1. Inicializamos el dataLayer si no existe
+        window.dataLayer = window.dataLayer || [];
+      
+        // 2. Recomendado: Limpiar el objeto ecommerce previo (evita duplicidad de datos en SPAs)
+        window.dataLayer.push({ ecommerce: null }); 
+      
+        // 3. Empujamos el evento con la estructura estándar de GA4
+        window.dataLayer.push({
+          event: 'view_item', // El nombre que GTM usará como activador
+          ecommerce: {
+            currency: 'MXN', // Ajusta a tu moneda local
+            value: price,    // Valor total de la vista (opcional)
+            items: [
+              {
+                item_name: product?.name,
+                item_id: product?.databaseId,
+                price: price,
+                item_brand: (product as any)?.brand,
+                item_variant: '', // Puedes dejarlo vacío o mapear una variante
+                quantity: 1,      // Se recomienda usar número, no string '1'
+                ...categories,
+              },
+            ],
+          },
         });
-      }
+      }    
 
       storageSellerUTMCampaignURL(product?.databaseId);
     }
