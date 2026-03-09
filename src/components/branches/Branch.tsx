@@ -28,7 +28,7 @@ const BranchInfo: React.FC<BranchInfoProps> = ({
       <div className="py-6 grid grid-cols-11 border-b border-[#707070]">
         <div className="col-span-8 lg:col-span-5 flex justify-center mr-[20px]">
           <div className="flex self-center relative h-[180px] md:h-[250px] lg:h-[200px] w-full">
-            <Image fill style={{ objectFit: 'cover' }} src={image} alt={name} />
+            <Image fill style={{ objectFit: 'fill' }} src={image} alt={name} />
           </div>
         </div>
         <div className="hidden lg:block col-span-5 lg:col-span-3 lg:mr-[20px]">
