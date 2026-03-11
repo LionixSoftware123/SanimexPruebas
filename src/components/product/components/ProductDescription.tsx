@@ -19,7 +19,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
           key={'Preguntas Frecuentes'}
           className="grid grid-cols-1 lg:grid-cols-1 font-Century-Gothic gap-4"
         >
-          <div className="col-span-1 flex justify-between px-2 py-[0.6rem] border-l border-r border-b border-[#B2B2B2] text-[#000] first-letter:uppercase">
+          <div className="col-span-1 flex justify-between px-2 py-[0.6rem] border-l border-r border-t border-b border-[#B2B2B2] text-[#000] first-letter:uppercase">
             <div
               className="post-details2 first-letter:uppercase"
               dangerouslySetInnerHTML={{ __html: product?.preguntasFrecuentes || '' }}
@@ -34,7 +34,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
           key={'Características Destacadas'}
           className="grid grid-cols-1 lg:grid-cols-1 font-Century-Gothic gap-4"
         >
-          <div className="col-span-1 flex justify-between px-2 py-[0.6rem] border-l border-r border-b border-[#B2B2B2] text-[#000] first-letter:uppercase">
+          <div className="col-span-1 flex justify-between px-2 py-[0.6rem] border-l border-r border-t border-b border-[#B2B2B2] text-[#000] first-letter:uppercase">
             <div
               className="post-details2 first-letter:uppercase"
               dangerouslySetInnerHTML={{ __html: product?.caracteristicasDestacadas || '' }}
@@ -49,7 +49,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
           key={'Beneficios Usos Aplicaciones'}
           className="grid grid-cols-1 lg:grid-cols-1 font-Century-Gothic gap-4"
         >
-          <div className="col-span-1 flex justify-between px-2 py-[0.6rem] border-l border-r border-b border-[#B2B2B2] text-[#000] first-letter:uppercase">
+          <div className="col-span-1 flex justify-between px-2 py-[0.6rem] border-l border-r border-t border-b border-[#B2B2B2] text-[#000] first-letter:uppercase">
             <div
               className="post-details2 first-letter:uppercase"
               dangerouslySetInnerHTML={{ __html: product?.beneficiosUso || '' }}
@@ -64,7 +64,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
           key={'descripcion'}
           className="grid grid-cols-1 lg:grid-cols-1 font-Century-Gothic"
         >
-          <div className="col-span-1 flex justify-between px-2 py-[0.6rem] border-l border-r border-b border-[#B2B2B2] text-[#000] first-letter:uppercase">
+          <div className="col-span-1 flex justify-between px-2 py-[0.6rem] border-l border-r border-t border-b border-[#B2B2B2] text-[#000] first-letter:uppercase">
             <div
               className="post-details2 first-letter:uppercase"
               dangerouslySetInnerHTML={{ __html: product?.description || '' }}
@@ -77,7 +77,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
       content = (
         <div
           key={'Descripción Técnica'}
-          className="grid grid-cols-1 lg:grid-cols-1 font-Century-Gothic gap-4 px-2 py-[0.6rem] border-l border-r border-b border-[#B2B2B2]"
+          className="grid grid-cols-1 lg:grid-cols-1 font-Century-Gothic gap-4 px-2 py-[0.6rem] border-l border-r border-t border-b border-[#B2B2B2]"
         >
           {product?.descripcionTecnica ? (
             <div
@@ -146,7 +146,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
 
               return (
                 <div
-                  className="col-span-1 flex px-2 py-[0.6rem] border-l border-r border-b border-[#B2B2B2]"
+                  className="col-span-1 flex px-2 py-[0.6rem] border-l border-r border-b border-t border-[#B2B2B2]"
                   key={key}
                 >
                   <div className="w-custom-int">{node.label}:</div>
@@ -169,7 +169,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
           onClick={() => setOption(1)}
           className={`flex items-center  ${
             option === 1
-              ? 'border-[#B2B2B2] border-l border-r border-t  text-[#0033A1]'
+              ? 'border-[#B2B2B2] border-l border-r text-[#0033A1]'
               : ' text-[#000] border-l-res border-r-res border-b border-[#B2B2B2]'
           } p-2 justify-center `}
         >
@@ -181,7 +181,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
             onClick={() => setOption(2)}
             className={`flex items-center  ${
               option === 2
-                ? 'border-[#B2B2B2] border-l border-r border-t text-[#0033A1]'
+                ? 'border-[#B2B2B2] border-l border-r text-[#0033A1]'
                 : ' text-[#000] border-l-res border-r-res border-b border-[#B2B2B2]'
             } p-2 justify-center `}
           >
@@ -196,7 +196,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
             onClick={() => setOption(3)}
             className={`flex items-center  ${
               option === 3
-                ? 'border-[#B2B2B2] border-l border-r border-t text-[#0033A1]'
+                ? 'border-[#B2B2B2] border-l border-r text-[#0033A1]'
                 : ' text-[#000] border-l-res border-r-res border-b border-[#B2B2B2]'
             } p-2 justify-center `}
           >
@@ -211,7 +211,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
             onClick={() => setOption(4)}
             className={`flex items-center  ${
               option === 4
-                ? 'border-[#B2B2B2] border-l border-r border-t text-[#0033A1]'
+                ? 'border-[#B2B2B2] border-l border-r text-[#0033A1]'
                 : ' text-[#000] border-l-res border-r-res border-b border-[#B2B2B2]'
             } p-2 justify-center `}
           >
@@ -226,7 +226,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
             onClick={() => setOption(5)}
             className={`flex items-center  ${
               option === 5
-                ? 'border-[#B2B2B2] border-l border-r border-t text-[#0033A1]'
+                ? 'border-[#B2B2B2] border-l border-r text-[#0033A1]'
                 : ' text-[#000] border-l-res border-r-res border-b border-[#B2B2B2]'
             } p-2 justify-center `}
           >
@@ -241,7 +241,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
             onClick={() => setOption(6)}
             className={`flex items-center  ${
               option === 6
-                ? 'border-[#B2B2B2] border-l border-r border-t text-[#0033A1]'
+                ? 'border-[#B2B2B2] border-l border-r text-[#0033A1]'
                 : ' text-[#000] border-l-res border-r-res border-b border-[#B2B2B2]'
             } p-2 justify-center `}
           >
