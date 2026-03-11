@@ -261,9 +261,16 @@ const ProductPage: React.FC<ProductPageProps> = ({
           <Container classes="mb-6">
             <ProductDetails product={product} />
           </Container>
-          <Container classes="mb-6">
-            <ProductDescription product={product} />
-          </Container>
+          
+          //<Container classes="mb-6">
+          //  <ProductDescription product={product} />
+          //</Container>
+          <div className="w-full flex justify-center mb-6">
+            <div className="py-1 w-full xl:w-[1200px] px-2 xl:px-0">
+              <ProductDescription product={product} />
+            </div>
+          </div>
+          
           {product?.cierreComercial ? (
             <Container classes="mb-6">
               {product?.cierreComercial}
