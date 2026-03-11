@@ -123,7 +123,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
       content = (
         <div
           key={'Información adicional'}
-          className="grid grid-cols-1 lg:grid-cols-1 mt-custom1 font-Century-Gothic"
+          className="grid grid-cols-1 lg:grid-cols-1 font-Century-Gothic"
         >
           {product?.attributes?.nodes.map(
             (node: GlobalProductAttribute, key: any) => {
@@ -149,8 +149,8 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
                   className="col-span-1 flex px-2 py-[0.6rem] border-l border-r border-b border-[#B2B2B2]"
                   key={key}
                 >
-                  <div className="mr-custom1">{node.label}:</div>
-                  <div className="text-[#B2B2B2] first-letter:uppercase text-end">
+                  <div className="w-custom-int">{node.label}:</div>
+                  <div className="text-[#B2B2B2] first-letter:uppercase">
                     {termName}
                   </div>
                 </div>
