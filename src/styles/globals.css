@@ -638,7 +638,11 @@ table.shop_table td {
 /* AxisKg 11032026 */
 .w-custom-int { width: 100%; max-width: 200px; }
 .w-custom { width: 1000px; }
-@media only screen and (max-width: 1024px) {.w-custom { width: 90%; } }
+@media only screen and (max-width: 1024px) {
+    .w-custom { width: 90%; }
+    .border-r-res { border-right-width: 1px; }
+    .border-l-res { border-left-width: 1px; }
+}
 
 @media only screen and (max-width: 768px) {
     .flex-t, .hidden-lapto { display: block; }
