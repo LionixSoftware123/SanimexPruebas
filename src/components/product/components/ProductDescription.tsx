@@ -66,7 +66,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
         >
           <div className="col-span-1 flex justify-between px-2 py-[0.6rem] border-l border-r border-b border-[#B2B2B2] text-[#000] first-letter:uppercase">
             <div
-              className="post-details2 mt-custom1 first-letter:uppercase"
+              className="post-details2 first-letter:uppercase"
               dangerouslySetInnerHTML={{ __html: product?.description || '' }}
             ></div>
           </div>
@@ -81,7 +81,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
         >
           {product?.descripcionTecnica ? (
             <div
-              className="post-details2 mt-custom2 first-letter:uppercase"
+              className="post-details2 first-letter:uppercase"
               dangerouslySetInnerHTML={{ __html: product?.descripcionTecnica || '' }}
             ></div>          
           ) : ('')}
