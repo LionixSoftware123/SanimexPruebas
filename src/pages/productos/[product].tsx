@@ -29,7 +29,7 @@ import {
   fetchSimilarProducts,
 } from '@/utils/helpers/product-helpers';
 import Container from '@/components/utils/Container';
-import ContainerThree from '@/components/utils/Container';
+import ContainerThree from '@/components/utils/ContainerThree';
 import ErrorPage from '@/components/error/Error';
 import { getMarca } from '@/modules/product/product-utils';
 import ProductLayout from '@/components/layouts/ProductLayout';
