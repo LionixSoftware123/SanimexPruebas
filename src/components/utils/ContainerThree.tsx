@@ -7,9 +7,10 @@ type ContainerProps = {
 const ContainerThree: React.FC<ContainerProps> = ({ children, classes }) => {
   return (
     <div className={`w-full flex justify-center ${classes}`}>
-      <div className=" py-1 w-full xl:w-[1200px] px-0">{children}</div>
+      <div className=" py-1 w-full w-custom px-0">{children}</div>
     </div>
   );
 };
+
 
 export default ContainerThree;
