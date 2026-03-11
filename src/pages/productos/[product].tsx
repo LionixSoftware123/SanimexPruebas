@@ -29,6 +29,7 @@ import {
   fetchSimilarProducts,
 } from '@/utils/helpers/product-helpers';
 import Container from '@/components/utils/Container';
+import ContainerThree from '@/components/utils/Container';
 import ErrorPage from '@/components/error/Error';
 import { getMarca } from '@/modules/product/product-utils';
 import ProductLayout from '@/components/layouts/ProductLayout';
@@ -262,14 +263,9 @@ const ProductPage: React.FC<ProductPageProps> = ({
             <ProductDetails product={product} />
           </Container>
           
-          //<Container classes="mb-6">
-          //  <ProductDescription product={product} />
-          //</Container>
-          <div className="w-full flex justify-center mb-6">
-            <div className="py-1 w-full xl:w-[1200px] px-2 xl:px-0">
-              <ProductDescription product={product} />
-            </div>
-          </div>
+          <ContainerThree classes="mb-6">
+            <ProductDescription product={product} />
+          </ContainerThree>
           
           {product?.cierreComercial ? (
             <Container classes="mb-6">
