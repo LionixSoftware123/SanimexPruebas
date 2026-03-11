@@ -170,7 +170,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
           className={`flex items-center  ${
             option === 1
               ? 'border-[#B2B2B2] border-l border-r border-t  text-[#0033A1]'
-              : ' text-[#000] border-b border-[#B2B2B2]'
+              : ' text-[#000] border-l-res border-r-res border-b border-[#B2B2B2]'
           } p-2 justify-center `}
         >
           Información Adicional
@@ -182,7 +182,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
             className={`flex items-center  ${
               option === 2
                 ? 'border-[#B2B2B2] border-l border-r border-t text-[#0033A1]'
-                : ' text-[#000] border-b border-[#B2B2B2]'
+                : ' text-[#000] border-l-res border-r-res border-b border-[#B2B2B2]'
             } p-2 justify-center `}
           >
             Descripción Técnica
@@ -197,7 +197,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
             className={`flex items-center  ${
               option === 3
                 ? 'border-[#B2B2B2] border-l border-r border-t text-[#0033A1]'
-                : ' text-[#000] border-b border-[#B2B2B2]'
+                : ' text-[#000] border-l-res border-r-res border-b border-[#B2B2B2]'
             } p-2 justify-center `}
           >
             Descripción del producto
@@ -212,7 +212,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
             className={`flex items-center  ${
               option === 4
                 ? 'border-[#B2B2B2] border-l border-r border-t text-[#0033A1]'
-                : ' text-[#000] border-b border-[#B2B2B2]'
+                : ' text-[#000] border-l-res border-r-res border-b border-[#B2B2B2]'
             } p-2 justify-center `}
           >
             Beneficios principales, Usos y Aplicaciones
@@ -227,7 +227,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
             className={`flex items-center  ${
               option === 5
                 ? 'border-[#B2B2B2] border-l border-r border-t text-[#0033A1]'
-                : ' text-[#000] border-b border-[#B2B2B2]'
+                : ' text-[#000] border-l-res border-r-res border-b border-[#B2B2B2]'
             } p-2 justify-center `}
           >
             Características Destacadas
@@ -242,7 +242,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
             className={`flex items-center  ${
               option === 6
                 ? 'border-[#B2B2B2] border-l border-r border-t text-[#0033A1]'
-                : ' text-[#000] border-b border-[#B2B2B2]'
+                : ' text-[#000] border-l-res border-r-res border-b border-[#B2B2B2]'
             } p-2 justify-center `}
           >
             Preguntas Frecuentes
