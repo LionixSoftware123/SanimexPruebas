@@ -235,7 +235,10 @@ p > a {
 .post-details > div > figure > img,
 .post-details > div > p > iframe,
 .post-details > div > div > figure > figure,
-.post-details > figure > div > iframe {
+.post-details > figure > div > iframe,
+.post-details2 div > div > p iframe, 
+.post-details2 > div > p iframe, 
+.post-details2 > p iframe {
   width: 100% !important;
 }
 .post-details > strong {
