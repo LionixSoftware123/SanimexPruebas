@@ -17,7 +17,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
       content = (
         <div
           key={'Preguntas Frecuentes'}
-          className="grid grid-cols-1 lg:grid-cols-1 font-Century-Gothic gap-4 my-4"
+          className="grid grid-cols-1 lg:grid-cols-1 font-Century-Gothic gap-4"
         >
           <div className="col-span-1 flex justify-between px-2 py-[0.6rem] border-l border-r border-b border-[#B2B2B2] text-[#000] first-letter:uppercase">
             <div
@@ -32,7 +32,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
       content = (
         <div
           key={'Características Destacadas'}
-          className="grid grid-cols-1 lg:grid-cols-1 font-Century-Gothic gap-4 my-4"
+          className="grid grid-cols-1 lg:grid-cols-1 font-Century-Gothic gap-4"
         >
           <div className="col-span-1 flex justify-between px-2 py-[0.6rem] border-l border-r border-b border-[#B2B2B2] text-[#000] first-letter:uppercase">
             <div
@@ -47,7 +47,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
       content = (
         <div
           key={'Beneficios Usos Aplicaciones'}
-          className="grid grid-cols-1 lg:grid-cols-1 font-Century-Gothic gap-4 my-4"
+          className="grid grid-cols-1 lg:grid-cols-1 font-Century-Gothic gap-4"
         >
           <div className="col-span-1 flex justify-between px-2 py-[0.6rem] border-l border-r border-b border-[#B2B2B2] text-[#000] first-letter:uppercase">
             <div
@@ -77,7 +77,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
       content = (
         <div
           key={'Descripción Técnica'}
-          className="grid grid-cols-1 lg:grid-cols-1 font-Century-Gothic gap-4 my-4 border-l border-r border-b border-[#B2B2B2]"
+          className="grid grid-cols-1 lg:grid-cols-1 font-Century-Gothic gap-4 px-2 py-[0.6rem] border-l border-r border-b border-[#B2B2B2]"
         >
           {product?.descripcionTecnica ? (
             <div
@@ -85,14 +85,14 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
               dangerouslySetInnerHTML={{ __html: product?.descripcionTecnica || '' }}
             ></div>          
           ) : ('')}
-          <div className="grid grid-cols-3 lg:grid-cols-6 font-Century-Gothic gap-4 my-4 grid-cols-3-custom">
+          <div className="grid grid-cols-3 lg:grid-cols-6 font-Century-Gothic gap-4 px-2 py-[0.6rem] grid-cols-3-custom">
           {product?.dataSheet?.map((pdf, index) => (
             <a
               key={index}
               href={pdf?.url ?? ''}
               download
               target="_blank"
-              className="flex items-center  flex-col justify-center mx-auto h-40 w-40 border bg-gray-50 rounded hover:border-[#1c355e]"
+              className="flex items-center flex-col justify-center mx-auto h-40 w-40 border bg-gray-50 rounded hover:border-[#1c355e]"
             >
               <Image src="/pdf.png" alt="PDF Icon" height={30} width={50} />
               <span
@@ -123,7 +123,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
       content = (
         <div
           key={'Información adicional'}
-          className="grid grid-cols-1 lg:grid-cols-1 font-Century-Gothic"
+          className="grid grid-cols-1 lg:grid-cols-1 mt-custom1 font-Century-Gothic"
         >
           {product?.attributes?.nodes.map(
             (node: GlobalProductAttribute, key: any) => {
@@ -146,10 +146,10 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
 
               return (
                 <div
-                  className="col-span-1 flex justify-between px-2 py-[0.6rem] border-l border-r border-b border-[#B2B2B2]"
+                  className="col-span-1 flex px-2 py-[0.6rem] border-l border-r border-b border-[#B2B2B2]"
                   key={key}
                 >
-                  <div>{node.label}:</div>
+                  <div className="mr-custom1">{node.label}:</div>
                   <div className="text-[#B2B2B2] first-letter:uppercase text-end">
                     {termName}
                   </div>
