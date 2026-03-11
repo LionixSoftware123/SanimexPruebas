@@ -633,6 +633,8 @@ table.shop_table td {
 }
 
 /* AxisKg 11032026 */
+.mt-custom1 { margin-top: 9px; }
+.mt-custom2 { margin-top: 15px; }
 @media (min-width: 768px) {
     .w-custom { width: 900px; }
 }
