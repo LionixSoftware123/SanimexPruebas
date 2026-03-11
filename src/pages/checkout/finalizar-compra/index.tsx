@@ -208,7 +208,14 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
     });
 
     if (checkUser.user && !user) {
-      console.log( checkUser );
+      // Solo avisamos, pero NO ponemos un "return". 
+      // El usuario puede decidir ignorar el aviso y comprar como invitado.
+      addToast(
+        <div>
+          Este email ya tiene cuenta. Puedes <Link href="/auth">ingresar</Link> o continuar como invitado.
+        </div>, 
+        { appearance: 'info' }
+      );
     }
 
     return await createBanortePayment(
@@ -329,7 +336,14 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
     });
 
     if (checkUser.user && !user) {
-     console.log( checkUser );
+      // Solo avisamos, pero NO ponemos un "return". 
+      // El usuario puede decidir ignorar el aviso y comprar como invitado.
+      addToast(
+        <div>
+          Este email ya tiene cuenta. Puedes <Link href="/auth">ingresar</Link> o continuar como invitado.
+        </div>, 
+        { appearance: 'info' }
+      );
     }
 
     transferPayment(
