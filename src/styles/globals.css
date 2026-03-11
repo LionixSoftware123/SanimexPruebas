@@ -252,7 +252,7 @@ p > a {
 
 /* Agregado AxisKG 05022026 */
 .post-details2 > div > p > iframe { aspect-ratio: 16 / 9; width: 100% !important; }
-.post-details2 { width: 100%; max-width: 100%; margin: 0 5px; }
+.post-details2 { width: 100%; max-width: 100%; }
 .post-details2 > p,
 .post-details2 div > div > p,
 .post-details2 > div > p {
@@ -261,7 +261,6 @@ p > a {
   line-height: 135%;
   color: #000000;
   font-weight: 400;
-  margin: 10px 0;
   padding-bottom: 20px;
 }
 .post-details2 > ul {
