@@ -92,7 +92,6 @@ import Piedad3 from '@/images/sucursales/piedad3.jpeg';
 import Morelia2 from '@/images/sucursales/morelia2.jpeg';
 import Morelia3 from '@/images/sucursales/morelia-3-new.jpeg';
 import Morelia4 from '@/images/sucursales/morelia4.jpeg';
-import Morelia7 from '@/images/sucursales/morelia7.jpeg';
 import Morelia8 from '@/images/sucursales/morelia8.jpg';
 import Morelia9 from '@/images/sucursales/morelia-9-new.jpeg';
 import Morelia10 from '@/images/sucursales/morelia10.jpg';
@@ -1275,20 +1274,6 @@ export const dataStates = [
       label: 'Michoacán',
     },
   },
-  {
-    image: Morelia7,
-    name: 'Morelia 07',
-    address:
-      'Rio Tecalpatepec No. 125 Col. Ventura Puentes, Morelia, Michoacán C.P 58020 Tel\u00e9fono: 44 33 14 44 91',
-    link: 'https://goo.gl/maps/sauUcbe5tdtCwoKM7',
-    state: 'michoacan',
-    weekdays: '9:00 am - 7:00 pm',
-    saturday: '9:00 am - 2:00 pm',
-    city: {
-      value: 'michoacan',
-      label: 'Michoacán',
-    },
-  },  
  {
     image: Morelia8,
     name: 'Morelia 08',
