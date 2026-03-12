@@ -638,7 +638,7 @@ table.shop_table td {
 /* AxisKg 11032026 */
 .w-custom-int { width: 100%; max-width: 500px; font-weight: 700; }
 .w-custom { width: 1000px; }
-.bck-salteado div:nth-child(odd) {
+.bck-salteado div.col-span-1:nth-child(odd) {
     background-color: #f4f4f4;
 }
 
