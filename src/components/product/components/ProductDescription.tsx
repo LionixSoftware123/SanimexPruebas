@@ -9,26 +9,92 @@ type ProductDescriptionProps = {
   product?: ProductType;
 };
 const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
-  const [option, setOption] = useState(2);
+  const [option, setOption] = useState(1);
   let content = <></>;
 
   switch (option) {
+    case 6:
+      content = (
+        <div
+          key={'Preguntas Frecuentes'}
+          className="grid grid-cols-1 lg:grid-cols-1 font-Century-Gothic gap-4"
+        >
+          <div className="col-span-1 flex justify-between px-2 py-[0.6rem] border-l border-r border-t border-b border-[#B2B2B2] text-[#000] first-letter:uppercase">
+            <div
+              className="post-details2 first-letter:uppercase"
+              dangerouslySetInnerHTML={{ __html: product?.preguntasFrecuentes || '' }}
+            ></div>
+          </div>
+        </div>
+      );
+      break;
+    case 5:
+      content = (
+        <div
+          key={'Características Destacadas'}
+          className="grid grid-cols-1 lg:grid-cols-1 font-Century-Gothic gap-4"
+        >
+          <div className="col-span-1 flex justify-between px-2 py-[0.6rem] border-l border-r border-t border-b border-[#B2B2B2] text-[#000] first-letter:uppercase">
+            <div
+              className="post-details2 first-letter:uppercase"
+              dangerouslySetInnerHTML={{ __html: product?.caracteristicasDestacadas || '' }}
+            ></div>
+          </div>
+        </div>
+      );
+      break;
+    case 4:
+      content = (
+        <div
+          key={'Beneficios Usos Aplicaciones'}
+          className="grid grid-cols-1 lg:grid-cols-1 font-Century-Gothic gap-4"
+        >
+          <div className="col-span-1 flex justify-between px-2 py-[0.6rem] border-l border-r border-t border-b border-[#B2B2B2] text-[#000] first-letter:uppercase">
+            <div
+              className="post-details2 first-letter:uppercase"
+              dangerouslySetInnerHTML={{ __html: product?.beneficiosUso || '' }}
+            ></div>
+          </div>
+        </div>
+      );
+      break;
     case 3:
       content = (
         <div
-          key={'Fichas Técnicas'}
-          className="grid grid-cols-3 lg:grid-cols-6 font-Century-Gothic gap-4 my-4"
+          key={'descripcion'}
+          className="grid grid-cols-1 lg:grid-cols-1 font-Century-Gothic"
         >
+          <div className="col-span-1 flex justify-between px-2 py-[0.6rem] border-l border-r border-t border-b border-[#B2B2B2] text-[#000] first-letter:uppercase">
+            <div
+              className="post-details2 first-letter:uppercase"
+              dangerouslySetInnerHTML={{ __html: product?.description || '' }}
+            ></div>
+          </div>
+        </div>
+      );
+      break;
+    case 2:
+      content = (
+        <div
+          key={'Descripción Técnica'}
+          className="grid grid-cols-1 lg:grid-cols-1 font-Century-Gothic text-[14px] gap-4 px-2 py-[0.6rem] border-l border-r border-t border-b border-[#B2B2B2]"
+        >
+          {product?.descripcionTecnica ? (
+            <div
+              className="post-details2 first-letter:uppercase"
+              dangerouslySetInnerHTML={{ __html: product?.descripcionTecnica || '' }}
+            ></div>          
+          ) : ('')}
+          <div className="grid grid-cols-3 lg:grid-cols-6 font-Century-Gothic gap-4 px-2 py-[0.6rem] grid-cols-3-custom">
           {product?.dataSheet?.map((pdf, index) => (
             <a
               key={index}
               href={pdf?.url ?? ''}
               download
               target="_blank"
-              className="flex items-center  flex-col justify-center mx-auto h-40 w-40 border  bg-gray-50 rounded hover:border-[#1c355e]"
+              className="flex items-center flex-col justify-center mx-auto h-40 w-40 border bg-gray-50 rounded hover:border-[#1c355e]"
             >
               <Image src="/pdf.png" alt="PDF Icon" height={30} width={50} />
-
               <span
                 className="text-sm font-bold font-Century-Gothic-Bold mt-2"
                 style={{
@@ -49,14 +115,15 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
               </button>
             </a>
           ))}
+          </div>
         </div>
       );
       break;
-    case 2:
+    case 1:
       content = (
         <div
           key={'Información adicional'}
-          className="grid grid-cols-3 lg:grid-cols-5 font-Century-Gothic"
+          className="grid grid-cols-1 lg:grid-cols-1 font-Century-Gothic"
         >
           {product?.attributes?.nodes.map(
             (node: GlobalProductAttribute, key: any) => {
@@ -79,11 +146,11 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
 
               return (
                 <div
-                  className="col-span-3 flex justify-between px-2 py-[0.6rem] border-b border-[#B2B2B2]"
+                  className="col-span-1 flex px-2 py-[0.6rem]"
                   key={key}
                 >
-                  <div>{node.label}:</div>
-                  <div className="text-[#B2B2B2] first-letter:uppercase text-end">
+                  <div className="w-custom-int">{node.label}:</div>
+                  <div className="text-[#B2B2B2] first-letter:uppercase">
                     {termName}
                   </div>
                 </div>
@@ -93,42 +160,44 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
         </div>
       );
       break;
-    case 1:
-      content = (
-        <div
-          key={'descripcion'}
-          className="grid grid-cols-3 lg:grid-cols-5 font-Century-Gothic"
-        >
-          <div className="col-span-3 flex justify-between px-2 py-[0.6rem] border-b border-[#B2B2B2] text-[#B2B2B2] first-letter:uppercase">
-            <div
-              className="post-details first-letter:uppercase"
-              dangerouslySetInnerHTML={{ __html: product?.description || '' }}
-            ></div>
-          </div>
-        </div>
-      );
-      break;
   }
   return (
     <div className=" my-auto">
       <div className="grid grid-cols-3 lg:grid-cols-6  font-Century-Gothic">
+
         <button
-          onClick={() => setOption(2)}
+          onClick={() => setOption(1)}
           className={`flex items-center  ${
-            option === 2
-              ? 'border-[#B2B2B2] border-l border-r border-t  text-[#0033A1]'
-              : ' text-[#000] border-b border-[#B2B2B2]'
+            option === 1
+              ? 'bg-[#0071CE] text-[#FFFFFF]'
+              : ' text-[#000] border-l border-r border-t border-[#B2B2B2]'
           } p-2 justify-center `}
         >
           Información Adicional
         </button>
+
+        {product?.dataSheet?.length || product?.descripcionTecnica ? (
+          <button
+            onClick={() => setOption(2)}
+            className={`flex items-center  ${
+              option === 2
+                ? 'bg-[#0071CE] text-[#FFFFFF]'
+                : ' text-[#000] border-l border-r border-t border-b-res border-[#B2B2B2]'
+            } p-2 justify-center `}
+          >
+            Descripción Técnica
+          </button>
+        ) : (
+          ''
+        )}
+
         {product?.description ? (
           <button
-            onClick={() => setOption(1)}
+            onClick={() => setOption(3)}
             className={`flex items-center  ${
-              option === 1
-                ? 'border-[#B2B2B2] border-l border-r border-t text-[#0033A1]'
-                : ' text-[#000] border-b border-[#B2B2B2]'
+              option === 3
+                ? 'bg-[#0071CE] text-[#FFFFFF]'
+                : ' text-[#000] border-l border-r border-t border-[#B2B2B2]'
             } p-2 justify-center `}
           >
             Descripción del producto
@@ -136,25 +205,52 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
         ) : (
           ''
         )}
-        {product?.dataSheet?.length ? (
+
+        {product?.beneficiosUso ? (
           <button
-            onClick={() => setOption(3)}
+            onClick={() => setOption(4)}
             className={`flex items-center  ${
-              option === 3
-                ? 'border-[#B2B2B2] border-l border-r border-t text-[#0033A1]'
-                : ' text-[#000] border-b border-[#B2B2B2]'
+              option === 4
+                ? 'bg-[#0071CE] text-[#FFFFFF]'
+                : ' text-[#000] border-l border-r border-t border-[#B2B2B2]'
             } p-2 justify-center `}
           >
-            Fichas Técnicas
+            Beneficios principales, Usos y Aplicaciones
           </button>
         ) : (
           ''
         )}
-        <div
-          className={`${
-            product?.dataSheet ? 'lg:col-span-3 ' : 'lg:col-span-4 col-span-2'
-          }  border-b border-[#B2B2B2]`}
-        ></div>
+
+        {product?.caracteristicasDestacadas ? (
+          <button
+            onClick={() => setOption(5)}
+            className={`flex items-center  ${
+              option === 5
+                ? 'bg-[#0071CE] text-[#FFFFFF]'
+                : ' text-[#000] border-l border-r border-t border-[#B2B2B2]'
+            } p-2 justify-center `}
+          >
+            Características Destacadas
+          </button>
+        ) : (
+          ''
+        )}
+
+        {product?.preguntasFrecuentes ? (
+          <button
+            onClick={() => setOption(6)}
+            className={`flex items-center  ${
+              option === 6
+                ? 'bg-[#0071CE] text-[#FFFFFF]'
+                : ' text-[#000] border-l border-r border-t border-[#B2B2B2]'
+            } p-2 justify-center `}
+          >
+            Preguntas Frecuentes
+          </button>
+        ) : (
+          ''
+        )}
+
       </div>
       {content}
     </div>
