@@ -638,6 +638,10 @@ table.shop_table td {
 /* AxisKg 11032026 */
 .w-custom-int { width: 100%; max-width: 500px; font-weight: 700; }
 .w-custom { width: 1000px; }
+.bck-salteado div:nth-child(odd) {
+    background-color: #f4f4f4;
+}
+
 @media only screen and (max-width: 1024px) {
     .w-custom { width: 90%; }
     .border-b-res { border-bottom-width: 1px; }
