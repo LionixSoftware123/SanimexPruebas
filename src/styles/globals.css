@@ -636,8 +636,9 @@ table.shop_table td {
 }
 
 /* AxisKg 11032026 */
-.w-custom-int { width: 100%; max-width: 500px; font-weight: 700; }
+.w-custom-int { width: 100%; max-width: 50%; font-weight: 700; }
 .w-custom { width: 1000px; }
+.bck-salteado { font-size: 14px; }
 .bck-salteado div.col-span-1:nth-child(odd) {
     background-color: #f4f4f4;
 }
@@ -661,5 +662,4 @@ table.shop_table td {
     table.shop_table .product-iva::before,
     table.shop_table .product-total::before { content: attr(data-title) ": "; font-weight: 700; float: left; margin-right: 5px; }
     .grid-cols-3-custom { grid-template-columns: repeat(1, minmax(0, 1fr))!important; }
-    .w-custom-int { max-width: 320px; }
 }
