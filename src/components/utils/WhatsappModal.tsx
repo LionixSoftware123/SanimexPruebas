@@ -13,7 +13,7 @@ const WhatsappModal: React.FC<WppModal> = ({ dialog = false }) => {
       <div
         className={`${
           dialog ? 'w-[160px] md:w-[220px]' : 'w-[65px]'
-        }  h-[65px] mr-2  mb-[40px] flex ${isProductosRoute ? 'mb-24' : ''}`}
+        }  h-[130px] mr-2  mb-[40px] flex ${isProductosRoute ? 'mb-24' : ''}`}
       >
         <div
           className={`${
