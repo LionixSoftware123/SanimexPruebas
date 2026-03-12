@@ -126,7 +126,7 @@ import Guadalajara12 from '@/images/sucursales/guadalajara-12-new.jpg';
 import Guadalajara14 from '@/images/sucursales/guadalajara-14-new.jpg';
 import Guadalajara15 from '@/images/sucursales/guadalajara-15-new.jpeg';
 import Guadalajara16 from '@/images/sucursales/guadalajara-16-new.webp';
-import Guadalajara17 from '@/images/sucursales/guadalajara17.jpeg';
+import Guadalajara17 from '@/images/sucursales/guadalajara-17-new.jpeg';
 import Guadalajara18 from '@/images/sucursales/guadalajara-18-new.jpeg';
 import Guadalajara19 from '@/images/sucursales/guadalajara-19-new.jpg';
 import SucursalColima3 from '@/images/sucursales/colima-3-new.jpeg';
