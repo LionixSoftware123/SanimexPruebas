@@ -260,7 +260,7 @@ p > a {
 .post-details2 div > div > p,
 .post-details2 > div > p {
   width: 100%;
-  font-size: 1rem;
+  font-size: 14px;
   line-height: 135%;
   color: #000000;
   font-weight: 400;
