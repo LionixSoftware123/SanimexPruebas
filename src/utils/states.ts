@@ -93,7 +93,7 @@ import Morelia2 from '@/images/sucursales/morelia2.jpeg';
 import Morelia3 from '@/images/sucursales/morelia-3-new.jpeg';
 import Morelia4 from '@/images/sucursales/morelia4.jpeg';
 import Morelia8 from '@/images/sucursales/morelia8.jpg';
-import Morelia9 from '@/images/sucursales/morelia-9-new.jpeg';
+import Morelia9 from '@/images/sucursales/morelia-9-new.jpg';
 import Morelia10 from '@/images/sucursales/morelia10.jpg';
 import Morelia11 from '@/images/sucursales/morelia11.jpeg';
 import Morelia12 from '@/images/sucursales/Morelia12.jpg';
@@ -1290,7 +1290,7 @@ export const dataStates = [
   },
     {
     image: Morelia9,
-    name: 'Morelia 09 Arquicer\u00e1mica',
+    name: 'Morelia 09',
     address:
       'Calz. Ventura Puente No. 633 Col. Chapultepec Norte, Morelia, Michoacán C.P 58260 Tel\u00e9fono: 44 33 15 10 44',
     link: 'https://maps.app.goo.gl/aHrfh8WJKKozp2cc8',
