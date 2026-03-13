@@ -10,7 +10,7 @@ export const data = {
         { label: 'Porcélanico', slug: 'porcelanico' },
         { label: 'Vinílicos (SPC)', slug: 'vinilicos-spc' },
         { label: 'Paneles (WPC)', slug: 'paneles-wpc' },
-        { label: 'Placas (PVC)', slug: 'placas-pvc' },
+        { label: 'Placas (XL)', slug: 'placas-xl' },
       ],
     },
     {
