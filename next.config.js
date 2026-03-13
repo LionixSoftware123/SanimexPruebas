@@ -56,3 +56,16 @@ module.exports = withPlugins([
     }),
   ],
 ]);
+
+// Redireccionar
+module.exports = {
+  async redirects() {
+    return [
+      {
+        source: '/productos/pisos-y-muros/placas-pvc', // URL vieja
+        destination: '/productos/pisos-y-muros/placas-xl', // URL nueva
+        permanent: true, // Esto hace una redirección 301
+      },
+    ];
+  },
+};
