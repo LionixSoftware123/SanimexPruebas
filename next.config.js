@@ -27,6 +27,15 @@ const nextConfig = {
       'woocommerce-1377145-5371010.cloudwaysapps.com',
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: '/productos/pisos-y-muros/placas-pvc',
+        destination: '/productos/pisos-y-muros/placas-xl',
+        permanent: true,
+      },
+    ]
+  },  
 };
 
 module.exports = withPlugins([
@@ -56,19 +65,3 @@ module.exports = withPlugins([
     }),
   ],
 ]);
-
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true, // Esto ayuda a debugear el error #130
-  async redirects() {
-    return [
-      {
-        source: '/productos/pisos-y-muros/placas-pvc',
-        destination: '/productos/pisos-y-muros/placas-xl',
-        permanent: true,
-      },
-    ]
-  },
-}
-
-module.exports = nextConfig
