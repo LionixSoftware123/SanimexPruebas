@@ -57,15 +57,18 @@ module.exports = withPlugins([
   ],
 ]);
 
-// Redireccionar
-module.exports = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  reactStrictMode: true, // Esto ayuda a debugear el error #130
   async redirects() {
     return [
       {
-        source: '/productos/pisos-y-muros/placas-pvc', // URL vieja
-        destination: '/productos/pisos-y-muros/placas-xl', // URL nueva
-        permanent: true, // Esto hace una redirección 301
+        source: '/productos/pisos-y-muros/placas-pvc',
+        destination: '/productos/pisos-y-muros/placas-xl',
+        permanent: true,
       },
-    ];
+    ]
   },
-};
+}
+
+module.exports = nextConfig
