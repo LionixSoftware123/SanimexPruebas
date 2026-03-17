@@ -61,5 +61,14 @@ export const data = {
         { label: 'Coladeras', slug: 'coladeras' },
       ],
     },
+    {
+      label: 'Aire Acondicionado',
+      slug: 'aire-acondicionado',
+      childrenRoutes: [
+        { label: 'Inverter', slug: 'inverter' },
+        { label: 'Estándar', slug: 'estandar' },
+      ],
+    },
+    
   ],
 };
