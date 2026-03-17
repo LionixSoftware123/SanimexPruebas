@@ -13,10 +13,9 @@ const ProductMenu: React.FC<ProductMenuType> = ({ routes }) => {
   const pisosMuros = routes.find((route) => route.label === 'Pisos y muros');
   const cocina = routes.find((route) => route.label === 'Cocina');
   const banos = routes.find((route) => route.label === 'Baños');
-  const materialInstalacion = routes.find(
-    (route) => route.label === 'Material de Instalación',
-  );
+  const materialInstalacion = routes.find((route) => route.label === 'Material de Instalación');
   const complementos = routes.find((route) => route.label === 'Complementos');
+  const aireAcondicionado = routes.find((route) => route.label === 'Aire Acondicionado');
 
   const renderRoute = (route: any | undefined) =>
     route ? (
@@ -79,7 +78,11 @@ const ProductMenu: React.FC<ProductMenuType> = ({ routes }) => {
         </div>
       </div>
 
-      <div className="col-span-4">{renderRoute(banos)}</div>
+      <div className="col-span-4">
+        {renderRoute(banos)}
+        <div className="mt-8">{renderRoute(aireAcondicionado)}</div>
+      </div>
+      
       <div className="col-span-2">
         {renderRoute(materialInstalacion)}
         <div className="mt-6">{renderRoute(complementos)}</div>
