@@ -643,6 +643,10 @@ table.shop_table td {
     background-color: #f4f4f4;
 }
 
+/* AxisKg 17032026 */
+.mb-c { margin-bottom: 0.5em; } 
+.pb-c { padding-bottom: 0.5em; }
+
 @media only screen and (max-width: 1024px) {
     .w-custom { width: 90%; }
     .border-b-res { border-bottom-width: 1px; }
