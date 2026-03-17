@@ -23,7 +23,7 @@ const ProductMenu: React.FC<ProductMenuType> = ({ routes }) => {
         className="text-[#315299] font-Century-Gothic-Bold "
         key={'ProdItem-' + route.slug}
       >
-        <div className=" uppercase mb-3 pb-3 border-b border-[#DFDFDF] w-72">
+        <div className=" uppercase mb-c pb-c border-b border-[#DFDFDF] w-72">
           <Link
             className="hover:bg-[#eee] rounded-[10px] px-1"
             href={`/productos/${route.slug}`}
@@ -53,7 +53,7 @@ const ProductMenu: React.FC<ProductMenuType> = ({ routes }) => {
               index: string,
             ) => (
               <div className="w-full" key={'subcategoryproduct-' + index}>
-                <div className=" text-[14px] font-Century-Gothic flex justify-between  bg-transparent  w-full font-semibold  text-[#606060]">
+                <div className=" text-[13px] font-Century-Gothic flex justify-between  bg-transparent  w-full font-semibold  text-[#606060]">
                   <Link
                     className="hover:bg-[#eee] rounded-[10px] px-1"
                     href={`/productos/${route.slug}/${children.slug}`}
@@ -70,17 +70,17 @@ const ProductMenu: React.FC<ProductMenuType> = ({ routes }) => {
     ) : null;
 
   return (
-    <div className={`pt-[42px] w-full grid grid-cols-12 gap-4 ml-4 `}>
+    <div className={`pt-c w-full grid grid-cols-12 gap-4 ml-4 `}>
       <div className="col-span-4 grid grid-cols-2 gap-4">
         <div className="flex flex-col">
           {renderRoute(pisosMuros)}
-          <div className="mt-8">{renderRoute(cocina)}</div>
+          <div className="mt-6">{renderRoute(cocina)}</div>
         </div>
       </div>
 
       <div className="col-span-4">
         {renderRoute(banos)}
-        <div className="mt-8">{renderRoute(aireAcondicionado)}</div>
+        <div className="mt-6">{renderRoute(aireAcondicionado)}</div>
       </div>
       
       <div className="col-span-2">
