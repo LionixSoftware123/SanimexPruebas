@@ -15738,20 +15738,14 @@ export type ExternalProduct = ContentNode &
     tiempoDeEntregaPod?: Maybe<Scalars['String']['output']>;
     /** SEO Title */
     seoTitle?: Maybe<Scalars['String']['output']>;
-    /** SEO Description */
-    seoDescripcion?: Maybe<Scalars['String']['output']>;
     /** SEO Meta Description */
     seoMeta?: Maybe<Scalars['String']['output']>;
-    /** Beneficios y Uso */
-    beneficiosUso?: Maybe<Scalars['String']['output']>;
     /** Descripción Técnica */
     descripcionTecnica?: Maybe<Scalars['String']['output']>;
     /** Características Destacadas */
     caracteristicasDestacadas?: Maybe<Scalars['String']['output']>;
     /** Preguntas Frecuentes */
     preguntasFrecuentes?: Maybe<Scalars['String']['output']>;
-    /** Cierre Comercial */
-    cierreComercial?: Maybe<Scalars['String']['output']>;
     /** The title of the post. This is currently just the raw title. An amendment to support rendered title needs to be made. */
     title?: Maybe<Scalars['String']['output']>;
     /** Number total of sales */
@@ -18725,20 +18719,14 @@ export type GroupProduct = ContentNode &
     tiempoDeEntregaPod?: Maybe<Scalars['String']['output']>;
     /** SEO Title */
     seoTitle?: Maybe<Scalars['String']['output']>;
-    /** SEO Description */
-    seoDescripcion?: Maybe<Scalars['String']['output']>;
     /** SEO Meta Description */
     seoMeta?: Maybe<Scalars['String']['output']>;
-    /** Beneficios y Uso */
-    beneficiosUso?: Maybe<Scalars['String']['output']>;
     /** Descripción Técnica */
     descripcionTecnica?: Maybe<Scalars['String']['output']>;
     /** Características Destacadas */
     caracteristicasDestacadas?: Maybe<Scalars['String']['output']>;
     /** Preguntas Frecuentes */
     preguntasFrecuentes?: Maybe<Scalars['String']['output']>;
-    /** Cierre Comercial */
-    cierreComercial?: Maybe<Scalars['String']['output']>;
     /** The title of the post. This is currently just the raw title. An amendment to support rendered title needs to be made. */
     title?: Maybe<Scalars['String']['output']>;
     /** Number total of sales */
