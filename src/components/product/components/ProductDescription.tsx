@@ -13,7 +13,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
   let content = <></>;
 
   switch (option) {
-    case 5:
+    case 6:
       content = (
         <div
           key={'Preguntas Frecuentes'}
@@ -28,7 +28,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
         </div>
       );
       break;
-    case 4:
+    case 5:
       content = (
         <div
           key={'Características Destacadas'}
@@ -38,6 +38,36 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
             <div
               className="post-details2 first-letter:uppercase"
               dangerouslySetInnerHTML={{ __html: product?.caracteristicasDestacadas || '' }}
+            ></div>
+          </div>
+        </div>
+      );
+      break;
+    case 4:
+      content = (
+        <div
+          key={'Beneficios Usos Aplicaciones'}
+          className="grid grid-cols-1 lg:grid-cols-1 font-Century-Gothic text-[14px] gap-4"
+        >
+          <div className="col-span-1 flex justify-between px-2 py-[0.6rem] border-l border-r border-t border-b border-[#B2B2B2] text-[#000] first-letter:uppercase">
+            <div
+              className="post-details2 first-letter:uppercase"
+              dangerouslySetInnerHTML={{ __html: product?.beneficiosUso || '' }}
+            ></div>
+          </div>
+        </div>
+      );
+      break;
+    case 3:
+      content = (
+        <div
+          key={'descripcion'}
+          className="grid grid-cols-1 lg:grid-cols-1 font-Century-Gothic text-[14px]"
+        >
+          <div className="col-span-1 flex justify-between px-2 py-[0.6rem] border-l border-r border-t border-b border-[#B2B2B2] text-[#000] first-letter:uppercase">
+            <div
+              className="post-details2 first-letter:uppercase"
+              dangerouslySetInnerHTML={{ __html: product?.description || '' }}
             ></div>
           </div>
         </div>
@@ -176,9 +206,24 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
           ''
         )}
 
-        {product?.caracteristicasDestacadas ? (
+        {product?.beneficiosUso ? (
           <button
             onClick={() => setOption(4)}
+            className={`flex items-center  ${
+              option === 4
+                ? 'bg-[#0071CE] text-[#FFFFFF]'
+                : ' text-[#000] border-l border-r border-t border-[#B2B2B2]'
+            } p-2 justify-center `}
+          >
+            Beneficios principales, Usos y Aplicaciones
+          </button>
+        ) : (
+          ''
+        )}
+
+        {product?.caracteristicasDestacadas ? (
+          <button
+            onClick={() => setOption(5)}
             className={`flex items-center  ${
               option === 5
                 ? 'bg-[#0071CE] text-[#FFFFFF]'
@@ -193,7 +238,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
 
         {product?.preguntasFrecuentes ? (
           <button
-            onClick={() => setOption(5)}
+            onClick={() => setOption(6)}
             className={`flex items-center  ${
               option === 6
                 ? 'bg-[#0071CE] text-[#FFFFFF]'
