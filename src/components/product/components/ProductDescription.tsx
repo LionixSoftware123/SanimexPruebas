@@ -173,7 +173,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
               : ' text-[#000] border-l border-r border-t border-[#B2B2B2]'
           } p-2 justify-center `}
         >
-          Información Adicional
+          Descripción del producto
         </button>
 
         {product?.dataSheet?.length || product?.descripcionTecnica ? (
@@ -200,7 +200,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
                 : ' text-[#000] border-l border-r border-t border-b-res border-[#B2B2B2]'
             } p-2 justify-center `}
           >
-            Descripción del producto
+            Información Adicional
           </button>
         ) : (
           ''
