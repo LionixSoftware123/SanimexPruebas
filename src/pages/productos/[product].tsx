@@ -333,7 +333,8 @@ export const getStaticPaths = async () => {
   });
   return {
     paths: products.map((product) => ({ params: { product: product.slug } })),
-    fallback: true,
+    // CAMBIA 'true' POR 'blocking'
+    fallback: 'blocking', 
   };
 };
 
