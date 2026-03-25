@@ -41,15 +41,11 @@ const Schema: React.FC<SchemaProps> = ({ product, url }) => {
         : '',
       priceSpecification: {
         '@type': 'PriceSpecification',
-        price:
-          (product as SimpleProduct)?.type === ProductTypesEnum.Variable
-            ? (product as SimpleProduct).price
-                ?.split(' - ')[0]
-                .replaceAll(',', '')
-                .replaceAll('$', '')
-            : ((product as SimpleProduct)?.price as string)
-                .replaceAll(',', '')
-                .replaceAll('$', ''),
+        price: (product as SimpleProduct)?.price
+          ? (product as SimpleProduct).price
+              .split(' - ')[0]             // Por si es un rango de precios (Variables)
+              .replace(/[^0-9.]/g, '')     // <--- LA CLAVE: Elimina TODO excepto números y el punto decimal
+          : '0.00',
         priceCurrency: 'MXN',
       },
       hasMerchantReturnPolicy: {
