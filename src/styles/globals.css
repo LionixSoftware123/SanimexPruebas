@@ -244,7 +244,8 @@ p > a {
 .post-details2 div > div > p iframe, 
 .post-details2 > div > p iframe, 
 .post-details2 > p iframe {
-  width: 100% !important;
+  width: 80% !important;
+  margin: 0 auto !important;
 }
 .post-details > strong {
   font-weight: bolder;
