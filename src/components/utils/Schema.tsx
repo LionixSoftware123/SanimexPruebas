@@ -1,4 +1,5 @@
 import React from 'react';
+import Head from 'next/head'; // <--- IMPORTANTE: Importamos Head de Next.js
 import { checkProductInStock, getMarca } from '@/modules/product/product-utils';
 import {
   Product,
@@ -11,7 +12,6 @@ type SchemaProps = {
 };
 
 const Schema: React.FC<SchemaProps> = ({ product, url }) => {
-  // 1. Función de limpieza para Google Merchant Center
   const cleanForSchema = (price: any): string => {
     if (!price) return "0.00";
     const priceStr = String(price);
@@ -20,7 +20,6 @@ const Schema: React.FC<SchemaProps> = ({ product, url }) => {
 
   const validatedPrice = cleanForSchema((product as SimpleProduct)?.price);
 
-  // 2. Construcción del objeto JSON-LD
   const schemaData = {
     '@context': 'https://schema.org',
     '@type': 'Product',
@@ -94,11 +93,13 @@ const Schema: React.FC<SchemaProps> = ({ product, url }) => {
   };
 
   return (
-    <script
-      type="application/ld+json"
-      id={`schema-${url}`}
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
-    />
+    <Head>
+      <script
+        type="application/ld+json"
+        id={`schema-${url}`}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
+      />
+    </Head>
   );
 };
 
