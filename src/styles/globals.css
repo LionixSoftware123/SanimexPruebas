@@ -74,16 +74,15 @@
 
 @layer base {
   @font-face {
-    font-family: 'Century Gothic';
+    font-family: 'Century-Gothic-Bold';
     src: url('../fonts/century/GOTHICB0.TTF') format('truetype'); /* Asegúrate que sea un CERO */
     font-weight: bold;
     font-style: normal;
     font-display: swap;
   }
   
-  /* Fuente Regular */
   @font-face {
-    font-family: 'Century Gothic';
+    font-family: 'Century-Gothic';
     src: url('../fonts/century/CenturyGothic.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
