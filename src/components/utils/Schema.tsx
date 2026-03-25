@@ -42,9 +42,9 @@ const Schema: React.FC<SchemaProps> = ({ product, url }) => {
       priceSpecification: {
         '@type': 'PriceSpecification',
         price: (product as SimpleProduct)?.price
-          ? (product as SimpleProduct).price
-              .split(' - ')[0]             // Por si es un rango de precios (Variables)
-              .replace(/[^0-9.]/g, '')     // <--- LA CLAVE: Elimina TODO excepto números y el punto decimal
+          ? (product as SimpleProduct).price! // El "!" le dice a TS: "Tranquilo, yo sé que existe"
+              .split(' - ')[0]
+              .replace(/[^0-9.]/g, '')
           : '0.00',
         priceCurrency: 'MXN',
       },
