@@ -3,7 +3,7 @@ import { checkProductInStock, getMarca } from '@/modules/product/product-utils';
 import {
   Product,
   SimpleProduct,
-  ProductTypesEnum,
+  //ProductTypesEnum,
 } from '@/utils/types/generated';
 import useScript, { HTMLPositionEnum } from '@/utils/useScript';
 import { removeScript } from '@/utils/ads-utils';
