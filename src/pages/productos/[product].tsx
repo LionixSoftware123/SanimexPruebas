@@ -56,7 +56,8 @@ type ProductPageProps = {
   complementProducts?: ProductCustom[];
   similarProducts?: ProductCustom[];
 };
-const StaticMeta = dynamic(() => import('@/components/utils/StaticMeta'));
+//const StaticMeta = dynamic(() => import('@/components/utils/StaticMeta'));
+import StaticMeta from '@/components/utils/StaticMeta';
 
 const ProductPage: React.FC<ProductPageProps> = ({
   product,
