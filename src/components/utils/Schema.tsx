@@ -1,39 +1,32 @@
-import React from 'react';
-import Head from 'next/head'; // <--- IMPORTANTE: Importamos Head de Next.js
+import React, { useEffect } from 'react';
 import { checkProductInStock, getMarca } from '@/modules/product/product-utils';
 import {
   Product,
   SimpleProduct,
+  ProductTypesEnum,
 } from '@/utils/types/generated';
-
+import useScript, { HTMLPositionEnum } from '@/utils/useScript';
+import { removeScript } from '@/utils/ads-utils';
+import { useRouter } from 'next/router';
 type SchemaProps = {
   product: Product;
   url?: string;
 };
 
 const Schema: React.FC<SchemaProps> = ({ product, url }) => {
-  const cleanForSchema = (price: any): string => {
-    if (!price) return "0.00";
-    const priceStr = String(price);
-    return priceStr.split(' - ')[0].replace(/[^0-9.]/g, '') || "0.00";
-  };
-
-  const validatedPrice = cleanForSchema((product as SimpleProduct)?.price);
-
-  const schemaData = {
+  const router = useRouter();
+  let schema: any = {
     '@context': 'https://schema.org',
     '@type': 'Product',
-    sku: product?.sku ? String(product.sku) : String(product?.databaseId || ''),
-    image: product?.galleryImages?.edges?.length
+    sku: (product.sku as string) ? (product.sku as string) : '',
+    image: product?.galleryImages?.edges.length
       ? product?.galleryImages.edges[0].node.sourceUrl
-      : product?.featuredImage?.node?.sourceUrl,
-    name: product?.name || '',
-    description: product?.description 
-      ? product.description.replace(/<[^>]*>?/gm, '') 
-      : product?.name || '',
+      : product?.featuredImage?.node.sourceUrl,
+    name: product?.name as String,
+    description: product?.name as String,
     brand: {
       '@type': 'Brand',
-      name: getMarca(product) || 'Sanimex',
+      name: getMarca(product),
     },
     mainEntityOfPage: {
       '@type': 'WebPage',
@@ -42,22 +35,28 @@ const Schema: React.FC<SchemaProps> = ({ product, url }) => {
     offers: {
       '@type': 'Offer',
       url: url,
-      priceCurrency: 'MXN',
-      price: validatedPrice,
       itemCondition: 'https://schema.org/NewCondition',
       availability: checkProductInStock(product)
         ? 'https://schema.org/InStock'
-        : 'https://schema.org/OutOfStock',
+        : '',
       priceSpecification: {
         '@type': 'PriceSpecification',
-        price: validatedPrice,
+        price:
+          (product as SimpleProduct)?.type === ProductTypesEnum.Variable
+            ? (product as SimpleProduct).price
+                ?.split(' - ')[0]
+                .replaceAll(',', '')
+                .replaceAll('$', '')
+            : ((product as SimpleProduct)?.price as string)
+                .replaceAll(',', '')
+                .replaceAll('$', ''),
         priceCurrency: 'MXN',
-        valueAddedTaxIncluded: true,
       },
       hasMerchantReturnPolicy: {
         '@type': 'MerchantReturnPolicy',
         applicableCountry: 'MX',
-        returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow',
+        returnPolicyCategory:
+          'https://schema.org/MerchantReturnFiniteReturnWindow',
         merchantReturnDays: 60,
         returnMethod: 'https://schema.org/ReturnByMail',
         returnFees: 'https://schema.org/FreeReturn',
@@ -66,7 +65,8 @@ const Schema: React.FC<SchemaProps> = ({ product, url }) => {
         '@type': 'OfferShippingDetails',
         shippingRate: {
           '@type': 'MonetaryAmount',
-          value: 0,
+          minValue: 250,
+          maxValue: 500,
           currency: 'MXN',
         },
         shippingDestination: {
@@ -92,15 +92,29 @@ const Schema: React.FC<SchemaProps> = ({ product, url }) => {
     },
   };
 
-  return (
-    <Head>
-      <script
-        type="application/ld+json"
-        id={`schema-${url}`}
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
-      />
-    </Head>
-  );
+  useScript({
+    delay: 100,
+    scriptContent: `${JSON.stringify(schema)}`,
+    position: HTMLPositionEnum.Head,
+    scriptId: `schema-${url}`,
+    type: 'application/ld+json',
+  });
+  useEffect(() => {
+    const handleRouteChange = () => {
+      removeScript(`schema-${url}`);
+    };
+
+    router.events.on('routeChangeStart', () => {
+      handleRouteChange();
+    });
+
+    return () => {
+      router.events.off('routeChangeStart', () => {
+        handleRouteChange();
+      });
+    };
+  }, [router.events, url]);
+  return <></>;
 };
 
 export default Schema;
