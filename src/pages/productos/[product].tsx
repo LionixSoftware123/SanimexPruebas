@@ -322,7 +322,6 @@ export const getStaticProps = async ({
     console.log('no se encontro el producto, reintente en 60');
     return {
       notFound: true,
-      //revalidate: 60,
     };
   }
 
@@ -339,6 +338,30 @@ export const getStaticProps = async ({
     complementProducts = await fetchComplementProducts(complementProductIds);
   }
 
+  // --- INICIO DE LIMPIEZA PARA MERCHANT CENTER ---
+  const cleanPrice = (p: string | undefined | null) => {
+    if (!p) return "";
+    // Elimina $, comas y espacios para dejar solo el número puro
+    return p.replace(/[$,\s]/g, "");
+  };
+
+  if (product) {
+    // Limpieza del producto principal
+    (product as any).price = cleanPrice((product as any).price);
+    (product as any).regularPrice = cleanPrice((product as any).regularPrice);
+    (product as any).salePrice = cleanPrice((product as any).salePrice);
+
+    // Limpieza de las variaciones (Si existen)
+    if ((product as any).variations?.nodes) {
+      (product as any).variations.nodes.forEach((variation: any) => {
+        variation.price = cleanPrice(variation.price);
+        variation.regularPrice = cleanPrice(variation.regularPrice);
+        variation.salePrice = cleanPrice(variation.salePrice);
+      });
+    }
+  }
+  // --- FIN DE LIMPIEZA ---
+
   return {
     props: {
       product,
@@ -348,4 +371,5 @@ export const getStaticProps = async ({
     revalidate: Number(process.env.NEXT_PUBLIC_REVALIDATE_TIME) || 60,
   };
 };
+
 export default ProductPage;
