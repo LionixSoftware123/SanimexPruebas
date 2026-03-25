@@ -80,7 +80,8 @@
   }
   @font-face {
     font-family: 'Century-Gothic';
-    src: url('../fonts/century/Century Gothic.ttf');
+    //src: url('../fonts/century/Century Gothic.ttf');
+    src: url('../fonts/century/GOTHIC.TTF');
     font-display: swap;
   }
 
