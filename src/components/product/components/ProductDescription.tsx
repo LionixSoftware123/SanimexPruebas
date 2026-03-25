@@ -115,7 +115,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
       content = (
         <div
           key={'Información adicional'}
-          className="bck-salteado grid grid-cols-1 lg:grid-cols-1 border-l border-r border-t border-b border-[#B2B2B2] font-Century-Gothic"
+          className="bck-salteado grid grid-cols-1 lg:grid-cols-1 font-Century-Gothic text-[14px] tc gap-4 pc border-l border-r border-t border-b border-[#B2B2B2]"
         >
           {product?.attributes?.nodes.map(
             (node: GlobalProductAttribute, key: any) => {
