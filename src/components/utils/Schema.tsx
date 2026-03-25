@@ -1,11 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { checkProductInStock, getMarca } from '@/modules/product/product-utils';
 import {
   Product,
   SimpleProduct,
-  //ProductTypesEnum,
 } from '@/utils/types/generated';
-import { useRouter } from 'next/router';
 
 type SchemaProps = {
   product: Product;
@@ -13,13 +11,10 @@ type SchemaProps = {
 };
 
 const Schema: React.FC<SchemaProps> = ({ product, url }) => {
-  const router = useRouter();
-
   // 1. Función de limpieza para Google Merchant Center
   const cleanForSchema = (price: any): string => {
     if (!price) return "0.00";
     const priceStr = String(price);
-    // Toma el primer precio si es rango y quita todo lo que no sea número o punto
     return priceStr.split(' - ')[0].replace(/[^0-9.]/g, '') || "0.00";
   };
 
@@ -35,7 +30,7 @@ const Schema: React.FC<SchemaProps> = ({ product, url }) => {
       : product?.featuredImage?.node?.sourceUrl,
     name: product?.name || '',
     description: product?.description 
-      ? product.description.replace(/<[^>]*>?/gm, '') // Limpia HTML para Google
+      ? product.description.replace(/<[^>]*>?/gm, '') 
       : product?.name || '',
     brand: {
       '@type': 'Brand',
@@ -98,8 +93,6 @@ const Schema: React.FC<SchemaProps> = ({ product, url }) => {
     },
   };
 
-  // 3. Renderizamos el script directamente en el HTML (Server Side)
-  // Esto hace que aparezca en el "Ver código fuente" al instante
   return (
     <script
       type="application/ld+json"
