@@ -5,8 +5,6 @@ import {
   SimpleProduct,
   //ProductTypesEnum,
 } from '@/utils/types/generated';
-import useScript, { HTMLPositionEnum } from '@/utils/useScript';
-import { removeScript } from '@/utils/ads-utils';
 import { useRouter } from 'next/router';
 
 type SchemaProps = {
@@ -17,21 +15,18 @@ type SchemaProps = {
 const Schema: React.FC<SchemaProps> = ({ product, url }) => {
   const router = useRouter();
 
-  // 1. Función de limpieza ultra-robusta para Merchant Center
+  // 1. Función de limpieza para Google Merchant Center
   const cleanForSchema = (price: any): string => {
     if (!price) return "0.00";
-    // Convertimos a string, tomamos el primer valor si es rango, 
-    // y removemos todo lo que no sea número o punto decimal.
-    return String(price)
-      .split(' - ')[0]
-      .replace(/[^0-9.]/g, '') || "0.00";
+    const priceStr = String(price);
+    // Toma el primer precio si es rango y quita todo lo que no sea número o punto
+    return priceStr.split(' - ')[0].replace(/[^0-9.]/g, '') || "0.00";
   };
 
-  // 2. Pre-calculamos el precio limpio para evitar errores en el objeto
   const validatedPrice = cleanForSchema((product as SimpleProduct)?.price);
 
-  // 3. Construcción del objeto Schema
-  let schema: any = {
+  // 2. Construcción del objeto JSON-LD
+  const schemaData = {
     '@context': 'https://schema.org',
     '@type': 'Product',
     sku: product?.sku ? String(product.sku) : String(product?.databaseId || ''),
@@ -40,7 +35,7 @@ const Schema: React.FC<SchemaProps> = ({ product, url }) => {
       : product?.featuredImage?.node?.sourceUrl,
     name: product?.name || '',
     description: product?.description 
-      ? product.description.replace(/<[^>]*>?/gm, '') // Limpia etiquetas HTML de la descripción
+      ? product.description.replace(/<[^>]*>?/gm, '') // Limpia HTML para Google
       : product?.name || '',
     brand: {
       '@type': 'Brand',
@@ -54,7 +49,7 @@ const Schema: React.FC<SchemaProps> = ({ product, url }) => {
       '@type': 'Offer',
       url: url,
       priceCurrency: 'MXN',
-      price: validatedPrice, // <--- Valor limpio: "28502.19"
+      price: validatedPrice,
       itemCondition: 'https://schema.org/NewCondition',
       availability: checkProductInStock(product)
         ? 'https://schema.org/InStock'
@@ -63,7 +58,7 @@ const Schema: React.FC<SchemaProps> = ({ product, url }) => {
         '@type': 'PriceSpecification',
         price: validatedPrice,
         priceCurrency: 'MXN',
-        valueAddedTaxIncluded: true
+        valueAddedTaxIncluded: true,
       },
       hasMerchantReturnPolicy: {
         '@type': 'MerchantReturnPolicy',
@@ -77,7 +72,7 @@ const Schema: React.FC<SchemaProps> = ({ product, url }) => {
         '@type': 'OfferShippingDetails',
         shippingRate: {
           '@type': 'MonetaryAmount',
-          value: 0, // Ajustar si hay costo de envío base
+          value: 0,
           currency: 'MXN',
         },
         shippingDestination: {
@@ -103,29 +98,15 @@ const Schema: React.FC<SchemaProps> = ({ product, url }) => {
     },
   };
 
-  // 4. Inyección del Script en el Head
-  useScript({
-    delay: 100,
-    scriptContent: JSON.stringify(schema),
-    position: HTMLPositionEnum.Head,
-    scriptId: `schema-${url}`,
-    type: 'application/ld+json',
-  });
-
-  // 5. Limpieza de scripts al cambiar de ruta (SPA behavior)
-  useEffect(() => {
-    const handleRouteChange = () => {
-      removeScript(`schema-${url}`);
-    };
-
-    router.events.on('routeChangeStart', handleRouteChange);
-
-    return () => {
-      router.events.off('routeChangeStart', handleRouteChange);
-    };
-  }, [router.events, url]);
-
-  return null; // El componente no renderiza nada visual
+  // 3. Renderizamos el script directamente en el HTML (Server Side)
+  // Esto hace que aparezca en el "Ver código fuente" al instante
+  return (
+    <script
+      type="application/ld+json"
+      id={`schema-${url}`}
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
+    />
+  );
 };
 
 export default Schema;
