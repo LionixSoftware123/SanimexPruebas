@@ -15,11 +15,6 @@ type SchemaProps = {
 
 const Schema: React.FC<SchemaProps> = ({ product, url }) => {
   const router = useRouter();
-  const cleanForSchema = (price: any): string => {
-    if (!price || typeof price !== 'string') return "0.00";
-    // Tomamos el primer precio si es un rango, y quitamos todo lo que no sea número o punto
-    return price.split(' - ')[0].replace(/[^0-9.]/g, '');
-  };  
   let schema: any = {
     '@context': 'https://schema.org',
     '@type': 'Product',
@@ -46,7 +41,11 @@ const Schema: React.FC<SchemaProps> = ({ product, url }) => {
         : '',
       priceSpecification: {
         '@type': 'PriceSpecification',
-        price: cleanForSchema((product as SimpleProduct)?.price),
+        price: (product as SimpleProduct)?.price
+          ? (product as SimpleProduct).price! // El "!" le dice a TS: "Tranquilo, yo sé que existe"
+              .split(' - ')[0]
+              .replace(/[^0-9.]/g, '')
+          : '0.00',
         priceCurrency: 'MXN',
       },
       hasMerchantReturnPolicy: {
