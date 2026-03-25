@@ -2,7 +2,7 @@ import Head from 'next/head';
 import React from 'react';
 import { FRONTEND_ENDPOINT } from '@/utils/constants';
 import { Product } from '@/utils/types/generated';
-import dynamic from 'next/dynamic';
+//import dynamic from 'next/dynamic';
 //const Schema = dynamic(() => import('./Schema'));
 import Schema from './Schema';
 type StaticMetaProps = {
