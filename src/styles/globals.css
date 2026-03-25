@@ -74,19 +74,22 @@
 
 @layer base {
   @font-face {
-    font-family: 'Century-Gothic-Bold';
-    src: url('../fonts/century/GOTHICB0.TTF');
+    font-family: 'Century Gothic';
+    src: url('../fonts/century/GOTHICB0.TTF') format('truetype');
+    font-weight: bold;
+    font-style: normal;
     font-display: swap;
   }
   @font-face {
-    font-family: 'Century-Gothic';
-    //src: url('../fonts/century/Century Gothic.ttf');
-    src: url('../fonts/century/GOTHIC.TTF');
+    font-family: 'Century Gothic';
+    src: url('../fonts/century/GOTHIC.TTF') format('truetype');
+    font-weight: normal;
+    font-style: normal;
     font-display: swap;
   }
 
   html {
-    font-family: 'Century-Gothic', system-ui, sans-serif;
+    font-family: 'Century Gothic', system-ui, sans-serif;
   }
 
   @font-face {
