@@ -267,7 +267,7 @@ p > a {
 .post-details2 > div > p {
   width: 100%;
   font-size: 14px;
-  line-height: 135%;
+  line-height: 1.5em;
   color: #000000;
   font-weight: 400;
   padding-bottom: 20px;
