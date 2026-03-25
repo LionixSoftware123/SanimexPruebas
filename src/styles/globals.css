@@ -75,11 +75,13 @@
 @layer base {
   @font-face {
     font-family: 'Century Gothic';
-    src: url('../fonts/century/GOTHICB0.TTF') format('truetype');
+    src: url('../fonts/century/GOTHICB0.TTF') format('truetype'); /* Asegúrate que sea un CERO */
     font-weight: bold;
     font-style: normal;
     font-display: swap;
   }
+  
+  /* Fuente Regular */
   @font-face {
     font-family: 'Century Gothic';
     src: url('../fonts/century/CenturyGothic.ttf') format('truetype');
@@ -87,10 +89,10 @@
     font-style: normal;
     font-display: swap;
   }
-
+  
   html {
     font-family: 'Century Gothic', system-ui, sans-serif;
-  }
+  }  
 
   @font-face {
     font-family: 'Montserrat';
