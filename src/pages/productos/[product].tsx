@@ -272,7 +272,7 @@ const ProductPage: React.FC<ProductPageProps> = ({
                   price: (product as any).price, // El valor ya viene limpio del getStaticProps
                   priceCurrency: 'MXN',
                   availability: 'https://schema.org/InStock',
-                  url: `${DOMAIN_SITE}${router.as_path || router.asPath}`,
+                  url: `${DOMAIN_SITE}${router?.asPath || ''}`,
                 },
               }),
             }}
