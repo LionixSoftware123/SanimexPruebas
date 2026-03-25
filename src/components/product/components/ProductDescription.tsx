@@ -17,7 +17,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
       content = (
         <div
           key={'Preguntas Frecuentes'}
-          className="grid grid-cols-1 lg:grid-cols-1 font-Century-Gothic text-[14px] gap-4 px-2 py-[0.6rem] border-l border-r border-t border-b border-[#B2B2B2]"
+          className="grid grid-cols-1 lg:grid-cols-1 font-Century-Gothic text-[14px] tc gap-4 pc border-l border-r border-t border-b border-[#B2B2B2]"
         >
           <div
             className="post-details2 first-letter:uppercase"
@@ -30,7 +30,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
       content = (
         <div
           key={'Características Destacadas'}
-          className="grid grid-cols-1 lg:grid-cols-1 font-Century-Gothic text-[14px] gap-4 px-2 py-[0.6rem] border-l border-r border-t border-b border-[#B2B2B2]"
+          className="grid grid-cols-1 lg:grid-cols-1 font-Century-Gothic text-[14px] tc gap-4 pc border-l border-r border-t border-b border-[#B2B2B2]"
         >
           <div
             className="post-details2 first-letter:uppercase"
@@ -43,7 +43,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
       content = (
         <div
           key={'Beneficios Usos Aplicaciones'}
-          className="grid grid-cols-1 lg:grid-cols-1 font-Century-Gothic text-[14px] gap-4 px-2 py-[0.6rem] border-l border-r border-t border-b border-[#B2B2B2]"
+          className="grid grid-cols-1 lg:grid-cols-1 font-Century-Gothic text-[14px] tc gap-4 pc border-l border-r border-t border-b border-[#B2B2B2]"
         >
           <div
             className="post-details2 first-letter:uppercase"
@@ -56,7 +56,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
       content = (
         <div
           key={'descripcion'}
-          className="grid grid-cols-1 lg:grid-cols-1 font-Century-Gothic text-[14px] gap-4 px-2 py-[0.6rem] border-l border-r border-t border-b border-[#B2B2B2]"
+          className="grid grid-cols-1 lg:grid-cols-1 font-Century-Gothic text-[14px] tc gap-4 pc border-l border-r border-t border-b border-[#B2B2B2]"
         >
           <div
             className="post-details2 first-letter:uppercase"
@@ -69,7 +69,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
       content = (
         <div
           key={'Descripción Técnica'}
-          className="grid grid-cols-1 lg:grid-cols-1 font-Century-Gothic text-[14px] gap-4 px-2 py-[0.6rem] border-l border-r border-t border-b border-[#B2B2B2]"
+          className="grid grid-cols-1 lg:grid-cols-1 font-Century-Gothic text-[14px] tc gap-4 pc border-l border-r border-t border-b border-[#B2B2B2]"
         >
           {product?.descripcionTecnica ? (
             <div
