@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import React, { useCallback, useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
@@ -252,6 +253,33 @@ const ProductPage: React.FC<ProductPageProps> = ({
 
   return (
     <ProductLayout>
+      {/* --- INYECCIÓN DIRECTA PARA GOOGLE MERCHANT --- */}
+      <Head>
+        {product && (
+          <script
+            type="application/ld+json"
+            id="json-ld-merchants-directo"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                '@context': 'https://schema.org',
+                '@type': 'Product',
+                name: product.name,
+                image: product.featuredImage?.node?.sourceUrl,
+                description: product.description?.replace(/<[^>]*>?/gm, ''),
+                sku: product.sku || (product as any).databaseId,
+                offers: {
+                  '@type': 'Offer',
+                  price: (product as any).price, // El valor ya viene limpio del getStaticProps
+                  priceCurrency: 'MXN',
+                  availability: 'https://schema.org/InStock',
+                  url: `${DOMAIN_SITE}${router.as_path || router.asPath}`,
+                },
+              }),
+            }}
+          />
+        )}
+      </Head>
+      
       <StaticMeta
         title={`${product?.seoTitle || product?.name}`}
         description={`${product?.seoMeta || product?.description}`}
