@@ -1,12 +1,15 @@
-import { Html, Head, Main, NextScript } from 'next/document';
+import { Html, Head, Main, NextScript, DocumentProps } from 'next/document';
 import Script from 'next/script';
 import React from 'react';
 
-export default function Document() {
+export default function Document(props: DocumentProps) {
+  // Pescamos el producto directamente de la "mochila" de datos de Next.js
+  const product = props?.__NEXT_DATA__?.props?.pageProps?.product;
+
   return (
-    <Html lang="en">
+    <Html lang="es">
       <Head>
-        {/* GTM - Se queda en el Head como lo tienes */}
+        {/* --- GTM - Se queda en el Head como lo tienes --- */}
         <Script
           id="gtm-script"
           strategy="beforeInteractive"
@@ -18,6 +21,31 @@ export default function Document() {
             })(window,document,'script','dataLayer','GTM-NTLX9QV');`,
           }}
         />
+
+        {/* --- INYECCIÓN DINÁMICA DE SCHEMA PARA MERCHANT CENTER --- */}
+        {product && (
+          <script
+            type="application/ld+json"
+            id="merchant-schema-final"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                '@context': 'https://schema.org',
+                '@type': 'Product',
+                "name": product.name,
+                "sku": product.sku || product.databaseId?.toString(),
+                "image": product.featuredImage?.node?.sourceUrl || '',
+                "description": product.description?.replace(/<[^>]*>?/gm, '').slice(0, 160),
+                "offers": {
+                  "@type": "Offer",
+                  "price": product.price, // Valor limpio: "28502.19"
+                  "priceCurrency": "MXN",
+                  "availability": "https://schema.org/InStock",
+                  "url": `https://coral-app-dm8qn.ondigitalocean.app/productos/${product.slug}`
+                }
+              })
+            }}
+          />
+        )}
       </Head>
       <body>
         <noscript
@@ -32,7 +60,7 @@ export default function Document() {
         {/* --- OTROS SCRIPTS --- */}
         <Script
           id="vgo-script"
-          strategy="lazyOnload" // Mejor usar lazyOnload para trackers de marketing
+          strategy="lazyOnload" 
           dangerouslySetInnerHTML={{
             __html: `(function(e,t,o,n,p,r,i){e.visitorGlobalObjectAlias=n;e[e.visitorGlobalObjectAlias]=e[e.visitorGlobalObjectAlias]||function(){(e[e.visitorGlobalObjectAlias].q=e[e.visitorGlobalObjectAlias].q||[]).push(arguments)};e[e.visitorGlobalObjectAlias].l=(new Date).getTime();r=t.createElement("script");r.src=o;r.async=true;i=t.getElementsByTagName("script")[0];i.parentNode.insertBefore(r,i)})(window,document,"https://diffuser-cdn.app-us1.com/diffuser/diffuser.js","vgo");
             vgo('setAccount', '69083262');
@@ -42,16 +70,14 @@ export default function Document() {
         />
 
         {/* --- ZOHO SALESIQ --- */}
-        {/* Parte 1: Inicialización del objeto window */}
         <Script id="zoho-init" strategy="lazyOnload">
           {`window.$zoho=window.$zoho || {};$zoho.salesiq=$zoho.salesiq||{ready:function(){}}`}
         </Script>
         
-        {/* Parte 2: Carga del widget externo */}
         <Script 
           id="zsiqscript"
           src="https://salesiq.zohopublic.com/widget?wc=siqfd59dc62af67d357b89864de44b8db390b38171b2c43ea7b766d46c8be731eec"
-          strategy="lazyOnload" // Carga el chat después de que la página esté lista
+          strategy="lazyOnload" 
         />
       </body>
     </Html>
