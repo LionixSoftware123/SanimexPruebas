@@ -1,90 +1,14 @@
 import React from 'react';
-import { checkProductInStock, getMarca } from '@/modules/product/product-utils';
-import { Product, SimpleProduct } from '@/utils/types/generated';
+import { Product } from '@/utils/types/generated';
 
 type SchemaProps = {
   product: Product;
   url?: string;
 };
 
-const Schema: React.FC<SchemaProps> = ({ product, url }) => {
-  // Al venir ya limpio desde getStaticProps, solo aseguramos que sea String
-  const priceToUse = String((product as SimpleProduct)?.price || "0.00");
-
-  const schemaData = {
-    '@context': 'https://schema.org',
-    '@type': 'Product',
-    sku: product?.sku ? String(product.sku) : String(product?.databaseId || ''),
-    image: product?.galleryImages?.edges?.length
-      ? product?.galleryImages.edges[0].node.sourceUrl
-      : product?.featuredImage?.node?.sourceUrl,
-    name: product?.name || '',
-    description: product?.description 
-      ? product.description.replace(/<[^>]*>?/gm, '') // Limpia HTML para el SEO
-      : product?.name || '',
-    brand: {
-      '@type': 'Brand',
-      name: getMarca(product) || 'Sanimex',
-    },
-    mainEntityOfPage: {
-      '@type': 'WebPage',
-      '@id': url,
-    },
-    offers: {
-      '@type': 'Offer',
-      url: url,
-      priceCurrency: 'MXN',
-      price: priceToUse, // <--- "28502.19"
-      itemCondition: 'https://schema.org/NewCondition',
-      availability: checkProductInStock(product)
-        ? 'https://schema.org/InStock'
-        : 'https://schema.org/OutOfStock',
-      priceSpecification: {
-        '@type': 'PriceSpecification',
-        price: priceToUse,
-        priceCurrency: 'MXN',
-        valueAddedTaxIncluded: true,
-      },
-      hasMerchantReturnPolicy: {
-        '@type': 'MerchantReturnPolicy',
-        applicableCountry: 'MX',
-        returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow',
-        merchantReturnDays: 60,
-        returnMethod: 'https://schema.org/ReturnByMail',
-        returnFees: 'https://schema.org/FreeReturn',
-      },
-      shippingDetails: {
-        '@type': 'OfferShippingDetails',
-        shippingRate: {
-          '@type': 'MonetaryAmount',
-          value: 0,
-          currency: 'MXN',
-        },
-        shippingDestination: {
-          '@type': 'DefinedRegion',
-          addressCountry: 'MX',
-        },
-        deliveryTime: {
-          '@type': 'ShippingDeliveryTime',
-          handlingTime: {
-            '@type': 'QuantitativeValue',
-            minValue: 0,
-            maxValue: 2,
-            unitCode: 'DAY',
-          },
-          transitTime: {
-            '@type': 'QuantitativeValue',
-            minValue: 1,
-            maxValue: 5,
-            unitCode: 'DAY',
-          },
-        },
-      },
-    },
-  };
-
-  // Retornamos null para que el build pase y no pinte nada aquí, 
-  // ya que el _document.tsx se encargará de la inyección real.
+const Schema: React.FC<SchemaProps> = () => {
+  // Ya no procesamos nada aquí para evitar errores de variables no usadas.
+  // La lógica real ahora vive en _document.tsx
   return null;
 };
 
