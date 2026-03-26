@@ -49,6 +49,7 @@ export const sitemapGetPosts = async (skip: number, take: number) => {
       SitemapsProductsQueryVariables
     >({
       query: SitemapsProductsDocument,
+      fetchPolicy: 'no-cache', // <--- AGREGA ESTA LÍNEA
       variables: {
         where: {
           offsetPagination: {
@@ -58,7 +59,7 @@ export const sitemapGetPosts = async (skip: number, take: number) => {
           orderby: [
             {
               field: ProductsOrderByEnum.Date,
-              order: OrderEnum.Asc,
+              order: OrderEnum.Desc,
             },
           ],
         },
