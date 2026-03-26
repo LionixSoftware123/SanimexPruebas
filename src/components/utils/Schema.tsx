@@ -82,6 +82,10 @@ const Schema: React.FC<SchemaProps> = ({ product, url }) => {
       },
     },
   };
+
+  // Retornamos null para que el build pase y no pinte nada aquí, 
+  // ya que el _document.tsx se encargará de la inyección real.
+  return null;
 };
 
 export default Schema;
