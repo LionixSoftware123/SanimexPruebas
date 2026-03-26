@@ -127,8 +127,6 @@ export const fillSitemaps = async () => {
   }
   currentPage = currentPage === 0 ? 0 : currentPage - 1;
   ----------------------------------- */
-  // SUSTITÚYELO POR:
-  let currentPage = 0; // Forzamos a que siempre empiece en la primera página
   
   for (let i = currentPage; i < pages; i++) {
     const urls = [];
