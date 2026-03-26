@@ -162,7 +162,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
           className={`flex items-center  ${
             option === 1
               ? 'bg-[#0071CE] text-[#FFFFFF]'
-              : ' text-[#000] border-l border-r border-t border-[#B2B2B2]'
+              : ' text-[#000] border-l border-r border-t border-b border-[#B2B2B2]'
           } p-2 justify-center `}
         >
           Descripción del producto
@@ -174,7 +174,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
             className={`flex items-center  ${
               option === 2
                 ? 'bg-[#0071CE] text-[#FFFFFF]'
-                : ' text-[#000] border-l border-r border-t border-[#B2B2B2]'
+                : ' text-[#000] border-l border-r border-t border-b border-[#B2B2B2]'
             } p-2 justify-center `}
           >
             Descripción Técnica
@@ -189,7 +189,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
             className={`flex items-center  ${
               option === 3
                 ? 'bg-[#0071CE] text-[#FFFFFF]'
-                : ' text-[#000] border-l border-r border-t border-b-res border-[#B2B2B2]'
+                : ' text-[#000] border-l border-r border-t border-b border-[#B2B2B2]'
             } p-2 justify-center `}
           >
             Información Adicional
@@ -204,7 +204,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
             className={`flex items-center  ${
               option === 4
                 ? 'bg-[#0071CE] text-[#FFFFFF]'
-                : ' text-[#000] border-l border-r border-t border-[#B2B2B2]'
+                : ' text-[#000] border-l border-r border-t border-b border-[#B2B2B2]'
             } p-2 justify-center `}
           >
             Beneficios principales, Usos y Aplicaciones
@@ -219,7 +219,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
             className={`flex items-center  ${
               option === 5
                 ? 'bg-[#0071CE] text-[#FFFFFF]'
-                : ' text-[#000] border-l border-r border-t border-[#B2B2B2]'
+                : ' text-[#000] border-l border-r border-t border-b border-[#B2B2B2]'
             } p-2 justify-center `}
           >
             Características Destacadas
@@ -234,7 +234,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
             className={`flex items-center  ${
               option === 6
                 ? 'bg-[#0071CE] text-[#FFFFFF]'
-                : ' text-[#000] border-l border-r border-t border-[#B2B2B2]'
+                : ' text-[#000] border-l border-r border-t border-b border-[#B2B2B2]'
             } p-2 justify-center `}
           >
             Preguntas Frecuentes
