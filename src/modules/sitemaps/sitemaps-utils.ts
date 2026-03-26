@@ -120,6 +120,7 @@ export const fillSitemaps = async () => {
   const poststotal = await getPostCountSitemap();
   const pages = Math.ceil(poststotal.total / 500);
   let currentPage = 0;
+  
   /* --- BORRA O COMENTA ESTE BUCLE ---
   for (let j = 0; j < pages; j++) {
     const path = `public/sitemap/sitemap-page${j + 1}.json`;
@@ -133,6 +134,9 @@ export const fillSitemaps = async () => {
     const urls = [];
     const items = 500 * i;
     const posts = await sitemapGetPosts(items, 500);
+
+    // LOG PARA DEPURAR (Añade esto para ver qué pasa en la consola):
+    console.log(`Procesando página ${i + 1} de ${pages}. Encontrados ${posts.length} productos.`);    
 
     for (const post of posts) {
       8;
