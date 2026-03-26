@@ -1,5 +1,4 @@
 import React from 'react';
-import Head from 'next/head';
 import { checkProductInStock, getMarca } from '@/modules/product/product-utils';
 import { Product, SimpleProduct } from '@/utils/types/generated';
 
@@ -83,17 +82,6 @@ const Schema: React.FC<SchemaProps> = ({ product, url }) => {
       },
     },
   };
-
-  return (
-    <Head>
-      <script
-        type="application/ld+json"
-        id={`schema-${url}`}
-        key={`jsonld-${url}`}
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
-      />
-    </Head>
-  );
 };
 
 export default Schema;
