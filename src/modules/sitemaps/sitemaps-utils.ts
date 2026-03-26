@@ -119,12 +119,17 @@ export const fillSitemaps = async () => {
   const poststotal = await getPostCountSitemap();
   const pages = Math.ceil(poststotal.total / 500);
   let currentPage = 0;
+  /* --- BORRA O COMENTA ESTE BUCLE ---
   for (let j = 0; j < pages; j++) {
     const path = `public/sitemap/sitemap-page${j + 1}.json`;
     if (!fs.existsSync(path)) break;
     currentPage++;
   }
   currentPage = currentPage === 0 ? 0 : currentPage - 1;
+  ----------------------------------- */
+  // SUSTITÚYELO POR:
+  let currentPage = 0; // Forzamos a que siempre empiece en la primera página
+  
   for (let i = currentPage; i < pages; i++) {
     const urls = [];
     const items = 500 * i;
