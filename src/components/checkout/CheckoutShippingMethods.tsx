@@ -68,7 +68,7 @@ const CheckoutShippingMethods: React.FC<CheckoutShippingMethodsProps> = ({
 
   const options = shops.map((shop, i) => ({
     value: i,
-    label: `${shop.TIENDA}, ${shop.CALLE}, ${shop.COLONIA}, ${shop.CP}, ${shop.ESTADO}`,
+    label: `${shop.TIENDA}, ${shop.COLONIA}, ${shop.ESTADO}`,
   }));
 
   const handleShippingZone = async () => {
@@ -241,7 +241,7 @@ const CheckoutShippingMethods: React.FC<CheckoutShippingMethodsProps> = ({
       <div>
         {selectedShop ? (
           <div className="w-full">
-            <span className="font-bold">Recoger en:</span><br /> 
+            <span className="font-bold">Recoger en:</span><br />
             <span className="font-bold">{selectedShop.TIENDA}</span><br /> 
             {selectedShop.CALLE}, C.P. {selectedShop.CP} Municipio {selectedShop.CIUDAD}{' '}
             {selectedShop.ESTADO} Teléfono:{' '}
