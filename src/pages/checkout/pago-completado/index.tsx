@@ -108,63 +108,7 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
         code: 'USD',
       });
 
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({ ecommerce: null });
-      window.dataLayer.push({
-        event: 'purchase',
-        ecommerce: {
-          currency: 'MXN',
-          value: total, // Total neto de la transacción
-          tax: totalTax, // Impuestos
-          shipping: shipping, // Costo de envío
-          transaction_id: order?.databaseId, // ID único de la orden
-          items: order?.lineItems?.nodes.map((node: LineItem) => {
-            const categories: any = {};
-
-            node.product?.node.productCategories?.nodes.forEach((category, i) => {
-              if (i === 0) {
-                categories['item_category'] = (category as ProductCategory).name;
-              } else {
-                categories[`item_category${i + 1}`] = (category as ProductCategory).name;
-              }
-            });
-
-            // Lógica para variaciones
-            if (node?.variation) {
-              const price = currencyFormatter.unformat(
-                node.variation.node.price as string,
-                { code: 'USD' }
-              );
-
-              return {
-                item_name: node.variation.node.name,
-                item_id: node.variation.node.databaseId,
-                price: price,
-                item_brand: getProductBrand(node.product?.node as Product),
-                quantity: node.quantity,
-                ...categories,
-              };
-            }
-
-            // Lógica para productos simples
-            const price = currencyFormatter.unformat(
-              (node.product?.node as SimpleProduct).price as string,
-              { code: 'USD' }
-            );
-
-            return {
-              item_name: node.product?.node.name,
-              item_id: node.product?.node.databaseId,
-              price: price,
-              item_brand: getProductBrand(node.product?.node as Product),
-              quantity: node.quantity,
-              ...categories,
-            };
-          }),
-        },
-      });      
-
-      /**window.gtag('event', 'purchase', {
+      window.gtag('event', 'purchase', {
         currency: 'MXN',
         value: total,
         tax: totalTax,
@@ -218,10 +162,9 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
             ...categories,
           };
         }),
-      });**/
-
+      });
     }
-  }, [order]);   
+  }, [order]);
 
   useEffect(() => {
     const products = order?.lineItems?.nodes.map(
