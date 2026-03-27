@@ -181,7 +181,9 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
           });
   
           const productNode = node?.variation ? node.variation.node : node.product?.node;
-          const price = currencyFormatter.unformat(productNode?.price as string, { code: 'USD' });
+          const price = node?.variation 
+            ? currencyFormatter.unformat(node.variation.node.price as string, { code: 'USD' })
+            : currencyFormatter.unformat((node.product?.node as SimpleProduct)?.price as string || "0", { code: 'USD' });
   
           return {
             item_name: productNode?.name,
