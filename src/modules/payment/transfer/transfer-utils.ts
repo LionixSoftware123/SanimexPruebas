@@ -111,7 +111,8 @@ export const transferPayment = async (
 
   const client = createApolloClient(
     wooSessionToken as string,
-    jwtAuthToken as string,
+    //jwtAuthToken as string,
+    jwtAuthToken ? (jwtAuthToken as string) : undefined
   );
   setStep && setStep(2);
 
@@ -141,7 +142,7 @@ export const transferPayment = async (
         country: CountriesEnum.Mx,
       },
       //customerId: customer?.databaseId,
-      customerId: customer?.databaseId ? customer.databaseId : null,
+      customerId: customer?.databaseId ? customer.databaseId : 0,
       paymentMethod: 'bacs',
       shipping: {
         address1: shipping.address1 ? shipping.address1 : userData.address1,
