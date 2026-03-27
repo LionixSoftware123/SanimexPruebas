@@ -101,7 +101,9 @@ export const transferPayment = async (
       jwtAuthToken = customerData.authToken;
       customer = customerData?.customer as Customer;
     } catch (error) {
-      return onError && onError('Tenemos problemas para generar el customer');
+      //return onError && onError('Tenemos problemas para generar el customer');
+      console.warn("Aviso: El correo ya existe. Procesando como invitado.");
+      customer = undefined;
     }
   } else {
     customer = fetchUserEvent.get()?.user as Customer;
@@ -138,7 +140,8 @@ export const transferPayment = async (
         phone: userData.phone,
         country: CountriesEnum.Mx,
       },
-      customerId: customer?.databaseId,
+      //customerId: customer?.databaseId,
+      customerId: customer?.databaseId ? customer.databaseId : null,
       paymentMethod: 'bacs',
       shipping: {
         address1: shipping.address1 ? shipping.address1 : userData.address1,
