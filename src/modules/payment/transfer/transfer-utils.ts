@@ -93,7 +93,7 @@ export const transferPayment = async (
 
   setStep && setStep(2);
 
-  const shippingTotal = calculateCost(distance); // Simplificado para usar la constante
+  const shippingTotal = shippingAmount; // <-- Usa la variable aquí
 
   // 1. Definimos el objeto 'input' de la orden
   const orderInput: any = {
