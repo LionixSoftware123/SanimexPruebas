@@ -39,7 +39,9 @@ export function createApolloClient(
 ): ApolloClient<NormalizedCacheObject> {
   const authLink = setContext((_, { headers: _headers }) => {
     // get the authentication token from event storage if it exists
-    const jwtAuthTokenEvent = jwtAuthToken || OnTokenEvent.get()?.token;
+    //const jwtAuthTokenEvent = jwtAuthToken || OnTokenEvent.get()?.token;
+    // Si mandamos un string vacío o undefined explícitamente, que no busque en el Event Storage
+    const jwtAuthTokenEvent = jwtAuthToken !== undefined ? jwtAuthToken : OnTokenEvent.get()?.token;    
     const wooSessionEvent =
       wooSessionRefreshToken || OnWooSessionTokenEvent.get()?.token;
     // return the headers to the context so httpLink can read them
