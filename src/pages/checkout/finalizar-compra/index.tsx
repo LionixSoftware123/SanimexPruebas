@@ -10,7 +10,7 @@ import {
 } from '@/utils/types/generated';
 import { fetchUser } from '@/modules/auth/auth-actions';
 import Link from 'next/link';
-//import { FRONTEND_ENDPOINT } from '@/utils/constants';
+import { FRONTEND_ENDPOINT } from '@/utils/constants';
 import { useUserHook } from '@/modules/auth/user-hooks';
 import { ShippingEnum } from '@/components/checkout/CheckoutShippingMethods';
 import {
@@ -174,7 +174,6 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
 
   const hasProductWithSku = hasProductSku === 'T10-00-0-07';
   const { processUTMURLs } = useUTMCampaignHooks();
-
   //console.log({ cart });
   //console.log({ shop });
 
@@ -208,13 +207,21 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
     });
 
     if (checkUser.user && !user) {
-      // Solo avisamos, pero NO ponemos un "return". 
-      // El usuario puede decidir ignorar el aviso y comprar como invitado.
-      addToast(
+      setLoadingButton(false);
+      return addToast(
         <div>
-          Este email ya tiene cuenta. Puedes <Link href="/auth">ingresar</Link> o continuar como invitado.
-        </div>, 
-        { appearance: 'info' }
+          El email ya se encuentra registrado, por favor{' '}
+          <Link
+            className="underline font-bold"
+            href={`/auth?redirect=${FRONTEND_ENDPOINT}/checkout/finalizar-compra`}
+          >
+            ingrese con su cuenta
+          </Link>{' '}
+          para mantener la información de sus compras
+        </div>,
+        {
+          appearance: 'error',
+        },
       );
     }
 
@@ -268,7 +275,8 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
             WOO_SESSION_TOKEN: OnWooSessionTokenEvent.get()?.token as string,
           };
 
-          if ((Number(total) >= 6000) || free) {
+          //if ((Number(total) >= 3500 && isCheckedBin) || free) {
+          if ((Number(total) >= 3500) || free) {
             requiredFields.INITIAL_DEFERMENT = '00';
             requiredFields.PAYMENTS_NUMBER = initialDeferment;
             requiredFields.PLAN_TYPE = '03';
@@ -336,13 +344,21 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
     });
 
     if (checkUser.user && !user) {
-      // Solo avisamos, pero NO ponemos un "return". 
-      // El usuario puede decidir ignorar el aviso y comprar como invitado.
-      addToast(
+      setLoading(false);
+      return addToast(
         <div>
-          Este email ya tiene cuenta. Puedes <Link href="/auth">ingresar</Link> o continuar como invitado.
-        </div>, 
-        { appearance: 'info' }
+          El email ya se encuentra registrado, por favor{' '}
+          <Link
+            className="underline font-bold"
+            href={`/auth?redirect=${FRONTEND_ENDPOINT}/checkout/finalizar-compra`}
+          >
+            ingrese con su cuenta
+          </Link>{' '}
+          para mantener la información de sus compras
+        </div>,
+        {
+          appearance: 'error',
+        },
       );
     }
 
@@ -384,14 +400,15 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
   //const total = cart?.totals?.total_price ?? 0;
   const { topBanner } = useEvent(renderTopBannerEvent);
   const total =  parseFloat(cart?.totals?.total_price as string)/100;
-  const faltan = 6000-Number(total);
+  const faltan = 3500-Number(total);
 
   let content = <></>;
   const redirect = typeof window !== 'undefined' ? window.location.href : '';
 
   const disableDropdown = () => {
     //if (free) return false;
-    if ( Number(total) < 6000 ) return false;
+
+    if ( Number(total) < 3500 ) return false;
   };
 
   const PaymentForm: React.FC = () => {
@@ -404,7 +421,7 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
             Información de pago
           </div>
         </div>
-        <div className="col-span-full">        
+        <div className="col-span-full">
           <div className="flex items-center mb-2">
             <div
               onClick={() => {
@@ -424,7 +441,6 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
           </div>
           <BankList />
         </div>
-
         {selectedPaymentMethod === PaymentMethodEnum.OpenPay ? (
           <div className="col-span-full">
             <div className="mb-4 text-[#1C355E]">
@@ -596,8 +612,8 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
                   value={initialDeferment}
                 >
                   <option value="">Pago única exhibicion</option>
-                  {Number(total) >= 6000 &&  (
-                    <option value="03">Promoción 3 Meses sin intereses</option>
+                  {Number(total) >= 3500 &&  (
+                    <option value="06">Promoción 6 Meses sin intereses</option>
                   )}
                   {/**Number(total) >= 10000 &&  (
                     <option value="06">Promoción 6 Meses sin intereses</option>
@@ -855,16 +871,15 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
                     </Link>
                   </div>
                 ) : null}
-              </div>              
-              
+              </div>
               <div className="col-span-full md:col-span-6">
-                {Number(total) < 6000 && topBanner ? (
+                {Number(total) < 3500 && topBanner ? (
                 <div className="hidden-lapto col-span-full px-1 py-1">
                   <div
                     className="text-white text-[18px] rounded text-center px-[5px] font-Century-Gothic-Bold"
                     style={{ backgroundColor: topBanner.color as string }}
                   >
-                    Te faltan {formatCurrency2(faltan)} para obtener 3 MSI
+                    Te faltan {formatCurrency2(faltan)} para obtener 6 MSI
                     </div>
                   </div>
                   ) : null}
@@ -917,13 +932,13 @@ const Data: React.FC<DataProps> = ({ internalBanner }) => {
               </div>
 
               <div className="col-span-full md:col-span-6">
-                {Number(total) < 6000 && topBanner ? (
+                {Number(total) < 3500 && topBanner ? (
                 <div className="hidden-t col-span-full px-1 py-1">
                   <div
                     className="text-white text-[18px] rounded text-center px-[5px] font-Century-Gothic-Bold"
                     style={{ backgroundColor: topBanner.color as string }}
                   >
-                    Te faltan {formatCurrency2(faltan)} para obtener 3 MSI
+                    Te faltan {formatCurrency2(faltan)} para obtener 6 MSI
                     </div>
                   </div>
                   ) : null}
