@@ -45,15 +45,10 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
   orderId,
 }) => {
   const router = useRouter();
-
   const { processUTMURLs } = useUTMCampaignHooks();
- 
   const postalBilling = order?.billing?.postcode as string;
-
   const postalShipping = order?.shipping?.postcode as string;
-
   const postalCode = postalBilling !== postalShipping ? postalShipping : postalBilling;
-
   let BancoDetailsBanorte = '';
   let AccountDetailsBanorte = '';
   let ClabeDetailsBanorte = '';
@@ -91,7 +86,7 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
     WhatsApp = '5581353955';
   }
   
-  useEffect(() => {
+  /*useEffect(() => {
     if (typeof window !== 'undefined') {
       const shipping = currencyFormatter.unformat(
         order?.shippingTotal as string,
@@ -164,7 +159,60 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
         }),
       });
     }
-  }, [order]);
+  }, [order]);*/
+  useEffect(() => {
+    // Verificamos que estemos en el navegador
+    if (typeof window !== 'undefined') {
+      
+      // Inicializamos el dataLayer si no existe (importante por si GTM no ha cargado)
+      window.dataLayer = window.dataLayer || [];
+  
+      try {
+        const shipping = currencyFormatter.unformat(order?.shippingTotal as string, { code: 'USD' });
+        const totalTax = currencyFormatter.unformat(order?.totalTax as string, { code: 'USD' });
+        const total = currencyFormatter.unformat(order?.total as string, { code: 'USD' });
+  
+        // Formateamos los items para el estándar de GA4 vía GTM
+        const itemsGTM = order?.lineItems?.nodes.map((node: LineItem) => {
+          const categories: any = {};
+          node.product?.node.productCategories?.nodes.forEach((category, i) => {
+            const key = i === 0 ? 'item_category' : `item_category${i + 1}`;
+            categories[key] = (category as ProductCategory).name;
+          });
+  
+          const productNode = node?.variation ? node.variation.node : node.product?.node;
+          const price = currencyFormatter.unformat(productNode?.price as string, { code: 'USD' });
+  
+          return {
+            item_name: productNode?.name,
+            item_id: productNode?.databaseId,
+            price: price,
+            item_brand: getProductBrand(node.product?.node as Product),
+            quantity: node.quantity,
+            ...categories,
+          };
+        });
+  
+        // EMPUJAMOS AL DATALAYER (En lugar de window.gtag)
+        window.dataLayer.push({
+          event: 'purchase', // Este es el nombre que usarás como "Trigger" en GTM
+          ecommerce: {
+            transaction_id: order?.databaseId,
+            value: total,
+            tax: totalTax,
+            shipping: shipping,
+            currency: 'MXN',
+            items: itemsGTM
+          }
+        });
+  
+        console.log("Evento de compra enviado al DataLayer con éxito.");
+  
+      } catch (error) {
+        console.error("Error al procesar datos para el DataLayer:", error);
+      }
+    }
+  }, [order]);  
 
   useEffect(() => {
     const products = order?.lineItems?.nodes.map(
