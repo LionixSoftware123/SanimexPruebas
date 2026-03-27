@@ -1,13 +1,9 @@
 import {
   CountriesEnum,
-  CreateCustomerDocument,
-  CreateCustomerMutation,
-  CreateCustomerMutationVariables,
   CreateOrderDocument,
   CreateOrderMutation,
   CreateOrderMutationVariables,
   Customer,
-  RegisterCustomerPayload,
   OrderStatusEnum,
   UpdateOrderMutation,
   UpdateOrderMutationVariables,
@@ -16,7 +12,6 @@ import {
 } from '@/utils/types/generated';
 import { Cart } from '@/lib/cart/v2/cart-types';
 import { createApolloClient } from '@/apollo/client';
-import generatePassword from 'generate-password';
 import {
   fetchUserEvent,
   OnTokenEvent,
@@ -39,29 +34,10 @@ import { confirmGeolocationStore } from '@/modules/geolocation/geolocation-event
 import { calculateCost } from '@/modules/geolocation/geolocation-utils';
 import { ShopType } from '@/modules/shop/shop-types';
 
-const fetchRegisterCustomer = async (
-  data: PaymentDataType,
-): Promise<RegisterCustomerPayload> => {
-  const client = createApolloClient();
-  const response = await client.mutate<
-    CreateCustomerMutation,
-    CreateCustomerMutationVariables
-  >({
-    mutation: CreateCustomerDocument,
-    variables: {
-      input: {
-        username: data.email,
-        email: data.email,
-        password: generatePassword.generate({
-          length: 10,
-          numbers: true,
-        }),
-      },
-    },
-  });
-
-  return response.data?.registerCustomer as RegisterCustomerPayload;
-};
+/**
+ * NOTA: Se ha eliminado 'fetchRegisterCustomer' para evitar la creación 
+ * automática de cuentas. Si el correo es nuevo, el pedido entra como invitado.
+ */
 
 export const transferPayment = async (
   userData: PaymentDataType,
@@ -89,143 +65,37 @@ export const transferPayment = async (
   let jwtAuthToken = OnTokenEvent.get()?.token;
   const wooSessionToken = OnWooSessionTokenEvent.get()?.token;
   let customer: Customer | undefined = undefined;
-  const activeCampaignUserOrder =
-    fetchActiveCampaignUserOrderEvent.get()?.order;
+  const activeCampaignUserOrder = fetchActiveCampaignUserOrderEvent.get()?.order;
   const user = fetchUserEvent.get()?.user;
   const { distance } = confirmGeolocationStore.get();
   const shippingAmount = calculateCost(distance);
+
   setStep && setStep(1);
-  if (!jwtAuthToken) {
-    try {
-      const customerData = await fetchRegisterCustomer(userData);
-      jwtAuthToken = customerData.authToken;
-      customer = customerData?.customer as Customer;
-    } catch (error) {
-      //return onError && onError('Tenemos problemas para generar el customer');
-      console.warn("Aviso: El correo ya existe. Procesando como invitado.");
-      customer = undefined;
-    }
-  } else {
+
+  /**
+   * NUEVA LÓGICA DE IDENTIDAD:
+   * 1. Si hay token, recuperamos al usuario.
+   * 2. Si NO hay token, no intentamos registrar. Dejamos que sea una compra de invitado.
+   * (La validación de si el correo existe ya se hace en el componente previo con el Toast)
+   */
+  if (jwtAuthToken) {
     customer = fetchUserEvent.get()?.user as Customer;
+  } else {
+    customer = undefined;
+    jwtAuthToken = undefined;
   }
 
+  // Creamos el cliente de Apollo. Si es invitado, solo llevará el woo-session.
   const client = createApolloClient(
     wooSessionToken as string,
-    //jwtAuthToken as string,
     jwtAuthToken ? (jwtAuthToken as string) : undefined
   );
+
   setStep && setStep(2);
 
-  const shippingTotal = postalCodeShipping.includes(
-    parseInt(shipping.postalCode || (userData.postalCode as string)),
-  )
-    ? shippingAmount
-    : shippingAmount;
+  const shippingTotal = calculateCost(distance); // Simplificado para usar la constante
 
-  /*const variablesCart = {
-    input: {
-      isPaid: false,
-      currency: 'MXN',
-      customerNote: userData.note,
-      coupons: cart?.coupons
-        ? cart.coupons.map((appliedCoupon) => appliedCoupon?.code as string)
-        : [],
-      billing: {
-        address1: userData.address1,
-        address2: userData.address2,
-        state: userData.state,
-        email: userData.email,
-        firstName: userData.firstname,
-        lastName: userData.lastname,
-        postcode: userData.postalCode,
-        phone: userData.phone,
-        country: CountriesEnum.Mx,
-      },
-      //customerId: customer?.databaseId,
-      //customerId: customer?.databaseId ? customer.databaseId : 0,
-      paymentMethod: 'bacs',
-      shipping: {
-        address1: shipping.address1 ? shipping.address1 : userData.address1,
-        state: shipping.state ? shipping.state : userData.state,
-        firstName: shipping.firstname ? shipping.firstname : userData.firstname,
-        lastName: shipping.lastname ? shipping.lastname : userData.lastname,
-        postcode: shipping.postalCode
-          ? shipping.postalCode
-          : userData.postalCode,
-        phone: shipping.phone ? shipping.phone : userData.phone,
-        country: CountriesEnum.Mx,
-      },
-      shippingLines: [
-        {
-          total: `$${shippingTotal}`,
-          methodId:
-            shippingInfo.shippingOption === ShippingEnum.ByShipping
-              ? 'flat_rate'
-              : 'local_pickup',
-          methodTitle:
-            shippingInfo.shippingOption === ShippingEnum.ByShipping
-              ? (
-                  postalCodeShipping.includes(
-                    parseInt(
-                      shipping.postalCode
-                        ? shipping.postalCode
-                        : (userData.postalCode as string),
-                    ),
-                  ) || postalCodeShippingProvincia.includes(
-                    parseInt(
-                      shipping.postalCode
-                        ? shipping.postalCode
-                        : (userData.postalCode as string),
-                    ),
-                  ) || postalCodeShippingProvinciaNL.includes(
-                    parseInt(
-                      shipping.postalCode
-                        ? shipping.postalCode
-                        : (userData.postalCode as string),
-                    ),
-                  )
-                )
-                ? 'Envió a Domicilio'
-                : 'Su Código Postal está fuera de nuestra área servicio; sin embargo, al terminar su compra nuestro equipo de venta le llamará para definir su costo de envío según la distancia.'
-              : `Recoger en: ${shop.CALLE}, C.P. ${shop.CP} Municipio ${
-                  shop.CIUDAD
-                } ${shop.ESTADO} Teléfono: ${shop.TELÉFONOS.map(
-                  ({ key }) => key,
-                ).join(' y ')}`,
-        },
-      ],
-      lineItems: cart.items.map((item) => {
-        if (item.variation.length > 0) {
-          return {
-            name: item.name,
-            quantity: item.quantity,
-            sku: item.sku,
-            total: (Number(item.totals.line_total) / 100).toFixed(2),
-            subtotal: (Number(item.totals.line_subtotal) / 100).toFixed(2),
-            variationId: item.id,
-          };
-        }
-
-        return {
-          productId: item.id,
-          name: item.name,
-          quantity: item.quantity,
-          sku: item.sku,
-          total: (Number(item.totals.line_total) / 100).toFixed(2),
-          subtotal: (Number(item.totals.line_subtotal) / 100).toFixed(2),
-        };
-      }),
-    },
-  };*/
-
-// Antes de definir variablesCart, asegúrate de tener el email procesado:
-// Si 'customer' es undefined significa que el registro falló por duplicado
-const userEmail = userData.email || "";
-const finalEmail = !customer?.databaseId
-    ? userEmail.replace('@', '+invitado@')
-    : userEmail;
-
-// 1. Definimos primero el objeto 'input' SIN el customerId
+  // 1. Definimos el objeto 'input' de la orden
   const orderInput: any = {
     isPaid: false,
     currency: 'MXN',
@@ -237,8 +107,7 @@ const finalEmail = !customer?.databaseId
       address1: userData.address1,
       address2: userData.address2,
       state: userData.state,
-      //email: userData.email,
-      email: finalEmail,
+      email: userData.email, // Email real, sin sufijos
       firstName: userData.firstname,
       lastName: userData.lastname,
       postcode: userData.postalCode,
@@ -251,9 +120,7 @@ const finalEmail = !customer?.databaseId
       state: shipping.state ? shipping.state : userData.state,
       firstName: shipping.firstname ? shipping.firstname : userData.firstname,
       lastName: shipping.lastname ? shipping.lastname : userData.lastname,
-      postcode: shipping.postalCode
-        ? shipping.postalCode
-        : userData.postalCode,
+      postcode: shipping.postalCode ? shipping.postalCode : userData.postalCode,
       phone: shipping.phone ? shipping.phone : userData.phone,
       country: CountriesEnum.Mx,
     },
@@ -266,77 +133,38 @@ const finalEmail = !customer?.databaseId
             : 'local_pickup',
         methodTitle:
           shippingInfo.shippingOption === ShippingEnum.ByShipping
-            ? (postalCodeShipping.includes(
-                parseInt(
-                  shipping.postalCode
-                    ? shipping.postalCode
-                    : (userData.postalCode as string)
-                )
-              ) ||
-              postalCodeShippingProvincia.includes(
-                parseInt(
-                  shipping.postalCode
-                    ? shipping.postalCode
-                    : (userData.postalCode as string)
-                )
-              ) ||
-              postalCodeShippingProvinciaNL.includes(
-                parseInt(
-                  shipping.postalCode
-                    ? shipping.postalCode
-                    : (userData.postalCode as string)
-                )
-              )
+            ? (postalCodeShipping.includes(parseInt(shipping.postalCode || userData.postalCode || "0")) ||
+               postalCodeShippingProvincia.includes(parseInt(shipping.postalCode || userData.postalCode || "0")) ||
+               postalCodeShippingProvinciaNL.includes(parseInt(shipping.postalCode || userData.postalCode || "0"))
                 ? 'Envió a Domicilio'
-                : 'Su Código Postal está fuera de nuestra área servicio; sin embargo, al terminar su compra nuestro equipo de venta le llamará para definir su costo de envío según la distancia.')
-            : `Recoger en: ${shop.CALLE}, C.P. ${shop.CP} Municipio ${
-                shop.CIUDAD
-              } ${shop.ESTADO} Teléfono: ${shop.TELÉFONOS.map(
-                ({ key }) => key
-              ).join(' y ')}`,
+                : 'Su Código Postal está fuera de nuestra área servicio...')
+            : `Recoger en: ${shop.CALLE}, C.P. ${shop.CP}`,
       },
     ],
-    lineItems: cart.items.map((item) => {
-      if (item.variation.length > 0) {
-        return {
-          name: item.name,
-          quantity: item.quantity,
-          sku: item.sku,
-          total: (Number(item.totals.line_total) / 100).toFixed(2),
-          subtotal: (Number(item.totals.line_subtotal) / 100).toFixed(2),
-          variationId: item.id,
-        };
-      }
-      return {
-        productId: item.id,
-        name: item.name,
-        quantity: item.quantity,
-        sku: item.sku,
-        total: (Number(item.totals.line_total) / 100).toFixed(2),
-        subtotal: (Number(item.totals.line_subtotal) / 100).toFixed(2),
-      };
-    }),
+    lineItems: cart.items.map((item) => ({
+      productId: item.variation.length > 0 ? undefined : item.id,
+      variationId: item.variation.length > 0 ? item.id : undefined,
+      name: item.name,
+      quantity: item.quantity,
+      sku: item.sku,
+      total: (Number(item.totals.line_total) / 100).toFixed(2),
+      subtotal: (Number(item.totals.line_subtotal) / 100).toFixed(2),
+    })),
   };
 
-  // 2. LA MAGIA: Solo inyectamos el customerId si el cliente existe
+  // 2. Solo vinculamos el ID si el usuario inició sesión
   if (customer?.databaseId) {
     orderInput.customerId = customer.databaseId;
   }
 
-  // 3. Finalmente armamos el objeto variablesCart para la mutación
-  const variablesCart = {
-    input: orderInput,
-  };  
-
-  const order = await client.mutate<
-    CreateOrderMutation,
-    CreateOrderMutationVariables
-  >({
-    mutation: CreateOrderDocument,
-    variables: variablesCart,
-  });
-
+  // 3. Ejecución de la mutación de orden
   try {
+    const order = await client.mutate<CreateOrderMutation, CreateOrderMutationVariables>({
+      mutation: CreateOrderDocument,
+      variables: { input: orderInput },
+    });
+
+    // Actualizamos el estado a OnHold (Transferencia)
     await client.mutate<UpdateOrderMutation, UpdateOrderMutationVariables>({
       mutation: UpdateOrderDocument,
       variables: {
@@ -346,92 +174,34 @@ const finalEmail = !customer?.databaseId
         },
       },
     });
-  } catch (e) {
-    return onError && onError((e as Error).message);
-  }
 
-  if (!user) {
-    try {
+    // --- Active Campaign Logics ---
+    if (!user) {
       await createActiveCampaignOrder({
         customer,
         cart,
         shippingTotal,
-        shippingMethod:
-          shippingInfo.shippingOption === ShippingEnum.ByShipping
-            ? (
-                  postalCodeShipping.includes(
-                    parseInt(
-                      shipping.postalCode
-                        ? shipping.postalCode
-                        : (userData.postalCode as string),
-                    ),
-                  ) || postalCodeShippingProvincia.includes(
-                    parseInt(
-                      shipping.postalCode
-                        ? shipping.postalCode
-                        : (userData.postalCode as string),
-                    ),
-                  ) || postalCodeShippingProvinciaNL.includes(
-                    parseInt(
-                      shipping.postalCode
-                        ? shipping.postalCode
-                        : (userData.postalCode as string),
-                    ),
-                  )
-                )
-              ? 'Envió a Domicilio'
-              : 'Su Código Postal está fuera de nuestra área servicio; sin embargo, al terminar su compra nuestro equipo de venta le llamará para definir su costo de envío según la distancia.'
-            : (shippingInfo.shippingZone?.address as string),
+        shippingMethod: shippingInfo.shippingOption === ShippingEnum.ByShipping ? 'Envío a Domicilio' : 'Recoger en tienda',
         orderId: order.data?.createOrder?.orderId,
       });
-    } catch (e) {
-      console.log('Tenemos problemas para cargar a active campaign');
-    }
-  } else {
-    try {
+    } else {
       await updateActiveCampaignUserOrderAction({
         user: customer as User,
         cart,
         shippingTotal,
-        shippingMethod:
-          shippingInfo.shippingOption === ShippingEnum.ByShipping
-            ? (
-                  postalCodeShipping.includes(
-                    parseInt(
-                      shipping.postalCode
-                        ? shipping.postalCode
-                        : (userData.postalCode as string),
-                    ),
-                  ) || postalCodeShippingProvincia.includes(
-                    parseInt(
-                      shipping.postalCode
-                        ? shipping.postalCode
-                        : (userData.postalCode as string),
-                    ),
-                  ) || postalCodeShippingProvinciaNL.includes(
-                    parseInt(
-                      shipping.postalCode
-                        ? shipping.postalCode
-                        : (userData.postalCode as string),
-                    ),
-                  )
-                )
-              ? 'Envió a Domicilio'
-              : 'Su Código Postal está fuera de nuestra área servicio; sin embargo, al terminar su compra nuestro equipo de venta le llamará para definir su costo de envío según la distancia.'
-            : (shippingInfo.shippingZone?.address as string),
+        shippingMethod: 'Envío a Domicilio',
         externalOrderId: order.data?.createOrder?.orderId,
-        externalCheckoutId:
-          activeCampaignUserOrder?.externalcheckoutid as string,
         orderId: activeCampaignUserOrder?.id as string,
-        abandonedDate: activeCampaignUserOrder?.abandonedDate as string,
       });
-    } catch (e) {
-      console.log('Tenemos problemas para cargar a active campaign');
     }
-  }
 
-  return onSuccess({
-    orderId: order.data?.createOrder?.orderId as number,
-    temporalJwtAuthToken: jwtAuthToken as string,
-  });
+    return onSuccess({
+      orderId: order.data?.createOrder?.orderId as number,
+      temporalJwtAuthToken: jwtAuthToken as string,
+    });
+
+  } catch (e) {
+    console.error("Error en el proceso de pago:", e);
+    return onError && onError((e as Error).message);
+  }
 };
