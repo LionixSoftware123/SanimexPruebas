@@ -191,6 +191,8 @@ export const transferPayment = async (
         shippingTotal,
         shippingMethod: 'Envío a Domicilio',
         externalOrderId: order.data?.createOrder?.orderId,
+        externalCheckoutId: activeCampaignUserOrder?.externalcheckoutid || "",
+        abandonedDate: activeCampaignUserOrder?.abandonedDate || "",
         orderId: activeCampaignUserOrder?.id as string,
       });
     }
