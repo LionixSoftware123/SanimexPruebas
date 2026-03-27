@@ -326,8 +326,8 @@ export const checkCreditCardBin = (card: string) => {
   const creditCard = (card || '').replaceAll(' ', '');
   if (creditCard.length < 16) return false;
 
-  /*return !!(BinList as { bin: number; type: 'DÉBITO' | 'CRÉDITO' }[]).find(
+  /**return !!(BinList as { bin: number; type: 'DÉBITO' | 'CRÉDITO' }[]).find(
     (binData) =>
       creditCard.includes(binData.bin.toString()) && binData.type === 'CRÉDITO',
-  );*/
+  );**/
 };
