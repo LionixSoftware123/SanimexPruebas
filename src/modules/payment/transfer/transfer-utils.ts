@@ -218,6 +218,12 @@ export const transferPayment = async (
     },
   };*/
 
+// Antes de definir variablesCart, asegúrate de tener el email procesado:
+// Si 'customer' es undefined significa que el registro falló por duplicado
+const finalEmail = !customer?.databaseId 
+    ? userData.email.replace('@', '+invitado@') 
+    : userData.email;  
+
 // 1. Definimos primero el objeto 'input' SIN el customerId
   const orderInput: any = {
     isPaid: false,
@@ -230,7 +236,8 @@ export const transferPayment = async (
       address1: userData.address1,
       address2: userData.address2,
       state: userData.state,
-      email: userData.email,
+      //email: userData.email,
+      email: finalEmail,
       firstName: userData.firstname,
       lastName: userData.lastname,
       postcode: userData.postalCode,
