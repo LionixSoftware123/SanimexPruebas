@@ -122,7 +122,7 @@ export const transferPayment = async (
     ? shippingAmount
     : shippingAmount;
 
-  const variablesCart = {
+  /*const variablesCart = {
     input: {
       isPaid: false,
       currency: 'MXN',
@@ -142,7 +142,7 @@ export const transferPayment = async (
         country: CountriesEnum.Mx,
       },
       //customerId: customer?.databaseId,
-      customerId: customer?.databaseId ? customer.databaseId : 0,
+      //customerId: customer?.databaseId ? customer.databaseId : 0,
       paymentMethod: 'bacs',
       shipping: {
         address1: shipping.address1 ? shipping.address1 : userData.address1,
@@ -216,7 +216,109 @@ export const transferPayment = async (
         };
       }),
     },
+  };*/
+
+// 1. Definimos primero el objeto 'input' SIN el customerId
+  const orderInput: any = {
+    isPaid: false,
+    currency: 'MXN',
+    customerNote: userData.note,
+    coupons: cart?.coupons
+      ? cart.coupons.map((appliedCoupon) => appliedCoupon?.code as string)
+      : [],
+    billing: {
+      address1: userData.address1,
+      address2: userData.address2,
+      state: userData.state,
+      email: userData.email,
+      firstName: userData.firstname,
+      lastName: userData.lastname,
+      postcode: userData.postalCode,
+      phone: userData.phone,
+      country: CountriesEnum.Mx,
+    },
+    paymentMethod: 'bacs',
+    shipping: {
+      address1: shipping.address1 ? shipping.address1 : userData.address1,
+      state: shipping.state ? shipping.state : userData.state,
+      firstName: shipping.firstname ? shipping.firstname : userData.firstname,
+      lastName: shipping.lastname ? shipping.lastname : userData.lastname,
+      postcode: shipping.postalCode
+        ? shipping.postalCode
+        : userData.postalCode,
+      phone: shipping.phone ? shipping.phone : userData.phone,
+      country: CountriesEnum.Mx,
+    },
+    shippingLines: [
+      {
+        total: `$${shippingTotal}`,
+        methodId:
+          shippingInfo.shippingOption === ShippingEnum.ByShipping
+            ? 'flat_rate'
+            : 'local_pickup',
+        methodTitle:
+          shippingInfo.shippingOption === ShippingEnum.ByShipping
+            ? (postalCodeShipping.includes(
+                parseInt(
+                  shipping.postalCode
+                    ? shipping.postalCode
+                    : (userData.postalCode as string)
+                )
+              ) ||
+              postalCodeShippingProvincia.includes(
+                parseInt(
+                  shipping.postalCode
+                    ? shipping.postalCode
+                    : (userData.postalCode as string)
+                )
+              ) ||
+              postalCodeShippingProvinciaNL.includes(
+                parseInt(
+                  shipping.postalCode
+                    ? shipping.postalCode
+                    : (userData.postalCode as string)
+                )
+              )
+                ? 'Envió a Domicilio'
+                : 'Su Código Postal está fuera de nuestra área servicio; sin embargo, al terminar su compra nuestro equipo de venta le llamará para definir su costo de envío según la distancia.')
+            : `Recoger en: ${shop.CALLE}, C.P. ${shop.CP} Municipio ${
+                shop.CIUDAD
+              } ${shop.ESTADO} Teléfono: ${shop.TELÉFONOS.map(
+                ({ key }) => key
+              ).join(' y ')}`,
+      },
+    ],
+    lineItems: cart.items.map((item) => {
+      if (item.variation.length > 0) {
+        return {
+          name: item.name,
+          quantity: item.quantity,
+          sku: item.sku,
+          total: (Number(item.totals.line_total) / 100).toFixed(2),
+          subtotal: (Number(item.totals.line_subtotal) / 100).toFixed(2),
+          variationId: item.id,
+        };
+      }
+      return {
+        productId: item.id,
+        name: item.name,
+        quantity: item.quantity,
+        sku: item.sku,
+        total: (Number(item.totals.line_total) / 100).toFixed(2),
+        subtotal: (Number(item.totals.line_subtotal) / 100).toFixed(2),
+      };
+    }),
   };
+
+  // 2. LA MAGIA: Solo inyectamos el customerId si el cliente existe
+  if (customer?.databaseId) {
+    orderInput.customerId = customer.databaseId;
+  }
+
+  // 3. Finalmente armamos el objeto variablesCart para la mutación
+  const variablesCart = {
+    input: orderInput,
+  };  
 
   const order = await client.mutate<
     CreateOrderMutation,
