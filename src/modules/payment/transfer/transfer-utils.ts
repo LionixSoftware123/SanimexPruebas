@@ -172,26 +172,37 @@ if (jwtAuthToken) {
 
     // --- Active Campaign Logics ---
     if (!user) {
-      await createActiveCampaignOrder({
-        customer,
-        cart,
-        shippingTotal,
-        shippingMethod: shippingInfo.shippingOption === ShippingEnum.ByShipping ? 'Envío a Domicilio' : 'Recoger en tienda',
-        orderId: order.data?.createOrder?.orderId,
-      });
-    } else {
-      await updateActiveCampaignUserOrderAction({
-        //user: customer as User,
-        user: customer ? (customer as User) : { email: userData.email, firstName: userData.firstname } as User,
-        cart,
-        shippingTotal,
-        shippingMethod: 'Envío a Domicilio',
-        externalOrderId: order.data?.createOrder?.orderId,
-        externalCheckoutId: activeCampaignUserOrder?.externalcheckoutid || "",
-        abandonedDate: activeCampaignUserOrder?.abandonedDate || "",
-        orderId: activeCampaignUserOrder?.id as string,
-      });
-    }
+        try {
+          await createActiveCampaignOrder({
+            // PROTECCIÓN: Si no hay customer, mandamos un objeto básico de invitado
+            customer: customer ? customer : { email: userData.email, firstName: userData.firstname } as any,
+            cart,
+            shippingTotal,
+            shippingMethod: shippingInfo.shippingOption === ShippingEnum.ByShipping 
+              ? 'Envío a Domicilio' 
+              : 'Recoger en tienda',
+            orderId: order.data?.createOrder?.orderId,
+          });
+        } catch (e) {
+          console.log('Tenemos problemas para cargar a active campaign');
+        }
+      } else {
+        try {
+          await updateActiveCampaignUserOrderAction({
+            // PROTECCIÓN: Lo mismo aquí
+            user: (customer || user) as User,
+            cart,
+            shippingTotal,
+            shippingMethod: 'Envío a Domicilio',
+            externalOrderId: order.data?.createOrder?.orderId,
+            externalCheckoutId: activeCampaignUserOrder?.externalcheckoutid || "",
+            orderId: activeCampaignUserOrder?.id as string,
+            abandonedDate: activeCampaignUserOrder?.abandonedDate as string,
+          });
+        } catch (e) {
+          console.log('Tenemos problemas para cargar a active campaign');
+        }
+      }
 
     return onSuccess({
       orderId: order.data?.createOrder?.orderId as number,
