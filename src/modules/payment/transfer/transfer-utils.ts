@@ -72,23 +72,19 @@ export const transferPayment = async (
 
   setStep && setStep(1);
 
-  /**
-   * NUEVA LÓGICA DE IDENTIDAD:
-   * 1. Si hay token, recuperamos al usuario.
-   * 2. Si NO hay token, no intentamos registrar. Dejamos que sea una compra de invitado.
-   * (La validación de si el correo existe ya se hace en el componente previo con el Toast)
-   */
   if (jwtAuthToken) {
     customer = fetchUserEvent.get()?.user as Customer;
   } else {
     customer = undefined;
     jwtAuthToken = undefined;
+    // --- ESTA ES LA CLAVE: Limpiamos el almacenamiento del token para esta petición ---
+    OnTokenEvent.set({ token: "" }); 
   }
 
-  // Creamos el cliente de Apollo. Si es invitado, solo llevará el woo-session.
+  // Modificamos el segundo parámetro de createApolloClient
   const client = createApolloClient(
     wooSessionToken as string,
-    jwtAuthToken ? (jwtAuthToken as string) : undefined
+    jwtAuthToken ? (jwtAuthToken as string) : "" // En lugar de undefined, mandamos ""
   );
 
   setStep && setStep(2);
