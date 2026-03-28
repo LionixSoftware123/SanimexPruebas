@@ -72,19 +72,18 @@ export const transferPayment = async (
 
   setStep && setStep(1);
 
-  if (jwtAuthToken) {
+if (jwtAuthToken) {
     customer = fetchUserEvent.get()?.user as Customer;
   } else {
     customer = undefined;
     jwtAuthToken = undefined;
-    // --- ESTA ES LA CLAVE: Limpiamos el almacenamiento del token para esta petición ---
-    OnTokenEvent.set({ token: "" }); 
+    // Quitamos la línea de OnTokenEvent.set que falló
   }
 
-  // Modificamos el segundo parámetro de createApolloClient
+  // LA CLAVE REAL: Forzamos el segundo parámetro como un string vacío ""
   const client = createApolloClient(
     wooSessionToken as string,
-    jwtAuthToken ? (jwtAuthToken as string) : "" // En lugar de undefined, mandamos ""
+    "" // <-- Ponemos las comillas vacías directamente aquí
   );
 
   setStep && setStep(2);
