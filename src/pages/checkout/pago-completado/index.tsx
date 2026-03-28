@@ -187,7 +187,8 @@ const PaymentComplete: React.FC<PaymentCompleteProps> = ({
   
           return {
             item_name: productNode?.name,
-            item_id: productNode?.databaseId,
+            //item_id: productNode?.databaseId,
+            item_id: productNode?.databaseId || node.productId,
             price: price,
             item_brand: getProductBrand(node.product?.node as Product),
             quantity: node.quantity,
