@@ -4,17 +4,13 @@ import {
   ShippingAddressType,
 } from '@/modules/payment/payment-types';
 import { createApolloClient } from '@/apollo/client';
-import generatePassword from 'generate-password';
+// Ya no necesitamos generate-password porque no crearemos usuarios a la fuerza
 import {
   CountriesEnum,
-  CreateCustomerDocument,
-  CreateCustomerMutation,
-  CreateCustomerMutationVariables,
   CreateOrderDocument,
   CreateOrderMutation,
   CreateOrderMutationVariables,
   Customer,
-  RegisterCustomerPayload,
 } from '@/utils/types/generated';
 import { ShippingEnum } from '@/components/checkout/CheckoutShippingMethods';
 import {
@@ -34,7 +30,6 @@ import randomString from 'randomstring';
 import cardValidator from 'card-validator';
 import { fetchActiveCampaignUserOrderEvent } from '@/modules/active-campaign/active-campaign-events';
 import currencyFormatter from 'currency-formatter';
-//import BinList from '@/utils/bin-list2.json';
 import { confirmGeolocationStore } from '@/modules/geolocation/geolocation-events';
 import { calculateCost } from '@/modules/geolocation/geolocation-utils';
 import { ShopType } from '@/modules/shop/shop-types';
@@ -67,29 +62,6 @@ export type FormType = {
   CREDIT_TYPE: string;
   SECURITY_CODE: string;
 };
-const fetchRegisterCustomer = async (
-  data: PaymentDataType,
-): Promise<RegisterCustomerPayload> => {
-  const client = createApolloClient();
-  const response = await client.mutate<
-    CreateCustomerMutation,
-    CreateCustomerMutationVariables
-  >({
-    mutation: CreateCustomerDocument,
-    variables: {
-      input: {
-        username: data.email,
-        email: data.email,
-        password: generatePassword.generate({
-          length: 10,
-          numbers: true,
-        }),
-      },
-    },
-  });
-
-  return response.data?.registerCustomer as RegisterCustomerPayload;
-};
 
 export const createBanortePayment = async (
   creditCardData: CreditCardDataType,
@@ -113,27 +85,24 @@ export const createBanortePayment = async (
 ) => {
   let jwtAuthToken = OnTokenEvent.get()?.token;
   const wooSessionToken = OnWooSessionTokenEvent.get()?.token;
-  const activeCampaignUserOrder =
-    fetchActiveCampaignUserOrderEvent.get()?.order;
+  const activeCampaignUserOrder = fetchActiveCampaignUserOrderEvent.get()?.order;
   let customer: Customer | undefined = undefined;
   const { distance } = confirmGeolocationStore.get();
   const shippingAmount = calculateCost(distance);
 
-  if (!jwtAuthToken) {
-    try {
-      const customerData = await fetchRegisterCustomer(userData);
-      jwtAuthToken = customerData.authToken;
-      customer = customerData?.customer as Customer;
-    } catch (error) {
-      return onError && onError('Tenemos problemas para generar el customer');
-    }
-  } else {
+  // --- LÓGICA DE IDENTIFICACIÓN LIMPIA ---
+  if (jwtAuthToken) {
     customer = fetchUserEvent.get()?.user as Customer;
+  } else {
+    // Si no hay token, aseguramos que customer y token sean undefined para compra de invitado
+    customer = undefined;
+    jwtAuthToken = undefined;
   }
 
+  // Creamos el cliente de Apollo inyectando "" si es invitado para limpiar headers
   const client = createApolloClient(
     wooSessionToken as string,
-    jwtAuthToken as string,
+    jwtAuthToken ? (jwtAuthToken as string) : "" 
   );
 
   const shippingTotal = postalCodeShipping.includes(
@@ -161,6 +130,7 @@ export const createBanortePayment = async (
         phone: userData.phone,
         country: CountriesEnum.Mx,
       },
+      // PROTECCIÓN: Solo enviamos el ID si existe el cliente
       customerId: customer?.databaseId,
       paymentMethod: 'openpay_cards',
       shipping: {
@@ -257,6 +227,7 @@ export const createBanortePayment = async (
     ];
   }
 
+  // Ejecutamos la mutación con el cliente configurado para invitado o usuario
   const order = await client.mutate<
     CreateOrderMutation,
     CreateOrderMutationVariables
@@ -325,9 +296,4 @@ export const createBanortePayment = async (
 export const checkCreditCardBin = (card: string) => {
   const creditCard = (card || '').replaceAll(' ', '');
   if (creditCard.length < 16) return false;
-
-  /**return !!(BinList as { bin: number; type: 'DÉBITO' | 'CRÉDITO' }[]).find(
-    (binData) =>
-      creditCard.includes(binData.bin.toString()) && binData.type === 'CRÉDITO',
-  );**/
 };
