@@ -4,7 +4,6 @@ import {
   ShippingAddressType,
 } from '@/modules/payment/payment-types';
 import { createApolloClient } from '@/apollo/client';
-// Ya no necesitamos generate-password porque no crearemos usuarios a la fuerza
 import {
   CountriesEnum,
   CreateOrderDocument,
@@ -90,19 +89,18 @@ export const createBanortePayment = async (
   const { distance } = confirmGeolocationStore.get();
   const shippingAmount = calculateCost(distance);
 
-  // --- LÓGICA DE IDENTIFICACIÓN LIMPIA ---
+  // Lógica para determinar si es invitado o cliente registrado
   if (jwtAuthToken) {
     customer = fetchUserEvent.get()?.user as Customer;
   } else {
-    // Si no hay token, aseguramos que customer y token sean undefined para compra de invitado
     customer = undefined;
     jwtAuthToken = undefined;
   }
 
-  // Creamos el cliente de Apollo inyectando "" si es invitado para limpiar headers
+  // Cliente Apollo configurado (inyectamos "" si es invitado para limpiar headers)
   const client = createApolloClient(
     wooSessionToken as string,
-    jwtAuthToken ? (jwtAuthToken as string) : "" 
+    jwtAuthToken ? (jwtAuthToken as string) : ""
   );
 
   const shippingTotal = postalCodeShipping.includes(
@@ -130,7 +128,7 @@ export const createBanortePayment = async (
         phone: userData.phone,
         country: CountriesEnum.Mx,
       },
-      // PROTECCIÓN: Solo enviamos el ID si existe el cliente
+      // Protección: Solo enviamos el ID si existe el cliente
       customerId: customer?.databaseId,
       paymentMethod: 'openpay_cards',
       shipping: {
@@ -227,73 +225,58 @@ export const createBanortePayment = async (
     ];
   }
 
-  // Ejecutamos la mutación con el cliente configurado para invitado o usuario
-  const order = await client.mutate<
-    CreateOrderMutation,
-    CreateOrderMutationVariables
-  >({
-    mutation: CreateOrderDocument,
-    variables: variables,
-  });
+  // ENVOLVEMOS EN TRY/CATCH PARA SOLUCIONAR EL ERROR DE BUILD Y MANEJAR ERRORES
+  try {
+    const order = await client.mutate<
+      CreateOrderMutation,
+      CreateOrderMutationVariables
+    >({
+      mutation: CreateOrderDocument,
+      variables: variables,
+    });
 
-  const cardInfo = cardValidator.number(
-    creditCardData.creditCardNumber as string,
-  );
-  const cartTotal = currencyFormatter.unformat(
-    (Number((cart as Cart).totals.total_price) / 100).toString(),
-    {
-      code: 'USD',
-      precision: 2,
-    },
-  );
+    const cardInfo = cardValidator.number(
+      creditCardData.creditCardNumber as string,
+    );
+    const cartTotal = currencyFormatter.unformat(
+      (Number((cart as Cart).totals.total_price) / 100).toString(),
+      {
+        code: 'USD',
+        precision: 2,
+      },
+    );
 
-  const form: FormType = {
-    CARD_NUMBER: creditCardData.creditCardNumber as string,
-    CARD_EXP: creditCardData.expiredDate as string,
-    AMOUNT:
-      shippingInfo.shippingOption === ShippingEnum.ByShipping
-        ? (cartTotal + shippingTotal).toFixed(2)
-        : cartTotal.toFixed(2),
-    MERCHANT_ID: 
-      postalCodeShipping.includes(
-        parseInt(shipping.postalCode || (userData.postalCode as string)),
-      )
-        ? BANORTE_MERCHANT_ID
-        : BANORTE_GAM_MERCHANT_ID,
-    TERMINAL_ID: 
-      postalCodeShipping.includes(
-        parseInt(shipping.postalCode || (userData.postalCode as string)),
-      )
-        ? '91592131'
-        : '91600801',
-    MERCHANT_NAME:
-      postalCodeShipping.includes(
-        parseInt(shipping.postalCode || (userData.postalCode as string)),
-      )
-        ? 'SANIMEX AYUNTAMIENTO'
-        : 'FERR GRUPO AZULEJERO M',    
-    MERCHANT_CITY: 'ESTADO DE MEXICO',
-    FORWARD_PATH: BANORTE_PAYMENT_ENDPOINT,
-    '3D_CERTIFICATION': '03',
-    REFERENCE3D: randomString.generate(10),
-    COUNTRY: 'MX',
-    CITY: userData.state as string,
-    EMAIL: userData.email as string,
-    NAME: userData.firstname as string,
-    LAST_NAME: userData.lastname as string,
-    POSTAL_CODE: userData.postalCode as string,
-    STREET: userData.address1 as string,
-    THREED_VERSION: '2',
-    MOBILE_PHONE: userData.phone as string,
-    CREDIT_TYPE: 'CR',
-    SECURITY_CODE: creditCardData.cvc as string,
-    CARD_TYPE: cardInfo.card?.type === 'visa' ? 'VISA' : 'MC',
-  };
-
-  return onSuccess({ form, orderId: order?.data?.createOrder?.orderId });
-};
-
-export const checkCreditCardBin = (card: string) => {
-  const creditCard = (card || '').replaceAll(' ', '');
-  if (creditCard.length < 16) return false;
-};
+    const form: FormType = {
+      CARD_NUMBER: creditCardData.creditCardNumber as string,
+      CARD_EXP: creditCardData.expiredDate as string,
+      AMOUNT:
+        shippingInfo.shippingOption === ShippingEnum.ByShipping
+          ? (cartTotal + shippingTotal).toFixed(2)
+          : cartTotal.toFixed(2),
+      MERCHANT_ID: 
+        postalCodeShipping.includes(
+          parseInt(shipping.postalCode || (userData.postalCode as string)),
+        )
+          ? BANORTE_MERCHANT_ID
+          : BANORTE_GAM_MERCHANT_ID,
+      TERMINAL_ID: 
+        postalCodeShipping.includes(
+          parseInt(shipping.postalCode || (userData.postalCode as string)),
+        )
+          ? '91592131'
+          : '91600801',
+      MERCHANT_NAME:
+        postalCodeShipping.includes(
+          parseInt(shipping.postalCode || (userData.postalCode as string)),
+        )
+          ? 'SANIMEX AYUNTAMIENTO'
+          : 'FERR GRUPO AZULEJERO M',    
+      MERCHANT_CITY: 'ESTADO DE MEXICO',
+      FORWARD_PATH: BANORTE_PAYMENT_ENDPOINT,
+      '3D_CERTIFICATION': '03',
+      REFERENCE3D: randomString.generate(10),
+      COUNTRY: 'MX',
+      CITY: userData.state as string,
+      EMAIL: userData.email as string,
+      NAME: userData.firstname as string,
+      LAST_NAME
