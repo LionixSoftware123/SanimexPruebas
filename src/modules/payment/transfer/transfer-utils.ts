@@ -181,7 +181,8 @@ if (jwtAuthToken) {
       });
     } else {
       await updateActiveCampaignUserOrderAction({
-        user: customer as User,
+        //user: customer as User,
+        user: customer ? (customer as User) : { email: userData.email, firstName: userData.firstname } as User,
         cart,
         shippingTotal,
         shippingMethod: 'Envío a Domicilio',
