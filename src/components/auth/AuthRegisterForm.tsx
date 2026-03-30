@@ -92,7 +92,7 @@ const AuthRegisterForm: React.FC<AuthRegisterFormProps> = ({ onSuccess }) => {
     }
   };
 
-  // --- 2. FUNCIÓN DE LOGIN (Plan B de Rescate) ---
+  // --- 2. DEFINICIÓN DE LA FUNCIÓN DE LOGIN ---
   const [login, { loading: loginLoading }] = useLoginMutation({
     onCompleted: (loginData) => {
       const loginUser = loginData.login?.user;
@@ -103,7 +103,7 @@ const AuthRegisterForm: React.FC<AuthRegisterFormProps> = ({ onSuccess }) => {
     },
     onError: (error) => {
       console.error("Error en login automático:", error);
-      addToast('No pudimos iniciar sesión automáticamente. Por favor intenta el Login manual.', { appearance: 'error' });
+      addToast('Usuario creado, pero no pudimos iniciar sesión automáticamente. Intenta el login manual.', { appearance: 'info' });
     }
   });
 
@@ -112,36 +112,27 @@ const AuthRegisterForm: React.FC<AuthRegisterFormProps> = ({ onSuccess }) => {
     onCompleted: (res: any) => {
       const user = res.registerCustomer?.user || res.registerUser?.user;
       
-      // Si el registro funcionó y trajo tokens
-      if (user?.jwtAuthToken) {
-        saveCookies(user);
-        onSuccess && onSuccess();
-      } else {
-        // Si no trajo tokens (aunque no haya dado error 400), intentamos login
-        console.log("Registro completado sin tokens, intentando login...");
-        login({
-          variables: {
-            input: {
-              username: data.email as string,
-              password: data.password as string,
-            },
+      // Intentamos login automático siempre que el registro termine
+      // Usamos data.email como username para asegurar coincidencia
+      login({
+        variables: {
+          input: {
+            username: data.email as string,
+            password: data.password as string,
           },
-        });
-      }
+        },
+      });
     },
     onError: (error) => {
-      console.log("Error detectado en registro:", error.message);
-
-      // CAPTURA AGRESIVA: Si el error es 400 (Digital Ocean), o el mensaje de tokens, o usuario ya existente
-      const shouldRetryWithLogin = 
+      // Si el error es un 400 o un problema de tokens, igual intentamos el login
+      const isTokenOrNetworkError = 
         error.message.includes('400') || 
         error.message.includes('token') || 
-        error.message.includes('already registered') || 
         error.message.includes('already exists') ||
-        error.message.includes('existing-email-address');
+        error.message.includes('registered');
 
-      if (shouldRetryWithLogin) {
-        console.log("Forzando login automático de rescate...");
+      if (isTokenOrNetworkError) {
+        console.log("Error de registro recuperable, intentando login...");
         login({
           variables: {
             input: {
@@ -165,10 +156,10 @@ const AuthRegisterForm: React.FC<AuthRegisterFormProps> = ({ onSuccess }) => {
     registerUser({
       variables: {
         input: {
-          username: data?.email as string,
-          password: data?.password as string,
-          email: data?.email as string,
-          firstName: data?.displayName as string,
+          username: data.email as string,
+          password: data.password as string,
+          email: data.email as string,
+          firstName: data.displayName as string,
         },
       },
     });
@@ -243,18 +234,6 @@ const AuthRegisterForm: React.FC<AuthRegisterFormProps> = ({ onSuccess }) => {
           {isLoading ? 'Procesando...' : 'SIGUIENTE'}
         </Button>
       </div>
-      <Box className="font-sans text-center text-[#999999]">
-        Al registrarte estás aceptando nuestros
-      </Box>
-      <Box className="font-sans text-center text-[#999999]">
-        <Link
-          href={'terminos-y-condiciones'}
-          color="inherit"
-          className="font-bold text-[#1c355e] no-underline"
-        >
-          Términos y Condiciones
-        </Link>
-      </Box>
     </div>
   );
 };
