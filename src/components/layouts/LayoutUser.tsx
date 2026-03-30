@@ -6,7 +6,7 @@ import { PowerIcon } from '@heroicons/react/24/outline';
 import { UserIcon } from '@heroicons/react/24/outline';
 import { ListBulletIcon } from '@heroicons/react/24/outline';
 import { HeartIcon } from '@heroicons/react/24/solid';
-import { DOMAIN_SITE } from '@/utils/constants';
+//import { DOMAIN_SITE } from '@/utils/constants';
 import { Box, ListItem, ListItemText, Typography } from '@mui/material';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
@@ -103,11 +103,15 @@ const LayoutUser: React.FC<LayoutUserProp> = ({ children }) => {
                   onClick={() => {
                     removeCookie('jwtRefreshToken', {
                       path: '/',
-                      domain: DOMAIN_SITE,
+                      //domain: DOMAIN_SITE,
+                      secure: true,
+                      sameSite: 'lax',
                     });
                     removeCookie('jwtAuthToken', {
                       path: '/',
-                      domain: DOMAIN_SITE,
+                      //domain: DOMAIN_SITE,
+                      secure: true,
+                      sameSite: 'lax',
                     });
                     setTimeout(async () => {
                       await redirect();
