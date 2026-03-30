@@ -254,6 +254,7 @@ const CheckoutBillingAddress: React.FC<CheckoutBillingAddressProps> = ({
                 name={'billingAddress.email'}
               />
             )}
+            <div>Si no recuerdas correo y contraseña, agrega otro email para comprar como invitado.</div>
           </div>
           <div className="col-span-full md:col-span-6">
             <Controller
