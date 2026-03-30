@@ -212280,10 +212280,22 @@ export type RegisterAnniversaryUserMutationOptions = Apollo.BaseMutationOptions<
   RegisterAnniversaryUserMutation,
   RegisterAnniversaryUserMutationVariables
 >;
-export const RegisterDocument = gql`
+/*export const RegisterDocument = gql`
   mutation Register($input: RegisterUserInput!) {
     registerUser(input: $input) {
       user {
+        wooSessionToken
+        jwtAuthToken
+        jwtRefreshToken
+        jwtAuthExpiration
+      }
+    }
+  }
+`;*/
+export const RegisterDocument = gql`
+  mutation Register($input: RegisterCustomerInput!) {
+    registerCustomer(input: $input) {
+      customer {
         wooSessionToken
         jwtAuthToken
         jwtRefreshToken
