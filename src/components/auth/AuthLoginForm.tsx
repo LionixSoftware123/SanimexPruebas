@@ -3,7 +3,7 @@ import { useLoginMutation } from '@/utils/types/generated';
 import { useToasts } from 'react-toast-notifications';
 import { useCookies } from 'react-cookie';
 import moment from 'moment/moment';
-import { DOMAIN_SITE } from '@/utils/constants';
+//import { DOMAIN_SITE } from '@/utils/constants';
 import { useRouter } from 'next/router';
 import axios from 'axios';
 import {
@@ -48,7 +48,7 @@ const AuthLoginForm: React.FC<AuthLoginFormProps> = ({ onSuccess }) => {
   });
   const router = useRouter();
 
-  const [loginUser, { loading }] = useLoginMutation({
+  /*const [loginUser, { loading }] = useLoginMutation({
     onCompleted: (data) => {
       setCookie('jwtAuthToken', data.login?.user?.jwtAuthToken, {
         expires: new Date(
@@ -87,7 +87,59 @@ const AuthLoginForm: React.FC<AuthLoginFormProps> = ({ onSuccess }) => {
         },
       );
     },
-  });
+  });*/
+
+const [loginUser, { loading }] = useLoginMutation({
+    onCompleted: (data) => {
+      // 1. Guardamos el Token de Acceso
+      setCookie('jwtAuthToken', data.login?.user?.jwtAuthToken, {
+        expires: new Date(
+          parseInt(data.login?.user?.jwtAuthExpiration as string) * 1000,
+        ),
+        path: '/',
+        // Eliminamos 'domain' para que el navegador lo asigne al dominio actual automáticamente
+        secure: true,
+        sameSite: 'lax', 
+      });
+
+      // 2. Guardamos el Refresh Token
+      setCookie('jwtRefreshToken', data.login?.user?.jwtRefreshToken, {
+        expires: moment().add(1, 'year').toDate(),
+        path: '/',
+        secure: true,
+        sameSite: 'lax',
+      });
+
+      // Ejecutamos el éxito (esto disparará el router.push en Auth.tsx si el estado se actualiza)
+      onSuccess && onSuccess();
+      
+      // Opcional: Forzar redirección si onSuccess no lo hace
+      if (!onSuccess) {
+        router.push('/');
+      }
+    },
+    onError: (data) => {
+      let errorMessage = data.message;
+      if (data.message === 'incorrect_password') {
+        errorMessage = 'La contraseña es incorrecta';
+      } else if (data.message === 'invalid_email') {
+        errorMessage = 'El correo no está registrado';
+      } else if (
+        data.message.includes('El usuario o contraseña es incorrecto')
+      ) {
+        errorMessage = 'El usuario o contraseña es incorrecto';
+      }
+
+      addToast(
+        <div>
+          <div dangerouslySetInnerHTML={{ __html: errorMessage }}></div>
+        </div>,
+        {
+          appearance: 'error',
+        },
+      );
+    },
+  });  
 
   const handleRegister = () => {
     const checkField = Object.keys(data).find(
