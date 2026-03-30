@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-// Importamos también useLoginMutation para el login automático
 import { useRegisterMutation, useLoginMutation } from '@/utils/types/generated';
 import { useToasts } from 'react-toast-notifications';
 import { useCookies } from 'react-cookie';
@@ -50,7 +49,6 @@ const AuthRegisterForm: React.FC<AuthRegisterFormProps> = ({ onSuccess }) => {
 
   // --- 1. FUNCIÓN PARA GUARDAR COOKIES ---
   const saveCookies = (user: any) => {
-    // jwtAuthToken
     if (user?.jwtAuthToken) {
       setCookie('jwtAuthToken', user?.jwtAuthToken, {
         expires: new Date(parseInt(user?.jwtAuthExpiration as string) * 1000),
@@ -60,7 +58,6 @@ const AuthRegisterForm: React.FC<AuthRegisterFormProps> = ({ onSuccess }) => {
       });
     }
 
-    // jwtRefreshToken
     if (user?.jwtRefreshToken) {
       setCookie('jwtRefreshToken', user?.jwtRefreshToken, {
         path: '/',
@@ -69,7 +66,6 @@ const AuthRegisterForm: React.FC<AuthRegisterFormProps> = ({ onSuccess }) => {
       });
     }
 
-    // wooSessionToken (Decodificamos para obtener la expiración)
     if (user?.wooSessionToken) {
       try {
         const decodeToken = jwtDecode<{
@@ -84,7 +80,6 @@ const AuthRegisterForm: React.FC<AuthRegisterFormProps> = ({ onSuccess }) => {
           sameSite: 'lax',
         });
 
-        // refreshWooSessionToken
         setCookie('refreshWooSessionToken', user?.wooSessionToken, {
           expires: moment().add(1, 'year').toDate(),
           path: '/',
@@ -97,7 +92,7 @@ const AuthRegisterForm: React.FC<AuthRegisterFormProps> = ({ onSuccess }) => {
     }
   };
 
-  // --- 2. FUNCIÓN DE LOGIN (Plan B) ---
+  // --- 2. FUNCIÓN DE LOGIN (Plan B de Rescate) ---
   const [login, { loading: loginLoading }] = useLoginMutation({
     onCompleted: (loginData) => {
       const loginUser = loginData.login?.user;
@@ -108,37 +103,45 @@ const AuthRegisterForm: React.FC<AuthRegisterFormProps> = ({ onSuccess }) => {
     },
     onError: (error) => {
       console.error("Error en login automático:", error);
-      addToast('Cuenta creada, pero por favor inicia sesión manualmente.', { appearance: 'info' });
+      addToast('No pudimos iniciar sesión automáticamente. Por favor intenta el Login manual.', { appearance: 'error' });
     }
   });
 
   // --- 3. MUTACIÓN DE REGISTRO ---
-  // --- MUTACIÓN DE REGISTRO MODIFICADA ---
-  // --- MUTACIÓN DE REGISTRO (Versión de choque) ---
   const [registerUser, { loading: registerLoading }] = useRegisterMutation({
     onCompleted: (res: any) => {
-      // Si por azar del destino entrara aquí (a veces Apollo lo hace si hay data)
       const user = res.registerCustomer?.user || res.registerUser?.user;
+      
+      // Si el registro funcionó y trajo tokens
       if (user?.jwtAuthToken) {
         saveCookies(user);
         onSuccess && onSuccess();
-      } else if (user) {
-        // Si hay usuario pero no token, saltamos al login desde aquí también
-        login({ variables: { input: { username: data.email as string, password: data.password as string } } });
+      } else {
+        // Si no trajo tokens (aunque no haya dado error 400), intentamos login
+        console.log("Registro completado sin tokens, intentando login...");
+        login({
+          variables: {
+            input: {
+              username: data.email as string,
+              password: data.password as string,
+            },
+          },
+        });
       }
     },
     onError: (error) => {
       console.log("Error detectado en registro:", error.message);
-      
-      // PLAN DE CHOQUE: Si el error es el de los tokens o el de "usuario ya existe",
-      // intentamos loguear de todos modos, porque el usuario YA está en la DB.
-      const shouldTryLogin = 
-        error.message.includes('Only the user requesting a token') || 
-        error.message.includes('existing-email-address') || 
-        error.message.includes('already exists');
 
-      if (shouldTryLogin) {
-        console.log("Intentando login automático tras detectar usuario en DB...");
+      // CAPTURA AGRESIVA: Si el error es 400 (Digital Ocean), o el mensaje de tokens, o usuario ya existente
+      const shouldRetryWithLogin = 
+        error.message.includes('400') || 
+        error.message.includes('token') || 
+        error.message.includes('already registered') || 
+        error.message.includes('already exists') ||
+        error.message.includes('existing-email-address');
+
+      if (shouldRetryWithLogin) {
+        console.log("Forzando login automático de rescate...");
         login({
           variables: {
             input: {
@@ -148,7 +151,6 @@ const AuthRegisterForm: React.FC<AuthRegisterFormProps> = ({ onSuccess }) => {
           },
         });
       } else {
-        // Solo mostramos toast si es un error real diferente (ej: servidor caído)
         addToast(<div dangerouslySetInnerHTML={{ __html: error.message }} />, { appearance: 'error' });
       }
     },
@@ -166,7 +168,7 @@ const AuthRegisterForm: React.FC<AuthRegisterFormProps> = ({ onSuccess }) => {
           username: data?.email as string,
           password: data?.password as string,
           email: data?.email as string,
-          firstName: data?.displayName as string, // Mapeamos el nombre a firstName de WooCommerce
+          firstName: data?.displayName as string,
         },
       },
     });
