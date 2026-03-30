@@ -48,8 +48,56 @@ const AuthRegisterForm: React.FC<AuthRegisterFormProps> = ({ onSuccess }) => {
     email: '',
   });
 
-  // --- FUNCIÓN DE LOGIN (Plan B) ---
-  // Esta función se activará si el registro no nos da tokens automáticamente
+  // --- 1. FUNCIÓN PARA GUARDAR COOKIES ---
+  const saveCookies = (user: any) => {
+    // jwtAuthToken
+    if (user?.jwtAuthToken) {
+      setCookie('jwtAuthToken', user?.jwtAuthToken, {
+        expires: new Date(parseInt(user?.jwtAuthExpiration as string) * 1000),
+        path: '/',
+        secure: true,
+        sameSite: 'lax',
+      });
+    }
+
+    // jwtRefreshToken
+    if (user?.jwtRefreshToken) {
+      setCookie('jwtRefreshToken', user?.jwtRefreshToken, {
+        path: '/',
+        secure: true,
+        sameSite: 'lax',
+      });
+    }
+
+    // wooSessionToken (Decodificamos para obtener la expiración)
+    if (user?.wooSessionToken) {
+      try {
+        const decodeToken = jwtDecode<{
+          data: { user: { id: string } };
+          exp?: number;
+        }>(user?.wooSessionToken as string);
+
+        setCookie('wooSessionToken', user?.wooSessionToken, {
+          expires: new Date((decodeToken.exp as number) * 1000),
+          path: '/',
+          secure: true,
+          sameSite: 'lax',
+        });
+
+        // refreshWooSessionToken
+        setCookie('refreshWooSessionToken', user?.wooSessionToken, {
+          expires: moment().add(1, 'year').toDate(),
+          path: '/',
+          secure: true,
+          sameSite: 'lax',
+        });
+      } catch (e) {
+        console.error("Error decoding wooSessionToken", e);
+      }
+    }
+  };
+
+  // --- 2. FUNCIÓN DE LOGIN (Plan B) ---
   const [login, { loading: loginLoading }] = useLoginMutation({
     onCompleted: (loginData) => {
       const loginUser = loginData.login?.user;
@@ -58,82 +106,43 @@ const AuthRegisterForm: React.FC<AuthRegisterFormProps> = ({ onSuccess }) => {
         onSuccess && onSuccess();
       }
     },
-    onError: () => {
-      addToast('Usuario creado, pero hubo un error al iniciar sesión automáticamente. Por favor intenta hacer Login.', { appearance: 'info' });
+    onError: (error) => {
+      console.error("Error en login automático:", error);
+      addToast('Cuenta creada, pero por favor inicia sesión manualmente.', { appearance: 'info' });
     }
   });
 
-  // --- FUNCIÓN PARA GUARDAR COOKIES ---
-  const saveCookies = (user: any) => {
-    // 1. jwtAuthToken
-    setCookie('jwtAuthToken', user?.jwtAuthToken, {
-      expires: new Date(parseInt(user?.jwtAuthExpiration as string) * 1000),
-      path: '/',
-      secure: true,
-      sameSite: 'lax',
-    });
-
-    // 2. jwtRefreshToken
-    setCookie('jwtRefreshToken', user?.jwtRefreshToken, {
-      path: '/',
-      secure: true,
-      sameSite: 'lax',
-    });
-
-    // 3. wooSessionToken (Decodificamos el token de sesión de WooCommerce)
-    if (user?.wooSessionToken) {
-      const decodeToken = jwtDecode<{
-        data: { user: { id: string } };
-        exp?: number;
-      }>(user?.wooSessionToken as string);
-
-      setCookie('wooSessionToken', user?.wooSessionToken, {
-        expires: new Date((decodeToken.exp as number) * 1000),
-        path: '/',
-        secure: true,
-        sameSite: 'lax',
-      });
-
-      // 4. refreshWooSessionToken
-      setCookie('refreshWooSessionToken', user?.wooSessionToken, {
-        expires: moment().add(1, 'year').toDate(),
-        path: '/',
-        secure: true,
-        sameSite: 'lax',
-      });
-    }
-  };
-
-  // --- MUTACIÓN DE REGISTRO ---
+  // --- 3. MUTACIÓN DE REGISTRO ---
   const [registerUser, { loading: registerLoading }] = useRegisterMutation({
     onCompleted: (res: any) => {
+      // Buscamos al usuario en la respuesta (ya sea por WooCommerce o WP)
       const user = res.registerCustomer?.user || res.registerUser?.user;
 
-      if (!user) {
-        addToast('Error al procesar el registro', { appearance: 'error' });
-        return;
-      }
-
-      // SI EL REGISTRO NO NOS DIO TOKENS (Tu caso actual), HACEMOS LOGIN AUTOMÁTICO
-      if (!user.jwtAuthToken) {
-        console.log("Registro OK, pero sin tokens. Iniciando Login automático...");
-        login({
-          variables: {
-            input: { // <--- Faltaba envolver esto aquí
-              username: data.email as string,
-              password: data.password as string,
+      if (user) {
+        // Si el registro NO nos dio tokens (común en errores de JWT Auth en registro)
+        // Disparamos el login automático inmediatamente
+        if (!user.jwtAuthToken) {
+          console.log("Registro exitoso, iniciando login automático...");
+          login({
+            variables: {
+              input: {
+                username: data.email as string,
+                password: data.password as string,
+              },
             },
-          },
-        });
+          });
+        } else {
+          // Si sí llegaron los tokens, guardamos y finalizamos
+          saveCookies(user);
+          onSuccess && onSuccess();
+        }
       } else {
-        // SI SÍ NOS DIO TOKENS, GUARDAMOS Y LISTO
-        saveCookies(user);
-        onSuccess && onSuccess();
+        addToast('No se recibieron datos del usuario tras el registro.', { appearance: 'error' });
       }
     },
     onError: (error) => {
       let errorMessage = error.message;
-      if (error.message.includes('existing-email-address')) {
+      if (error.message.includes('existing-email-address') || error.message.includes('already exists')) {
         errorMessage = 'Este correo ya está registrado';
       } else if (error.message.includes('invalid_email')) {
         errorMessage = 'El correo no es válido';
@@ -154,8 +163,7 @@ const AuthRegisterForm: React.FC<AuthRegisterFormProps> = ({ onSuccess }) => {
           username: data?.email as string,
           password: data?.password as string,
           email: data?.email as string,
-          // Si necesitas enviar el nombre a WooCommerce, usualmente es firstName
-          firstName: data?.displayName as string,
+          firstName: data?.displayName as string, // Mapeamos el nombre a firstName de WooCommerce
         },
       },
     });
