@@ -114,22 +114,31 @@ const AuthRegisterForm: React.FC<AuthRegisterFormProps> = ({ onSuccess }) => {
 
   // --- 3. MUTACIÓN DE REGISTRO ---
   // --- MUTACIÓN DE REGISTRO MODIFICADA ---
+  // --- MUTACIÓN DE REGISTRO (Versión de choque) ---
   const [registerUser, { loading: registerLoading }] = useRegisterMutation({
     onCompleted: (res: any) => {
-      // Si por algún milagro entrara aquí y tuviera tokens:
+      // Si por azar del destino entrara aquí (a veces Apollo lo hace si hay data)
       const user = res.registerCustomer?.user || res.registerUser?.user;
       if (user?.jwtAuthToken) {
         saveCookies(user);
         onSuccess && onSuccess();
+      } else if (user) {
+        // Si hay usuario pero no token, saltamos al login desde aquí también
+        login({ variables: { input: { username: data.email as string, password: data.password as string } } });
       }
     },
     onError: (error) => {
-      // 1. Verificamos si es el error de los tokens (el que nos está bloqueando)
-      const isTokenError = error.message.includes('Only the user requesting a token');
+      console.log("Error detectado en registro:", error.message);
       
-      if (isTokenError) {
-        console.log("Detectado error de tokens, pero el usuario ya se creó. Iniciando Login...");
-        // DISPARAMOS EL LOGIN AQUÍ, en el onError
+      // PLAN DE CHOQUE: Si el error es el de los tokens o el de "usuario ya existe",
+      // intentamos loguear de todos modos, porque el usuario YA está en la DB.
+      const shouldTryLogin = 
+        error.message.includes('Only the user requesting a token') || 
+        error.message.includes('existing-email-address') || 
+        error.message.includes('already exists');
+
+      if (shouldTryLogin) {
+        console.log("Intentando login automático tras detectar usuario en DB...");
         login({
           variables: {
             input: {
@@ -138,16 +147,10 @@ const AuthRegisterForm: React.FC<AuthRegisterFormProps> = ({ onSuccess }) => {
             },
           },
         });
-        return; // Detenemos el error para que no salga el Toast rojo
+      } else {
+        // Solo mostramos toast si es un error real diferente (ej: servidor caído)
+        addToast(<div dangerouslySetInnerHTML={{ __html: error.message }} />, { appearance: 'error' });
       }
-
-      // 2. Errores reales (como correo ya existente)
-      let errorMessage = error.message;
-      if (error.message.includes('existing-email-address') || error.message.includes('already exists')) {
-        errorMessage = 'Este correo ya está registrado';
-      }
-      
-      addToast(<div dangerouslySetInnerHTML={{ __html: errorMessage }} />, { appearance: 'error' });
     },
   });
 
