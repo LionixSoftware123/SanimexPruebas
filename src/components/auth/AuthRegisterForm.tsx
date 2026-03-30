@@ -119,8 +119,10 @@ const AuthRegisterForm: React.FC<AuthRegisterFormProps> = ({ onSuccess }) => {
         console.log("Registro OK, pero sin tokens. Iniciando Login automático...");
         login({
           variables: {
-            username: data.email as string,
-            password: data.password as string,
+            input: { // <--- Faltaba envolver esto aquí
+              username: data.email as string,
+              password: data.password as string,
+            },
           },
         });
       } else {
