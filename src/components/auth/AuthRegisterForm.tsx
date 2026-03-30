@@ -113,40 +113,40 @@ const AuthRegisterForm: React.FC<AuthRegisterFormProps> = ({ onSuccess }) => {
   });
 
   // --- 3. MUTACIÓN DE REGISTRO ---
+  // --- MUTACIÓN DE REGISTRO MODIFICADA ---
   const [registerUser, { loading: registerLoading }] = useRegisterMutation({
     onCompleted: (res: any) => {
-      // Buscamos al usuario en la respuesta (ya sea por WooCommerce o WP)
+      // Si por algún milagro entrara aquí y tuviera tokens:
       const user = res.registerCustomer?.user || res.registerUser?.user;
-
-      if (user) {
-        // Si el registro NO nos dio tokens (común en errores de JWT Auth en registro)
-        // Disparamos el login automático inmediatamente
-        if (!user.jwtAuthToken) {
-          console.log("Registro exitoso, iniciando login automático...");
-          login({
-            variables: {
-              input: {
-                username: data.email as string,
-                password: data.password as string,
-              },
-            },
-          });
-        } else {
-          // Si sí llegaron los tokens, guardamos y finalizamos
-          saveCookies(user);
-          onSuccess && onSuccess();
-        }
-      } else {
-        addToast('No se recibieron datos del usuario tras el registro.', { appearance: 'error' });
+      if (user?.jwtAuthToken) {
+        saveCookies(user);
+        onSuccess && onSuccess();
       }
     },
     onError: (error) => {
+      // 1. Verificamos si es el error de los tokens (el que nos está bloqueando)
+      const isTokenError = error.message.includes('Only the user requesting a token');
+      
+      if (isTokenError) {
+        console.log("Detectado error de tokens, pero el usuario ya se creó. Iniciando Login...");
+        // DISPARAMOS EL LOGIN AQUÍ, en el onError
+        login({
+          variables: {
+            input: {
+              username: data.email as string,
+              password: data.password as string,
+            },
+          },
+        });
+        return; // Detenemos el error para que no salga el Toast rojo
+      }
+
+      // 2. Errores reales (como correo ya existente)
       let errorMessage = error.message;
       if (error.message.includes('existing-email-address') || error.message.includes('already exists')) {
         errorMessage = 'Este correo ya está registrado';
-      } else if (error.message.includes('invalid_email')) {
-        errorMessage = 'El correo no es válido';
       }
+      
       addToast(<div dangerouslySetInnerHTML={{ __html: errorMessage }} />, { appearance: 'error' });
     },
   });
