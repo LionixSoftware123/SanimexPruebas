@@ -5,11 +5,9 @@ import { useCookies } from 'react-cookie';
 import jwtDecode from 'jwt-decode';
 import moment from 'moment';
 import {
-  Box,
   Button,
   IconButton,
   InputAdornment,
-  Link,
   TextField,
 } from '@mui/material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -92,7 +90,7 @@ const AuthRegisterForm: React.FC<AuthRegisterFormProps> = ({ onSuccess }) => {
     }
   };
 
-  // --- 2. DEFINICIÓN DE LA FUNCIÓN DE LOGIN ---
+  // --- 2. FUNCIÓN DE LOGIN ---
   const [login, { loading: loginLoading }] = useLoginMutation({
     onCompleted: (loginData) => {
       const loginUser = loginData.login?.user;
@@ -103,17 +101,15 @@ const AuthRegisterForm: React.FC<AuthRegisterFormProps> = ({ onSuccess }) => {
     },
     onError: (error) => {
       console.error("Error en login automático:", error);
-      addToast('Usuario creado, pero no pudimos iniciar sesión automáticamente. Intenta el login manual.', { appearance: 'info' });
+      addToast('Usuario creado. Por favor inicia sesión manualmente.', { appearance: 'info' });
     }
   });
 
   // --- 3. MUTACIÓN DE REGISTRO ---
   const [registerUser, { loading: registerLoading }] = useRegisterMutation({
-    onCompleted: (res: any) => {
-      const user = res.registerCustomer?.user || res.registerUser?.user;
-      
-      // Intentamos login automático siempre que el registro termine
-      // Usamos data.email como username para asegurar coincidencia
+    onCompleted: () => {
+      // Eliminamos la variable 'res' o 'user' si no la vamos a usar aquí directamente
+      // para evitar el error de linting, y disparamos el login.
       login({
         variables: {
           input: {
@@ -124,7 +120,6 @@ const AuthRegisterForm: React.FC<AuthRegisterFormProps> = ({ onSuccess }) => {
       });
     },
     onError: (error) => {
-      // Si el error es un 400 o un problema de tokens, igual intentamos el login
       const isTokenOrNetworkError = 
         error.message.includes('400') || 
         error.message.includes('token') || 
@@ -132,7 +127,6 @@ const AuthRegisterForm: React.FC<AuthRegisterFormProps> = ({ onSuccess }) => {
         error.message.includes('registered');
 
       if (isTokenOrNetworkError) {
-        console.log("Error de registro recuperable, intentando login...");
         login({
           variables: {
             input: {
@@ -233,6 +227,10 @@ const AuthRegisterForm: React.FC<AuthRegisterFormProps> = ({ onSuccess }) => {
         >
           {isLoading ? 'Procesando...' : 'SIGUIENTE'}
         </Button>
+      </div>
+      
+      <div className="font-sans text-center text-[#999999] mt-4">
+        Al registrarte estás aceptando nuestros términos.
       </div>
     </div>
   );
