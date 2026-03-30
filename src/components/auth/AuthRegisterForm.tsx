@@ -4,7 +4,6 @@ import { useToasts } from 'react-toast-notifications';
 import { useCookies } from 'react-cookie';
 import jwtDecode from 'jwt-decode';
 import moment from 'moment';
-//import { DOMAIN_SITE } from '@/utils/constants';
 import {
   Box,
   Button,
@@ -33,51 +32,6 @@ type AuthRegisterFormProps = {
 };
 
 const AuthRegisterForm: React.FC<AuthRegisterFormProps> = ({ onSuccess }) => {
-  /*const [eye, setEye] = useState(false);
-
-  const [, setCookie] = useCookies([
-    'jwtAuthToken',
-    'jwtRefreshToken',
-    'wooSessionToken',
-    'refreshWooSessionToken',
-  ]);
-  const { addToast } = useToasts();
-  const [registerUser, { loading }] = useRegisterMutation({
-    onCompleted: (data) => {
-      setCookie('jwtAuthToken', data.registerUser?.user?.jwtAuthToken, {
-        expires: new Date(
-          parseInt(data.registerUser?.user?.jwtAuthExpiration as string) * 1000,
-        ),
-        path: '/',
-        domain: DOMAIN_SITE,
-      });
-      setCookie('jwtRefreshToken', data.registerUser?.user?.jwtRefreshToken, {
-        path: '/',
-        domain: DOMAIN_SITE,
-      });
-
-      const decodeToken = jwtDecode<{
-        data: { user: { id: string } };
-        exp?: number;
-      }>(data.registerUser?.user?.wooSessionToken as string);
-
-      setCookie('wooSessionToken', data.registerUser?.user?.wooSessionToken, {
-        expires: new Date((decodeToken.exp as number) * 1000),
-        path: '/',
-        domain: DOMAIN_SITE,
-      });
-      setCookie(
-        'refreshWooSessionToken',
-        data.registerUser?.user?.wooSessionToken,
-        {
-          expires: moment().add(1, 'year').toDate(),
-          path: '/',
-          domain: DOMAIN_SITE,
-        },
-      );
-
-      onSuccess && onSuccess();
-    },*/
   const [eye, setEye] = useState(false);
 
   const [, setCookie] = useCookies([
@@ -88,9 +42,17 @@ const AuthRegisterForm: React.FC<AuthRegisterFormProps> = ({ onSuccess }) => {
   ]);
   const { addToast } = useToasts();
 
+  // NOTA: Asegúrate de haber actualizado RegisterDocument con el alias 'user: customer'
+  // como vimos en el paso anterior para que 'data.registerCustomer?.user' funcione.
   const [registerUser, { loading }] = useRegisterMutation({
-    onCompleted: (data) => {
-      const user = data.registerUser?.user;
+    onCompleted: (data: any) => {
+      // Usamos encadenamiento opcional para buscar la data de WooCommerce
+      const user = data.registerCustomer?.user || data.registerUser?.user;
+
+      if (!user) {
+        addToast('Error al obtener datos de usuario', { appearance: 'error' });
+        return;
+      }
 
       // 1. jwtAuthToken
       setCookie('jwtAuthToken', user?.jwtAuthToken, {
@@ -132,25 +94,21 @@ const AuthRegisterForm: React.FC<AuthRegisterFormProps> = ({ onSuccess }) => {
 
       onSuccess && onSuccess();
     },  
-    onError: (data) => {
-      let errorMessage = data.message;
-      if (data.message === 'incorrect_password') {
+    onError: (error) => {
+      let errorMessage = error.message;
+      if (error.message.includes('incorrect_password')) {
         errorMessage = 'La contraseña es incorrecta';
-      } else if (data.message === 'invalid_email') {
+      } else if (error.message.includes('invalid_email')) {
         errorMessage = 'El correo no está registrado';
-      } else if (
-        data.message.includes('El usuario o contraseña es incorrecto')
-      ) {
-        errorMessage = 'El usuario o contraseña es incorrecto';
+      } else if (error.message.includes('existing-email-address')) {
+        errorMessage = 'Este correo ya está registrado';
       }
 
       addToast(
         <div>
           <div dangerouslySetInnerHTML={{ __html: errorMessage }}></div>
         </div>,
-        {
-          appearance: 'error',
-        },
+        { appearance: 'error' },
       );
     },
   });
@@ -162,22 +120,21 @@ const AuthRegisterForm: React.FC<AuthRegisterFormProps> = ({ onSuccess }) => {
   });
 
   const handleRegister = () => {
-    const checkField = Object.keys(data).find(
-      (_data) => data[_data as keyof AuthRegisterFormData] === '',
-    );
-    if (checkField) {
+    if (!data.email || !data.password || !data.displayName) {
       addToast('Todos los campos son requeridos', {
-        appearance: 'success',
+        appearance: 'warning',
       });
+      return;
     }
 
     registerUser({
       variables: {
         input: {
-          displayName: data?.displayName as string,
           username: data?.email as string,
           password: data?.password as string,
           email: data?.email as string,
+          // Eliminamos displayName si RegisterCustomerInput no lo soporta directamente
+          // o lo mapeamos a firstName/lastName si es necesario.
         },
       },
     });
@@ -191,10 +148,7 @@ const AuthRegisterForm: React.FC<AuthRegisterFormProps> = ({ onSuccess }) => {
         placeholder={'Email'}
         name="email"
         onChange={(event) => {
-          setData({
-            ...data,
-            [event.target.name]: event.target.value,
-          });
+          setData({ ...data, [event.target.name]: event.target.value });
         }}
         InputProps={{
           startAdornment: (
@@ -210,10 +164,7 @@ const AuthRegisterForm: React.FC<AuthRegisterFormProps> = ({ onSuccess }) => {
         placeholder={'Nombre'}
         name="displayName"
         onChange={(event) => {
-          setData({
-            ...data,
-            [event.target.name]: event.target.value,
-          });
+          setData({ ...data, [event.target.name]: event.target.value });
         }}
         InputProps={{
           startAdornment: (
@@ -230,10 +181,7 @@ const AuthRegisterForm: React.FC<AuthRegisterFormProps> = ({ onSuccess }) => {
         type={eye ? 'text' : 'password'}
         name="password"
         onChange={(event) => {
-          setData({
-            ...data,
-            [event.target.name]: event.target.value,
-          });
+          setData({ ...data, [event.target.name]: event.target.value });
         }}
         InputProps={{
           startAdornment: (
@@ -243,10 +191,7 @@ const AuthRegisterForm: React.FC<AuthRegisterFormProps> = ({ onSuccess }) => {
           ),
           endAdornment: (
             <InputAdornment position="end">
-              <IconButton
-                aria-label="toggle password visibility"
-                onClick={() => setEye(!eye)}
-              >
+              <IconButton onClick={() => setEye(!eye)}>
                 {eye ? (
                   <FontAwesomeIcon icon={faEye} height={18} width={18} />
                 ) : (
@@ -263,15 +208,8 @@ const AuthRegisterForm: React.FC<AuthRegisterFormProps> = ({ onSuccess }) => {
           disabled={loading}
           onClick={() => handleRegister()}
           variant="contained"
-          size="large"
-          color="secondary"
-          style={{
-            background: '#1C355E',
-            boxShadow: 'none',
-            fontWeight: 700,
-            color: 'white',
-          }}
-          className="mt-4 flex justify-center h-[47px] bg-[#1C355E] cursor-pointer w-full"
+          className="mt-4 flex justify-center h-[47px] bg-[#1C355E] text-white font-bold w-full"
+          style={{ background: '#1C355E', color: 'white', fontWeight: 700 }}
         >
           {loading ? 'Cargando...' : 'SIGUIENTE'}
         </Button>
