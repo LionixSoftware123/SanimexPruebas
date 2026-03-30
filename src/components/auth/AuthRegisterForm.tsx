@@ -4,7 +4,7 @@ import { useToasts } from 'react-toast-notifications';
 import { useCookies } from 'react-cookie';
 import jwtDecode from 'jwt-decode';
 import moment from 'moment';
-import { DOMAIN_SITE } from '@/utils/constants';
+//import { DOMAIN_SITE } from '@/utils/constants';
 import {
   Box,
   Button,
@@ -33,7 +33,7 @@ type AuthRegisterFormProps = {
 };
 
 const AuthRegisterForm: React.FC<AuthRegisterFormProps> = ({ onSuccess }) => {
-  const [eye, setEye] = useState(false);
+  /*const [eye, setEye] = useState(false);
 
   const [, setCookie] = useCookies([
     'jwtAuthToken',
@@ -77,7 +77,61 @@ const AuthRegisterForm: React.FC<AuthRegisterFormProps> = ({ onSuccess }) => {
       );
 
       onSuccess && onSuccess();
-    },
+    },*/
+  const [eye, setEye] = useState(false);
+
+  const [, setCookie] = useCookies([
+    'jwtAuthToken',
+    'jwtRefreshToken',
+    'wooSessionToken',
+    'refreshWooSessionToken',
+  ]);
+  const { addToast } = useToasts();
+
+  const [registerUser, { loading }] = useRegisterMutation({
+    onCompleted: (data) => {
+      const user = data.registerUser?.user;
+
+      // 1. jwtAuthToken
+      setCookie('jwtAuthToken', user?.jwtAuthToken, {
+        expires: new Date(
+          parseInt(user?.jwtAuthExpiration as string) * 1000,
+        ),
+        path: '/',
+        secure: true,
+        sameSite: 'lax',
+      });
+
+      // 2. jwtRefreshToken
+      setCookie('jwtRefreshToken', user?.jwtRefreshToken, {
+        path: '/',
+        secure: true,
+        sameSite: 'lax',
+      });
+
+      const decodeToken = jwtDecode<{
+        data: { user: { id: string } };
+        exp?: number;
+      }>(user?.wooSessionToken as string);
+
+      // 3. wooSessionToken
+      setCookie('wooSessionToken', user?.wooSessionToken, {
+        expires: new Date((decodeToken.exp as number) * 1000),
+        path: '/',
+        secure: true,
+        sameSite: 'lax',
+      });
+
+      // 4. refreshWooSessionToken
+      setCookie('refreshWooSessionToken', user?.wooSessionToken, {
+        expires: moment().add(1, 'year').toDate(),
+        path: '/',
+        secure: true,
+        sameSite: 'lax',
+      });
+
+      onSuccess && onSuccess();
+    },  
     onError: (data) => {
       let errorMessage = data.message;
       if (data.message === 'incorrect_password') {
