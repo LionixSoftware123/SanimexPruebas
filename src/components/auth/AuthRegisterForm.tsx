@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { useRegisterMutation } from '@/utils/types/generated';
+// Importamos también useLoginMutation para el login automático
+import { useRegisterMutation, useLoginMutation } from '@/utils/types/generated';
 import { useToasts } from 'react-toast-notifications';
 import { useCookies } from 'react-cookie';
 import jwtDecode from 'jwt-decode';
@@ -33,50 +34,59 @@ type AuthRegisterFormProps = {
 
 const AuthRegisterForm: React.FC<AuthRegisterFormProps> = ({ onSuccess }) => {
   const [eye, setEye] = useState(false);
-
+  const { addToast } = useToasts();
   const [, setCookie] = useCookies([
     'jwtAuthToken',
     'jwtRefreshToken',
     'wooSessionToken',
     'refreshWooSessionToken',
   ]);
-  const { addToast } = useToasts();
 
-  // NOTA: Asegúrate de haber actualizado RegisterDocument con el alias 'user: customer'
-  // como vimos en el paso anterior para que 'data.registerCustomer?.user' funcione.
-  const [registerUser, { loading }] = useRegisterMutation({
-    onCompleted: (data: any) => {
-      // Usamos encadenamiento opcional para buscar la data de WooCommerce
-      const user = data.registerCustomer?.user || data.registerUser?.user;
+  const [data, setData] = useState<AuthRegisterFormData>({
+    displayName: '',
+    password: '',
+    email: '',
+  });
 
-      if (!user) {
-        addToast('Error al obtener datos de usuario', { appearance: 'error' });
-        return;
+  // --- FUNCIÓN DE LOGIN (Plan B) ---
+  // Esta función se activará si el registro no nos da tokens automáticamente
+  const [login, { loading: loginLoading }] = useLoginMutation({
+    onCompleted: (loginData) => {
+      const loginUser = loginData.login?.user;
+      if (loginUser?.jwtAuthToken) {
+        saveCookies(loginUser);
+        onSuccess && onSuccess();
       }
+    },
+    onError: () => {
+      addToast('Usuario creado, pero hubo un error al iniciar sesión automáticamente. Por favor intenta hacer Login.', { appearance: 'info' });
+    }
+  });
 
-      // 1. jwtAuthToken
-      setCookie('jwtAuthToken', user?.jwtAuthToken, {
-        expires: new Date(
-          parseInt(user?.jwtAuthExpiration as string) * 1000,
-        ),
-        path: '/',
-        secure: true,
-        sameSite: 'lax',
-      });
+  // --- FUNCIÓN PARA GUARDAR COOKIES ---
+  const saveCookies = (user: any) => {
+    // 1. jwtAuthToken
+    setCookie('jwtAuthToken', user?.jwtAuthToken, {
+      expires: new Date(parseInt(user?.jwtAuthExpiration as string) * 1000),
+      path: '/',
+      secure: true,
+      sameSite: 'lax',
+    });
 
-      // 2. jwtRefreshToken
-      setCookie('jwtRefreshToken', user?.jwtRefreshToken, {
-        path: '/',
-        secure: true,
-        sameSite: 'lax',
-      });
+    // 2. jwtRefreshToken
+    setCookie('jwtRefreshToken', user?.jwtRefreshToken, {
+      path: '/',
+      secure: true,
+      sameSite: 'lax',
+    });
 
+    // 3. wooSessionToken (Decodificamos el token de sesión de WooCommerce)
+    if (user?.wooSessionToken) {
       const decodeToken = jwtDecode<{
         data: { user: { id: string } };
         exp?: number;
       }>(user?.wooSessionToken as string);
 
-      // 3. wooSessionToken
       setCookie('wooSessionToken', user?.wooSessionToken, {
         expires: new Date((decodeToken.exp as number) * 1000),
         path: '/',
@@ -91,39 +101,48 @@ const AuthRegisterForm: React.FC<AuthRegisterFormProps> = ({ onSuccess }) => {
         secure: true,
         sameSite: 'lax',
       });
+    }
+  };
 
-      onSuccess && onSuccess();
-    },  
-    onError: (error) => {
-      let errorMessage = error.message;
-      if (error.message.includes('incorrect_password')) {
-        errorMessage = 'La contraseña es incorrecta';
-      } else if (error.message.includes('invalid_email')) {
-        errorMessage = 'El correo no está registrado';
-      } else if (error.message.includes('existing-email-address')) {
-        errorMessage = 'Este correo ya está registrado';
+  // --- MUTACIÓN DE REGISTRO ---
+  const [registerUser, { loading: registerLoading }] = useRegisterMutation({
+    onCompleted: (res: any) => {
+      const user = res.registerCustomer?.user || res.registerUser?.user;
+
+      if (!user) {
+        addToast('Error al procesar el registro', { appearance: 'error' });
+        return;
       }
 
-      addToast(
-        <div>
-          <div dangerouslySetInnerHTML={{ __html: errorMessage }}></div>
-        </div>,
-        { appearance: 'error' },
-      );
+      // SI EL REGISTRO NO NOS DIO TOKENS (Tu caso actual), HACEMOS LOGIN AUTOMÁTICO
+      if (!user.jwtAuthToken) {
+        console.log("Registro OK, pero sin tokens. Iniciando Login automático...");
+        login({
+          variables: {
+            username: data.email as string,
+            password: data.password as string,
+          },
+        });
+      } else {
+        // SI SÍ NOS DIO TOKENS, GUARDAMOS Y LISTO
+        saveCookies(user);
+        onSuccess && onSuccess();
+      }
     },
-  });
-
-  const [data, setData] = useState<AuthRegisterFormData>({
-    displayName: '',
-    password: '',
-    email: '',
+    onError: (error) => {
+      let errorMessage = error.message;
+      if (error.message.includes('existing-email-address')) {
+        errorMessage = 'Este correo ya está registrado';
+      } else if (error.message.includes('invalid_email')) {
+        errorMessage = 'El correo no es válido';
+      }
+      addToast(<div dangerouslySetInnerHTML={{ __html: errorMessage }} />, { appearance: 'error' });
+    },
   });
 
   const handleRegister = () => {
     if (!data.email || !data.password || !data.displayName) {
-      addToast('Todos los campos son requeridos', {
-        appearance: 'warning',
-      });
+      addToast('Todos los campos son requeridos', { appearance: 'warning' });
       return;
     }
 
@@ -133,23 +152,24 @@ const AuthRegisterForm: React.FC<AuthRegisterFormProps> = ({ onSuccess }) => {
           username: data?.email as string,
           password: data?.password as string,
           email: data?.email as string,
-          // Eliminamos displayName si RegisterCustomerInput no lo soporta directamente
-          // o lo mapeamos a firstName/lastName si es necesario.
+          // Si necesitas enviar el nombre a WooCommerce, usualmente es firstName
+          firstName: data?.displayName as string,
         },
       },
     });
   };
 
+  const isLoading = registerLoading || loginLoading;
+
   return (
-    <div className="text-[16px] place-items-center flex flex-col text-[#999999] px-5  space-y-[15px]">
+    <div className="text-[16px] place-items-center flex flex-col text-[#999999] px-5 space-y-[15px]">
       <TextField
         className="w-full h-[45px]"
         variant="outlined"
         placeholder={'Email'}
         name="email"
-        onChange={(event) => {
-          setData({ ...data, [event.target.name]: event.target.value });
-        }}
+        value={data.email}
+        onChange={(event) => setData({ ...data, email: event.target.value })}
         InputProps={{
           startAdornment: (
             <InputAdornment position="start">
@@ -163,9 +183,8 @@ const AuthRegisterForm: React.FC<AuthRegisterFormProps> = ({ onSuccess }) => {
         variant="outlined"
         placeholder={'Nombre'}
         name="displayName"
-        onChange={(event) => {
-          setData({ ...data, [event.target.name]: event.target.value });
-        }}
+        value={data.displayName}
+        onChange={(event) => setData({ ...data, displayName: event.target.value })}
         InputProps={{
           startAdornment: (
             <InputAdornment position="start">
@@ -180,9 +199,8 @@ const AuthRegisterForm: React.FC<AuthRegisterFormProps> = ({ onSuccess }) => {
         placeholder={'Contraseña'}
         type={eye ? 'text' : 'password'}
         name="password"
-        onChange={(event) => {
-          setData({ ...data, [event.target.name]: event.target.value });
-        }}
+        value={data.password}
+        onChange={(event) => setData({ ...data, password: event.target.value })}
         InputProps={{
           startAdornment: (
             <InputAdornment position="start">
@@ -192,11 +210,7 @@ const AuthRegisterForm: React.FC<AuthRegisterFormProps> = ({ onSuccess }) => {
           endAdornment: (
             <InputAdornment position="end">
               <IconButton onClick={() => setEye(!eye)}>
-                {eye ? (
-                  <FontAwesomeIcon icon={faEye} height={18} width={18} />
-                ) : (
-                  <FontAwesomeIcon icon={faEyeSlash} height={18} width={18} />
-                )}
+                <FontAwesomeIcon icon={eye ? faEye : faEyeSlash} height={18} width={18} />
               </IconButton>
             </InputAdornment>
           ),
@@ -205,13 +219,13 @@ const AuthRegisterForm: React.FC<AuthRegisterFormProps> = ({ onSuccess }) => {
 
       <div style={{ width: '100%' }}>
         <Button
-          disabled={loading}
-          onClick={() => handleRegister()}
+          disabled={isLoading}
+          onClick={handleRegister}
           variant="contained"
           className="mt-4 flex justify-center h-[47px] bg-[#1C355E] text-white font-bold w-full"
           style={{ background: '#1C355E', color: 'white', fontWeight: 700 }}
         >
-          {loading ? 'Cargando...' : 'SIGUIENTE'}
+          {isLoading ? 'Procesando...' : 'SIGUIENTE'}
         </Button>
       </div>
       <Box className="font-sans text-center text-[#999999]">
