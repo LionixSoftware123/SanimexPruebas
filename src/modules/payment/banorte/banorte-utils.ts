@@ -89,7 +89,7 @@ export const createBanortePayment = async (
   const { distance } = confirmGeolocationStore.get();
   const shippingAmount = calculateCost(distance);
 
-  // Lógica para determinar si es invitado o cliente registrado
+  // Identificación de sesión
   if (jwtAuthToken) {
     customer = fetchUserEvent.get()?.user as Customer;
   } else {
@@ -97,7 +97,6 @@ export const createBanortePayment = async (
     jwtAuthToken = undefined;
   }
 
-  // Cliente Apollo configurado (inyectamos "" si es invitado para limpiar headers)
   const client = createApolloClient(
     wooSessionToken as string,
     jwtAuthToken ? (jwtAuthToken as string) : ""
@@ -128,7 +127,6 @@ export const createBanortePayment = async (
         phone: userData.phone,
         country: CountriesEnum.Mx,
       },
-      // Protección: Solo enviamos el ID si existe el cliente
       customerId: customer?.databaseId,
       paymentMethod: 'openpay_cards',
       shipping: {
@@ -210,22 +208,12 @@ export const createBanortePayment = async (
 
   if (activeCampaignUserOrder) {
     variables.input.metaData = [
-      {
-        key: 'orderId',
-        value: activeCampaignUserOrder?.id as string,
-      },
-      {
-        key: 'abandonedDate',
-        value: activeCampaignUserOrder?.abandonedDate as string,
-      },
-      {
-        key: 'externalCheckoutId',
-        value: activeCampaignUserOrder?.externalcheckoutid as string,
-      },
+      { key: 'orderId', value: activeCampaignUserOrder?.id as string },
+      { key: 'abandonedDate', value: activeCampaignUserOrder?.abandonedDate as string },
+      { key: 'externalCheckoutId', value: activeCampaignUserOrder?.externalcheckoutid as string },
     ];
   }
 
-  // ENVOLVEMOS EN TRY/CATCH PARA SOLUCIONAR EL ERROR DE BUILD Y MANEJAR ERRORES
   try {
     const order = await client.mutate<
       CreateOrderMutation,
@@ -235,18 +223,14 @@ export const createBanortePayment = async (
       variables: variables,
     });
 
-    const cardInfo = cardValidator.number(
-      creditCardData.creditCardNumber as string,
-    );
+    const cardInfo = cardValidator.number(creditCardData.creditCardNumber as string);
     const cartTotal = currencyFormatter.unformat(
       (Number((cart as Cart).totals.total_price) / 100).toString(),
-      {
-        code: 'USD',
-        precision: 2,
-      },
+      { code: 'USD', precision: 2 }
     );
 
-    const form: FormType = {
+    // Corregido: Objeto tipado con "as FormType" para evitar errores de Build de TypeScript
+    const form = {
       CARD_NUMBER: creditCardData.creditCardNumber as string,
       CARD_EXP: creditCardData.expiredDate as string,
       AMOUNT:
@@ -279,4 +263,27 @@ export const createBanortePayment = async (
       CITY: userData.state as string,
       EMAIL: userData.email as string,
       NAME: userData.firstname as string,
-      LAST_NAME
+      LAST_NAME: userData.lastname as string,
+      POSTAL_CODE: userData.postalCode as string,
+      STREET: userData.address1 as string,
+      THREED_VERSION: '2',
+      MOBILE_PHONE: userData.phone as string,
+      CREDIT_TYPE: 'CR',
+      SECURITY_CODE: creditCardData.cvc as string,
+      CARD_TYPE: cardInfo.card?.type === 'visa' ? 'VISA' : 'MC',
+    } as FormType;
+
+    return onSuccess({ form, orderId: order?.data?.createOrder?.orderId });
+
+  } catch (error) {
+    console.error("Error al procesar el pago con Banorte:", error);
+    if (onError) {
+      onError("Hubo un problema al crear tu pedido. Por favor verifica tus datos e intenta de nuevo.");
+    }
+  }
+};
+
+export const checkCreditCardBin = (card: string) => {
+  const creditCard = (card || '').replaceAll(' ', '');
+  if (creditCard.length < 16) return false;
+};
