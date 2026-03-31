@@ -90,7 +90,7 @@ const AuthRegisterForm: React.FC<AuthRegisterFormProps> = ({ onSuccess }) => {
     }
   };
 
-  // --- 2. FUNCIÓN DE LOGIN ---
+  // --- 2. DEFINICIÓN DE LA FUNCIÓN DE LOGIN ---
   const [login, { loading: loginLoading }] = useLoginMutation({
     onCompleted: (loginData) => {
       const loginUser = loginData.login?.user;
@@ -100,33 +100,18 @@ const AuthRegisterForm: React.FC<AuthRegisterFormProps> = ({ onSuccess }) => {
       }
     },
     onError: (error) => {
-      console.error("Error en login automático:", error);
-      addToast('Usuario creado. Por favor inicia sesión manualmente.', { appearance: 'info' });
+      console.error("Error en login automático:", error.message);
+      // Si después del reintento sigue fallando, informamos al usuario
+      addToast('Usuario listo. Por favor, intenta ingresar manualmente.', { appearance: 'info' });
     }
   });
 
-  // --- 3. MUTACIÓN DE REGISTRO ---
+  // --- 3. MUTACIÓN DE REGISTRO CON RETRASO TÁCTICO ---
   const [registerUser, { loading: registerLoading }] = useRegisterMutation({
     onCompleted: () => {
-      // Eliminamos la variable 'res' o 'user' si no la vamos a usar aquí directamente
-      // para evitar el error de linting, y disparamos el login.
-      login({
-        variables: {
-          input: {
-            username: data.email as string,
-            password: data.password as string,
-          },
-        },
-      });
-    },
-    onError: (error) => {
-      const isTokenOrNetworkError = 
-        error.message.includes('400') || 
-        error.message.includes('token') || 
-        error.message.includes('already exists') ||
-        error.message.includes('registered');
-
-      if (isTokenOrNetworkError) {
+      console.log("Registro exitoso. Esperando 1.5s para asegurar DB...");
+      // RETRASO PARA EVITAR INCORRECT_PASSWORD POR LAG DE SERVIDOR
+      setTimeout(() => {
         login({
           variables: {
             input: {
@@ -135,6 +120,27 @@ const AuthRegisterForm: React.FC<AuthRegisterFormProps> = ({ onSuccess }) => {
             },
           },
         });
+      }, 1500);
+    },
+    onError: (error) => {
+      const isRecoverableError = 
+        error.message.includes('400') || 
+        error.message.includes('token') || 
+        error.message.includes('already exists') ||
+        error.message.includes('registered');
+
+      if (isRecoverableError) {
+        console.log("Error recuperable en registro. Intentando login en 1.5s...");
+        setTimeout(() => {
+          login({
+            variables: {
+              input: {
+                username: data.email as string,
+                password: data.password as string,
+              },
+            },
+          });
+        }, 1500);
       } else {
         addToast(<div dangerouslySetInnerHTML={{ __html: error.message }} />, { appearance: 'error' });
       }
@@ -225,12 +231,12 @@ const AuthRegisterForm: React.FC<AuthRegisterFormProps> = ({ onSuccess }) => {
           className="mt-4 flex justify-center h-[47px] bg-[#1C355E] text-white font-bold w-full"
           style={{ background: '#1C355E', color: 'white', fontWeight: 700 }}
         >
-          {isLoading ? 'Procesando...' : 'SIGUIENTE'}
+          {isLoading ? 'PROCESANDO...' : 'SIGUIENTE'}
         </Button>
       </div>
       
-      <div className="font-sans text-center text-[#999999] mt-4">
-        Al registrarte estás aceptando nuestros términos.
+      <div className="font-sans text-center text-[#999999] mt-4 text-[12px]">
+        Al registrarte aceptas nuestros términos y condiciones.
       </div>
     </div>
   );
