@@ -45,6 +45,7 @@ const AuthRegisterForm: React.FC<AuthRegisterFormProps> = ({ onSuccess }) => {
     email: '',
   });
 
+  // --- 1. GUARDAR COOKIES ---
   const saveCookies = (user: any) => {
     if (user?.jwtAuthToken) {
       setCookie('jwtAuthToken', user?.jwtAuthToken, {
@@ -89,7 +90,7 @@ const AuthRegisterForm: React.FC<AuthRegisterFormProps> = ({ onSuccess }) => {
     }
   };
 
-  // --- FUNCIÓN DE LOGIN (USANDO EMAIL COMO USERNAME) ---
+  // --- 2. MUTACIÓN DE LOGIN (Única fuente de Tokens) ---
   const [login, { loading: loginLoading }] = useLoginMutation({
     onCompleted: (loginData) => {
       const loginUser = loginData.login?.user;
@@ -99,52 +100,40 @@ const AuthRegisterForm: React.FC<AuthRegisterFormProps> = ({ onSuccess }) => {
       }
     },
     onError: (error) => {
-      console.error("Error final en login:", error.message);
-      addToast('Usuario listo. Por favor, intenta el ingreso manual.', { appearance: 'info' });
+      console.error("Error en login silencioso:", error.message);
+      addToast('Usuario registrado, pero requiere ingreso manual.', { appearance: 'info' });
     }
   });
 
-  // --- LÓGICA DE REGISTRO CON RESCATE POR EMAIL ---
+  // --- 3. MUTACIÓN DE REGISTRO (Flujo Silencioso) ---
   const [registerUser, { loading: registerLoading }] = useRegisterMutation({
-    onCompleted: (res: any) => {
-      // Intentamos sacar el username real, si no, usamos el email completo
-      const wpUsername = res.registerCustomer?.user?.username || res.registerUser?.user?.username || data.email;
-      
-      console.log(`Registro exitoso. Intentando entrar como: ${wpUsername}`);
-      
-      setTimeout(() => {
+    onCompleted: () => {
+      console.log("Registro completado. Iniciando Login con Email...");
+      // Forzamos el login usando el EMAIL COMPLETO como username
+      login({
+        variables: {
+          input: {
+            username: data.email as string,
+            password: data.password as string,
+          },
+        },
+      });
+    },
+    onError: (error) => {
+      // Si el error es 400 (bloqueo de tokens) o el usuario ya existe, 
+      // saltamos directo al Login de rescate.
+      const isAlreadyRegistered = error.message.includes('already') || error.message.includes('registered') || error.message.includes('400');
+
+      if (isAlreadyRegistered) {
+        console.log("Usuario existente o error de red. Saltando a Login...");
         login({
           variables: {
             input: {
-              username: wpUsername as string,
+              username: data.email as string,
               password: data.password as string,
             },
           },
         });
-      }, 1500);
-    },
-    onError: (error) => {
-      const isRecoverable = 
-        error.message.includes('400') || 
-        error.message.includes('token') || 
-        error.message.includes('already exists') ||
-        error.message.includes('registered');
-
-      if (isRecoverable) {
-        // Si hay error de red/token, mandamos el EMAIL completo al login.
-        // El snippet de PHP en WordPress se encargará de encontrar al usuario.
-        console.log(`Error de red detectado. Rescatando sesión con Email: ${data.email}`);
-        
-        setTimeout(() => {
-          login({
-            variables: {
-              input: {
-                username: data.email as string,
-                password: data.password as string,
-              },
-            },
-          });
-        }, 1500);
       } else {
         addToast(<div dangerouslySetInnerHTML={{ __html: error.message }} />, { appearance: 'error' });
       }
