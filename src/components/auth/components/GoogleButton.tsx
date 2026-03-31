@@ -13,7 +13,7 @@ import jwtDecode from 'jwt-decode';
 import moment from 'moment/moment';
 import { useCookies } from 'react-cookie';
 import { useToasts } from 'react-toast-notifications';
-import { DOMAIN_SITE } from '@/utils/constants';
+//import { DOMAIN_SITE } from '@/utils/constants';
 
 type GoogleButtonProps = {
   onSuccess?: () => void;
@@ -35,11 +35,15 @@ const GoogleButton: React.FC<GoogleButtonProps> = ({ onSuccess }) => {
       setCookie('jwtAuthToken', user?.jwtAuthToken, {
         expires: new Date(parseInt(user?.jwtAuthExpiration as string) * 1000),
         path: '/',
-        domain: DOMAIN_SITE,
+        //domain: DOMAIN_SITE,
+        secure: true,
+        sameSite: 'lax',
       });
       setCookie('jwtRefreshToken', user?.jwtRefreshToken, {
         path: '/',
-        domain: DOMAIN_SITE,
+        //domain: DOMAIN_SITE,
+        secure: true,
+        sameSite: 'lax',
       });
 
       const decodeToken = jwtDecode<{
@@ -50,12 +54,16 @@ const GoogleButton: React.FC<GoogleButtonProps> = ({ onSuccess }) => {
       setCookie('wooSessionToken', user?.wooSessionToken, {
         expires: new Date((decodeToken.exp as number) * 1000),
         path: '/',
-        domain: DOMAIN_SITE,
+        //domain: DOMAIN_SITE,
+        secure: true,
+        sameSite: 'lax',
       });
       setCookie('refreshWooSessionToken', user?.wooSessionToken, {
         expires: moment().add(1, 'year').toDate(),
         path: '/',
-        domain: DOMAIN_SITE,
+        //domain: DOMAIN_SITE,
+        secure: true,
+        sameSite: 'lax',
       });
 
       onSuccess && onSuccess();
