@@ -45,7 +45,6 @@ const AuthRegisterForm: React.FC<AuthRegisterFormProps> = ({ onSuccess }) => {
     email: '',
   });
 
-  // --- 1. FUNCIÓN PARA GUARDAR COOKIES ---
   const saveCookies = (user: any) => {
     if (user?.jwtAuthToken) {
       setCookie('jwtAuthToken', user?.jwtAuthToken, {
@@ -90,7 +89,6 @@ const AuthRegisterForm: React.FC<AuthRegisterFormProps> = ({ onSuccess }) => {
     }
   };
 
-  // --- 2. DEFINICIÓN DE LA FUNCIÓN DE LOGIN ---
   const [login, { loading: loginLoading }] = useLoginMutation({
     onCompleted: (loginData) => {
       const loginUser = loginData.login?.user;
@@ -100,52 +98,50 @@ const AuthRegisterForm: React.FC<AuthRegisterFormProps> = ({ onSuccess }) => {
       }
     },
     onError: (error) => {
-      console.error("Error en login automático:", error.message);
-      // Si después del reintento sigue fallando, informamos al usuario
-      addToast('Usuario listo. Por favor, intenta ingresar manualmente.', { appearance: 'info' });
+      console.error("Error final en login:", error.message);
+      addToast('Usuario listo. Por favor, intenta el ingreso manual.', { appearance: 'info' });
     }
   });
 
-  // --- 3. MUTACIÓN DE REGISTRO CON RETRASO TÁCTICO ---
+  // --- LÓGICA DE REGISTRO CON RECORTE DE USERNAME ---
   const [registerUser, { loading: registerLoading }] = useRegisterMutation({
     onCompleted: () => {
-      console.log("Registro exitoso. Esperando 1.5s para asegurar DB...");
-      // RETRASO PARA EVITAR INCORRECT_PASSWORD POR LAG DE SERVIDOR
+      // Sacamos el username (lo anterior al @) porque WP así lo guarda
+      const generatedUsername = data.email?.split('@')[0] || (data.email as string);
+      
+      console.log(`Registro OK. Intentando login con user: ${generatedUsername}`);
+      
       setTimeout(() => {
-      // CAMBIA ESTO EN LAS DOS LLAMADAS DE LOGIN:
-      login({
-        variables: {
-          input: {
-            // En lugar de username, usa email si tu mutación lo permite, 
-            // o simplemente asegúrate de que WordPress acepte el email como username
-            username: data.email as string, 
-            password: data.password as string,
+        login({
+          variables: {
+            input: {
+              username: generatedUsername,
+              password: data.password as string,
+            },
           },
-        },
-      });
+        });
       }, 1500);
     },
     onError: (error) => {
-      const isRecoverableError = 
+      const isRecoverable = 
         error.message.includes('400') || 
         error.message.includes('token') || 
         error.message.includes('already exists') ||
         error.message.includes('registered');
 
-      if (isRecoverableError) {
-        console.log("Error recuperable en registro. Intentando login en 1.5s...");
+      if (isRecoverable) {
+        const generatedUsername = data.email?.split('@')[0] || (data.email as string);
+        console.log(`Error recuperable. Reintentando login con: ${generatedUsername}`);
+        
         setTimeout(() => {
-      // CAMBIA ESTO EN LAS DOS LLAMADAS DE LOGIN:
-            login({
-              variables: {
-                input: {
-                  // En lugar de username, usa email si tu mutación lo permite, 
-                  // o simplemente asegúrate de que WordPress acepte el email como username
-                  username: data.email as string, 
-                  password: data.password as string,
-                },
+          login({
+            variables: {
+              input: {
+                username: generatedUsername,
+                password: data.password as string,
               },
-            });
+            },
+          });
         }, 1500);
       } else {
         addToast(<div dangerouslySetInnerHTML={{ __html: error.message }} />, { appearance: 'error' });
