@@ -89,6 +89,7 @@ const AuthRegisterForm: React.FC<AuthRegisterFormProps> = ({ onSuccess }) => {
     }
   };
 
+  // --- FUNCIÓN DE LOGIN (USANDO EMAIL COMO USERNAME) ---
   const [login, { loading: loginLoading }] = useLoginMutation({
     onCompleted: (loginData) => {
       const loginUser = loginData.login?.user;
@@ -103,19 +104,19 @@ const AuthRegisterForm: React.FC<AuthRegisterFormProps> = ({ onSuccess }) => {
     }
   });
 
-  // --- LÓGICA DE REGISTRO CON RECORTE DE USERNAME ---
+  // --- LÓGICA DE REGISTRO CON RESCATE POR EMAIL ---
   const [registerUser, { loading: registerLoading }] = useRegisterMutation({
-    onCompleted: () => {
-      // Sacamos el username (lo anterior al @) porque WP así lo guarda
-      const generatedUsername = data.email?.split('@')[0] || (data.email as string);
+    onCompleted: (res: any) => {
+      // Intentamos sacar el username real, si no, usamos el email completo
+      const wpUsername = res.registerCustomer?.user?.username || res.registerUser?.user?.username || data.email;
       
-      console.log(`Registro OK. Intentando login con user: ${generatedUsername}`);
+      console.log(`Registro exitoso. Intentando entrar como: ${wpUsername}`);
       
       setTimeout(() => {
         login({
           variables: {
             input: {
-              username: generatedUsername,
+              username: wpUsername as string,
               password: data.password as string,
             },
           },
@@ -130,14 +131,15 @@ const AuthRegisterForm: React.FC<AuthRegisterFormProps> = ({ onSuccess }) => {
         error.message.includes('registered');
 
       if (isRecoverable) {
-        const generatedUsername = data.email?.split('@')[0] || (data.email as string);
-        console.log(`Error recuperable. Reintentando login con: ${generatedUsername}`);
+        // Si hay error de red/token, mandamos el EMAIL completo al login.
+        // El snippet de PHP en WordPress se encargará de encontrar al usuario.
+        console.log(`Error de red detectado. Rescatando sesión con Email: ${data.email}`);
         
         setTimeout(() => {
           login({
             variables: {
               input: {
-                username: generatedUsername,
+                username: data.email as string,
                 password: data.password as string,
               },
             },
