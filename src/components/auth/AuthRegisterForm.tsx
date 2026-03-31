@@ -112,14 +112,17 @@ const AuthRegisterForm: React.FC<AuthRegisterFormProps> = ({ onSuccess }) => {
       console.log("Registro exitoso. Esperando 1.5s para asegurar DB...");
       // RETRASO PARA EVITAR INCORRECT_PASSWORD POR LAG DE SERVIDOR
       setTimeout(() => {
-        login({
-          variables: {
-            input: {
-              username: data.email as string,
-              password: data.password as string,
-            },
+      // CAMBIA ESTO EN LAS DOS LLAMADAS DE LOGIN:
+      login({
+        variables: {
+          input: {
+            // En lugar de username, usa email si tu mutación lo permite, 
+            // o simplemente asegúrate de que WordPress acepte el email como username
+            username: data.email as string, 
+            password: data.password as string,
           },
-        });
+        },
+      });
       }, 1500);
     },
     onError: (error) => {
@@ -132,14 +135,17 @@ const AuthRegisterForm: React.FC<AuthRegisterFormProps> = ({ onSuccess }) => {
       if (isRecoverableError) {
         console.log("Error recuperable en registro. Intentando login en 1.5s...");
         setTimeout(() => {
-          login({
-            variables: {
-              input: {
-                username: data.email as string,
-                password: data.password as string,
+      // CAMBIA ESTO EN LAS DOS LLAMADAS DE LOGIN:
+            login({
+              variables: {
+                input: {
+                  // En lugar de username, usa email si tu mutación lo permite, 
+                  // o simplemente asegúrate de que WordPress acepte el email como username
+                  username: data.email as string, 
+                  password: data.password as string,
+                },
               },
-            },
-          });
+            });
         }, 1500);
       } else {
         addToast(<div dangerouslySetInnerHTML={{ __html: error.message }} />, { appearance: 'error' });
