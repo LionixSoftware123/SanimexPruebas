@@ -10,8 +10,6 @@ import { updateActiveCampaignCompleteContact } from '@/modules/active-campaign/a
 import { useEvent } from '@cobuildlab/react-simple-state';
 import { renderTopBannerEvent } from '@/modules/banner/banner-events';
 
-const { topBanner } = useEvent(renderTopBannerEvent);
-
 type CheckoutBillingAddressProps = {
   control: Control;
 };
@@ -19,6 +17,8 @@ type CheckoutBillingAddressProps = {
 const CheckoutBillingAddress: React.FC<CheckoutBillingAddressProps> = ({
   control,
 }) => {
+  const { topBanner } = useEvent(renderTopBannerEvent);
+  
   const {
     state: { user },
   } = useUserHook();
@@ -259,7 +259,7 @@ const CheckoutBillingAddress: React.FC<CheckoutBillingAddressProps> = ({
               />
             )}
             <div className="col-span-full px-1 py-1">
-              <div className="text-white text-[14px] rounded px-5 py-2 font-Century-Gothic-Bold" style={{ backgroundColor: topBanner.color as string }}">Si no recuerdas correo y contraseña, agrega otro email para comprar como invitado.</div>
+              <div className="text-white text-[14px] rounded px-5 py-2 font-Century-Gothic-Bold" style={{ backgroundColor: topBanner.color as string }}>Si no recuerdas correo y contraseña, agrega otro email para comprar como invitado.</div>
             </div>
           </div>
           <div className="col-span-full md:col-span-6">
