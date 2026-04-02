@@ -252,8 +252,10 @@ export const getStaticProps = async ({
   }
 
   if (complementProductIds.length) {
-    complementProducts = await fetchSimilarProducts(product as SimpleProduct); // Nota: ajuste según tu lógica original
-  }
+    // AQUÍ ESTABA EL ERROR: Teníamos fetchSimilarProducts otra vez.
+    // Ahora llamamos correctamente a fetchComplementProducts.
+    complementProducts = await fetchComplementProducts(complementProductIds);
+  }  
 
   const cleanPrice = (p: string | undefined | null) => {
     if (!p) return "";
