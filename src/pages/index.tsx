@@ -1,5 +1,4 @@
 import dynamic from 'next/dynamic';
-
 import {
   fetchProducts,
   fetchProductsInPromo,
@@ -13,7 +12,7 @@ import {
   BannerHomeType,
   Post,
 } from '@/utils/types/generated';
-import React from 'react';
+import React, { useMemo } from 'react';
 import {
   fetchBannersHome,
   fetchSliderHome,
@@ -28,20 +27,18 @@ import {
 } from '../modules/product/product-types';
 import { useRouter } from 'next/router';
 
+// OPTIMIZACIÓN: Solo dejamos fuera del dynamic lo que se ve arriba (Above the fold)
+import StaticMeta from '@/components/utils/StaticMeta';
+import RootLayout from '@/components/layouts/RootLayout';
+import Container from '@/components/utils/Container';
+import Banners from '@/components/home/Banners'; 
+
 const ImageWithFallback = dynamic(() => import('@/utils/ImageWithFallback'));
-const StaticMeta = dynamic(() => import('@/components/utils/StaticMeta'));
-const RootLayout = dynamic(() => import('@/components/layouts/RootLayout'));
-const Container = dynamic(() => import('@/components/utils/Container'));
-const BannerTwo = dynamic(() => import('@/components/home/BannerTwo'));
-const Banners = dynamic(() => import('@/components/home/Banners'));
-const BestSellers = dynamic(() => import('@/components/home/BestSellers'));
-const ProductListOne = dynamic(
-  () => import('@/components/home/ProductListOne'),
-);
+const BestSellers = dynamic(() => import('@/components/home/BestSellers'), { ssr: true });
+const ProductListOne = dynamic(() => import('@/components/home/ProductListOne'));
 const NewerProducts = dynamic(() => import('@/components/home/NewerProducts'));
 const BlogList = dynamic(() => import('@/components/home/BlogList'));
 const OurCompany = dynamic(() => import('@/components/home/OurCompany'));
-//**const BannerList = dynamic(() => import('@/components/home/BannerList')); */
 
 type HomeProps = {
   productsInPromoPisos?: ProductCustom[];
@@ -55,6 +52,7 @@ type HomeProps = {
   bannersInHome?: BannerHome[];
   posts?: Post[];
 };
+
 const Home: React.FC<HomeProps> = ({
   productsInPromoPisos = [],
   productsInPromoSanitarios = [],
@@ -67,72 +65,50 @@ const Home: React.FC<HomeProps> = ({
   bannersInHome = [],
   posts = [],
 }) => {
-  const horizontal1 = getBannerByType(
-    bannersInHome,
-    BannerHomeType.Horizontal_1,
-  );
-
-  const horizontal2 = getBannerByType(
-    bannersInHome,
-    BannerHomeType.Horizontal_2,
-  );
-
-  const horizontal3 = getBannerByType(
-    bannersInHome,
-    BannerHomeType.Horizontal_3,
-  );
-
-  const vertical1 = getBannerByType(bannersInHome, BannerHomeType.Vertical_1);
-
-  const mobileHorizontal1 = getBannerByType(
-    bannersInHome,
-    BannerHomeType.MobileHorizontal_1,
-  );
-  const mobileHorizontal2 = getBannerByType(
-    bannersInHome,
-    BannerHomeType.Horizontal_2,
-  );
-
-  const mobileHorizontal3 = getBannerByType(
-    bannersInHome,
-    BannerHomeType.Horizontal_3,
-  );
-
-  const mobileHorizontal4 = getBannerByType(
-    bannersInHome,
-    BannerHomeType.MobileHorizontal_4,
-  );
-
   const router = useRouter();
 
-  console.log('bannersInHome', mobileHorizontal1);
+  // OPTIMIZACIÓN: Memorizamos los banners para evitar cálculos en cada render
+  const b = useMemo(() => ({
+    h1: getBannerByType(bannersInHome, BannerHomeType.Horizontal_1),
+    h2: getBannerByType(bannersInHome, BannerHomeType.Horizontal_2),
+    h3: getBannerByType(bannersInHome, BannerHomeType.Horizontal_3),
+    v1: getBannerByType(bannersInHome, BannerHomeType.Vertical_1),
+    mh1: getBannerByType(bannersInHome, BannerHomeType.MobileHorizontal_1),
+  }), [bannersInHome]);
 
   return (
     <RootLayout>
       <StaticMeta
-        title={'Sanimex'}
-        description={'Sanimex'}
+        title={'Sanimex | Pisos, Sanitarios y Grifería'}
+        description={'Expertos en acabados para tu hogar.'}
         asPath={router.asPath}
         image="/src/images/logo-sanimex.svg"
       />
+
+      {/* EL SLIDER PRINCIPAL: No lleva LazyLoad para no afectar el LCP */}
       <div className="max-w-[1920px] mx-auto">
         <Banners banners={banners} />
       </div>
-      {mobileHorizontal1 && mobileHorizontal1?.url ? (
+
+      {/* BANNER MÓVIL PRINCIPAL: Prioridad alta para mejorar el speed móvil */}
+      {b.mh1?.url && (
         <Container classes={'my-2 flex lg:hidden '}>
-          <Link href={(mobileHorizontal1?.redirect as string) || '#'}>
+          <Link href={(b.mh1?.redirect as string) || '#'}>
             <div className="w-full h-[120px] relative bg-white">
               <ImageWithFallback
-                src={mobileHorizontal1?.url as string}
-                alt="horizontal 1 banner"
+                src={b.mh1.url}
+                alt="Promoción Sanimex"
                 layout="responsive"
-                fill
-                style={{ objectFit: 'contain', background: 'white' }}
+                width={400}
+                height={120}
+                priority={true} // <--- Esto le dice a Google que la cargue primero
+                style={{ objectFit: 'contain' }}
               />
             </div>
           </Link>
         </Container>
-      ) : null}
+      )}
+
       <Container>
         <BestSellers
           productsInPromoPisos={productsInPromoPisos}
@@ -142,165 +118,56 @@ const Home: React.FC<HomeProps> = ({
           productsInPromoCalentadores={productsInPromoCalentadores}
         />
       </Container>
-      {horizontal1 && horizontal1?.redirect && horizontal1?.url ? (
-        <Container classes={'my-10 hidden md:flex'}>
-          <Link href={(horizontal1?.redirect as string) ?? '#'}>
-            <div className="w-full h-[100px] md:h-[185px] relative ">
-              <ImageWithFallback
-                src={horizontal1?.url as string}
-                alt="horizontal 1 banner"
-                layout="responsive"
-                width={1200}
-                height={184}
-                fill
-                style={{ objectFit: 'contain', background: 'white' }}
-              />
-            </div>
-          </Link>
-        </Container>
-      ) : (
-        <div className="my-10"></div>
-      )}
 
-      <LazyLoad offset={100}>
-        <Container classes={'my-4 md:my-10 flex '}>
+      {/* A PARTIR DE AQUÍ: Todo en LazyLoad para que el móvil no sufra */}
+      <LazyLoad offset={600} once>
+        {b.h1?.url && (
+          <Container classes={'my-10 hidden md:flex'}>
+            <Link href={(b.h1.redirect as string) ?? '#'}>
+              <div className="w-full h-[185px] relative">
+                <ImageWithFallback
+                  src={b.h1.url}
+                  alt="Banner Informativo"
+                  layout="responsive"
+                  width={1200}
+                  height={185}
+                  style={{ objectFit: 'contain' }}
+                />
+              </div>
+            </Link>
+          </Container>
+        )}
+
+        <Container classes={'my-4 md:my-10 flex'}>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div className="hidden md:block ">
-              {vertical1 && vertical1?.redirect && vertical1?.url ? (
-                <Link href={(vertical1?.redirect as string) ?? '#'}>
-                  <div className="relative w-full h-[800px] md:h-full">
+            <div className="hidden md:block">
+              {b.v1?.url && (
+                <Link href={(b.v1.redirect as string) ?? '#'}>
+                  <div className="relative w-full h-full min-h-[600px]">
                     <ImageWithFallback
-                      src={vertical1?.url as string}
-                      alt="vertical 1 banner"
-                      layout="responsive"
-                      width={276}
-                      height={945}
-                      fill
-                      style={{ objectFit: 'contain', background: 'white' }}
+                      src={b.v1.url}
+                      alt="Promoción Vertical"
+                      layout="fill"
+                      style={{ objectFit: 'contain' }}
                     />
                   </div>
                 </Link>
-              ) : null}
+              )}
             </div>
-
-            <div className="block md:hidden ">
-              {mobileHorizontal2 &&
-              mobileHorizontal2?.redirect &&
-              mobileHorizontal2?.url ? (
-                <Container classes={'mb-2 flex md:hidden '}>
-                  <Link href={(mobileHorizontal2?.redirect as string) ?? '#'}>
-                    <div className="relative w-full h-[120px]">
-                      <ImageWithFallback
-                        src={mobileHorizontal2?.url as string}
-                        alt="horizontal 2 banner"
-                        layout="responsive"
-                        fill
-                        style={{ objectFit: 'contain' }}
-                      />
-                    </div>
-                  </Link>
-                </Container>
-              ) : null}
-            </div>
-
-            <div className="md:col-span-3 hidden md:block">
+            <div className="md:col-span-3">
               <ProductListOne products={mostSellers} />
             </div>
           </div>
         </Container>
-      </LazyLoad>
-      {horizontal2 && horizontal2?.redirect && horizontal2?.url ? (
-        <Container classes={'my-10 hidden md:flex'}>
-          <Link href={(horizontal2?.redirect as string) ?? '#'}>
-            <div className="relative w-full h-[185px] ">
-              <ImageWithFallback
-                src={horizontal2?.url as string}
-                alt="horizontal 3 banner"
-                layout="responsive"
-                width={1200}
-                height={184}
-                fill
-                style={{ objectFit: 'contain' }}
-              />
-            </div>
-          </Link>
-        </Container>
-      ) : null}
 
-      <LazyLoad offset={200}>
         <Container>
           <NewerProducts products={newProducts} />
         </Container>
-      </LazyLoad>
-      {mobileHorizontal3 &&
-      mobileHorizontal3?.redirect &&
-      mobileHorizontal3?.url ? (
-        <Container classes={'mb-2 flex md:hidden '}>
-          <Link href={(mobileHorizontal3?.redirect as string) ?? '#'}>
-            <div className="relative w-full h-[120px]">
-              <ImageWithFallback
-                src={mobileHorizontal3?.url as string}
-                alt="horizontal 3 banner"
-                layout="responsive"
-                fill
-                style={{ objectFit: 'contain' }}
-              />
-            </div>
-          </Link>
-        </Container>
-      ) : null}
-      <Container>
-        <OurCompany />
-      </Container>
-      <div className="hidden">
-        <BannerTwo />
-      </div>
-      {/**<div className="hidden">
-        <BestSellersTwo />
-      </div> */}
 
-      {mobileHorizontal4 &&
-      mobileHorizontal4?.redirect &&
-      mobileHorizontal4?.url ? (
-        <Container classes={'my-10 flex  lg:hidden'}>
-          <Link href={(mobileHorizontal4?.redirect as string) ?? '#'}>
-            <div className="w-full h-[120px] relative bg-white">
-              <ImageWithFallback
-                src={mobileHorizontal4?.url as string}
-                alt="horizontal 4 banner"
-                fill
-                style={{ objectFit: 'contain' }}
-              />
-            </div>
-          </Link>
+        <Container>
+          <OurCompany />
         </Container>
-      ) : null}
 
-      {horizontal3 && horizontal3?.redirect && horizontal3?.url ? (
-        <Container classes={'my-10 lg:flex hidden'}>
-          <Link href={(horizontal3?.redirect as string) ?? '#'}>
-            <div className="relative w-full h-[120px]">
-              <ImageWithFallback
-                src={horizontal3?.url as string}
-                alt="horizontal 3 banner"
-                layout="responsive"
-                width={1200}
-                height={184}
-                fill
-                style={{ objectFit: 'contain' }}
-              />
-            </div>
-          </Link>
-        </Container>
-      ) : null}
-
-      {/**<Container classes="hidden">
-        <BannerList />
-      </Container> */}
-      {/**<Container classes={'hidden my-10'}>
-        <NewProducts />
-      </Container> */}
-      <LazyLoad offset={200}>
         <Container classes="mb-10">
           <BlogList posts={posts} />
         </Container>
@@ -310,99 +177,45 @@ const Home: React.FC<HomeProps> = ({
 };
 
 export async function getStaticProps() {
-  const productsInPromo = await fetchProductsInPromo({
-    order: ProductOrderEnum.Desc,
-    per_page: 8,
-  });
-
-  const productsInPromoPisos = await fetchProductsInPromo({
-    order: ProductOrderEnum.Desc,
-    per_page: 8,
-    category_name: 'pisos-y-azulejos',
-  });
-
-  const productsInPromoSanitarios = await fetchProductsInPromo({
-    order: ProductOrderEnum.Desc,
-    per_page: 8,
-    category_name: 'sanitarios-sanitarios',
-  });
-
-  const productsInPromoGriferia = await fetchProductsInPromo({
-    order: ProductOrderEnum.Desc,
-    per_page: 8,
-    category_name: 'griferia',
-  });
-
-  const productsInPromoAdhesivos = await fetchProductsInPromo({
-    order: ProductOrderEnum.Desc,
-    per_page: 8,
-    category_name: 'adhesivos',
-  });
-
-  const productsInPromoCalentadores = await fetchProductsInPromo({
-    order: ProductOrderEnum.Desc,
-    per_page: 8,
-    category_name: 'calentadores',
-  });
-
-  const { products: newProducts } = await fetchProducts({
-    where: {
-      offsetPagination: {
-        size: 6,
-        offset: 0,
-      },
-      orderby: [
-        {
-          field: ProductsOrderByEnum.Date,
-          order: OrderEnum.Desc,
-        },
-      ],
-      isExclude: false,
-    },
-  });
-
-  const { products: mostSellers } = await fetchProducts({
-    where: {
-      offsetPagination: {
-        size: 6,
-        offset: 0,
-      },
-      orderby: [
-        {
-          field: ProductsOrderByEnum.TotalSales,
-          order: OrderEnum.Desc,
-        },
-      ],
-    },
-  });
-
-  const { posts } = await fetchPosts({
-    where: {
-      offsetPagination: {
-        size: 3,
-        offset: 0,
-      },
-    },
-  });
-
-  const banners = await fetchSliderHome();
-  const bannersInHome = await fetchBannersHome();
+  // OPTIMIZACIÓN: Ejecutamos las peticiones en paralelo para reducir el tiempo de respuesta
+  const [
+    pisos, 
+    sanitarios, 
+    griferia, 
+    adhesivos, 
+    calentadores, 
+    { products: newProducts }, 
+    { products: mostSellers },
+    { posts },
+    banners,
+    bannersInHome
+  ] = await Promise.all([
+    fetchProductsInPromo({ order: ProductOrderEnum.Desc, per_page: 8, category_name: 'pisos-y-azulejos' }),
+    fetchProductsInPromo({ order: ProductOrderEnum.Desc, per_page: 8, category_name: 'sanitarios-sanitarios' }),
+    fetchProductsInPromo({ order: ProductOrderEnum.Desc, per_page: 8, category_name: 'griferia' }),
+    fetchProductsInPromo({ order: ProductOrderEnum.Desc, per_page: 8, category_name: 'adhesivos' }),
+    fetchProductsInPromo({ order: ProductOrderEnum.Desc, per_page: 8, category_name: 'calentadores' }),
+    fetchProducts({ where: { offsetPagination: { size: 6, offset: 0 }, orderby: [{ field: ProductsOrderByEnum.Date, order: OrderEnum.Desc }], isExclude: false } }),
+    fetchProducts({ where: { offsetPagination: { size: 6, offset: 0 }, orderby: [{ field: ProductsOrderByEnum.TotalSales, order: OrderEnum.Desc }] } }),
+    fetchPosts({ where: { offsetPagination: { size: 3, offset: 0 } } }),
+    fetchSliderHome(),
+    fetchBannersHome()
+  ]);
 
   return {
     props: {
-      productsInPromo,
-      productsInPromoPisos,
-      productsInPromoSanitarios,
-      productsInPromoGriferia,
-      productsInPromoAdhesivos,
-      productsInPromoCalentadores,
+      productsInPromoPisos: pisos,
+      productsInPromoSanitarios: sanitarios,
+      productsInPromoGriferia: griferia,
+      productsInPromoAdhesivos: adhesivos,
+      productsInPromoCalentadores: calentadores,
+      newProducts,
       mostSellers,
       banners,
       bannersInHome,
       posts,
-      newProducts,
     },
-    revalidate: Number(process.env.NEXT_PUBLIC_REVALIDATE_TIME) || 60,
+    revalidate: 3600, // Aumentamos a 1 hora para estabilidad
   };
 }
 
