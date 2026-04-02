@@ -199,3 +199,99 @@ const ProductPage: React.FC<ProductPageProps> = ({
           {product?.cierreComercial && (
             <Container classes="mb-6">
               {product?.cierreComercial}
+            </Container>
+          )}
+
+          {complementProducts.length > 0 && (
+            <Container classes="mb-6">
+              <ProductSectionTwo
+                products={complementProducts}
+                title="Productos complementarios"
+                showColors={false}
+              />
+            </Container>
+          )}
+
+          {similarProducts.length > 0 && (
+            <Container classes="mb-6">
+              <ProductSectionOne
+                title="Productos similares"
+                products={similarProducts}
+              />
+            </Container>
+          )}
+        </LazyLoad>
+      </div>
+    </ProductLayout>
+  );
+};
+
+export const getStaticPaths = async () => {
+  const { products } = await fetchWpProducts({
+    order: ProductOrderEnum.Desc,
+    per_page: 20, // Pre-generamos solo los 20 más recientes para un build rápido
+  });
+  
+  return {
+    paths: products.map((product) => ({ params: { product: product.slug } })),
+    fallback: 'blocking', // Vital para que productos no pre-generados carguen en el servidor
+  };
+};
+
+export const getStaticProps = async ({
+  params,
+}: GetStaticPropsContext<{ product: string }>) => {
+  let complementProducts: ProductCustom[] = [];
+  let similarProducts: ProductCustom[] = [];
+  
+  const product = await fetchProduct({
+    id: params?.product as string,
+    idType: ProductIdTypeEnum.Slug,
+  });
+
+  if (!product) {
+    return { notFound: true };
+  }
+
+  const complementProductIds = getComplementProductIds(product as SimpleProduct);
+  const similarProductIds = getSimilarProductIds(product as SimpleProduct);
+
+  if (similarProductIds.length) {
+    similarProducts = await fetchSimilarProducts(product as SimpleProduct);
+  }
+
+  if (complementProductIds.length) {
+    complementProducts = await fetchComplementProducts(complementProductIds);
+  }
+
+  // --- LIMPIEZA DE PRECIOS PARA MERCHANT CENTER ---
+  const cleanPrice = (p: string | undefined | null) => {
+    if (!p) return "";
+    return p.replace(/[$,\s]/g, "");
+  };
+
+  if (product) {
+    (product as any).price = cleanPrice((product as any).price);
+    (product as any).regularPrice = cleanPrice((product as any).regularPrice);
+    (product as any).salePrice = cleanPrice((product as any).salePrice);
+
+    if ((product as any).variations?.nodes) {
+      (product as any).variations.nodes.forEach((variation: any) => {
+        variation.price = cleanPrice(variation.price);
+        variation.regularPrice = cleanPrice(variation.regularPrice);
+        variation.salePrice = cleanPrice(variation.salePrice);
+      });
+    }
+  }
+
+  return {
+    props: {
+      product,
+      complementProducts,
+      similarProducts,
+    },
+    revalidate: 3600, // Caché por 1 hora para máxima estabilidad ante el bot de Google
+  };
+};
+
+export default ProductPage;
