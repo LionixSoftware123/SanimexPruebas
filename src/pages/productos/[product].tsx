@@ -1,45 +1,49 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
-import { useRouter } from 'next/router';
-import { useCookies } from 'react-cookie';
+import {
+  fetchProduct,
+  fetchWpProducts,
+} from '@/modules/product/product-actions';
 import { GetStaticPropsContext } from 'next';
 import {
   ProductIdTypeEnum,
   Product as ProductType,
   SimpleProduct,
+  ProductCategory,
 } from '@/utils/types/generated';
-import {
-  fetchProduct,
-  fetchWpProducts,
-} from '@/modules/product/product-actions';
 import {
   ProductCustom,
   ProductOrderEnum,
 } from '@/modules/product/product-types';
+import { useRouter } from 'next/router';
 import currencyFormatter from 'currency-formatter';
-import moment from 'moment';
-import ProductPageLayout from '@/components/product/ProductPageLayout';
+import { getMarca, getProductBrand } from '@/modules/product/product-utils';
 import LazyLoad from 'react-lazyload';
+import { useCookies } from 'react-cookie';
+import moment from 'moment';
 import { DOMAIN_SITE } from '@/utils/constants';
 import {
-  getComplementProductIds,
-  getSimilarProductIds,
   fetchComplementProducts,
   fetchSimilarProducts,
+  getComplementProductIds,
+  getSimilarProductIds,
 } from '@/utils/helpers/product-helpers';
-import Container from '@/components/utils/Container';
-import ContainerThree from '@/components/utils/ContainerThree';
+import ProductPageLayout from '@/components/product/ProductPageLayout';
 import ErrorPage from '@/components/error/Error';
-import { getMarca } from '@/modules/product/product-utils';
-import ProductLayout from '@/components/layouts/ProductLayout';
-import StaticMeta from '@/components/utils/StaticMeta';
 
-// Componentes dinámicos
-const ProductDetails = dynamic(() => import('@/components/product/ProductDetails'));
-const ProductDescription = dynamic(() => import('@/components/product/components/ProductDescription'));
-const ProductSectionOne = dynamic(() => import('@/components/product/ProductSectionOne'));
-const ProductSectionTwo = dynamic(() => import('@/components/product/ProductSectionTwo'));
-const SkeletonProductPage = dynamic(() => import('@/components/skeleton/SkeletonProductPage'));
+const ProductSectionOne = dynamic(
+  () => import('@/components/product/ProductSectionOne'),
+);
+const ProductSectionTwo = dynamic(
+  () => import('@/components/product/ProductSectionTwo'),
+);
+const ProductDetails = dynamic(
+  () => import('@/components/product/ProductDetails'),
+);
+const Container = dynamic(() => import('@/components/utils/Container'));
+const ProductDescription = dynamic(
+  () => import('@/components/product/components/ProductDescription'),
+);
 
 type ProductPageProps = {
   product?: ProductType;
@@ -54,13 +58,17 @@ const ProductPage: React.FC<ProductPageProps> = ({
 }) => {
   const router = useRouter();
   const [cookies, setCookie] = useCookies(['utm_products']);
+  const [loading, setLoading] = useState(!product);
 
-  // 1. FUNCIÓN PARA COOKIES (Memorizada para evitar re-renders)
+  useEffect(() => {
+    if (product) setLoading(false);
+  }, [product]);
+
   const storageSellerUTMCampaignURL = useCallback(
     (productId: number) => {
       try {
         const { asPath } = router;
-        if (!asPath.includes('?')) return; // No hay parámetros, no guardamos nada
+        if (!asPath.includes('?')) return; 
 
         const origin = typeof window !== 'undefined' ? window.location.origin : '';
         const sellerCampaignURL = new URL(`${origin}${asPath}`).toString();
@@ -68,7 +76,6 @@ const ProductPage: React.FC<ProductPageProps> = ({
         const utmProducts = cookies.utm_products || {};
         const currentUrls = utmProducts[productId] || [];
 
-        // CRÍTICO: Si la URL ya está en la cookie, salimos para romper el bucle infinito
         if (currentUrls.includes(sellerCampaignURL)) return;
 
         const updatedUtm = {
@@ -88,116 +95,88 @@ const ProductPage: React.FC<ProductPageProps> = ({
     [router.asPath, cookies.utm_products, setCookie],
   );
 
-  // 2. EFECTO PRINCIPAL (Analytics y Cookies)
   useEffect(() => {
     if (typeof window !== 'undefined' && product?.databaseId) {
-      console.log('Ejecutando tracking para el producto:', product.databaseId);
-      
       const price = currencyFormatter.unformat(
-        (product as any)?.price as string,
+        (product as SimpleProduct)?.price as string,
         { code: 'USD' },
       );
 
       const categories: any = {};
       product?.productCategories?.nodes.forEach((category, i) => {
-        if (i) categories[`item_category${i}` as keyof any] = (category as any).name;
-        else categories['item_category'] = (category as any).name;
+        const catName = (category as ProductCategory).name;
+        if (i) categories[`item_category${i}`] = catName;
+        else categories['item_category'] = catName;
       });
 
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({ ecommerce: null }); 
-      window.dataLayer.push({
-        event: 'view_item',
-        ecommerce: {
-          currency: 'MXN',
-          value: price,    
-          items: [
-            {
-              item_name: product?.name,
-              item_id: product?.databaseId,
-              price: price,
-              item_brand: (product as any)?.brand,
-              item_variant: '', 
-              quantity: 1,      
-              ...categories,
-            },
-          ],
-        },
-      });
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', 'view_item', {
+          items: [{
+            item_name: product?.name,
+            item_id: product?.databaseId,
+            price,
+            item_brand: getProductBrand(product),
+            quantity: '1',
+            ...categories,
+          }],
+        });
+      }
 
       storageSellerUTMCampaignURL(product.databaseId);
     }
-  }, [product?.databaseId, storageSellerUTMCampaignURL]); // Solo reacciona si el ID del producto cambia
+  }, [product?.databaseId, storageSellerUTMCampaignURL]);
 
-  // 3. EFECTO ROOMVO
   useEffect(() => {
-    const footer = document.querySelector('footer');
-    const marca = getMarca(product)?.toString().toLocaleLowerCase();
-
-    if (marca === 'porcelanite' && footer) {
-      const script = document.createElement('script');
-      script.id = 'roomvoAssistant';
-      script.type = 'text/javascript';
-      script.async = true;
-      script.setAttribute('data-locale', 'es-mx');
-      script.setAttribute('data-position', 'bottom-left');
-      script.src = 'https://www.roomvo.com/static/scripts/b2b/common/assistant.js';
-
-      footer.appendChild(script);
-
-      return () => {
-        const existing = document.getElementById('roomvoAssistant');
-        if (existing && footer.contains(existing)) footer.removeChild(existing);
-      };
+    if (typeof window !== 'undefined' && product) {
+      const footer = document.querySelector('footer');
+      if (getMarca(product)?.toString().toLocaleLowerCase() === 'porcelanite' && footer) {
+        const script = document.createElement('script');
+        script.id = 'roomvoAssistant';
+        script.type = 'text/javascript';
+        script.async = true;
+        script.setAttribute('data-locale', 'es-mx');
+        script.setAttribute('data-position', 'bottom-left');
+        script.src = 'https://www.roomvo.com/static/scripts/b2b/common/assistant.js';
+        
+        footer.appendChild(script);
+        return () => {
+          const existing = document.getElementById('roomvoAssistant');
+          if (existing && footer.contains(existing)) footer.removeChild(existing);
+        };
+      }
     }
-  }, [product?.databaseId]);
+  }, [product]);
 
   if (router.isFallback) {
     return (
       <ProductPageLayout product={null as any} asPath={router.asPath}>
-        <Container classes="mb-6">
-          <SkeletonProductPage />
-        </Container>
+        <Container>Cargando producto...</Container>
       </ProductPageLayout>
     );
   }
 
-  if (!product) {
+  if (!loading && !product) {
     return (
-      <ProductPageLayout product={null as any} asPath={router.asPath}>
-        <Container classes="mb-6">
-          <ErrorPage />
-        </Container>
+      <ProductPageLayout product={product as any} asPath={router.asPath}>
+        <Container classes="mb-6"><ErrorPage /></Container>
       </ProductPageLayout>
     );
   }
 
   return (
-    <ProductLayout>      
-      <StaticMeta
-        title={`${product?.seoTitle || product?.name}`}
-        description={`${product?.seoMeta || product?.description}`}
-        asPath={router.asPath}
-        image="/favicon.ico"
-      />
-      <div className={'mt-16'}>
+    <ProductPageLayout product={product as any} asPath={router.asPath}>
+      <div className="my-4 lg:my-[50px]">
+        {/* FUERA DE LAZYLOAD PARA GMC */}
         <Container classes="mb-6">
           <ProductDetails product={product} />
         </Container>
-          
-        <ContainerThree classes="mb-6">
-          <ProductDescription product={product} />
-        </ContainerThree>
-        
-        {/* Usamos un offset mayor para que las imágenes carguen antes de llegar a ellas */}
-        <LazyLoad offset={800}>
-          {product?.cierreComercial && (
-            <Container classes="mb-6">
-              {product?.cierreComercial}
-            </Container>
-          )}
 
-          {complementProducts.length > 0 && (
+        <Container classes="mb-6">
+          <ProductDescription product={product} />
+        </Container>
+
+        <LazyLoad offset={800}>
+          {complementProducts && complementProducts.length > 0 && (
             <Container classes="mb-6">
               <ProductSectionTwo
                 products={complementProducts}
@@ -207,7 +186,7 @@ const ProductPage: React.FC<ProductPageProps> = ({
             </Container>
           )}
 
-          {similarProducts.length > 0 && (
+          {similarProducts && similarProducts.length > 0 && (
             <Container classes="mb-6">
               <ProductSectionOne
                 title="Productos similares"
@@ -217,7 +196,7 @@ const ProductPage: React.FC<ProductPageProps> = ({
           )}
         </LazyLoad>
       </div>
-    </ProductLayout>
+    </ProductPageLayout>
   );
 };
 
@@ -226,10 +205,10 @@ export const getStaticPaths = async () => {
     order: ProductOrderEnum.Desc,
     per_page: 20, 
   });
-  
+
   return {
-    paths: products.map((product) => ({ params: { product: product.slug } })),
-    fallback: 'blocking',
+    paths: products?.map((product) => ({ params: { product: product.slug } })) || [],
+    fallback: 'blocking', 
   };
 };
 
@@ -238,7 +217,7 @@ export const getStaticProps = async ({
 }: GetStaticPropsContext<{ product: string }>) => {
   let complementProducts: ProductCustom[] = [];
   let similarProducts: ProductCustom[] = [];
-  
+
   const product = await fetchProduct({
     id: params?.product as string,
     idType: ProductIdTypeEnum.Slug,
@@ -284,7 +263,7 @@ export const getStaticProps = async ({
       complementProducts,
       similarProducts,
     },
-    revalidate: 3600,
+    revalidate: 3600, 
   };
 };
 
