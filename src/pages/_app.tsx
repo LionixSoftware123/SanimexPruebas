@@ -1,6 +1,7 @@
 import '@/styles/globals.css';
 import 'react-phone-number-input/style.css';
-import React, { useEffect, useMemo, useState } from 'react';
+//import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import type { AppProps } from 'next/app';
 import dynamic from 'next/dynamic';
 import { ApolloProvider } from '@apollo/client';
@@ -64,7 +65,7 @@ export default function App({ Component, pageProps }: AppProps) {
     if (router.asPath === '/mi-cuenta/lost-password') {
       router.push('/auth');
     }
-  }, [router.asPath]); // Solo dependemos del asPath para evitar ejecuciones extra
+  }, [router]); // Agregamos router aquí para que pase el build
 
   useEffect(() => {
     if (cookies.jwtAuthToken) {
