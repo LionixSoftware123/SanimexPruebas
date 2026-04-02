@@ -304,7 +304,8 @@ export const getStaticPaths = async () => {
     per_page: 40,
   });
   return {
-    paths: products.map((product) => ({ params: { product: product.slug } })),
+    //paths: products.map((product) => ({ params: { product: product.slug } })),
+    paths: [], // No pre-generamos nada para que el build sea rápido
     // CAMBIA 'true' POR 'blocking'
     fallback: 'blocking', 
   };
@@ -370,7 +371,8 @@ export const getStaticProps = async ({
       complementProducts,
       similarProducts,
     },
-    revalidate: Number(process.env.NEXT_PUBLIC_REVALIDATE_TIME) || 60,
+    //revalidate: Number(process.env.NEXT_PUBLIC_REVALIDATE_TIME) || 60,
+    revalidate: 60, // <- Genera la página, guárdala en caché y renuévala cada 60 segundos
   };
 };
 
