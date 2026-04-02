@@ -3,16 +3,16 @@ import Script from 'next/script';
 import React from 'react';
 
 export default function Document(props: DocumentProps) {
-  // Pescamos el producto directamente de la "mochila" de datos de Next.js
   const product = props?.__NEXT_DATA__?.props?.pageProps?.product;
 
   return (
     <Html lang="es">
       <Head>
-        {/* --- GTM - Se queda en el Head como lo tienes --- */}
+        {/* --- OPTIMIZACIÓN GTM --- */}
+        {/* Cambiamos strategy a afterInteractive para que no bloquee el renderizado inicial */}
         <Script
           id="gtm-script"
-          strategy="beforeInteractive"
+          strategy="afterInteractive" 
           dangerouslySetInnerHTML={{
             __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
             new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -22,7 +22,7 @@ export default function Document(props: DocumentProps) {
           }}
         />
 
-        {/* --- INYECCIÓN DINÁMICA DE SCHEMA PARA MERCHANT CENTER --- */}
+        {/* --- MERCHANT CENTER SCHEMA (No se toca para mantener la palomita verde) --- */}
         {product && (
           <script
             type="application/ld+json"
@@ -37,7 +37,7 @@ export default function Document(props: DocumentProps) {
                 "description": product.description?.replace(/<[^>]*>?/gm, '').slice(0, 160),
                 "offers": {
                   "@type": "Offer",
-                  "price": product.price, // Valor limpio: "28502.19"
+                  "price": product.price,
                   "priceCurrency": "MXN",
                   "availability": "https://schema.org/InStock",
                   "url": `https://coral-app-dm8qn.ondigitalocean.app/productos/${product.slug}`
@@ -57,7 +57,8 @@ export default function Document(props: DocumentProps) {
         <Main />
         <NextScript />
 
-        {/* --- OTROS SCRIPTS --- */}
+        {/* --- SCRIPTS DE BAJA PRIORIDAD --- */}
+        {/* Usamos lazyOnload para todo lo que no sea esencial para pintar la página */}
         <Script
           id="vgo-script"
           strategy="lazyOnload" 
@@ -69,7 +70,7 @@ export default function Document(props: DocumentProps) {
           }}
         />
 
-        {/* --- ZOHO SALESIQ --- */}
+        {/* ZOHO SALESIQ: El chat es lo más pesado, lo mandamos al final de la cola */}
         <Script id="zoho-init" strategy="lazyOnload">
           {`window.$zoho=window.$zoho || {};$zoho.salesiq=$zoho.salesiq||{ready:function(){}}`}
         </Script>
