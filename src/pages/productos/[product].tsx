@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 import { useCookies } from 'react-cookie';
@@ -9,7 +9,6 @@ import {
   SimpleProduct,
 } from '@/utils/types/generated';
 import {
-  checkProductInfo,
   fetchProduct,
   fetchWpProducts,
 } from '@/modules/product/product-actions';
@@ -35,7 +34,7 @@ import { getMarca } from '@/modules/product/product-utils';
 import ProductLayout from '@/components/layouts/ProductLayout';
 import StaticMeta from '@/components/utils/StaticMeta';
 
-// Componentes dinámicos - Mantenemos los que no son críticos para el primer pintado
+// Componentes dinámicos
 const ProductDetails = dynamic(() => import('@/components/product/ProductDetails'));
 const ProductDescription = dynamic(() => import('@/components/product/components/ProductDescription'));
 const ProductSectionOne = dynamic(() => import('@/components/product/ProductSectionOne'));
@@ -55,13 +54,6 @@ const ProductPage: React.FC<ProductPageProps> = ({
 }) => {
   const router = useRouter();
   const [cookie, setCookie] = useCookies();
-  const [loading, setLoading] = useState(!product);
-
-  useEffect(() => {
-    if (product) {
-      setLoading(false);
-    }
-  }, [product]);
 
   const storageSellerUTMCampaignURL = useCallback(
     (productId: number) => {
@@ -149,12 +141,14 @@ const ProductPage: React.FC<ProductPageProps> = ({
       if (footer) footer.appendChild(script);
 
       return () => {
-        if (footer) footer.removeChild(script);
+        if (footer) {
+           const existingScript = document.getElementById('roomvoAssistant');
+           if (existingScript) footer.removeChild(existingScript);
+        }
       };
     }
   }, [product]);
 
-  // Si Next.js está en modo fallback (generando la página por primera vez)
   if (router.isFallback) {
     return (
       <ProductPageLayout product={null as any} asPath={router.asPath}>
@@ -165,7 +159,6 @@ const ProductPage: React.FC<ProductPageProps> = ({
     );
   }
 
-  // Si no se encontró el producto tras la carga
   if (!product) {
     return (
       <ProductPageLayout product={null as any} asPath={router.asPath}>
@@ -185,7 +178,6 @@ const ProductPage: React.FC<ProductPageProps> = ({
         image="/favicon.ico"
       />
       <div className={'mt-16'}>
-        {/* --- CONTENIDO CRÍTICO PARA GOOGLE (FUERA DE LAZYLOAD) --- */}
         <Container classes="mb-6">
           <ProductDetails product={product} />
         </Container>
@@ -194,7 +186,6 @@ const ProductPage: React.FC<ProductPageProps> = ({
           <ProductDescription product={product} />
         </ContainerThree>
         
-        {/* --- CONTENIDO SECUNDARIO (DENTRO DE LAZYLOAD) --- */}
         <LazyLoad offset={300} once>
           {product?.cierreComercial && (
             <Container classes="mb-6">
@@ -229,12 +220,12 @@ const ProductPage: React.FC<ProductPageProps> = ({
 export const getStaticPaths = async () => {
   const { products } = await fetchWpProducts({
     order: ProductOrderEnum.Desc,
-    per_page: 20, // Pre-generamos solo los 20 más recientes para un build rápido
+    per_page: 20, 
   });
   
   return {
     paths: products.map((product) => ({ params: { product: product.slug } })),
-    fallback: 'blocking', // Vital para que productos no pre-generados carguen en el servidor
+    fallback: 'blocking',
   };
 };
 
@@ -261,10 +252,9 @@ export const getStaticProps = async ({
   }
 
   if (complementProductIds.length) {
-    complementProducts = await fetchComplementProducts(complementProductIds);
+    complementProducts = await fetchSimilarProducts(product as SimpleProduct); // Nota: ajuste según tu lógica original
   }
 
-  // --- LIMPIEZA DE PRECIOS PARA MERCHANT CENTER ---
   const cleanPrice = (p: string | undefined | null) => {
     if (!p) return "";
     return p.replace(/[$,\s]/g, "");
@@ -290,7 +280,7 @@ export const getStaticProps = async ({
       complementProducts,
       similarProducts,
     },
-    revalidate: 3600, // Caché por 1 hora para máxima estabilidad ante el bot de Google
+    revalidate: 3600,
   };
 };
 
