@@ -53,31 +53,30 @@ const ProductPage: React.FC<ProductPageProps> = ({
   similarProducts = [],
 }) => {
   const router = useRouter();
-  const [cookie, setCookie] = useCookies();
+  const [cookies, setCookie] = useCookies(['utm_products']);
 
+  // 1. FUNCIÓN PARA COOKIES (Memorizada para evitar re-renders)
   const storageSellerUTMCampaignURL = useCallback(
     (productId: number) => {
       try {
         const { asPath } = router;
+        if (!asPath.includes('?')) return; // No hay parámetros, no guardamos nada
+
         const origin = typeof window !== 'undefined' ? window.location.origin : '';
-        const sellerCampaignURL = new URL(`${origin}${asPath}`);
+        const sellerCampaignURL = new URL(`${origin}${asPath}`).toString();
+        
+        const utmProducts = cookies.utm_products || {};
+        const currentUrls = utmProducts[productId] || [];
 
-        if (!sellerCampaignURL.search.slice(1).length) return;
-        let utmProducts = cookie.utm_products || [];
+        // CRÍTICO: Si la URL ya está en la cookie, salimos para romper el bucle infinito
+        if (currentUrls.includes(sellerCampaignURL)) return;
 
-        if (utmProducts[productId]) {
-          utmProducts[productId] = [
-            ...utmProducts[productId],
-            sellerCampaignURL.toString(),
-          ];
-        } else {
-          utmProducts = {
-            ...utmProducts,
-            [productId]: [sellerCampaignURL.toString()],
-          };
-        }
+        const updatedUtm = {
+          ...utmProducts,
+          [productId]: [...currentUrls, sellerCampaignURL],
+        };
 
-        setCookie('utm_products', utmProducts, {
+        setCookie('utm_products', updatedUtm, {
           expires: moment().add(15, 'days').toDate(),
           path: '/',
           domain: DOMAIN_SITE,
@@ -86,11 +85,14 @@ const ProductPage: React.FC<ProductPageProps> = ({
         console.error('Error Save query params', error);
       }
     },
-    [cookie, router, setCookie],
+    [router.asPath, cookies.utm_products, setCookie],
   );
 
+  // 2. EFECTO PRINCIPAL (Analytics y Cookies)
   useEffect(() => {
-    if (typeof window !== 'undefined' && product) {
+    if (typeof window !== 'undefined' && product?.databaseId) {
+      console.log('Ejecutando tracking para el producto:', product.databaseId);
+      
       const price = currencyFormatter.unformat(
         (product as any)?.price as string,
         { code: 'USD' },
@@ -123,13 +125,16 @@ const ProductPage: React.FC<ProductPageProps> = ({
         },
       });
 
-      storageSellerUTMCampaignURL(product?.databaseId);
+      storageSellerUTMCampaignURL(product.databaseId);
     }
-  }, [product, storageSellerUTMCampaignURL]);
+  }, [product?.databaseId, storageSellerUTMCampaignURL]); // Solo reacciona si el ID del producto cambia
 
+  // 3. EFECTO ROOMVO
   useEffect(() => {
     const footer = document.querySelector('footer');
-    if (getMarca(product)?.toString().toLocaleLowerCase() === 'porcelanite') {
+    const marca = getMarca(product)?.toString().toLocaleLowerCase();
+
+    if (marca === 'porcelanite' && footer) {
       const script = document.createElement('script');
       script.id = 'roomvoAssistant';
       script.type = 'text/javascript';
@@ -138,16 +143,14 @@ const ProductPage: React.FC<ProductPageProps> = ({
       script.setAttribute('data-position', 'bottom-left');
       script.src = 'https://www.roomvo.com/static/scripts/b2b/common/assistant.js';
 
-      if (footer) footer.appendChild(script);
+      footer.appendChild(script);
 
       return () => {
-        if (footer) {
-           const existingScript = document.getElementById('roomvoAssistant');
-           if (existingScript) footer.removeChild(existingScript);
-        }
+        const existing = document.getElementById('roomvoAssistant');
+        if (existing && footer.contains(existing)) footer.removeChild(existing);
       };
     }
-  }, [product]);
+  }, [product?.databaseId]);
 
   if (router.isFallback) {
     return (
@@ -186,6 +189,7 @@ const ProductPage: React.FC<ProductPageProps> = ({
           <ProductDescription product={product} />
         </ContainerThree>
         
+        {/* Usamos un offset mayor para que las imágenes carguen antes de llegar a ellas */}
         <LazyLoad offset={800}>
           {product?.cierreComercial && (
             <Container classes="mb-6">
@@ -252,10 +256,8 @@ export const getStaticProps = async ({
   }
 
   if (complementProductIds.length) {
-    // AQUÍ ESTABA EL ERROR: Teníamos fetchSimilarProducts otra vez.
-    // Ahora llamamos correctamente a fetchComplementProducts.
     complementProducts = await fetchComplementProducts(complementProductIds);
-  }  
+  }
 
   const cleanPrice = (p: string | undefined | null) => {
     if (!p) return "";
