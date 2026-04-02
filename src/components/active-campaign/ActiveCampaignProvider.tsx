@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect, useState } from 'react';
+import React, { ReactNode, useEffect, useState, useCallback } from 'react';
 import {
   Provider,
   ActiveCampaignContextType,
@@ -30,73 +30,58 @@ type ActiveCampaignProviderProps = {
 const ActiveCampaignProvider: React.FC<ActiveCampaignProviderProps> = ({
   children,
 }) => {
-  const {
-    state: { user },
-  } = useUserHook();
+  const { state: { user } } = useUserHook();
   const [cookies, setCookie] = useCookies(['wooSessionToken', 'checkoutToken']);
-  const [customer, setCustomer] = useState<ActiveCampaignCustomer | undefined>(
-    undefined,
-  );
-  const [order, setOrder] = useState<ActiveCampaignOrder | undefined>(
-    undefined,
-  );
+  const [customer, setCustomer] = useState<ActiveCampaignCustomer | undefined>(undefined);
+  const [order, setOrder] = useState<ActiveCampaignOrder | undefined>(undefined);
 
+  // --- ACCIONES MEMORIZADAS ---
   const [createOrder] = useCallAction(createActiveCampaignUserOrder, {
     onCompleted: (data) => {
       if (data) {
         setOrder(data);
-
-        fetchActiveCampaignUserOrderEvent.dispatch({
-          order: data,
-        });
+        fetchActiveCampaignUserOrderEvent.dispatch({ order: data });
       }
     },
-    onError: () => {},
   });
 
   const [updateOrder] = useCallAction(updateActiveCampaignUserOrder, {
     onCompleted: (data) => {
       if (data) {
         setOrder(data);
-        fetchActiveCampaignUserOrderEvent.dispatch({
-          order: data,
-        });
+        fetchActiveCampaignUserOrderEvent.dispatch({ order: data });
       }
     },
-    onError: () => {},
   });
 
   const [fetchCustomers] = useCallAction(fetchActiveCampaignCustomers, {
-    onCompleted: (data) => {
-      if (data?.length) {
-        setCustomer(data[0]);
-      }
+    onCompleted: (data: any) => {
+      if (data?.length) setCustomer(data[0]);
     },
-    onError: () => {},
   });
 
   const [fetchOrders] = useCallAction(fetchActiveCampaignOrders, {
     onCompleted: (data) => {
       if (data?.length) {
         setOrder(data[0]);
-        fetchActiveCampaignUserOrderEvent.dispatch({
-          order: data[0],
-        });
+        fetchActiveCampaignUserOrderEvent.dispatch({ order: data[0] });
       }
     },
-    onError: () => {},
   });
 
-  const addOrder = async (cart?: Cart) => {
+  // --- LÓGICA DE ÓRDENES OPTIMIZADA ---
+  const addOrder = useCallback(async (cart?: Cart) => {
+    if (!user || !cookies.checkoutToken) return;
     createOrder({
       cart: cart as Cart,
       user: user as User,
       externalCheckoutId: cookies.checkoutToken,
-      abandonedDate: moment().format().toString(),
+      abandonedDate: moment().format(),
     });
-  };
+  }, [user, cookies.checkoutToken, createOrder]);
 
-  const editOrder = (cart?: Cart, orderId = '') => {
+  const editOrder = useCallback((cart?: Cart, orderId = '') => {
+    if (!user || !cookies.checkoutToken) return;
     updateOrder({
       cart: cart as Cart,
       user: user as User,
@@ -104,32 +89,37 @@ const ActiveCampaignProvider: React.FC<ActiveCampaignProviderProps> = ({
       orderId,
       shippingTotal: 0,
       externalOrderId: null,
-      abandonedDate: moment().format().toString(),
+      abandonedDate: moment().format(),
     });
-  };
+  }, [user, cookies.checkoutToken, updateOrder]);
 
+  // 1. Efecto Clientes: Solo si el usuario está logueado
   useEffect(() => {
-    if (user && user?.id) {
+    if (user?.id) {
       fetchCustomers(user);
     }
-  }, [fetchCustomers, user]);
+  }, [user?.id, fetchCustomers]);
 
+  // 2. Token de Checkout: NO generar para anónimos al inicio. 
+  // Solo se genera si hay usuario o cuando ocurra un evento de carrito.
   useEffect(() => {
-    if (!cookies.checkoutToken) {
+    if (!cookies.checkoutToken && user) {
       setCookie('checkoutToken', randomString.generate(10), {
         expires: moment().add(30, 'days').toDate(),
         path: '/',
         domain: DOMAIN_SITE,
       });
     }
-  }, [cookies.checkoutToken, setCookie]);
+  }, [cookies.checkoutToken, user, setCookie]);
 
+  // 3. Fetch Orders: Solo si existe el token
   useEffect(() => {
     if (cookies.checkoutToken) {
       fetchOrders(cookies.checkoutToken);
     }
   }, [cookies.checkoutToken, fetchOrders]);
 
+  // --- SUSCRIPCIONES (Solo actúan si hay usuario) ---
   useSubscription(addCartEvent, (data) => {
     if (!user) return;
     if (order) {
@@ -140,13 +130,14 @@ const ActiveCampaignProvider: React.FC<ActiveCampaignProviderProps> = ({
   });
 
   useSubscription(removeCartEvent, (data) => {
+    if (!user) return;
     if (order) {
       editOrder(data?.cart as Cart, order.id as string);
     }
   });
 
   const values: ActiveCampaignContextType = {
-    connectionId: '1',
+    connectionId: '1', // Mantengo tu ID de Staging
     customer,
     order,
   };
