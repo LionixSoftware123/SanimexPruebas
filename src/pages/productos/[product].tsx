@@ -186,7 +186,7 @@ const ProductPage: React.FC<ProductPageProps> = ({
           <ProductDescription product={product} />
         </ContainerThree>
         
-        <LazyLoad offset={300} once>
+        <LazyLoad offset={800}>
           {product?.cierreComercial && (
             <Container classes="mb-6">
               {product?.cierreComercial}
